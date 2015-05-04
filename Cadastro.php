@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
-  	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
+  	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição" />
     <title>Cadastro - Sistema de Gestão Acadêmica</title>
     <link rel="stylesheet" type="text/css" href="includes/design/estilo.css" />
     
