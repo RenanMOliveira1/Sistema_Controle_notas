@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+
+#section-corpo {height: 860px;}
+#section-corpo hr {width: 950px;}
+
+#div-imagem-sobre {
+	width: 920px;
+	margin:0 auto;
+	padding: 10px 0px 0px 0px;
+}

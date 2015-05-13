@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+
+#section-corpo {height: 940px;}
+
+.asterisco-obrigatoria {color: red;}
+
+fieldset {
+	border: none;
+	padding: 20px 0px 20px 0px;
+}
+
+legend {
+	font-size: 24px;
+	color: #093357;
+	padding: 0px 10px 0px 0px;
+}
+
+.form-campos {padding-top: 10px;}
+
+#section-corpo input, #section-corpo select  {
+	color: #616475;
+	border-radius: 4px;
+	margin-left: 20px;
+	border:solid 1px #999999;
+	padding: 10px 0px 10px 0px;
+}
+
+#section-corpo select {width: 90px;}
+
+#section-corpo input, #section-corpo textarea {padding: 10px;}
+
+::-webkit-input-placeholder {
+   margin-left: 5px;
+   color: #999999;
+   font: 12px verdana, arial, sans-serif;
+}
+
+:-moz-placeholder {
+   margin-left: 5px;
+   color: #999999;
+   font: 12px verdana, arial, sans-serif;
+}
+
+::-moz-placeholder {
+   margin-left: 5px;
+   color: #999999;  
+   font: 12px verdana, arial, sans-serif;
+}
+
+:-ms-input-placeholder {  
+   margin-left: 5px;
+   color: #999999;
+   font: 12px verdana, arial, sans-serif;
+}
+
+#div-container-formulario {
+	width: 800px;
+	padding: 10px 0px 0px 0px;
+	margin: 0 auto;
+}
+
+#div-cpf, #div-telefone-fixo, #div-cep, #div-numero, #div-cidade, #div-senha {
+	float: left;
+	margin-right: 30px;
+}
+
+#div-btn-enviar input {
+	margin: 50px 0px 0px 330px;
+	width: 150px;
+	border-radius: 4px;
+	border:solid 1px #999999;
+	padding: 15px 0px 15px 0px;
+}

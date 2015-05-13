@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+
+#div-imagem-topo {
+	width: 960px;
+	margin:0 auto;
+	padding: 5px 0px 5px 0px;
+}
+
+.div-conteudo-conteiner {
+	width: 940px;
+	margin:0 auto;
+	border-radius:4px;
+	background-color: #0E538C;
+	height: 200px;
+	margin-bottom: 5px;
+	padding: 0px 10px 5px 10px;
+	border: solid 1px #06233B;
+}
+
+.div-conteudo-titulo {
+	padding: 20px 0px 20px 30px;
+	color: #B9BFE0;
+	margin-bottom: 10px;
+	border-radius: 2px;
+	box-shadow: 3px 3px 3px 0 #0B0D2E;
+}
+
+.div-conteudo-saibaMais a {
+	text-decoration: none;
+	color: #6EA6B2;
+	float: right;
+	padding: 5px 0px 0px 0px;
+}
+
+.div-conteudo-saibaMais a:hover {
+	text-decoration: underline;
+	color: #B9BFE0;
+}
+
+.div-conteudo-texto {color: white;}
