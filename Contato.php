@@ -10,7 +10,7 @@
     <? include("includes/server/include-css-js.php"); ?>
     
     <style>
-		#section-corpo { height: 400px}
+		#section-corpo {height: 400px}
 	</style>
 </head>
 
@@ -26,20 +26,22 @@
                         <div id="div-nome">
                             <span>Nome: <span class="asterisco-obrigatoria">*</span></span>
                             <input id="nome-contato" name="nome-contato" title="Entre com o Seu Nome" placeholder="Entre com o Seu Nome" size="40" />
-                        </div>
+                        </div> <!-- div-nome -->
                         <div id="div-assunto">
-                            <label><span>Assunto: <span class="asterisco-obrigatoria">*</span></span><input type="text" name="assunto" id="assunto" placeholder="Entre com o Assunto" /></label>
-                        </div>
+                            <label><span>Assunto: <span class="asterisco-obrigatoria">*</span></span>
+                            <input type="text" name="assunto" id="assunto" placeholder="Entre com o Assunto" /></label>
+                        </div><!-- div-assunto -->
                         <div id="div-mensagem">
-                            <label><span>Mensagem: <span class="asterisco-obrigatoria">*</span></span><textarea name="mensagem" id="mensagem" cols="40" rows="5" ></textarea></label>
-                        </div>
+                            <label><span>Mensagem: <span class="asterisco-obrigatoria">*</span></span>
+                            <textarea name="mensagem" id="mensagem" cols="30" rows="5" ></textarea></label>
+                        </div><!-- div-mensagem -->
                     </fieldset>
                     
-                    <div id="dados-invalidos"></div>
+                    <div id="dados-invalidos"></div> <!-- Exibe os Dados Incorretos -->
                     
                     <div id="div-btn-enviar">
                         <input type="button" id="btn-enviar" value=" Enviar " />
-                    </div>
+                    </div><!-- div-btn-enviar -->
                 </form>
             </section>
             	
@@ -47,18 +49,18 @@
             	<div id="div-contato-endereco">
                 <h3>Endereço</h3>
                 	<p>Rua São José de Meriti, 45<br />Centro - Rio de Janeiro<br />RJ | Andar 254<br />29171-450</p>
-                </div>
+                </div><!-- div-contato-endereco -->
                 <div id="div-contato-telefones">
                 	<h3>Telefones</h3>
                     <p>21-3878-9878</p>
                     <p>21-2323-8987</p>
                     <p><br/><strong>Email</strong>: contato@sga.edu.br</p>
-                </div>
+                </div><!-- div-contato-telefones -->
                 
             </section>
         </section>
         
         <? include("includes/server/include-footer.php"); ?>
-    </div>
+    </div><!-- div-container -->
 </body>
 </html>

@@ -29,28 +29,28 @@
                             <div class="form-campos" id="div-nome">
                                 <label>
                                     <span>Nome: <span class="asterisco-obrigatoria">*</span></span>
-                                    <input type="text" class="class-obrigatorio" id="nome" size="70"
+                                    <input type="text" id="nome" size="70"
                                     maxlength="150" title="Entre com o Seu Nome" placeholder="Digite o seu Nome Completo" />
                             </div> <!-- div-sobre-conteudo -->
                                 </label>
                             <div class="form-campos" id="div-nascimento">
                                 <label>
                                     <span>Nascimento: <span class="asterisco-obrigatoria">*</span></span>
-                                    <input type="text" class="class-obrigatorio" id="data-nascimento" maxlenght="10" size="30"
+                                    <input type="text" id="data-nascimento" maxlenght="10" size="30"
                                     title="Entre com a Data de Nascimento 00/00/0000" placeholder="Digite a Data 00/00/0000" />
                                 </label>
                             </div> <!-- div-nascimento -->
                             <div class="form-campos" id="div-cpf">
                                 <label>
                                     <span>CPF: <span class="asterisco-obrigatoria">*</span></span>
-                                    <input type="text" class="class-obrigatorio" id="cpf" maxlenght="11" size="20"
+                                    <input type="text" id="cpf" maxlenght="11" size="20"
                                     title="Entre com o seu CPF" placeholder="Digite o seu CPF" />
                                 </label>
                             </div> <!-- div-nascimento -->
                             <div class="form-campos" id="div-sexo">
                                 <label>
                                     <span>Sexo: <span class="asterisco-obrigatoria">*</span></span>
-                                    <select class="class-obrigatorio" id="sexo" name="sexo" title="Escolha o seu Sexo" >
+                                    <select class="" id="sexo" name="sexo" title="Escolha o seu Sexo" >
                                         <option value="1">Masculino</option>
                                         <option value="2">Feminino</option>
                                     </select>
@@ -59,14 +59,14 @@
                             <div class="form-campos" id="div-telefone-fixo">
                                 <label>
                                     <span>Telefone: </span>
-                                    <input type="text" class="class-obrigatorio" id="telefone-fixo" 
+                                    <input type="text" id="telefone-fixo" 
                                     maxlenght="45" placeholder="Digite o seu Telefone Fixo"/>
                                 </label>
                             </div> <!-- div-telefone-fixo -->
                             <div class="form-campos" id="div-telefone-celular">
                                 <label>
                                     <span>Celular: </span>
-                                    <input type="text" class="class-obrigatorio" id="telefone-celular" 
+                                    <input type="text" class="" id="telefone-celular" 
                                     maxlenght="45" placeholder="Digite o seu Celular"/>
                                 </label>
                             </div> <!-- div-telefone-celular -->
@@ -186,8 +186,7 @@
                             </div> <!-- div-senha -->
                             <div class="form-campos" id="div-confirmar-senha">
                                 <span>Confirmar Password: <span class="asterisco-obrigatoria">*</span></span>
-                                <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Confirme a sua Senha"
-                                title="Confirme a sua Senha Digitada Anteriormente"  />
+                                <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Confirme a sua Senha" size="25" title="Confirme a sua Senha Digitada Anteriormente"  />
                             </div> <!-- div-confirmar-senha -->
                      </fieldset>
                         <div id="div-btn-enviar">

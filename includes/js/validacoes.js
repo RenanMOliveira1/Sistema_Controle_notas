@@ -133,25 +133,46 @@ else
 function ValidarCadastro() {
 	var msg = "";
 	
-	($("#nome").val() == "") ? msg += "Campo Nome é Obrigatorio<br/>" : "";
-	($("#logradouro").val() == "") ? msg += "Campo Logradouro é Obrigatorio<br/>" : "";
-	($("#bairro").val() == "") ? msg += "Campo Bairro é Obrigatorio<br/>" : "";
-	($("#cidade").val() == "") ? msg += "Campo Cidade é Obrigatorio<br/>" : "";
-	(isNaN($("#telefone-fixo").val())) ? msg += "Campo Telefone só se Aceita Numero" : ""; 
-	(isNaN($("#telefone-celular").val())) ? msg += "Campo Celular só se Aceita Numero" : ""; 
+	if ($("#nome").val() == "") { 
+		msg += "Campo Nome é Obrigatorio<br/>"; 
+		$("#nome").addClass("obrigatorio-borda");}
+	if ($("#logradouro").val() == "") { 
+		msg += "Campo Logradouro é Obrigatorio<br/>"; 
+		$("#logradouro").addClass("obrigatorio-borda");}
+	if ($("#bairro").val() == "") { 
+		msg += "Campo Bairro é Obrigatorio<br/>"; 
+		$("#bairro").addClass("obrigatorio-borda");}
+	if ($("#cidade").val() == "") { 
+		msg += "Campo Cidade é Obrigatorio<br/>"; 
+		$("#cidade").addClass("obrigatorio-borda");}
+	if (isNaN($("#telefone-fixo").val())) { 
+		msg += "Campo Telefone só se Aceita Numero";  
+		$("#telefone-fixo").addClass("obrigatorio-borda");}
+	if (isNaN($("#telefone-celular").val())) { 
+		msg += "Campo Celular só se Aceita Numero";  
+		$("#telefone-celular").addClass("obrigatorio-borda");}
 	
 	var numero = $("#numero").val();
 	if (numero == "") { 
 		msg += "Campo Numero é Obrigatorio<br/>";
+		$("#numero").addClass("obrigatorio-borda");
 	} else if (isNaN(numero)){
 		msg += "Campo Numero só se Aceita Numeros<br/>";
+		$("#numero").addClass("obrigatorio-borda");
 	}
 	
 	var senha = $("#senha").val();
 	var confirmarSenha = $("#confirmar-senha").val();
-	(senha == "") ? msg += "Campo Password é Obrigatorio<br/>" : "";
-	(confirmarSenha == "") ? msg += "Campo Confirmar Password é Obrigatorio<br/>" : "";
-	(senha != confirmarSenha) ? msg += "Password e Confirmar Password devem ser Iguais<br/>" : "";
+	if (senha == "") { 
+		msg += "Campo Password é Obrigatorio<br/>"; 
+		$("#senha").addClass("obrigatorio-borda");}
+	if (confirmarSenha == "") { 
+		msg += "Campo Confirmar Password é Obrigatorio<br/>"; 
+		$("#confirmar-senha").addClass("obrigatorio-borda");}
+	if (senha != confirmarSenha) { 
+		msg += "Password e Confirmar Password devem ser Iguais<br/>";
+		$("#senha").addClass("obrigatorio-borda");
+		$("#confirmar-senha").addClass("obrigatorio-borda");}
 	
 	var cep = $("#cep").val();
 	if (cep == "") {

@@ -61,7 +61,7 @@ img:hover {opacity: 0.9;filter: alpha(Opacity=90, FinishedOpacity=90);}
 /* nav */
 
 #nav-principal {
-	margin:0 auto;
+	margin: 0 auto;
 	padding-left: 5px;
 	border-radius:8px;
 	border: solid 2px #06233B;
@@ -185,6 +185,61 @@ img:hover {opacity: 0.9;filter: alpha(Opacity=90, FinishedOpacity=90);}
 #section-corpo hr {
 	margin: 5px auto;
 	border-shadow: 0px 0px 0px #0B0D2E; 
+}
+
+fieldset {
+	border: none;
+	padding: 20px 0px 20px 0px;
+}
+
+legend {
+	font-size: 24px;
+	color: #093357;
+	padding: 0px 10px 0px 0px;
+}
+
+.form-campos {padding-top: 10px;}
+.obrigatorio-borda {border: 1px solid #F00;}
+
+#section-corpo input, #section-corpo textarea {
+	color: #616475;
+	border-radius: 4px;
+	margin-top: 5px;
+	margin-left: 20px;
+	border:solid 1px #999999;
+	padding: 10px 0px 10px 0px;
+}
+
+#div-btn-enviar input {
+	margin: 0px 0px 5px 190px;
+	width: 150px;
+	border-radius: 4px;
+	border:solid 1px #999999;
+	padding: 5px 0px 5px 0px;
+}
+
+::-webkit-input-placeholder {
+   margin-left: 5px;
+   color: #999999;
+   font: 12px verdana, arial, sans-serif;
+}
+
+:-moz-placeholder {
+   margin-left: 5px;
+   color: #999999;
+   font: 12px verdana, arial, sans-serif;
+}
+
+::-moz-placeholder {
+   margin-left: 5px;
+   color: #999999;  
+   font: 12px verdana, arial, sans-serif;
+}
+
+:-ms-input-placeholder {  
+   margin-left: 5px;
+   color: #999999;
+   font: 12px verdana, arial, sans-serif;
 }
 
 /* footer */
