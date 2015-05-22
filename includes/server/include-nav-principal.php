@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                     <li><a href="Sobre.php" title="Sobre o Sistema de Controle de Notas">Sobre</a></li>
-                    <li><a href="mailto:tiago.hsilva@al.infnet.edu.br" title="Entre em Contato Conosco">Contato</a></li>
+                    <li><a href="Contato.php" title="Entre em Contato Conosco">Contato</a></li>
                 </ul>
             </div> <!-- div-menu-principal -->
             <div id="div-pesquisa">

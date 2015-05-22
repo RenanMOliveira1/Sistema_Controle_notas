@@ -6,12 +6,13 @@
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição" />
     <title>Cadastro - Sistema de Gestão Acadêmica</title>
-    <link rel="stylesheet" type="text/css" href="includes/design/estilo.css" />
     <link rel="stylesheet" type="text/css" href="includes/design/estilo-cadastro.css" />
     
-    <script type="text/javascript" src="includes/js/jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="includes/js/funcoes.js" charset="iso-8859-1"></script>
+    <? include("includes/server/include-css-js.php"); ?>
     
+    <style>
+		#section-corpo {height: 100%;}
+	</style>
 </head>
 
 <body>
@@ -190,8 +191,10 @@
                             </div> <!-- div-confirmar-senha -->
                      </fieldset>
                         <div id="div-btn-enviar">
-                            <input type="submit" id="btn-enviar" value="Enviar" />
+                            <input type="button" id="btn-enviar" value="Enviar" />
                         </div> <!-- div-btn-enviar -->
+                        
+                        <div id="dados-invalidos"></div>
                 </form>
             </div>
         </section>

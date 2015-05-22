@@ -6,12 +6,9 @@
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
     <title>Sistema de Controle de Notas - HOME</title>
-    <link rel="stylesheet" type="text/css" href="includes/design/estilo.css" />
     <link rel="stylesheet" type="text/css" href="includes/design/estilo-index.css" />
     
-    <script type="text/javascript" src="includes/js/jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="includes/js/funcoes.js" charset="iso-8859-1"></script>
-    
+    <? include("includes/server/include-css-js.php"); ?>
 </head>
 
 <body>

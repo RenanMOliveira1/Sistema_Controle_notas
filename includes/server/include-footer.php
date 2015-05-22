@@ -8,12 +8,12 @@
                     <span>Institucional<span>
                 </div> <!-- div-footer-titulo -->
                 <ul>
-                    <li><a href="#" title="Clique Aqui para Acessar a Página Inicial">Home</a></li>
+                    <li><a href="Index.php" title="Clique Aqui para Acessar a Página Inicial">Home</a></li>
                     <li><a href="#" title="Clique Aqui para Conhecer a Graduação">Graduação</a></li>
                     <li><a href="#" title="Clique Aqui para Conhecer a Pós-Graduação">Pós-Graduação</a></li>
                     <li><a href="#" title="Clique Aqui para Conhecer os Cursos Intensivos">Intensivo</a></li>
-                    <li><a href="#" title="Sobre o Sistema de Controle de Notas">Sobre</a></li>
-                    <li><a href="mailto:tiago.hsilva@al.infnet.edu.br" title="Entre em Contato Conosco">Contato</a></li>
+                    <li><a href="Sobre.php" title="Sobre o Sistema de Controle de Notas">Sobre</a></li>
+                    <li><a href="Contato.php" title="Entre em Contato Conosco">Contato</a></li>
                 </ul>   
             </div> <!-- div-footer-Institucional -->
             
@@ -22,7 +22,7 @@
                     <span>Siga-nos</span>
                 </div> <!-- div-footer-titulo -->
                 <ul>
-                    <li><a href="Home.php" title="Siga-nos no Google+">Google</a></li>
+                    <li><a href="#" title="Siga-nos no Google+">Google</a></li>
                     <li><a href="#" title="Siga-nos no Linkedin">Linkedin</a></li>
                     <li><a href="#" title="Siga-nos no Twitter">Twitter</a></li>
                     <li><a href="#" title="Siga-nos no Facebook">Facebook</a></li>
