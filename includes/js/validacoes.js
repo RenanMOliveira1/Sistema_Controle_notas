@@ -136,18 +136,23 @@ function ValidarCadastro() {
 	if ($("#nome").val() == "") { 
 		msg += "Campo Nome é Obrigatorio<br/>"; 
 		$("#nome").addClass("obrigatorio-borda");}
+		
 	if ($("#logradouro").val() == "") { 
 		msg += "Campo Logradouro é Obrigatorio<br/>"; 
 		$("#logradouro").addClass("obrigatorio-borda");}
+		
 	if ($("#bairro").val() == "") { 
 		msg += "Campo Bairro é Obrigatorio<br/>"; 
 		$("#bairro").addClass("obrigatorio-borda");}
+		
 	if ($("#cidade").val() == "") { 
 		msg += "Campo Cidade é Obrigatorio<br/>"; 
 		$("#cidade").addClass("obrigatorio-borda");}
+		
 	if (isNaN($("#telefone-fixo").val())) { 
 		msg += "Campo Telefone só se Aceita Numero";  
 		$("#telefone-fixo").addClass("obrigatorio-borda");}
+		
 	if (isNaN($("#telefone-celular").val())) { 
 		msg += "Campo Celular só se Aceita Numero";  
 		$("#telefone-celular").addClass("obrigatorio-borda");}
@@ -158,17 +163,18 @@ function ValidarCadastro() {
 		$("#numero").addClass("obrigatorio-borda");
 	} else if (isNaN(numero)){
 		msg += "Campo Numero só se Aceita Numeros<br/>";
-		$("#numero").addClass("obrigatorio-borda");
-	}
+		$("#numero").addClass("obrigatorio-borda");}
 	
 	var senha = $("#senha").val();
 	var confirmarSenha = $("#confirmar-senha").val();
 	if (senha == "") { 
 		msg += "Campo Password é Obrigatorio<br/>"; 
 		$("#senha").addClass("obrigatorio-borda");}
+		
 	if (confirmarSenha == "") { 
 		msg += "Campo Confirmar Password é Obrigatorio<br/>"; 
 		$("#confirmar-senha").addClass("obrigatorio-borda");}
+		
 	if (senha != confirmarSenha) { 
 		msg += "Password e Confirmar Password devem ser Iguais<br/>";
 		$("#senha").addClass("obrigatorio-borda");
@@ -178,35 +184,30 @@ function ValidarCadastro() {
 	if (cep == "") {
 		msg += "Campo CEP é Obrigatorio<br/>";
 	} else if (!ValidarCEP(cep)) {
-		msg += "CEP Inválido<br/>";
-	}
+		msg += "CEP Inválido<br/>";}
 	
 	var cpf = $("#cpf").val();
 	if (cpf == "") { 
 		msg += "Campo CPF é Obrigatorio<br/>";
 	} else if (!ValidarCPF(cpf)) {
-		msg += "CPF inválido.<br/>";
-	}
+		msg += "CPF inválido.<br/>";}
 	
 	var data = $("#data-nascimento").val();
 	if (data == "") {
 		msg += "Campo Data de Nascimento é Obrigatorio<br/>";
 	} else if (!ValidarData(data)) {
-		msg += "Data Inválida<br/>";
-	}
+		msg += "Data Inválida<br/>";}
 	
 	var email = $("#email").val();
 	if (email == "") {
-		msg += "Campo Cidade é Obrigatorio<br/>";
+		msg += "Campo Email é Obrigatorio<br/>";
 	} else if (!ValidarEmail(email)) {
-		msg += "E-mail inválido<br />";
-	}
+		msg += "E-mail inválido<br />";}
 
 	if (msg != "") {
 		alert('Dados Inválidos! Verifique e Corrija');
 		$("#dados-invalidos").html(msg);
-		return false;
-	}
+		return false;}
 	
 	return true;
 }
@@ -214,13 +215,12 @@ function ValidarCadastro() {
 function ValidarLogin() {
 	var msg = "";
 	
-	($("#login-senha").val() == "") ? msg += "Campo Password é Obrigatorio<br/>" : "";
-	($("#usuario").val() == "") ? msg += "Campo Usuario é Obrigatorio<br/>" : "";
+	($("#login-senha").val() == "") ? msg += "Campo Senha é Obrigatorio<br/>" : "";
+	($("#usuario").val() == "") ? msg += "Campo Email é Obrigatorio<br/>" : "";
 	
 	if (msg != "") {
 		$("#dados-invalidos").html(msg);
-		return false;
-	}
+		return false;}
 	
 	return true;
 }
@@ -232,10 +232,15 @@ function ValidarContato() {
 	($("#assunto").val() == "") ? msg += "Campo Assunto é Obrigatório<br/>" : "";
 	($("#mensagem").val() == "") ? msg += "Campo Mensagem é Obrigatório<br/>" : "";
 	
+	var email = $("#email-contato").val();
+	if (email == "") {
+		msg += "Campo Email é Obrigatorio<br/>";
+	} else if (!ValidarEmail(email)) {
+		msg += "E-mail inválido<br />";}
+	
 	if (msg != "") {
 		$("#dados-invalidos").html(msg);
-		return false;	
-	}
+		return false;}
 	
 	return true;	
 }
@@ -260,9 +265,63 @@ $(document).ready(function(){
 
 //Botão do Cadastrar
 $(document).ready(function(){
-	$("#btn-enviar").click(function() {
+	$("#btn-enviar-cadastro").click(function() {
 		if (ValidarCadastro()) {
 			$("#formulario-cadastro").submit();
 		}
 	});
+});
+
+jQuery(function($) {'use strict',
+
+	//#main-slider
+	$(function(){
+		$('#main-slider.carousel').carousel({
+			interval: 8000
+		});
+	});
+
+
+	// accordian
+	$('.accordion-toggle').on('click', function(){
+		$(this).closest('.panel-group').children().each(function(){
+		$(this).find('>.panel-heading').removeClass('active');
+		 });
+
+	 	$(this).closest('.panel-heading').toggleClass('active');
+	});
+
+	//Initiat WOW JS
+	new WOW().init();
+
+	// portfolio filter
+	$(window).load(function(){'use strict';
+		var $portfolio_selectors = $('.portfolio-filter >li>a');
+		var $portfolio = $('.portfolio-items');
+		$portfolio.isotope({
+			itemSelector : '.portfolio-item',
+			layoutMode : 'fitRows'
+		});
+		
+		$portfolio_selectors.on('click', function(){
+			$portfolio_selectors.removeClass('active');
+			$(this).addClass('active');
+			var selector = $(this).attr('data-filter');
+			$portfolio.isotope({ filter: selector });
+			return false;
+		});
+	});
+	
+	//goto top
+	$('.gototop').click(function(event) {
+		event.preventDefault();
+		$('html, body').animate({
+			scrollTop: $("body").offset().top
+		}, 500);
+	});	
+
+	//Pretty Photo
+	$("a[rel^='prettyPhoto']").prettyPhoto({
+		social_tools: false
+	});	
 });
