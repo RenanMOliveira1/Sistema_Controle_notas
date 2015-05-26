@@ -975,6 +975,61 @@ textarea#message{
   margin-top: 20px;
 }
 
+/***********************
+********* Página Recuperar Senha ******
+************************/
+
+#div-btn-resetar input {
+	color: white;
+}
+
+#div-btn-resetar input:hover {
+	background-color: #105487;
+}
+
+/***********************
+********* Página Administração ******
+************************/
+
+.clients-area {
+  padding: 60px;
+}
+
+.clients-comments {
+    background-image: url("/images/administracao/image_bg.png");
+    background-position: center 118px;
+    background-repeat: no-repeat;
+    margin-bottom: 100px;
+}
+
+.clients-comments img {
+  background:#DDDDDD;
+  border: 1px solid #DDDDDD;
+  height: 182px;
+  padding: 3px;
+  width: 182px;
+  transition: all 0.9s ease 0s;
+  -moz-transition: all 0.9s ease 0s;
+  -webkit-transition: all 0.9s ease 0s;
+  -o-transition: all 0.9s ease 0s;
+}
+
+.clients-comments h3 {
+  margin-top: 55px;
+  font-weight: 300;
+  padding: 0 40px;
+}
+
+.clients-comments h4 {
+  font-weight: 300;
+  margin-top: 15px;
+}
+
+
+.clients-comments  h4  span {
+  font-weight: 700;
+  font-style: oblique;
+}
 
 /***********************
 ********* Footer ******

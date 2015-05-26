@@ -1,5 +1,20 @@
 // JavaScript Document
 
+function NavActive(opcaoMenu) {
+
+	switch (opcaoMenu) {
+		case 'index':
+			$("#opcaoMenu-index").addClass("active");
+			break;
+		case "sobre":
+			$("#opcaoMenu-sobre").addClass("active");
+			break;
+		case "contato":
+			$("#opcaoMenu-contato").addClass("active");
+			break;
+	}
+}
+
 function ValidarEmail(pEmail) {
 	var posicaoArroba; 
 	var tamanhoEmail = pEmail.length;
@@ -130,55 +145,29 @@ else
     return false;
 }
 
+//Validar Campos da Pagina Cadastro
 function ValidarCadastro() {
 	var msg = "";
 	
-	if ($("#nome").val() == "") { 
-		msg += "Campo Nome é Obrigatorio<br/>"; 
-		$("#nome").addClass("obrigatorio-borda");}
-		
-	if ($("#logradouro").val() == "") { 
-		msg += "Campo Logradouro é Obrigatorio<br/>"; 
-		$("#logradouro").addClass("obrigatorio-borda");}
-		
-	if ($("#bairro").val() == "") { 
-		msg += "Campo Bairro é Obrigatorio<br/>"; 
-		$("#bairro").addClass("obrigatorio-borda");}
-		
-	if ($("#cidade").val() == "") { 
-		msg += "Campo Cidade é Obrigatorio<br/>"; 
-		$("#cidade").addClass("obrigatorio-borda");}
-		
-	if (isNaN($("#telefone-fixo").val())) { 
-		msg += "Campo Telefone só se Aceita Numero";  
-		$("#telefone-fixo").addClass("obrigatorio-borda");}
-		
-	if (isNaN($("#telefone-celular").val())) { 
-		msg += "Campo Celular só se Aceita Numero";  
-		$("#telefone-celular").addClass("obrigatorio-borda");}
+	($("#nome").val() == "") ? msg += "Campo Nome é Obrigatorio<br/>" : "";
+	($("#logradouro").val() == "") ? msg += "Campo Logradouro é Obrigatorio<br/>" : "";
+	($("#bairro").val() == "") ? msg += "Campo Bairro é Obrigatorio<br/>" : "";
+	($("#cidade").val() == "") ? msg += "Campo Cidade é Obrigatorio<br/>" : "";
+	
+	(isNaN($("#telefone-fixo").val())) ? msg += "Campo Telefone só se Aceita Numero" : "";
+	(isNaN($("#telefone-celular").val())) ? msg += "Campo Celular só se Aceita Numero" : "";
 	
 	var numero = $("#numero").val();
 	if (numero == "") { 
 		msg += "Campo Numero é Obrigatorio<br/>";
-		$("#numero").addClass("obrigatorio-borda");
-	} else if (isNaN(numero)){
-		msg += "Campo Numero só se Aceita Numeros<br/>";
-		$("#numero").addClass("obrigatorio-borda");}
+	} else if (isNaN(numero)) {
+		msg += "Campo Numero só se Aceita Numeros<br/>";}
 	
 	var senha = $("#senha").val();
 	var confirmarSenha = $("#confirmar-senha").val();
-	if (senha == "") { 
-		msg += "Campo Password é Obrigatorio<br/>"; 
-		$("#senha").addClass("obrigatorio-borda");}
-		
-	if (confirmarSenha == "") { 
-		msg += "Campo Confirmar Password é Obrigatorio<br/>"; 
-		$("#confirmar-senha").addClass("obrigatorio-borda");}
-		
-	if (senha != confirmarSenha) { 
-		msg += "Password e Confirmar Password devem ser Iguais<br/>";
-		$("#senha").addClass("obrigatorio-borda");
-		$("#confirmar-senha").addClass("obrigatorio-borda");}
+	(senha == "") ? msg += "Campo Password é Obrigatorio<br/>" : "";
+	(confirmarSenha == "") ? msg += "Campo Confirmar Password é Obrigatorio<br/>" : "";	
+	(senha != confirmarSenha) ? msg += "Password e Confirmar Password devem ser Iguais<br/>" : "";
 	
 	var cep = $("#cep").val();
 	if (cep == "") {
@@ -245,6 +234,20 @@ function ValidarContato() {
 	return true;	
 }
 
+function ValidarRecuperarSenha() {
+	
+	var email = $("#restaurar-senha-email").val();
+	if (email == "") {
+		$("#dados-invalidos").html("Campo Email é Obrigatório");
+		return false;
+	} else if (!ValidarEmail(email)) {
+		$("#dados-invalidos").html("Entre com um Email Válido");
+		return false;
+	}
+	
+	return true;
+}
+
 //Botao de Contato
 $(document).ready(function(){
 	$("#btn-enviar").click(function() {
@@ -263,6 +266,15 @@ $(document).ready(function(){
 	});
 });
 
+//Botão Resetar Senha
+$(document).ready(function(){
+	$("#resetar").click(function() {
+		if (ValidarRecuperarSenha()) {
+			$("#form-recuperar-senha").submit();
+		}
+	});
+});
+
 //Botão do Cadastrar
 $(document).ready(function(){
 	$("#btn-enviar-cadastro").click(function() {
@@ -274,7 +286,7 @@ $(document).ready(function(){
 
 jQuery(function($) {'use strict',
 
-	//#main-slider
+	//Slide da Página Inicial
 	$(function(){
 		$('#main-slider.carousel').carousel({
 			interval: 8000
@@ -291,7 +303,7 @@ jQuery(function($) {'use strict',
 	 	$(this).closest('.panel-heading').toggleClass('active');
 	});
 
-	//Initiat WOW JS
+	//Iniciando o Plugin WOW 
 	new WOW().init();
 
 	// portfolio filter
