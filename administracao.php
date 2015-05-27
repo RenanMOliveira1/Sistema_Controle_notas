@@ -27,22 +27,22 @@
             <div class="center wow fadeInDown">
             	<div class="row">
                     <div class="col-md-4 wow fadeInDown">
-                        <div class="clients-comments text-center">
-                            <img src="images/administracao/client1.png" class="img-circle" alt="">
+                        <div class="profissionais-img text-center">
+                            <img src="/images/administracao/client1.png" class="img-circle" alt="">
                             <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
                             <h4><span>-Tiago Henrique /</span>  Reitor</h4>
                         </div>
                     </div>
                     <div class="col-md-4 wow fadeInDown">
-                        <div class="clients-comments text-center">
-                            <img src="images/administracao/client2.png" class="img-circle" alt="">
+                        <div class="profissionais-img text-center">
+                            <img src="/images/administracao/client2.png" class="img-circle" alt="">
                             <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
-                            <h4><span>-Yasmin Farias /</span>  Pró-reitora de graduação</h4>
+                            <h4><span>-Nyelton Gomes /</span>  Pró-reitora de graduação</h4>
                         </div>
                     </div>
                     <div class="col-md-4 wow fadeInDown">
-                        <div class="clients-comments text-center">
-                            <img src="images/administracao/client3.png" class="img-circle" alt="">
+                        <div class="profissionais-img text-center">
+                            <img src="/images/administracao/client3.png" class="img-circle" alt="">
                             <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
                             <h4><span>-Renan Oliveira /</span>  Director of corlate.com</h4>
                         </div>

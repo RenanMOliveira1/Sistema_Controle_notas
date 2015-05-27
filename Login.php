@@ -22,7 +22,7 @@
                     <div class="col-sm-5">
                         <div class="basic-login">
                             <form id="formulario-login" action="Entrar.php" method="post">
-                                <div class="form-group" id="div-login-nome" >
+                                <div class="form-campos" id="div-login-usuario" >
                                     <label for="login-username">
                                         <i class="icon-user"></i> 
                                         <span>Email <span class="asteristicos-obrigatorio">*</span></span>
@@ -31,7 +31,7 @@
                                         placeholder="Entre com o seu email" title="Entre com o seu email" />
                                     </label>
                                 </div> <!-- div-login-nome -->
-                                <div class="form-group" id="div-login-senha" >
+                                <div class="form-campos" id="div-login-senha" >
                                     <label for="login-password">
                                         <i class="icon-lock"></i> 
                                         <span>Senha <span class="asteristicos-obrigatorio">*</span></span>

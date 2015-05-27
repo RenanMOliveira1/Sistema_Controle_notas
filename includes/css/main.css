@@ -2,7 +2,7 @@
 
 
 /*************************
-*******Typography******
+******* Tipografia ******
 **************************/
 
 body {
@@ -179,7 +179,8 @@ body > section {
 
 #div-top-bar {background-color: #072843;}
 
-#div-navbar-header, #footer {
+#div-navbar-header, 
+#footer {
 	background: rgb(254,255,232); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(254,255,232,1) 0%, rgba(214,219,191,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,255,232,1)), color-stop(100%,rgba(214,219,191,1))); /* Chrome,Safari4+ */
@@ -774,7 +775,14 @@ input.search-form:hover {
 	margin-top: 100px;
 }
 
-#div-nascimento, #div-sexo, #div-telefone-fixo, #div-cep, #div-tipo-logradouro, #div-bairro, #div-cidade, #div-senha {
+#div-nascimento, 
+#div-sexo, 
+#div-telefone-fixo, 
+#div-cep, 
+#div-tipo-logradouro, 
+#div-bairro, 
+#div-cidade, 
+#div-senha {
 	float: left;
 	margin-right: 45px;
 }
@@ -991,18 +999,18 @@ textarea#message{
 ********* Página Administração ******
 ************************/
 
-.clients-area {
+.profissionais-img-area {
   padding: 60px;
 }
 
-.clients-comments {
+.profissionais-img {
     background-image: url("/images/administracao/image_bg.png");
     background-position: center 118px;
     background-repeat: no-repeat;
     margin-bottom: 100px;
 }
 
-.clients-comments img {
+.profissionais-img img {
   background:#DDDDDD;
   border: 1px solid #DDDDDD;
   height: 182px;
@@ -1014,19 +1022,19 @@ textarea#message{
   -o-transition: all 0.9s ease 0s;
 }
 
-.clients-comments h3 {
+.profissionais-img h3 {
   margin-top: 55px;
   font-weight: 300;
   padding: 0 40px;
 }
 
-.clients-comments h4 {
+.profissionais-img h4 {
   font-weight: 300;
   margin-top: 15px;
 }
 
 
-.clients-comments  h4  span {
+.profissionais-img  h4  span {
   font-weight: 700;
   font-style: oblique;
 }

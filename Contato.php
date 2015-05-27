@@ -84,21 +84,21 @@
                 	<div id="dados-invalidos"></div> <!-- dados-invalidos -->
                     
                     <div class="col-sm-5 col-sm-offset-1">
-                        <div class="form-group" id="div-contato-nome" >
+                        <div class="form-campos" id="div-contato-nome" >
                             <label>
                                 <span>Nome <span class="asteristicos-obrigatorio">*</span></span>
                                 <input type="text" name="nome-contato" id="nome-contato" size="40"
                                 title="Entre com o seu nome" class="form-control" placeholder="Entre com o seu Nome">
                             </label>
                         </div> <!-- div-contato-nome -->
-                        <div class="form-group" id="div-contato-email" >
+                        <div class="form-campos" id="div-contato-email" >
                             <label>
                                 <span>Email <span class="asteristicos-obrigatorio">*</span></span>
                                 <input type="text" name="email-contato" id="email-contato" size="40"
                                 title="Entre com o seu Email" class="form-control" placeholder="Entre com o Seu Email">
                             </label>
                         </div> <!-- div-contato-email -->
-                        <div class="form-group" id="div-contato-assunto" >
+                        <div class="form-campos" id="div-contato-assunto" >
                             <label>
                                 <span>Assunto <span class="asteristicos-obrigatorio">*</span></span>
                                 <input type="text" name="assunto" id="assunto" class="form-control" size="40"
@@ -107,7 +107,7 @@
                         </div> <!-- div-contato-assunto -->                  
                     </div> <!-- col-sm-5 col-sm-offset-1 -->
                     <div class="col-sm-5">
-                        <div class="form-group" id="div-contato-mensagem" >
+                        <div class="form-campos" id="div-contato-mensagem" >
                             <label>
                                 <span>Menssagem <span class="asteristicos-obrigatorio">*</span></span>
                                 <textarea name="mensagem" id="mensagem" class="form-control" 

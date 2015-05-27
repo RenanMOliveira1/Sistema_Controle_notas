@@ -28,7 +28,7 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="basic-login">
                             <form id="form-recuperar-senha" method="post" action="/esqueceu-senha_exe.php" >
-                                <div class="form-group">
+                                <div class="form-campos" id="div-recuperarSenha-email">
                                     <label>
                                         <i class="icon-envelope"></i> 
                                         <p>Entre com o Seu Email</p>
@@ -36,7 +36,7 @@
                                         type="text" placeholder="Entre aqui com o seu Email">
                                     </label>
                                 </div>
-                                <div class="form-group" id="div-btn-resetar" >
+                                <div class="form-campos" id="div-btn-resetar" >
                                     <input type="button" class="btn btn-primary" id="resetar" value="Recuperar Senha" />
                                 </div>    
 

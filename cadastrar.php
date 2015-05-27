@@ -31,7 +31,7 @@
                                     	</label>
                                     </div> <!-- div-nome -->
                                         
-                                    <div class="form-group" id="div-nascimento">
+                                    <div class="form-campos" id="div-nascimento">
                                         <label>
                                             <span>Nascimento: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" id="data-nascimento" class="form-control" maxlenght="10" size="30"
@@ -39,14 +39,14 @@
                                             placeholder="Digite a Data 00/00/0000" />
                                         </label>
                                     </div> <!-- div-nascimento -->
-                                    <div class="form-group" id="div-cpf">
+                                    <div class="form-campos" id="div-cpf">
                                         <label>
                                             <span>CPF: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" id="cpf" class="form-control" maxlenght="11" size="20"
                                             title="Entre com o seu CPF" placeholder="Digite o seu CPF" />
                                         </label>
                                     </div> <!-- div-nascimento -->
-                                    <div class="form-group" id="div-sexo">
+                                    <div class="form-campos" id="div-sexo">
                                         <label>
                                             <span>Sexo: <span class="asteristicos-obrigatorio">*</span></span>
                                             <select id="sexo" class="form-control" name="sexo" title="Escolha o seu Sexo" >
@@ -55,28 +55,28 @@
                                             </select>
                                         </label>
                                     </div> <!-- div-nascimento -->
-                                    <div class="form-group" id="div-telefone-fixo">
+                                    <div class="form-campos" id="div-telefone-fixo">
                                         <label>
                                             <span>Telefone: </span>
                                             <input type="text" id="telefone-fixo" 
                                             maxlenght="45" class="form-control" placeholder="Digite o seu Telefone Fixo"/>
                                         </label>
                                     </div> <!-- div-telefone-fixo -->
-                                    <div class="form-group" id="div-telefone-celular">
+                                    <div class="form-campos" id="div-telefone-celular">
                                         <label>
                                             <span>Celular: </span>
                                             <input type="text" class="form-control" id="telefone-celular" 
                                             maxlenght="45" placeholder="Digite o seu Celular"/>
                                         </label>
                                     </div> <!-- div-telefone-celular -->
-                                    <div class="form-group" id="div-cep">
+                                    <div class="form-campos" id="div-cep">
                                         <label>
                                             <span>CEP: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" name="cep" id="cep"
                                             title="Entre com o CEP" class="form-control" placeholder="Digite o seu CEP" />
                                         </label>
                                     </div> <!-- div-cep -->
-                                    <div class="form-group" id="div-tipo-logradouro">
+                                    <div class="form-campos" id="div-tipo-logradouro">
                                         <label>
                                             <span>Tipo de Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
                                             <select name="tipo-logradouro" class="form-control" id="tipo-logradouro" >
@@ -96,14 +96,14 @@
                                             </select>
                                          </label>
                                     </div> <!-- div-tipo-logradouro  -->
-                                    <div class="form-group" id="div-numero">
+                                    <div class="form-campos" id="div-numero">
                                         <label>
                                             <span>Numero: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" name="numero" id="numero" placeholder="Numero"
                                             title="Entre com o Numero da Casa" class="form-control" size="7" />
                                         </label>
                                     </div> <!-- div-numero -->
-                                    <div class="form-group" id="div-logradouro">
+                                    <div class="form-campos" id="div-logradouro">
                                         <label>
                                             <span>Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" name="logradouro" id="logradouro"
@@ -111,7 +111,7 @@
                                             size="80" placeholder="Digite o seu Logadouro" />
                                         </label>
                                     </div> <!-- div-logradouro -->
-                                    <div class="form-group" id="div-complemento">
+                                    <div class="form-campos" id="div-complemento">
                                         <label>
                                             <span>Complemento: </span>
                                             <input type="text" name="complemento" id="complemento" size="80"
@@ -119,7 +119,7 @@
                                             class="form-control" placeholder="Digite o Algum Complemento, se Tiver"/>
                                         </label>
                                     </div> <!-- div-complemento -->
-                                    <div class="form-group" id="div-bairro">
+                                    <div class="form-campos" id="div-bairro">
                                         <label>
                                             <span>Bairro: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" name="bairro" id="bairro"
@@ -127,7 +127,7 @@
                                             placeholder="Digite o seu Bairro"/>
                                         </label>
                                     </div> <!-- div-bairro -->
-                                    <div class="form-group" id="div-cidade">
+                                    <div class="form-campos" id="div-cidade">
                                         <label>
                                             <span>Cidade: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" name="cidade" id="cidade"
@@ -135,7 +135,7 @@
                                             placeholder="Digite a sua Cidade"/>
                                         </label>
                                     </div> <!-- div-cidade -->
-                                    <div class="form-group" id="div-estado">
+                                    <div class="form-campos" id="div-estado">
                                         <label>
                                         <span>Estado: <span class="asteristicos-obrigatorio">*</span></span>
                                             <select name="estado" class="form-control" id="estado">
@@ -170,7 +170,7 @@
                                             </select>
                                         </label>
                                     </div> <!-- div-estado -->
-                                    <div class="form-group" id="div-email">
+                                    <div class="form-campos" id="div-email">
                                         <label>
                                             <span>Email: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" class="form-control" name="email" id="email" 
@@ -178,7 +178,7 @@
                                             title="Entre com o seu email para acesso" />
                                         </label>
                                     </div> <!-- div-email -->
-                                    <div class="form-group" id="div-senha">
+                                    <div class="form-campos" id="div-senha">
                                         <label>
                                             <span>Password: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="password" class="form-control" name="senha" 
@@ -186,7 +186,7 @@
                                             title="Digite uma senha com no mínimo de 6 caracteres. Pelo menos uma letra minúscula, um numero e um caracter especial"  />
                                         </label>
                                     </div> <!-- div-senha -->
-                                    <div class="form-group" id="div-confirmar-senha">
+                                    <div class="form-campos" id="div-confirmar-senha">
                                         <label>
                                             <span>Confirmar Password: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="password" class="form-control" name="confirmar-senha" id="confirmar-senha" placeholder="Confirme a sua Senha" size="25" title="Confirme a sua Senha Digitada Anteriormente"  />

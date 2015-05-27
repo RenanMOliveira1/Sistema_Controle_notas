@@ -149,49 +149,92 @@ else
 function ValidarCadastro() {
 	var msg = "";
 	
-	($("#nome").val() == "") ? msg += "Campo Nome é Obrigatorio<br/>" : "";
-	($("#logradouro").val() == "") ? msg += "Campo Logradouro é Obrigatorio<br/>" : "";
-	($("#bairro").val() == "") ? msg += "Campo Bairro é Obrigatorio<br/>" : "";
-	($("#cidade").val() == "") ? msg += "Campo Cidade é Obrigatorio<br/>" : "";
+	if ($("#nome").val() == "") {
+		msg += "Campo Nome é Obrigatorio<br/>";
+		$("#div-nome").addClass(" has-error");
+	}
+	if ($("#logradouro").val() == "") { 
+		msg += "Campo Logradouro é Obrigatorio<br/>";
+		$("#div-logradouro").addClass(" has-error");
+	}
+	if ($("#bairro").val() == "") { 
+		msg += "Campo Bairro é Obrigatorio<br/>";
+		$("#div-bairro").addClass(" has-error");
+	}
+	if ($("#cidade").val() == "") { 
+		msg += "Campo Cidade é Obrigatorio<br/>";
+		$("#div-cidade").addClass(" has-error");
+	}
 	
-	(isNaN($("#telefone-fixo").val())) ? msg += "Campo Telefone só se Aceita Numero" : "";
-	(isNaN($("#telefone-celular").val())) ? msg += "Campo Celular só se Aceita Numero" : "";
+	if (isNaN($("#telefone-fixo").val())) { 
+		msg += "Campo Telefone só se Aceita Numero";
+		$("#div-telefone-fixo").addClass(" has-error");
+	}
+	if (isNaN($("#telefone-celular").val())) { 
+		msg += "Campo Celular só se Aceita Numero";
+		$("#div-telefone-fixo").addClass(" has-error");
+	}
 	
 	var numero = $("#numero").val();
 	if (numero == "") { 
 		msg += "Campo Numero é Obrigatorio<br/>";
+		$("#div-numero").addClass(" has-error");
 	} else if (isNaN(numero)) {
-		msg += "Campo Numero só se Aceita Numeros<br/>";}
+		msg += "Campo Numero só se Aceita Numeros<br/>";
+		$("#div-numero").addClass(" has-error");
+	}
 	
 	var senha = $("#senha").val();
 	var confirmarSenha = $("#confirmar-senha").val();
-	(senha == "") ? msg += "Campo Password é Obrigatorio<br/>" : "";
-	(confirmarSenha == "") ? msg += "Campo Confirmar Password é Obrigatorio<br/>" : "";	
-	(senha != confirmarSenha) ? msg += "Password e Confirmar Password devem ser Iguais<br/>" : "";
+	if (senha == "") { 
+		msg += "Campo Password é Obrigatorio<br/>";
+		$("#div-senha").addClass(" has-error");
+	}
+	if (confirmarSenha == "") { 
+		msg += "Campo Confirmar Password é Obrigatorio<br/>";
+		$("#div-confirmar-senha").addClass(" has-error");
+	}	
+	if (senha != confirmarSenha) { 
+		msg += "Password e Confirmar Password devem ser Iguais<br/>";
+		$("#div-senha").addClass(" has-error");
+		$("#div-confirmar-senha").addClass(" has-error");
+	}
 	
 	var cep = $("#cep").val();
 	if (cep == "") {
 		msg += "Campo CEP é Obrigatorio<br/>";
+		$("#div-cep").addClass(" has-error");
 	} else if (!ValidarCEP(cep)) {
-		msg += "CEP Inválido<br/>";}
+		msg += "CEP Inválido<br/>";
+		$("#div-cep").addClass(" has-error");
+	}
 	
 	var cpf = $("#cpf").val();
 	if (cpf == "") { 
 		msg += "Campo CPF é Obrigatorio<br/>";
+		$("#div-cpf").addClass(" has-error");
 	} else if (!ValidarCPF(cpf)) {
-		msg += "CPF inválido.<br/>";}
+		msg += "CPF inválido.<br/>";
+		$("#div-cpf").addClass(" has-error");
+	}
 	
 	var data = $("#data-nascimento").val();
 	if (data == "") {
 		msg += "Campo Data de Nascimento é Obrigatorio<br/>";
+		$("#div-nascimento").addClass(" has-error");
 	} else if (!ValidarData(data)) {
-		msg += "Data Inválida<br/>";}
+		msg += "Data Inválida<br/>";
+		$("#div-nascimento").addClass(" has-error");
+	}
 	
 	var email = $("#email").val();
 	if (email == "") {
 		msg += "Campo Email é Obrigatorio<br/>";
+		$("#div-email").addClass(" has-error");
 	} else if (!ValidarEmail(email)) {
-		msg += "E-mail inválido<br />";}
+		msg += "E-mail inválido<br />";
+		$("#div-email").addClass(" has-error");	
+	}
 
 	if (msg != "") {
 		alert('Dados Inválidos! Verifique e Corrija');
@@ -201,11 +244,18 @@ function ValidarCadastro() {
 	return true;
 }
 
+//Validar Campos da Página Login
 function ValidarLogin() {
 	var msg = "";
 	
-	($("#login-senha").val() == "") ? msg += "Campo Senha é Obrigatorio<br/>" : "";
-	($("#usuario").val() == "") ? msg += "Campo Email é Obrigatorio<br/>" : "";
+	if ($("#login-senha").val() == "") { 
+		msg += "Campo Senha é Obrigatorio<br/>";
+		$("#div-login-senha").addClass(" has-error");	
+	}
+	if ($("#usuario").val() == "") { 
+		msg += "Campo Email é Obrigatorio<br/>";
+		$("#div-login-usuario").addClass(" has-error");	
+	}
 	
 	if (msg != "") {
 		$("#dados-invalidos").html(msg);
@@ -214,18 +264,31 @@ function ValidarLogin() {
 	return true;
 }
 
+//Validar Campos da Página Contato
 function ValidarContato() {
 	var msg = "";
 	
-	($("#nome-contato").val() == "") ? msg += "Campo Nome é Obrigatório<br/>" : "";
-	($("#assunto").val() == "") ? msg += "Campo Assunto é Obrigatório<br/>" : "";
-	($("#mensagem").val() == "") ? msg += "Campo Mensagem é Obrigatório<br/>" : "";
+	if ($("#nome-contato").val() == "") { 
+		msg += "Campo Nome é Obrigatório<br/>";
+		$("#div-contato-nome").addClass(" has-error");	
+	}
+	if ($("#assunto").val() == "") { 
+		msg += "Campo Assunto é Obrigatório<br/>";
+		$("#div-contato-assunto").addClass(" has-error");	
+	}
+	if ($("#mensagem").val() == "") { 
+		msg += "Campo Mensagem é Obrigatório<br/>";
+		$("#div-contato-mensagem").addClass(" has-error");	
+	}
 	
 	var email = $("#email-contato").val();
 	if (email == "") {
 		msg += "Campo Email é Obrigatorio<br/>";
+		$("#div-contato-email").addClass(" has-error");	
 	} else if (!ValidarEmail(email)) {
-		msg += "E-mail inválido<br />";}
+		msg += "E-mail inválido<br />";
+		$("#div-contato-email").addClass(" has-error");	
+	}
 	
 	if (msg != "") {
 		$("#dados-invalidos").html(msg);
@@ -239,9 +302,11 @@ function ValidarRecuperarSenha() {
 	var email = $("#restaurar-senha-email").val();
 	if (email == "") {
 		$("#dados-invalidos").html("Campo Email é Obrigatório");
+		$("#div-recuperarSenha-email").addClass(" has-error");
 		return false;
 	} else if (!ValidarEmail(email)) {
 		$("#dados-invalidos").html("Entre com um Email Válido");
+		$("#div-recuperarSenha-email").addClass(" has-error");
 		return false;
 	}
 	

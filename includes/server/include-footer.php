@@ -9,7 +9,7 @@
                             <li><a title="Campos da Instituição" href="/campos.php">Campos</a></li>
                             <li><a title="Termos de uso e responsabilidade" href="/termos-de-uso.php">Termos de Uso</a></li>
                             <li><a title="Copuright do SGA" href="/administracao.php">Administração</a></li>
-                            <li><a title="Politicas da Instituição" href="#">Corpo Docente</a></li>
+                            <li><a title="Politicas da Instituição" href="/corpo-docente.php">Corpo Docente</a></li>
                             <li><a title="Entre com contato conosco" href="/contato.php">Entre em Contato</a></li>
                         </ul>
                     </div> <!-- widget -->    
