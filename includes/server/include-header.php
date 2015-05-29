@@ -16,7 +16,7 @@
                                 <li><a href="#"><i class="fa fa-skype"></i></a></li>
                             </ul>
                             <div id="nav-botao" class="btn-group">
-                          <button type="button btn-primary" title="Entre na sua conta" onclick="location.href='/login.php'" class="btn btn-default">Login</button>
+                          <button type="button btn-primary" title="Entre na sua conta" onclick="location.href='/acount/'" class="btn btn-default">Login</button>
                           <button type="button" title="Clique aqui e se cadastre" onclick="location.href='/cadastrar.php'" class="btn btn-default">Cadastrar</button>
                         	</div> <!-- nav-botao -->
                             <div class="search">

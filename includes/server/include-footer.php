@@ -69,7 +69,7 @@
                     <ul class="pull-right">
                         <li><a title="Página Inicial do Site" href="/index.php">Home</a></li>
                         <li><a title="Saiba mais sobre a Instituição" href="/sobre.php">A Instituição</a></li>
-                        <li><a title="Termos de uso do SGA" href="#">Termos</a></li>
+                        <li><a title="Termos de uso do SGA" href="/termos-de-uso.php">Termos</a></li>
                         <li><a title="Entre com contato conosco" href="/contato.php">Contato</a></li>
                     </ul>
                 </div> <!-- col-sm-6 -->

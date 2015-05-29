@@ -180,6 +180,7 @@ body > section {
 #div-top-bar {background-color: #072843;}
 
 #div-navbar-header, 
+#div-admin-top-bar,
 #footer {
 	background: rgb(254,255,232); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(254,255,232,1) 0%, rgba(214,219,191,1) 100%); /* FF3.6+ */
@@ -382,6 +383,75 @@ input.search-form:hover {
 .navbar-inverse .navbar-form {
   border-top: 0;
   padding-bottom: 0;
+}
+
+
+/*************************
+*******Header Usuario/Administração******
+**************************/
+
+.adminNavUsuario .adminDropdown a {
+	background-color: #072843;
+}
+
+.adminNavUsuario .navbar-nav{
+  margin-top: 12px;
+ }
+
+.adminNavUsuario .navbar-nav>li{
+  margin-left: 35px;
+  padding-bottom: 28px;
+}
+
+.adminNavUsuario .navbar-nav > li > a {
+  padding: 5px 12px;
+  background-color: #072843;
+  margin: 0;
+  border-radius: 3px;
+  color: #fff;
+  line-height: 24px;
+  display: inline-block;
+}
+
+.adminNavUsuario .navbar-nav > li > a:hover{
+	background-color: #072843;
+  	color: #fff;
+}
+
+.adminNavUsuario .navbar-nav .dropdown-menu {
+  width: 200px;
+  background-color: #051E32;
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  border: 0;
+  padding: 0;
+  margin-top: 0;
+  border-top: 0;
+  border-radius: 0;
+  left: 0;
+}
+
+.adminNavUsuario .navbar-nav .dropdown-menu:before{
+  position: absolute;
+  top:0;
+}
+
+.adminNavUsuario .navbar-nav .dropdown-menu:before > li > a{
+  top:0;
+}
+
+.adminNavUsuario .navbar-nav .dropdown-menu > li > a {
+  width: 200px;
+  padding: 8px 15px;
+  color: #fff;
+}
+
+.adminNavUsuario .navbar-nav .dropdown-menu > li:hover > a,
+.adminNavUsuario .navbar-nav .dropdown-menu > li:focus > a,
+.adminNavUsuario .navbar-nav .dropdown-menu > li.active > a {
+  background-color: #072843;
+  color: #fff;
 }
 
 

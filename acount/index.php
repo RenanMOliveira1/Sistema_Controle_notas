@@ -1,3 +1,8 @@
+<?
+	$dadosInvalidos = @$_GET['dadosInvalidos'];
+	$msg = @$_GET['msg'];
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,12 +13,12 @@
     <title>SGA | Faça o seu Login</title>
     
     <!-- include com os scripts e CSS do SGA -->
-    <? include("includes/server/include-css-js-favicon.php"); ?> 
+    <? include("../includes/server/include-css-js-favicon.php"); ?> 
 </head>
 
 <body>
     <!-- include com o header, botões sociais, Procurar, logo e Menu -->
-    <? include("includes/server/include-header.php"); ?> 
+    <? include("../includes/server/include-header.php"); ?> 
     
     <section id="section-formulario">
         <div class="container wow fadeInDown">
@@ -21,8 +26,8 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <div class="basic-login">
-                            <form id="formulario-login" action="Entrar.php" method="post">
-                                <div class="form-campos" id="div-login-usuario" >
+                            <form id="formulario-login" action="/acount/login.php" method="post">
+                                <div class="form-campos<?=$dadosInvalidos?>" id="div-login-usuario" >
                                     <label for="login-username">
                                         <i class="icon-user"></i> 
                                         <span>Email <span class="asteristicos-obrigatorio">*</span></span>
@@ -31,7 +36,7 @@
                                         placeholder="Entre com o seu email" title="Entre com o seu email" />
                                     </label>
                                 </div> <!-- div-login-nome -->
-                                <div class="form-campos" id="div-login-senha" >
+                                <div class="form-campos<?=$dadosInvalidos?>" id="div-login-senha" >
                                     <label for="login-password">
                                         <i class="icon-lock"></i> 
                                         <span>Senha <span class="asteristicos-obrigatorio">*</span></span>
@@ -52,7 +57,7 @@
                                     	<button type="button" id="btn-logar" value="Entrar" class="btn btn-primary">Entrar</button>
                                     </div> <!-- div-login-btn-logar -->
                                     
-                                    <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                                    <div id="dados-invalidos"><?=$msg?></div> <!-- dados-invalidos -->
 									<div class="clearfix"></div>
                                 </div> <!-- div-login-opcoes -->
                             </form>
@@ -75,6 +80,6 @@
     </section> <!-- section-formulario -->
     
     <!-- include com o section 'bottom' e o footer -->
-    <? include("includes/server/include-footer.php"); ?> 
+    <? include("../includes/server/include-footer.php"); ?> 
 </body>
 </html>
