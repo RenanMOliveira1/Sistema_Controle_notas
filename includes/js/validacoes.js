@@ -1,5 +1,31 @@
 // JavaScript Document
 
+function SidebarActive(opcaoSidebar) {
+	switch (opcaoSidebar) {
+		case 'disciplinas':
+			$("#navDisciplinas").addClass("active");
+			break;
+		case "notas":
+			$("#navNotas").addClass("active");
+			break;
+		case "perfil":
+			$("#navPerfil").addClass("active");
+			break;
+		case "configuracoes":
+			$("#navConfiguracoes").addClass("active");
+			break;
+		case "configuracoes-prof":
+			$("#navConfiguracoesProf").addClass("active");
+			break;
+		case "lancar-notas":
+			$("#navLancarNotas").addClass("active");
+			break;
+		case "modulos-prof":
+			$("#navModulosProf").addClass("active");
+			break;
+	}
+}
+
 function NavActive(opcaoMenu) {
 
 	switch (opcaoMenu) {

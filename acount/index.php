@@ -44,6 +44,17 @@
                                         name="login-senha" placeholder="Entre com a Senha" title="Entre com a Senha" />
                                     </label>
                                 </div> <!-- div-login-senha -->
+                                <div id="div-autentificacao">
+                                	<label>
+                                    	<span id="titulo-aut">Autentificação: </span>
+                                    	<select class="form-control" id="autentificacao" name="autentificacao">
+                                        	<option value="al">Aluno</option>
+                                            <option value="prof">Professor</option>
+                                            <option value="admin">Administração</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                
                                 <div class="form-group" id="div-login-opcoes" >
                                     <div id="div-login-mantenha-me-conectado">
                                         <label class="checkbox">

@@ -1,6 +1,7 @@
 <?
 	$usuario = @$_POST['usuario'];
 	$senha = @$_POST['login-senha'];
+	$autentificacao = @$_POST['autentificacao'];
 	
 	//Conecção ao Banco de Dados
 	$conexao = mysql_connect("localhost", "root", "14789632");
@@ -17,7 +18,16 @@
 	$resultadoPesquisa = mysql_query($query, $conexao);
 	$msg = "";
 	if (mysql_num_rows($resultadoPesquisa) == 1) {
-		header("Location: /acount/admin/");
+		switch ($autentificacao) {
+			case 'al':
+				header("Location: /acount/adminal/");
+				break;
+			case 'prof':
+				header("Location: /acount/adminprof/");
+				break;
+			case 'admin':
+				header("Location: /acount/admin/");
+		}
 	} else {
 		$dadosInvalidos = " has-error";
 		$msg = "Usuario ou Senha Invalidos";
