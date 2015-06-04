@@ -116,7 +116,7 @@
                             </label>
                         </div> <!-- div-contato-mensagem -->        
                         <div class="form-group" id="div-contato-btn-enviar" >
-                            <input type="button" id="btn-enviar" class="btn btn-default btn-lg" value="Enviar" />
+                            <input type="button" id="btn-enviar" onClick="botoesEnviar('#btn-enviar', '#form-contato', ValidarContato());" class="btn btn-default btn-lg" value="Enviar" />
                         </div> <!-- div-contato-btn-enviar -->    
                     </div> <!-- col-sm-5 col-sm-offset-1 -->
                 </form> 

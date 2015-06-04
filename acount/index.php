@@ -65,7 +65,7 @@
                                     	<a href="/suporte/esqueceu-senha.php" class="forgot-password">Esqueceu a Senha? </a>
                                     </div> <!-- div-login-senha -->
                                     <div id="div-login-btn-logar">
-                                    	<button type="button" id="btn-logar" value="Entrar" class="btn btn-primary">Entrar</button>
+                                    	<input type="button" id="btn-logar" class="btn btn-primary" value="Entrar" onClick="botoesEnviar('#btn-logar', '#formulario-login', ValidarLogin());" />
                                     </div> <!-- div-login-btn-logar -->
                                     
                                     <div id="dados-invalidos"><?=$msg?></div> <!-- dados-invalidos -->

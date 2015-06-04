@@ -196,7 +196,7 @@
                                     <div id="dados-invalidos"></div> <!-- dados-invalidos -->
                                     
                                 <div id="div-btn-enviar">
-                                    <input type="button" id="btn-enviar-cadastro" class="btn btn-primary" value="Enviar" />
+                                    <input type="button" id="btn-enviar-cadastro" class="btn btn-primary" value="Enviar" onClick="botoesEnviar('#btn-enviar-cadastro', '#formulario-cadastro', ValidarCadastro());" />
                                 </div> <!-- div-btn-enviar -->
                                 </form>
                             </div> <!-- basic-login -->
