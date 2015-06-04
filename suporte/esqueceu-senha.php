@@ -1,3 +1,7 @@
+<?
+	define("TITULO", "Recuperar Senha");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +9,7 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-    <title>SGA: Sistema de Controle de Notas</title>
+    <title><?=TITULO?></title>
     
     <!-- include com os scripts, CSS e Favicon do SGA -->
     <? include("../includes/server/include-css-js-favicon.php"); ?> 
@@ -18,7 +22,7 @@
     <section id="section-esqueceu-senha">
     	<div class="container">
             <div class="center wow fadeInDown">
-            	<h2>Recuperar Senha</h2>
+            	<h2><?=TITULO?></h2>
             </div>
            <div class="center wow fadeInDown">
            		<p>Este deve ser o endereço de e-mail associado com a sua conta. Se você não alterou ele pelo seu painel de controle do usuário então este é o endereço de e-mail que você registrou com a sua conta.</p>
@@ -37,7 +41,7 @@
                                     </label>
                                 </div>
                                 <div class="form-campos" id="div-btn-resetar" >
-                                    <input type="button" class="btn btn-primary" id="resetar" value="Recuperar Senha" />
+                                    <input type="button" class="btn btn-primary" id="btn-resetar" value="Recuperar Senha" onClick="botoesEnviar('#btn-resetar', '#form-recuperar-senha', ValidarRecuperarSenha());"/>
                                 </div>    
 
                                 <div id="dados-invalidos"></div> <!-- dados-invalidos -->

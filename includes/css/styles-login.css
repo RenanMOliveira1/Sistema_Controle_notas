@@ -899,3 +899,7 @@ h1.page-header {
 .fixed-table-pagination .pagination-detail {
 	margin-top: 20px;
 }
+
+#turma-turno, #turma-laboratorio, #turma-modulo {
+	width: 500px;
+}

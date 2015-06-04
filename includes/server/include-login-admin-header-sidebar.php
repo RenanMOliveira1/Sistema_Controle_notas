@@ -36,8 +36,8 @@
 				<ul class="children collapse" id="sub-item-1">
 					<li><a class="" href="/acount/admin/cadastrar-professor.php"><span class="glyphicon glyphicon-share-alt"></span> Professores</a></li>
 					<li><a class="" href="/acount/admin/criar-modulo.php"><span class="glyphicon glyphicon-share-alt"></span> Módulos</a></li>
-                    <li><a class="" href="/acount/admin/"><span class="glyphicon glyphicon-share-alt"></span> Laboratório</a></li>
-                    <li><a class="" href="/acount/admin/"><span class="glyphicon glyphicon-share-alt"></span> Turno de Aula</a></li>
+                    <li><a class="" href="/acount/admin/cadastrar-laboratorio.php"><span class="glyphicon glyphicon-share-alt"></span> Laboratório</a></li>
+                    <li><a class="" href="/acount/admin/cadastrar-turma.php"><span class="glyphicon glyphicon-share-alt"></span> Turma</a></li>
 				</ul>
 			</li>
 			<li class="parent ">

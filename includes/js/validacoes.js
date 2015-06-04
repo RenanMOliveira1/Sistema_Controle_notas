@@ -339,41 +339,15 @@ function ValidarRecuperarSenha() {
 	return true;
 }
 
-//Botao de Contato
-$(document).ready(function(){
-	$("#btn-enviar").click(function() {
-		if (ValidarContato()) {
-			$("#form-contato").submit();
-		}
+function botoesEnviar(idBotao, idFormulario, funcaoDeValidar) {
+	$(document).ready(function(){
+		$(idBotao).click(function() {
+			if (funcaoDeValidar) {
+				$(idFormulario).submit();
+			}
+		});
 	});
-});
-
-//Botão de se Logar
-$(document).ready(function(){
-	$("#btn-logar").click(function() {
-		if (ValidarLogin()) {
-			$("#formulario-login").submit();
-		}
-	});
-});
-
-//Botão Resetar Senha
-$(document).ready(function(){
-	$("#resetar").click(function() {
-		if (ValidarRecuperarSenha()) {
-			$("#form-recuperar-senha").submit();
-		}
-	});
-});
-
-//Botão do Cadastrar
-$(document).ready(function(){
-	$("#btn-enviar-cadastro").click(function() {
-		if (ValidarCadastro()) {
-			$("#formulario-cadastro").submit();
-		}
-	});
-});
+}
 
 jQuery(function($) {'use strict',
 
