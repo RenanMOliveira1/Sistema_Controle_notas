@@ -18,7 +18,7 @@
               JOIN `modulo_professor` ON modulo_professor.`idModulo` = turma.`idModulo`
               JOIN `professor` ON professor.`idProfessor` = modulo_professor.`idProfessor`
 			  WHERE
-			  aluno.`matricula` = '$_SESSION[alMatricula]'";
+			  aluno.`matricula` = '{$_SESSION['alMatricula']}'";
 			 /* SELECT `matricula`, `nome`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`, `acesso`
 			  FROM `$autentificacao` 
 			  WHERE `email` = '$usuario'
@@ -32,10 +32,10 @@
 		while($modulos = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
 			$trTemp.="<div class=\"col-md-6\">
 						<div class=\"panel panel-info\">
-							<div class=\"panel-heading dark-overlay\"> $modulos[nome]</div>
+							<div class=\"panel-heading dark-overlay\"> {$modulos['nome']}</div>
 							<div class=\"panel-body\">
-								<p>$modulos[desc]</p>
-                        		<p><strong>Professor</strong>:$modulos[nomeProfessor]</p>
+								<p>{$modulos['desc']}</p>
+                        		<p><strong>Professor</strong>:{$modulos['nomeProfessor']}</p>
                         		<p><a href=\"#\">Detalhes da Disciplina</a></p>
 							</div>
 						</div>

@@ -21,11 +21,11 @@
                     <div class="row">
                       <div class="col-sm-8">
                             <div class="basic-login">
-                                <form id="formulario-cadastro" action="Entrar.php" method="post">
+                                <form id="formulario-cadastro" action="cadastro.php" method="post">
                                     <div class="form-campos" id="div-nome">
                                         <label>
                                             <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="text" id="nome" size="70" class="form-control"
+                                            <input type="text" id="nome" name="nome" size="70" class="form-control"
                                             maxlength="150" title="Entre com o Seu Nome" 
                                             placeholder="Digite o seu Nome Completo" autofocus />
                                     	</label>
@@ -34,7 +34,7 @@
                                     <div class="form-campos" id="div-nascimento">
                                         <label>
                                             <span>Nascimento: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="text" id="data-nascimento" class="form-control" maxlenght="10" size="30"
+                                            <input type="text" id="data-nascimento" name="data-nascimento" class="form-control" maxlenght="10" size="30"
                                             title="Entre com a Data de Nascimento 00/00/0000" 
                                             placeholder="Digite a Data 00/00/0000" />
                                         </label>
@@ -42,7 +42,7 @@
                                     <div class="form-campos" id="div-cpf">
                                         <label>
                                             <span>CPF: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="text" id="cpf" class="form-control" maxlenght="11" size="20"
+                                            <input type="text" id="cpf" name="cpf" class="form-control" maxlenght="11" size="20"
                                             title="Entre com o seu CPF" placeholder="Digite o seu CPF" />
                                         </label>
                                     </div> <!-- div-nascimento -->
@@ -50,36 +50,36 @@
                                         <label>
                                             <span>Sexo: <span class="asteristicos-obrigatorio">*</span></span>
                                             <select id="sexo" class="form-control" name="sexo" title="Escolha o seu Sexo" >
-                                                <option value="1">Masculino</option>
-                                                <option value="2">Feminino</option>
+                                                <option value="Masculino">Masculino</option>
+                                                <option value="Feminino">Feminino</option>
                                             </select>
                                         </label>
                                     </div> <!-- div-nascimento -->
                                     <div class="form-campos" id="div-telefone-fixo">
                                         <label>
                                             <span>Telefone: </span>
-                                            <input type="text" id="telefone-fixo" 
+                                            <input type="text" id="telefone-fixo" name="telefone-fixo"
                                             maxlenght="45" class="form-control" placeholder="Digite o seu Telefone Fixo"/>
                                         </label>
                                     </div> <!-- div-telefone-fixo -->
                                     <div class="form-campos" id="div-telefone-celular">
                                         <label>
                                             <span>Celular: </span>
-                                            <input type="text" class="form-control" id="telefone-celular" 
+                                            <input type="text" class="form-control" id="telefone-celular" name="telefone-celular"
                                             maxlenght="45" placeholder="Digite o seu Celular"/>
                                         </label>
                                     </div> <!-- div-telefone-celular -->
                                     <div class="form-campos" id="div-cep">
                                         <label>
                                             <span>CEP: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="text" name="cep" id="cep"
+                                            <input type="text" id="cep" name="cep"
                                             title="Entre com o CEP" class="form-control" placeholder="Digite o seu CEP" />
                                         </label>
                                     </div> <!-- div-cep -->
                                     <div class="form-campos" id="div-tipo-logradouro">
                                         <label>
                                             <span>Tipo de Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <select name="tipo-logradouro" class="form-control" id="tipo-logradouro" >
+                                            <select name="tipo-logradouro" class="form-control" id="tipo-logradouro"/>
                                                 <option value="casa">Casa</option>
                                                 <option value="condominio">Condomínio</option>
                                                 <option value="AV">Avenida</option>
@@ -99,14 +99,14 @@
                                     <div class="form-campos" id="div-numero">
                                         <label>
                                             <span>Numero: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="text" name="numero" id="numero" placeholder="Numero"
+                                            <input type="text" id="numero" name="numero" placeholder="Numero"
                                             title="Entre com o Numero da Casa" class="form-control" size="7" />
                                         </label>
                                     </div> <!-- div-numero -->
                                     <div class="form-campos" id="div-logradouro">
                                         <label>
                                             <span>Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="text" name="logradouro" id="logradouro"
+                                            <input type="text" id="logradouro" name="logradouro"
                                             title="Entre aqui com o seu endereço" class="form-control" 
                                             size="80" placeholder="Digite o seu Logadouro" />
                                         </label>
