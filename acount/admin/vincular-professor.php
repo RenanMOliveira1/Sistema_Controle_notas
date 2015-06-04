@@ -23,35 +23,43 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Criar Módulo</h1>
+				<h1 class="page-header">Dados da Vinculação</h1>
 			</div>
 		</div><!--/.row-->
 		
-        <form action="vincular_prod.php" method="post" id="form-vincular-prof">
-            <div class="form-group">
-                <label>Selecione o Professor</label>
-                <select class="form-control">
-                    <option>Professor #1</option>
-                    <option>Professor #2</option>
-                    <option>Professor #3</option>
-                    <option>Professor #4</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label>Selecione o Módulo</label>
-                <select class="form-control">
-                    <option>Módulo #1</option>
-                    <option>Módulo #2</option>
-                    <option>Módulo #3</option>
-                    <option>Módulo #4</option>
-                </select>
-            </div>
-        	
-            <div id="btn-vinc-prof-enviar">
-                <input type="btn-vinc-prof-enviar" id="btn-vinc-prof-enviar" value="Vincular" class="btn btn-default" />
-            </div>
-        </form>
+        <div class="row">
+			<div class="col-md-8">
+				<div class="panel panel-default">
+					<div class="panel-heading"> Dados da Vinculação</div>
+					<div class="panel-body">
+						<form action="vincular_prof_exe.php" method="post" id="form-vincular-prof">
+                            <div class="form-group">
+                                <label>Selecione o Professor</label>
+                                <select class="form-control">
+                                    <option>Professor #1</option>
+                                    <option>Professor #2</option>
+                                    <option>Professor #3</option>
+                                    <option>Professor #4</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Selecione o Módulo</label>
+                                <select class="form-control">
+                                    <option>Módulo #1</option>
+                                    <option>Módulo #2</option>
+                                    <option>Módulo #3</option>
+                                    <option>Módulo #4</option>
+                                </select>
+                            </div>
+                            
+                            <div id="btn-vinc-prof-enviar">
+                                <input type="btn-vinc-prof-enviar" id="btn-vinc-prof-enviar" value="Vincular" class="btn btn-default" />
+                            </div>
+                        </form>
+					</div>
+                </div>
+           </div>
         
 	</div>	<!--/.main-->
 </body>
