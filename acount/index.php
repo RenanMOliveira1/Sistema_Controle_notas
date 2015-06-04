@@ -48,9 +48,9 @@
                                 	<label>
                                     	<span id="titulo-aut">Autentificação: </span>
                                     	<select class="form-control" id="autentificacao" name="autentificacao">
-                                        	<option value="al">Aluno</option>
-                                            <option value="prof">Professor</option>
-                                            <option value="admin">Administração</option>
+                                        	<option value="aluno">Aluno</option>
+                                            <option value="professor">Professor</option>
+                                            <option value="administracao">Administração</option>
                                         </select>
                                     </label>
                                 </div>
