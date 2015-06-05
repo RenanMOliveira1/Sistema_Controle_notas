@@ -110,7 +110,6 @@
             </div> <!-- col-md-6 -->
 		
 	</section> <!-- main -->
->>>>>>> origin/master
 </body>
 
 </html>
