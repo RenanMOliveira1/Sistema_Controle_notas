@@ -49,7 +49,7 @@
         <nav id="div-navbar-header" class="navbar navbar-inverse" role="banner">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html"><img src="/images/logo.png" alt="Logo do SGA" title="Logo do SGA" width="287" height="100" hegth="20" ></a>
+                        <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="Logo do SGA" title="Logo do SGA" width="287" height="100" hegth="20" ></a>
                     </div> <!-- navbar-header -->
                     
                     <div class="collapse navbar-collapse navbar-right">

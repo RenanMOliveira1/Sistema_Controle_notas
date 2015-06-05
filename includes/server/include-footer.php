@@ -22,9 +22,9 @@
                             <li><a title="FAQ - Tire suas duvidas" href="#">FAQ</a></li>
                             <li><a title="Nucleo de Carreiras do Site" href="#">Nucleo de Carreiras</a></li>
                             <li><a title="Notícias recentes" href="#">Noticias</a></li>
-                            <li><a title="Detalher sobre o Vestibular" href="#">Vestibular</a></li>
-                            <li><a title="Resumo de Notas" href="#">Notas</a></li>
-                            <li><a title="Resumo de Avalações" href="#">Avaliações</a></li>
+                            <li><a title="Detalhes sobre o Vestibular" href="#">Vestibular</a></li>
+                            <li><a title="Editais do Vestibular" href="#">Editais</a></li>
+                            <li><a title="Detalhes sobre os Concursos" href="#">Concursos</a></li>
                         </ul>
                     </div> <!-- widget --> 
                 </div><!-- col-md-3 -->
