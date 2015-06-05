@@ -18,9 +18,9 @@
 								  <?
                                         session_start();
                                         if (!isset($_SESSION['Logado'])) {
-                                            echo "<div id='nav-botao' class='btn-group'>
-											<button type='button btn-primary' title='Entre na sua conta' onclick='location.href=\'/acount/\'' class='btn btn-default'>Login</button>
-                                                  <button type='button' title='Clique aqui e se cadastre' onclick='location.href=\'/cadastrar.php\'' class='btn btn-default'>Cadastrar</button>
+											echo "<div id='nav-botao' class='btn-group'>
+											<button type=\"button btn-primary\" title=\"Entre na sua conta\" onclick=\"location.href='/acount/'\" class=\"btn btn-default\">Login</button>
+                                                  <button type=\"button\" title=\"Clique aqui e se cadastre\" onclick=\"location.href='/cadastrar.php'\" class=\"btn btn-default\">Cadastrar</button>
 												  </div> <!-- nav-botao -->";
                                         } else {
                                             switch ($_SESSION['autentificacao']) {
