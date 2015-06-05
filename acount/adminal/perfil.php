@@ -33,6 +33,7 @@
 		</div><!--/.row-->
 		
         <div class="col-md-6">
+<<<<<<< HEAD
             <div class="panel panel-default"> 
                 <div class="panel-heading">Dados Pessoais</div> <!-- panel panel-default -->
                 <div class="table-responsive panel-body">
@@ -108,6 +109,88 @@
             </div> <!-- panel panel-default -->
         </div> <!-- col-md-6 -->
 	</section> <!-- main -->
+=======
+            <div class="panel panel-default">
+                <div class="panel-heading">Dados Pessoais</div>
+                    <div class="table-responsive panel-body">
+                        <table class="table table-striped">
+                            <tbody>
+                                <td class="success">Email de Acesso: </td>
+                                <td><?= $_SESSION['alEmail']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Nome: </td>
+                                <td><?= $_SESSION['alNome']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Nascimento</td>
+                                <td><?= $_SESSION['alDataNascimento']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">CPF</td>
+                                <td><?= $_SESSION['alCpf']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Sexo</td>
+                                <td><?= $_SESSION['alSexo']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Telefone</td>
+                                <td><?= $_SESSION['alTelefone']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Celular</td>
+                                <td><?= $_SESSION['alCelular']?></td>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Endereço</div>
+                    <div class="table-responsive panel-body">
+                        <table class="table table-striped">
+                            
+                            <tbody>
+                                <td class="success">CEP: </td>
+                                <td><?= $_SESSION['alCep']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Tipo de Logradouro: </td>
+                                <td><?= $_SESSION['alTipoLogradouro']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Logradouro: </td>
+                                <td><?= $_SESSION['alLogradouro']." - ". $_SESSION['alNumero']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Complemento: </td>
+                                <td><?= $_SESSION['alComplemento']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Bairro: </td>
+                                <td><?= $_SESSION['alBairro']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Cidade: </td>
+                                <td><?= $_SESSION['alCidade']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Estado: </td>
+                                <td><?= $_SESSION['alEstado']?></td>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        
+		
+	</section>	<!--/.main-->
+>>>>>>> origin/master
 </body>
 
 </html>
