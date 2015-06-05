@@ -31,7 +31,7 @@
                                 <div class="carousel-content">
                                     <h1 class="animation animated-item-1">Graduação em Engenharia de Computação</h1>
                                     <h2 class="animation animated-item-2">"É uma graduação para quem quer mergulhar no mundo do software e fazer uma carreira brilhante..."</h2>
-                                    <a class="btn-slide animation animated-item-3" href="#">Saiba Mais</a>
+                                    <a class="btn-slide animation animated-item-3" href="/cursos/cursograduacao2.php">Saiba Mais</a>
                                 </div> <!-- carousel-content -->
                             </div> <!-- col-sm-6 -->
 
@@ -52,7 +52,7 @@
                                 <div class="carousel-content">
                                     <h1 class="animation animated-item-1">MIT em Engenharia de Software com Java</h1>
                                     <h2 class="animation animated-item-2">"O aluno se prepara para os desafios do desenvolvimento de software, aprendendo os principais conceitos e práticas de Engenharia de Software e Programação em Java..."</h2>
-                                    <a class="btn-slide animation animated-item-3" href="#">Saiba Mais</a>
+                                    <a class="btn-slide animation animated-item-3" href="/cursos/posgraduacao7.php">Saiba Mais</a>
                                 </div> <!-- carousel-content -->
                             </div> <!-- col-sm-6 -->
 
@@ -73,7 +73,7 @@
                                 <div class="carousel-content">
                                     <h1 class="animation animated-item-1">Gestor de TI</h1>
                                     <h2 class="animation animated-item-2">"Na formação em Gestor de TI você aprende as técnicas, frameworks e melhores práticas necessárias para se tornar Gestor de TI..."</h2>
-                                    <a class="btn-slide animation animated-item-3" href="#">Saiba Mais</a>
+                                    <a class="btn-slide animation animated-item-3" href="/cursos/curso4.php">Saiba Mais</a>
                                 </div> <!-- carousel-content -->
                             </div> <!-- col-sm-6 -->
                             <div class="col-sm-6 hidden-xs animation animated-item-4">
@@ -105,9 +105,9 @@
                         <img class="img-responsive" src="images/index-cursos/item1.png" alt="Banco de Dados">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">Banco de Dados</a> </h3>
+                                <h3><a href="#">MIT em Gestão de Banco de Dados</a> </h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
+                                <a class="preview" href="/cursos/posgraduacao6.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
                         </div> <!-- overlay -->
                     </div> <!-- painel-cursos-item -->
@@ -120,7 +120,7 @@
                             <div class="painel-cursos-descricao">
                                 <h3><a href="#">Marketing Digital</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
+                                <a class="preview" href="/cursos/curso2.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
                         </div> <!-- overlay -->
                     </div> <!-- painel-cursos-item -->
@@ -133,7 +133,7 @@
                             <div class="painel-cursos-descricao">
                                 <h3><a href="#">MIT em Big Data</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
+                                <a class="preview" href="/cursos/posgraduacao2.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
                         </div> <!-- overlay -->
                     </div> <!-- painel-cursos-item -->
@@ -146,7 +146,7 @@
                             <div class="painel-cursos-descricao">
                                 <h3><a href="#">MIT em Engenharia de Software .NET</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
+                                <a class="preview" href="/cursos/posgraduacao8.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
                         </div> <!-- overlay -->
                     </div> <!-- painel-cursos-item -->
@@ -159,7 +159,7 @@
                             <div class="painel-cursos-descricao">
                                 <h3><a href="#">MIT em Arquitetura de Software</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
+                                <a class="preview" href="/cursos/posgraduacao1.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
                         </div> <!-- overlay -->
                     </div> <!-- painel-cursos-item -->
@@ -172,7 +172,7 @@
                             <div class="painel-cursos-descricao">
                                 <h3><a href="#">DBA Oracle</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
+                                <a class="preview" href="/cursos/curso7.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
                         </div> <!-- overlay -->
                     </div> <!-- painel-cursos-item -->
@@ -185,7 +185,7 @@
                             <div class="painel-cursos-descricao">
                                 <h3><a href="#">WebDesigner</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
+                                <a class="preview" href="/cursos/curso1.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
                         </div> <!-- overlay -->
                     </div> <!-- painel-cursos-item -->
@@ -198,7 +198,7 @@
                             <div class="painel-cursos-descricao">
                                 <h3><a href="#">Desenvolvedor Android</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                <a class="preview" href="#" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
+                                <a class="preview" href="/cursos/curso5.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
                         </div> <!-- overlay -->
                     </div> <!-- painel-cursos-item -->
