@@ -1,5 +1,10 @@
 <?
 	session_start();
+	if(!$_SESSION['logado']){
+		$msg = "Sessão expirada.";
+		header("Location: /acount/?msg=$msg");
+	}
+
 	define('TITULO','Perfil');
 ?>
 

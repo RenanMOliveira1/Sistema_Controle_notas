@@ -17,7 +17,7 @@
                             </ul>
 								  <?
                                         session_start();
-                                        if (!isset($_SESSION['Logado'])) {
+                                        if (!isset($_SESSION['logado'])) {
 											echo "<div id='nav-botao' class='btn-group'>
 											<button type=\"button btn-primary\" title=\"Entre na sua conta\" onclick=\"location.href='/acount/'\" class=\"btn btn-default\">Login</button>
                                                   <button type=\"button\" title=\"Clique aqui e se cadastre\" onclick=\"location.href='/cadastrar.php'\" class=\"btn btn-default\">Cadastrar</button>

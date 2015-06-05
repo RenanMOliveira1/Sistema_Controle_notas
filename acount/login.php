@@ -22,55 +22,61 @@
 		switch ($autentificacao) {
 			case 'aluno':
 				$aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
-				$_SESSION['alMatricula'] = $aluno['matricula'];
-				$_SESSION['alNome'] = $aluno['nomeAluno'];
-				$_SESSION['alCpf'] = $aluno['cpf'];
-				$_SESSION['alDataNascimento'] = $aluno['dataNascimento'];
-				$_SESSION['alSexo'] = $aluno['sexo'];
-				$_SESSION['alEmail'] = $aluno['email'];
-				$_SESSION['alSenha'] = $aluno['senha'];
-				$_SESSION['Logado'] = true;
-				$_SESSION['autentificacao'] = $autentificacao;
-				
-				$query = "SELECT `Cep`, `tipoLogradouro`, `numero`, `logradouro`, `complemento`, `bairro`, `cidade`, `estado`
-			 			  FROM `endereco` 
-			  			  WHERE `alunoMatricula` = '{$_SESSION['alMatricula']}'";
-						  
-				$resultadoPesquisa = mysql_query($query, $conexao);
-				$endereco = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
-				if (mysql_num_rows($resultadoPesquisa) == 1) {
-					$_SESSION['alCep'] = $endereco['Cep'];
-					$_SESSION['alTipoLogradouro'] = $endereco['tipoLogradouro'];
-					$_SESSION['alNumero'] = $endereco['numero'];
-					$_SESSION['alLogradouro'] = $endereco['logradouro'];
-					$_SESSION['alComplemento'] = $endereco['complemento'];
-					$_SESSION['alBairro'] = $endereco['bairro'];
-					$_SESSION['alCidade'] = $endereco['cidade'];
-					$_SESSION['alEstado'] = $endereco['estado'];
+				if($aluno['acesso'] == 1){
+					$_SESSION['alMatricula'] = $aluno['matricula'];
+					$_SESSION['alNome'] = $aluno['nomeAluno'];
+					$_SESSION['alCpf'] = $aluno['cpf'];
+					$_SESSION['alDataNascimento'] = $aluno['dataNascimento'];
+					$_SESSION['alSexo'] = $aluno['sexo'];
+					$_SESSION['alEmail'] = $aluno['email'];
+					$_SESSION['alSenha'] = $aluno['senha'];
+					$_SESSION['logado'] = true;
+					$_SESSION['autentificacao'] = $autentificacao;
+					
+					$query = "SELECT `Cep`, `tipoLogradouro`, `numero`, `logradouro`, `complemento`, `bairro`, `cidade`, `estado`
+							  FROM `endereco` 
+							  WHERE `alunoMatricula` = '{$_SESSION['alMatricula']}'";
+							  
+					$resultadoPesquisa = mysql_query($query, $conexao);
+					$endereco = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+					if (mysql_num_rows($resultadoPesquisa) == 1) {
+						$_SESSION['alCep'] = $endereco['Cep'];
+						$_SESSION['alTipoLogradouro'] = $endereco['tipoLogradouro'];
+						$_SESSION['alNumero'] = $endereco['numero'];
+						$_SESSION['alLogradouro'] = $endereco['logradouro'];
+						$_SESSION['alComplemento'] = $endereco['complemento'];
+						$_SESSION['alBairro'] = $endereco['bairro'];
+						$_SESSION['alCidade'] = $endereco['cidade'];
+						$_SESSION['alEstado'] = $endereco['estado'];
+					}
+					$query = "SELECT `telefone`, `celular`
+							  FROM `telefone`
+							  WHERE `alunoMatricula` = '{$_SESSION['alMatricula']}'";
+							  
+					$resultadoPesquisa = mysql_query($query, $conexao);
+					$telefone = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+					if (mysql_num_rows($resultadoPesquisa) == 1) {
+						$_SESSION['alTelefone'] = $telefone['telefone'];
+						$_SESSION['alCelular'] = $telefone['celular'];
+					}
+					header("Location: /acount/adminal/");										
+				}else{
+					$msg = "Aguardando liberação de acesso";
+					header("Location: /acount/?msg=$msg");
 				}
-				$query = "SELECT `telefone`, `celular`
-			 			  FROM `telefone`
-			  			  WHERE `alunoMatricula` = '{$_SESSION['alMatricula']}'";
-						  
-				$resultadoPesquisa = mysql_query($query, $conexao);
-				$telefone = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
-				if (mysql_num_rows($resultadoPesquisa) == 1) {
-					$_SESSION['alTelefone'] = $telefone['telefone'];
-					$_SESSION['alCelular'] = $telefone['celular'];
-				}
-				header("Location: /acount/adminal/");
-				break;
+			break;
 			case 'professor':
 				header("Location: /acount/adminprof/");
-				break;
+			break;
 			case 'administracao':
 				header("Location: /acount/admin/");
-				break;
+			break;
 		}
-	} else {
+	}else {
 		$dadosInvalidos = " has-error";
 		$msg = "Usuario ou Senha Invalidos";
-		header("Location: /acount/?dadosInvalidos=$dadosInvalidos&msg=$msg");}
+		header("Location: /acount/?dadosInvalidos=$dadosInvalidos&msg=$msg");
+	}
 	
 	mysql_close($conexao);
 ?>

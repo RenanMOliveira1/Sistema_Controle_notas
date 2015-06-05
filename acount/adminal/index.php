@@ -1,6 +1,12 @@
 <?
 	session_start();
 	
+	if(!$_SESSION['logado']){
+		$msg = "Sessão expirada.";
+		header("Location: /acount/?msg=$msg");
+	}
+
+	
 	$trTemp="";
 	define('TITULO','Disciplinas');
 		
