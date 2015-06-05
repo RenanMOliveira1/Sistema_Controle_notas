@@ -12,8 +12,8 @@
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?= $_SESSION['alNome']?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Configurações</a></li>
+							<li><a href="/acount/adminal/perfil.php"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+							<li><a href="/acount/adminal/configuracoes.php"><span class="glyphicon glyphicon-cog"></span> Configurações</a></li>
 							<li><a href="/acount/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 						</ul>
 					</li>
