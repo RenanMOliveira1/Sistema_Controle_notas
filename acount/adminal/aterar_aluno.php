@@ -30,6 +30,7 @@
 					}
 				}else{
 					header("Location: /acount/adminal/configuracoes.php?msgSenha=senha modificada com sucesso");
+					$_SESSION['alSenha'] = $senhaNova;
 				}
 				mysql_close($conexao);				
 			}else{
@@ -64,6 +65,7 @@
 					}
 				}else{
 					header("Location: /acount/adminal/configuracoes.php?msgEmail=email modificado com sucesso");
+					$_SESSION['alEmail'] = $emailNovo;
 				}
 				mysql_close($conexao);				
 			}else{
@@ -96,33 +98,47 @@
 			mysql_select_db("infnetgrid", $conexao);
 			
 			$query1 = "UPDATE `aluno` 
-					  SET `nomeAluno` = '$nome',`cpf` = '$cpf',`dataNascimento` = '$dataNascimento,`sexo` = '$sexo'
+					  SET `nomeAluno` = '$nome',`cpf` = '$cpf',`dataNascimento` = '$dataNascimento',`sexo` = '$sexo'
 					  WHERE `matricula` = '{$_SESSION['alMatricula']}'";
 		
 			$resultado = mysql_query($query1, $conexao);
 			
-			/*$query2 = "UPDATE `endereco`
+			$query2 = "UPDATE `endereco`
 					  SET `Cep` = '$cep',`tipoLogradouro`= '$tipoLogradouro',`numero`= '$numero',`logradouro`= '$logradouro',`complemento`= '$complemento',`bairro`= '$bairro',`cidade`= '$cidade',`estado`= '$estado'
-					  WHERE `matricula` = '{$_SESSION['alMatricula']}'";
+					  WHERE `alunoMatricula` = '{$_SESSION['alMatricula']}'";
 		
 			$resultado = mysql_query($query2, $conexao);
 			
-			$query = "UPDATE `telefone`
-					  SET `telefone` = '$telefone', `celular` = '$celular'
-					  WHERE `matricula` = '{$_SESSION['alMatricula']}'";
+			$query3 = "UPDATE `telefone` 
+					  SET `telefone` = '$telefone', `celular` = '$celular' 
+					  WHERE `alunoMatricula` = '{$_SESSION['alMatricula']}' ";
 		
-			$resultado = mysql_query($query3, $conexao);*/
+			$resultado = mysql_query($query3, $conexao);
 			
 			$msgDados = "";
-			if(mysql_affected_rows($conexao) != 1){
+			if(mysql_affected_rows($conexao) < 0){
 				if(mysql_errno() >= 1){
-					header("Location: /acount/adminal/configuracoes.php?msgDados=Ocorreu um erro durante a alteração '$nome', '$cpf', '$dataNascimento, '$sexo'");
+					header("Location: /acount/adminal/configuracoes.php?msgDados=Ocorreu um erro durante a alteração");
 				}
 				else{
 					header("Location: /acount/adminal/configuracoes.php?msgDados=Ocorreu um erro inesperado durante a alteração");
 				}
 			}else{
-				header("Location: /acount/adminal/configuracoes.php?msgDados=email modificado com sucesso");
+				header("Location: /acount/adminal/configuracoes.php?msgDados=Dados modificados com sucesso");
+				$_SESSION['alNome'] = $nome;
+				$_SESSION['alCpf'] = $cpf;
+				$_SESSION['alDataNascimento'] = $dataNascimento;
+				$_SESSION['alSexo'] = $sexo;				
+				$_SESSION['alCep'] = $cep;
+				$_SESSION['alTipoLogradouro'] = $tipoLogradouro;
+				$_SESSION['alNumero'] = $numero;
+				$_SESSION['alLogradouro'] = $logradouro;
+				$_SESSION['alComplemento'] = $complemento;
+				$_SESSION['alBairro'] = $bairro;
+				$_SESSION['alCidade'] = $cidade;
+				$_SESSION['alEstado'] = $estado;
+				$_SESSION['alTelefone'] = $telefone;
+				$_SESSION['alCelular'] = $celular;				
 			}
 			mysql_close($conexao);	
 		break;
