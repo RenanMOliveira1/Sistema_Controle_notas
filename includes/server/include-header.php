@@ -27,7 +27,7 @@
                                                 case 'aluno':
                                                     echo "<div class='usuario-logado'>
                                                              <a href='/acount/adminal/'>" . $_SESSION['alNome'] . "</a>
-                                                              - <a href='#'>Sair</a>
+                                                              - <a href='/acount/logout.php'>Sair</a>
 														  </div>
                                                     ";
                                             }
