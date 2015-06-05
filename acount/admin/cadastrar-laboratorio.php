@@ -1,4 +1,5 @@
 <?
+	session_start();
 	define("TITULO", "Cadastrar Laboratório");
 ?>
 
@@ -14,79 +15,70 @@
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
-<body>
+<body onLoad="SidebarActive('cad-laboratorio');">
 	<? include("../../includes/server/include-login-admin-header-sidebar.php"); ?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
 				<li><?=TITULO?></li>
 			</ol>
-		</div><!--/.row-->
+		</div> <!-- row -->
 		
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header"><?=TITULO?></h1>
 			</div>
-		</div><!--/.row-->
+		</div> <!-- row -->
 		
         
         <div class="row">
 			<div class="col-md-8">
 				<div class="panel panel-default">
-					<div class="panel-heading">
-                    	<span>Dados do Laboratório</span>
-                    </div>
+					<div class="panel-heading">Dados do Laboratório</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-laboratorio" action="/cadastrar_laboratio_exe.php" method="post">
-							<fieldset>
-								<div class="form-group" id="div-laboratorio-andar" >
-									<label class="col-md-3 control-label">
-                                    	<span>Andar</span>
-                                    </label>
-									<div class="col-md-9">
-										<input id="laboratorio-andar" name="laboratorio-andar" type="text" placeholder="Digite o Andar" title="Digite o Andar em que se localiza o laboratório" class="form-control">
-									</div>
-								</div>
+						<form class="form-horizontal" id="form-cadastrar-laboratorio" action="/acount/admin/cadastrar_laboratio_exe.php" method="post" >
+                            <div class="form-group" id="div-laboratorio-andar" >
+                                <label class="col-md-3 control-label">
+                                    <span>Andar</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <select id="laboratorio-andar" name="laboratorio-andar" class="form-control" 
+                                    title="Escolha o Andar em que se localiza o laboratório">
+									<? for ($numLugar = 1; $numLugar <= 10; $numLugar++) { ?>
+                                    	<option value="<?=$numLugar?>"><?=$numLugar?></option> 
+                                    <? } ?>
+                                    </select>
+                                </div> <!-- col-md-9 -->
+                            </div> <!-- div-laboratorio-andar -->
 
-								<div class="form-group" id="div-laboratorio-lugares" >
-									<label class="col-md-3 control-label">Numero de Lugares</label>
-									<div class="col-md-9">
-										<input id="laboratorio-lugares" name="laboratorio-lugares" type="text" placeholder="Digite o Numero de Lugares" title="Digite o Numero de Lugares Disponível no Laboratório" class="form-control">
-									</div>
-								</div>
+                            <div class="form-group" id="div-laboratorio-lugares" >
+                                <label class="col-md-3 control-label">
+                                    <span>Numero de Lugares</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <select id="laboratorio-lugares" name="laboratorio-lugares" class="form-control" 
+                                    title="Escolha o Numero de Lugares Disponível no Laboratório">
+									<? for ($numLugar = 1; $numLugar <= 80; $numLugar++) { ?>
+                                    	<option value="<?=$numLugar?>"><?=$numLugar?></option> 
+                                    <? } ?>
+                                    </select>
+                                </div> <!-- col-md-9 -->
+                            </div> <!-- div-laboratorio-lugares -->
 
-								<div class="form-group">
-									<div class="col-md-12 widget-right" id="div-laboratorio-enviar">
-										<input type="btn-laboratorio-enviar" id="btn-laboratorio-enviar" value="Enviar" class="btn btn-default btn-md pull-right" />
-									</div>
-								</div>
-							</fieldset>
+                            <div class="form-group">
+                                <div class="col-md-12 widget-right" id="div-laboratorio-enviar">
+                                    <input type="button" id="btn-laboratorio-enviar" 
+                                    value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-laboratorio-enviar','#form-cadastrar-laboratorio',true);"/>
+                                </div> <!-- div-laboratorio-enviar -->
+                            </div> <!-- form-group -->
 						</form>
-					</div>
-                </div>
-           </div>
-      </div>
-	</div>	<!--/.main-->
-<script>
-		$('#calendar').datepicker({
-		});
-
-		!function ($) {
-		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
-		        $(this).find('em:first').toggleClass("glyphicon-minus");      
-		    }); 
-		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
+					</div> <!-- panel-body -->
+                </div> <!-- panel panel-default -->
+           </div> <!-- col-md-8 -->
+      </div> <!-- row -->
+	</div> <!-- main -->
 </body>
 
 </html>

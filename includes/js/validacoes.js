@@ -23,6 +23,22 @@ function SidebarActive(opcaoSidebar) {
 		case "modulos-prof":
 			$("#navModulosProf").addClass("active");
 			break;
+		case "criar-programa":
+			$("#navCriarProgama").addClass("active");
+			break;
+		case "cad-laboratorio":
+		case "cad-prof":
+		case "criar-modulo":
+		case "cad-turma":
+			$("#navAdminCad").addClass("active");
+			break;
+		case "vinc-prof":
+		case "vinc-aluno":
+			$("#navAdminVinc").addClass("active");
+			break;
+		case "configuracao-admin":
+			$("#navAdminConfig").addClass("active");
+			break;
 	}
 }
 
@@ -193,11 +209,11 @@ function ValidarCadastro() {
 	}
 	
 	if (isNaN($("#telefone-fixo").val())) { 
-		msg += "Campo Telefone só se Aceita Numero";
+		msg += "Campo Telefone só se Aceita Numero<br/>";
 		$("#div-telefone-fixo").addClass(" has-error");
 	}
 	if (isNaN($("#telefone-celular").val())) { 
-		msg += "Campo Celular só se Aceita Numero";
+		msg += "Campo Celular só se Aceita Numero<br/>";
 		$("#div-telefone-fixo").addClass(" has-error");
 	}
 	
@@ -339,15 +355,128 @@ function ValidarRecuperarSenha() {
 	return true;
 }
 
+function ValidarAlterarSenha() {
+	var msg = "";
+	
+	antigaSenha = $("#alterar-senha-antiga").val();
+	novaSenha = $("#alterar-senha-nova").val();
+	confirmarSenha = $("#alterar-senha-confirmar").val();
+	if (antigaSenha == "") { 
+		msg += "Campo Senha Atual é Obrigatorio<br/>";
+		$("#div-alterar-senha-antiga").addClass(" has-error");	
+	} 
+	if (novaSenha == "") { 
+		msg += "Campo Senha Antiga é Obrigatorio<br/>";
+		$("#div-alterar-senha-nova").addClass(" has-error");	
+	} 
+	if (confirmarSenha == "") { 
+		msg += "Campo Confirmar Senha é Obrigatorio<br/>";
+		$("#div-alterar-senha-confirmar").addClass(" has-error");	
+	} 
+	if (novaSenha != confirmarSenha) {
+		msg += "Campo Nova Senha e Confirmar Senha Devem ser Iguais<br/>";
+		$("#div-alterar-senha-nova").addClass(" has-error");
+		$("#div-alterar-senha-confirmar").addClass(" has-error");
+	}
+		
+	if ($("#usuario").val() == "") { 
+		msg += "Campo Email é Obrigatorio<br/>";
+		$("#div-login-usuario").addClass(" has-error");	
+	}
+	
+	if (msg != "") {
+		$("#dados-invalidos").html(msg);
+		return false;}
+	
+	return true;
+	
+}
+
+function ValidarAlterarCadastro() {
+	var msg = "";
+	
+	if (isNaN($("#alt-telefone-fixo").val())) { 
+		msg += "Campo Telefone só se Aceita Numero<br/>";
+		$("#div-alt-telefone-fixo").addClass(" has-error");
+	}
+	if (isNaN($("#alt-telefone-celular").val())) { 
+		msg += "Campo Celular só se Aceita Numero<br/>";
+		$("#div-alt-telefone-celular").addClass(" has-error");
+	}
+	
+	if (isNaN($("#alt-numero").val())) {
+		msg += "Campo Numero só se Aceita Numeros<br/>";
+		$("#div-alt-numero").addClass(" has-error");
+	}
+	
+	if (($("#alt-cep").val() != "") && (!ValidarCEP($("#alt-cep").val()))) {
+		msg += "CEP Inválido<br/>";
+		$("#div-alt-cep").addClass(" has-error");
+	}
+
+	if (($("#alt-cpf").val() != "") && (!ValidarCPF($("#alt-cpf").val()))) {
+		msg += "CPF inválido.<br/>";
+		$("#div-alt-cpf").addClass(" has-error");
+	}
+	
+	if (($("#alt-data-nascimento").val() != "") && (!ValidarData($("#alt-data-nascimento").val()))) {
+		msg += "Data Inválida<br/>";
+		$("#div-alt-nascimento").addClass(" has-error");
+	}
+
+	if (msg != "") {
+		$("#dados-invalidos-alt-cad").html(msg);
+		return false;}
+
+	return true;
+}
+
+function ValidarAlterarEmail() {
+	var msg = "";
+	
+	if (!ValidarEmail($("#alt-email-atual").val())) {
+		msg += "E-mail inválido<br />";
+		$("#div-alt-email-atual").addClass(" has-error");	
+	} else if(!ValidarEmail($("#alt-email-novo").val())) {
+		msg += "E-mail inválido<br />";
+		$("#div-alt-email-novo").addClass(" has-error");	
+	}
+	
+	if (msg != "") {
+		$("#dados-invalidos-email").html(msg);
+		return false;}
+	
+	return true;
+}
+
+function ValidarPrograma() {
+	
+	if ($("#nome-curso").val() == "") {
+		$("#dados-invalidos").html("Campo Nome é Obrigatório.");
+		$("#div-nome-curso").addClass(" has-error");	
+		return false;
+	}
+		
+	return true;
+}
+
 function botoesEnviar(idBotao, idFormulario, funcaoDeValidar) {
 	$(document).ready(function(){
 		$(idBotao).click(function() {
 			if (funcaoDeValidar) {
+				alert("entreou");
 				$(idFormulario).submit();
 			}
 		});
 	});
 }
+
+$(document).ready(function(){
+	$("#btn-laboratorio-enviar").click(function() {
+			alert("entreou");
+			$("#form-cadastrar-laboratorio").submit();
+	});
+});
 
 jQuery(function($) {'use strict',
 

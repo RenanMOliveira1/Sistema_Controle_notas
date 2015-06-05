@@ -12,6 +12,7 @@
     <link href="/includes/css/styles-login.css" rel="stylesheet">
     
     <!-- Javascript -->
+    <script src="/includes/js/validacoes.js"></script>
     <script src="/includes/js/jquery-1.11.1.min.js"></script>
 	<script src="/includes/js/bootstrap.min.js"></script>
 	<script src="/includes/js/chart.min.js"></script>
@@ -19,7 +20,7 @@
 	<script src="/includes/js/easypiechart.js"></script>
 	<script src="/includes/js/easypiechart-data.js"></script>
 	<script src="/includes/js/bootstrap-datepicker.js"></script>
-    <script src="/includes/js/validacoes.js"></script>
+    <script src="/includes/js/wow.min.js"></script>
 	<script>
 		$('#calendar').datepicker({
 		});

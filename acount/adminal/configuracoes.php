@@ -1,5 +1,6 @@
 <?
 	session_start();
+	define('TITULO','Configurações');
 ?>
 
 <!DOCTYPE html>
@@ -7,9 +8,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
-  	<meta name="keywords" content="faculdade, alunos, home" />
+  	<meta name="keywords" content="faculdade, alunos, configuracoes" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-	<title>SGA: Painel de Controle do Aluno | Configurações</title>
+	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
 	
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
@@ -17,116 +18,149 @@
 <body onLoad="SidebarActive('configuracoes');">
 	<? include("../../includes/server/include-login-al-header-sidebar.php"); ?>
 		
-	<section class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+	<section id="section-al-configuracoes" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li>Configurações</li>
+				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
+				<li><?=TITULO?></li>
 			</ol>
-		</div><!--/.row-->
+		</div> <!-- row -->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Configurações</h1>
+				<h1 class="page-header"><?=TITULO?></h1>
 			</div>
-		</div><!--/.row-->
+		</div> <!-- row -->
 		
         <div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Alterar Senha</div>
+					<div class="panel-heading">Alterar Senha</div> <!-- panel-heading -->
 					<div class="panel-body">
                     	<form id="form-alterar-senha" method="post" action="aterar_senha_exec.php">
                         	<div class="form-group" id="div-alterar-senha-antiga">
                             	<label>
-                                	<span>Senha Atual: </span>
-                                    <input type="password" id="alterar-senha-antiga" class="form-control" name="alterar-senha-antiga" title="Digite sua Senha atual" />
+                                	<span>Senha Atual: <span class="asteristicos-obrigatorio">*</span></span>
+                                    <input type="password" id="alterar-senha-antiga" class="form-control" name="alterar-senha-antiga" title="Digite sua Senha atual" placeholder="Digite sua Senha atual" size="30" />
                                 </label>
-                            </div>
+                            </div> <!-- div-alterar-senha-antiga -->
                             <div class="form-group" id="div-alterar-senha-nova">
                             	<label>
-                                	<span>Nova Senha: </span>
-                                    <input type="password" id="alterar-senha-nova" class="form-control" name="alterar-senha-nova" title="Digite a sua Nova senha" />
+                                	<span>Nova Senha: <span class="asteristicos-obrigatorio">*</span></span>
+                                    <input type="password" id="alterar-senha-nova" class="form-control" name="alterar-senha-nova" title="Digite a sua Nova Senha" placeholder="Digite a sua Nova Senha" size="30" />
                                 </label>
-                            </div>
-                            <div class="form-group" id="div-alterar-senha-Confirmar">
+                            </div> <!-- div-alterar-senha-nova -->
+                            <div class="form-group" id="div-alterar-senha-confirmar">
                             	<label>
-                                	<span>Confirmar Senha: </span>
-                                    <input type="password" id="alterar-senha-Confirmar" class="form-control" name="alterar-senha-Confirmar" title="Confirme a sua nova Senha" />
+                                	<span>Confirmar Senha: <span class="asteristicos-obrigatorio">*</span></span>
+                                    <input type="password" id="alterar-senha-confirmar" class="form-control" name="alterar-senha-confirmar" title="Confirme a sua nova Senha" placeholder="Confirme a sua nova Senha" size="30" />
                                 </label>
-                            </div>
+                            </div> <!-- div-alterar-senha-Confirmar -->
+                            
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
                             
                             <div class="form-group" id="div-alterar-senha-Confirmar">
-                            	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha" />
-                            </div>
+                            	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha" onClick="botoesEnviar('#btn-alterar-enviar','#form-alterar-senha',ValidarAlterarSenha());"/>
+                            </div> <!-- div-alterar-senha-Confirmar -->
                         </form>
-                    </div>
-                </div>
-            </div>
+                    </div> <!-- panel-body -->
+                </div> <!-- panel panel-default -->
+            </div> <!-- col-lg-12 -->
+            
+            <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Alterar Email (Login)</div> <!-- panel-heading -->
+					<div class="panel-body">
+                    	<form id="form-alterar-senha" method="post" action="aterar_senha_exec.php">
+                        	<div class="form-campos" id="div-alt-email-atual">
+                                <label>
+                                    <span>Email Atual: <span class="asteristicos-obrigatorio">*</span></span>
+                                    <input type="text" class="form-control" name="alt-email-atual" 
+                                    placeholder="Digite o seu Atual Email" size="60" id="alt-email-atual" 
+                                    title="Entre com o seu email atual para acesso" />
+                                </label>
+                            </div> <!-- div-alt-email-atual -->
+                            <div class="form-campos" id="div-alt-email-novo">
+                                <label>
+                                    <span>Novo Email: <span class="asteristicos-obrigatorio">*</span></span>
+                                    <input type="text" class="form-control" name="alt-email-novo" 
+                                    placeholder="Digite o Novo Email" size="60" id="alt-email-novo" 
+                                    title="Entre com o seu novo email para acesso" />
+                                </label>
+                            </div> <!-- div-alt-email-novo -->
+                            
+                            <div id="dados-invalidos-email"></div> <!-- dados-invalidos -->
+                            
+                            <div class="form-group" id="div-alterar-senha-Confirmar">
+                            	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha" onClick="botoesEnviar('#btn-alterar-enviar','#form-alterar-senha',ValidarAlterarEmail());"/>
+                            </div> <!-- div-alterar-senha-Confirmar -->
+                        </form>
+                    </div> <!-- panel-body -->
+                </div> <!-- panel panel-default -->
+            </div> <!-- col-lg-12 -->
             
             <div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Alterar Dados de Cadastro</div>
+					<div class="panel-heading">Alterar Dados de Cadastro</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="formulario-cadastro" action="Entrar.php" method="post">
-                            <div class="form-campos" id="div-nome">
+                    	<form id="formulario-alterar-cadastro" action="/alterar_cadastro_exe.php" method="post">
+                            <div class="form-campos" id="div-alt-nome">
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="nome" size="70" class="form-control"
-                                    maxlength="150" title="Entre com o Seu Nome" 
-                                    placeholder="Digite o seu Nome Completo" autofocus />
+                                    <input type="text" id="alt-nome" name="alt-nome" size="70" class="form-control"
+                                    maxlength="150" title="Entre com o Novo Nome" 
+                                    placeholder="Entre com o Novo Nome" autofocus />
                                 </label>
-                            </div> <!-- div-nome -->
-                                
-                            <div class="form-campos" id="div-nascimento">
+                            </div> <!-- div-alt-nome -->   
+                            <div class="form-campos" id="div-alt-nascimento">
                                 <label>
                                     <span>Nascimento: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="data-nascimento" class="form-control" maxlenght="10" size="30"
-                                    title="Entre com a Data de Nascimento 00/00/0000" 
-                                    placeholder="Digite a Data 00/00/0000" />
+                                    <input type="text" id="alt-data-nascimento" name="alt-data-nascimento" class="form-control" maxlenght="10" size="30"
+                                    title="Entre com a Nova Data de Nascimento 00/00/0000" 
+                                    placeholder="Digite a Nova Data 00/00/0000" />
                                 </label>
-                            </div> <!-- div-nascimento -->
-                            <div class="form-campos" id="div-cpf">
+                            </div> <!-- div-alt-nascimento -->
+                            <div class="form-campos" id="div-alt-cpf">
                                 <label>
                                     <span>CPF: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="cpf" class="form-control" maxlenght="11" size="20"
-                                    title="Entre com o seu CPF" placeholder="Digite o seu CPF" />
+                                    <input type="text" id="alt-cpf" name="alt-cpf" class="form-control" maxlenght="11" size="20"
+                                    title="Entre com o Novo seu CPF" placeholder="Digite o Novo seu CPF" />
                                 </label>
-                            </div> <!-- div-nascimento -->
-                            <div class="form-campos" id="div-sexo">
+                            </div> <!-- div-alt-nascimento -->
+                            <div class="form-campos" id="div-alt-sexo">
                                 <label>
                                     <span>Sexo: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <select id="sexo" class="form-control" name="sexo" title="Escolha o seu Sexo" >
-                                        <option value="1">Masculino</option>
-                                        <option value="2">Feminino</option>
+                                    <select id="alt-sexo" class="form-control" name="alt-sexo" title="Escolha o seu Novo Sexo" >
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Feminino">Feminino</option>
                                     </select>
                                 </label>
                             </div> <!-- div-nascimento -->
-                            <div class="form-campos" id="div-telefone-fixo">
+                            <div class="form-campos" id="div-alt-telefone-fixo">
                                 <label>
                                     <span>Telefone: </span>
-                                    <input type="text" id="telefone-fixo" 
-                                    maxlenght="45" class="form-control" placeholder="Digite o seu Telefone Fixo"/>
+                                    <input type="text" id="alt-telefone-fixo" name="alt-telefone-fixo" title="Digite o seu Novo Telefone Fixo" maxlenght="65" class="form-control" placeholder="Digite o seu Novo Telefone Fixo" size="35" />
                                 </label>
-                            </div> <!-- div-telefone-fixo -->
-                            <div class="form-campos" id="div-telefone-celular">
+                            </div> <!-- div-alt-telefone-fixo -->
+                            <div class="form-campos" id="div-alt-telefone-celular">
                                 <label>
                                     <span>Celular: </span>
-                                    <input type="text" class="form-control" id="telefone-celular" 
-                                    maxlenght="45" placeholder="Digite o seu Celular"/>
+                                    <input type="text" class="form-control" id="alt-telefone-celular" name="alt-telefone-celular"
+                                    maxlenght="65" placeholder="Digite o seu Novo Celular" title="Digite o seu Novo Celular" size="35" />
                                 </label>
                             </div> <!-- div-telefone-celular -->
-                            <div class="form-campos" id="div-cep">
+                            <div class="form-campos" id="div-alt-cep">
                                 <label>
                                     <span>CEP: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="cep" id="cep"
-                                    title="Entre com o CEP" class="form-control" placeholder="Digite o seu CEP" />
+                                    <input type="text" id="alt-cep" name="alt-cep"
+                                    title="Entre com o Novo CEP" class="form-control" placeholder="Digite o seu Novo CEP" />
                                 </label>
-                            </div> <!-- div-cep -->
-                            <div class="form-campos" id="div-tipo-logradouro">
+                            </div> <!-- div-alt-cep -->
+                            <div class="form-campos" id="div-alt-tipo-logradouro">
                                 <label>
                                     <span>Tipo de Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <select name="tipo-logradouro" class="form-control" id="tipo-logradouro" >
+                                    <select name="alt-tipo-logradouro" class="form-control" id="alt-tipo-logradouro"/>
                                         <option value="casa">Casa</option>
                                         <option value="condominio">Condomínio</option>
                                         <option value="AV">Avenida</option>
@@ -142,50 +176,50 @@
                                         <option value="loteamento">Loteamento</option>
                                     </select>
                                  </label>
-                            </div> <!-- div-tipo-logradouro  -->
-                            <div class="form-campos" id="div-numero">
+                            </div> <!-- div-alt-tipo-logradouro  -->
+                            <div class="form-campos" id="div-alt-numero">
                                 <label>
                                     <span>Numero: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="numero" id="numero" placeholder="Numero"
-                                    title="Entre com o Numero da Casa" class="form-control" size="7" />
+                                    <input type="text" id="alt-numero" name="alt-numero" placeholder="Numero"
+                                    title="Entre com o Novo Numero da Casa" class="form-control" size="7" />
                                 </label>
-                            </div> <!-- div-numero -->
-                            <div class="form-campos" id="div-logradouro">
+                            </div> <!-- div-alt-numero -->
+                            <div class="form-campos" id="div-alt-logradouro">
                                 <label>
                                     <span>Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="logradouro" id="logradouro"
-                                    title="Entre aqui com o seu endereço" class="form-control" 
-                                    size="80" placeholder="Digite o seu Logadouro" />
+                                    <input type="text" id="alt-logradouro" name="alt-logradouro"
+                                    title="Digite o seu Novo Logadouro" class="form-control" 
+                                    size="80" placeholder="Digite o seu Novo Logadouro" />
                                 </label>
-                            </div> <!-- div-logradouro -->
-                            <div class="form-campos" id="div-complemento">
+                            </div> <!-- div-alt-logradouro -->
+                            <div class="form-campos" id="div-alt-complemento">
                                 <label>
                                     <span>Complemento: </span>
-                                    <input type="text" name="complemento" id="complemento" size="80"
+                                    <input type="text" name="alt-complemento" id="alt-complemento" size="80"
                                     title="Se houver algum complemento, digite aqui" 
                                     class="form-control" placeholder="Digite o Algum Complemento, se Tiver"/>
                                 </label>
-                            </div> <!-- div-complemento -->
-                            <div class="form-campos" id="div-bairro">
+                            </div> <!-- div-alt-complemento -->
+                            <div class="form-campos" id="div-alt-bairro">
                                 <label>
                                     <span>Bairro: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="bairro" id="bairro"
-                                    title="Entre com o seu bairro" class="form-control" 
-                                    placeholder="Digite o seu Bairro"/>
+                                    <input type="text" name="alt-bairro" id="alt-bairro"
+                                    title="Entre com o seu Novo bairro" class="form-control" 
+                                    placeholder="Digite o seu Novo Bairro" size="35" />
                                 </label>
-                            </div> <!-- div-bairro -->
-                            <div class="form-campos" id="div-cidade">
+                            </div> <!-- div-alt-bairro -->
+                            <div class="form-campos" id="div-alt-cidade">
                                 <label>
                                     <span>Cidade: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="cidade" id="cidade"
-                                    title="Entre com a cidade" class="form-control" 
-                                    placeholder="Digite a sua Cidade"/>
+                                    <input type="text" name="alt-cidade" id="alt-cidade"
+                                    title="Entre com a Nova cidade" class="form-control" 
+                                    placeholder="Digite a sua Nova Cidade" size="35" />
                                 </label>
-                            </div> <!-- div-cidade -->
-                            <div class="form-campos" id="div-estado">
+                            </div> <!-- div-alt-cidade -->
+                            <div class="form-campos" id="div-alt-estado">
                                 <label>
                                 <span>Estado: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <select name="estado" class="form-control" id="estado">
+                                    <select name="alt-estado" class="form-control" id="alt-estado">
                                         <option value="AC">Acre</option>
                                         <option value="RJ">Rio de Janeiro</option>
                                         <option value="SP">São Paulo</option>
@@ -216,42 +250,20 @@
                                         <option value="SC">Santa Catarina</option>
                                     </select>
                                 </label>
-                            </div> <!-- div-estado -->
-                            <div class="form-campos" id="div-email">
-                                <label>
-                                    <span>Email: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" class="form-control" name="email" id="email" 
-                                    placeholder="Digite o seu Email" size="60"
-                                    title="Entre com o seu email para acesso" />
-                                </label>
-                            </div> <!-- div-email -->
-                            <div class="form-campos" id="div-senha">
-                                <label>
-                                    <span>Password: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="password" class="form-control" name="senha" 
-                                    id="senha" placeholder="Digite uma Senha"
-                                    title="Digite uma senha com no mínimo de 6 caracteres. Pelo menos uma letra minúscula, um numero e um caracter especial"  />
-                                </label>
-                            </div> <!-- div-senha -->
-                            <div class="form-campos" id="div-confirmar-senha">
-                                <label>
-                                    <span>Confirmar Password: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="password" class="form-control" name="confirmar-senha" id="confirmar-senha" placeholder="Confirme a sua Senha" size="25" title="Confirme a sua Senha Digitada Anteriormente"  />
-                                </label>
-                            </div> <!-- div-confirmar-senha -->
+                            </div> <!-- div-alt-estado -->
                             
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos-alt-cad"></div> <!-- dados-invalidos-alt-cad -->
                             
                         <div id="div-btn-enviar">
-                            <input type="button" id="btn-enviar-cadastro" class="btn btn-primary" value="Alterar Dados" />
+                            <input type="button" id="btn-enviar-alt-cadastro" class="btn btn-primary" value="Alterar Dados" onClick="botoesEnviar('#btn-enviar-alt-cadastro', '#formulario-alterar-cadastro', ValidarAlterarCadastro());" />
                         </div> <!-- div-btn-enviar -->
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div> <!-- panel-body -->
+                </div> <!-- panel panel-default -->
+            </div> <!-- col-lg-12 -->
+        </div> <!-- row -->
         
 		
-	</section>	<!--/.main-->
+	</section> <!-- main -->
 </body>
 
 </html>

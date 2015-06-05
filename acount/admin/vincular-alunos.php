@@ -1,3 +1,8 @@
+<?
+	session_start();
+	define("TITULO","Vincular Alunos à Turma");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,81 +10,72 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-	<title>SGA | Painel de Controle do Aluno</title>
+	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
 
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
-<body>
+<body onLoad="SidebarActive('vinc-aluno');">
 	<? include("../../includes/server/include-login-admin-header-sidebar.php"); ?>
 		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+	<section class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li>Vincular Alunos</li>
+				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
+				<li><?=TITULO?></li>
 			</ol>
-		</div><!--/.row-->
+		</div><!-- row -->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Vincular Alunos</h1>
+				<h1 class="page-header"><?=TITULO?></h1>
 			</div>
-		</div><!--/.row-->
+		</div><!-- row -->
 		
         <div class="row">
 			<div class="col-md-8">
 				<div class="panel panel-default">
-					<div class="panel-heading"> Dados da Vinculação</div>
+					<div class="panel-heading"> Dados da Vinculação</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form action="vincular_alun_exe.php" method="post" id="form-vincular-alun">
-                            <div class="form-group">
-                                <label>Selecione o Aluno</label>
-                                <select id="vincular-aluno-nomeAl" name="vincular-aluno-nomeAl" class="form-control">
-                                    <option value="Aluno#1">Aluno #1</option>
-                                    <option value="Aluno#2">Aluno #2</option>
-                                    <option value="Aluno#3">Aluno #3</option>
-                                    <option value="Aluno#4">Aluno #4</option>
-                                </select>
-                            </div>
+						<form class="form-horizontal" action="vincular_alun_exe.php" method="post" id="form-vincular-alun">
+                            <div class="form-group" id="div-vincular-aluno-nomeAl" >
+                                <label class="col-md-3 control-label">
+                                    <span>Selecione o Aluno</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <select id="vincular-aluno-nomeAl" name="vincular-aluno-nomeAl" 
+                                    class="form-control" title="Escolha o Aluno" >
+                                        <option value="Aluno#1">Aluno #1</option>
+                                        <option value="Aluno#2">Aluno #2</option>
+                                        <option value="Aluno#3">Aluno #3</option>
+                                        <option value="Aluno#4">Aluno #4</option>
+                                    </select>
+                                </div> <!-- col-md-9 -->
+                            </div> <!-- div-laboratorio-andar -->
+                            <div class="form-group" id="div-vincular-aluno-turma" >
+                                <label class="col-md-3 control-label">
+                                    <span>Selecione a Turma</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <select id="vincular-aluno-turma" name="vincular-aluno-turma" 
+                                    class="form-control" title="Escolha a Turma" >
+                                        <option value="Turma#1">Turma #1</option>
+                                        <option value="Turma#2">Turma #2</option>
+                                        <option value="Turma#3">Turma #3</option>
+                                        <option value="Turma#4">Turma #4</option>
+                                    </select>
+                                </div> <!-- col-md-9 -->
+                            </div> <!-- col-md-9 -->
                             
-                            <div class="form-group">
-                                <label>Selecione a Turma</label>
-                                <select id="vincular-aluno-turma" name="vincular-aluno-turma" class="form-control">
-                                    <option value="Turma#1">Turma #1</option>
-                                    <option value="Turma#2">Turma #2</option>
-                                    <option value="Turma#3">Turma #3</option>
-                                    <option value="Turma#4">Turma #4</option>
-                                </select>
-                            </div>
-                            
-                            <div id="btn-vinc-al-enviar">
-                                <input type="btn-vinc-al-enviar" id="btn-vinc-al-enviar" value="Vincular" class="btn btn-default" />
-                            </div>
+                            <div class="col-md-12 widget-right" id="div-btn-vinc-al-enviar">
+                                <input type="button" id="btn-vinc-al-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#','#',());"/>
+                            </div> <!-- div-btn-vinc-al-enviar -->
                         </form>
-					</div>
-                </div>
-           </div>
-        
-	</div>	<!--/.main-->
-<script>
-		$('#calendar').datepicker({
-		});
-
-		!function ($) {
-		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
-		        $(this).find('em:first').toggleClass("glyphicon-minus");      
-		    }); 
-		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
+					</div> <!-- panel-body -->
+                </div> <!-- panel panel-default -->
+            </div> <!-- col-md-8 -->
+         </div> <!-- row -->
+	</section> <!-- main -->
 </body>
 
 </html>
