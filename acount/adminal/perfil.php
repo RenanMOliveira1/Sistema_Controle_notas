@@ -38,31 +38,31 @@
                         <table class="table table-striped">
                             <tbody>
                                 <td class="success">Email de Acesso: </td>
-                                <td>tiago.silva.93@hotmail.com</td>
+                                <td><?= $_SESSION['alEmail']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Nome: </td>
-                                <td>Tiago Henrique</td>
+                                <td><?= $_SESSION['alNome']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Nascimento</td>
-                                <td>08/11/1993</td>
+                                <td><?= $_SESSION['alDataNascimento']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">CPF</td>
-                                <td>424.254.548-78</td>
+                                <td><?= $_SESSION['alCpf']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Sexo</td>
-                                <td>Masculino</td>
+                                <td><?= $_SESSION['alSexo']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Telefone</td>
-                                <td>3879-6521</td>
+                                <td><?= $_SESSION['alTelefone']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Celular</td>
-                                <td>98782-8974</td>
+                                <td><?= $_SESSION['alCelular']?></td>
                             </tbody>
                         </table>
                     </div>
@@ -78,31 +78,31 @@
                             
                             <tbody>
                                 <td class="success">CEP: </td>
-                                <td>21911-200</td>
+                                <td><?= $_SESSION['alCep']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Tipo de Logradouro: </td>
-                                <td>Casa</td>
+                                <td><?= $_SESSION['alTipoLogradouro']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Logradouro: </td>
-                                <td>Rua Pio Dutra - 140</td>
+                                <td><?= $_SESSION['alLogradouro']." - ". $_SESSION['alNumero']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Complemento: </td>
-                                <td>--</td>
+                                <td><?= $_SESSION['alComplemento']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Bairro: </td>
-                                <td>Ilha do Governador</td>
+                                <td><?= $_SESSION['alBairro']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Cidade: </td>
-                                <td>Rio de janeiro</td>
+                                <td><?= $_SESSION['alCidade']?></td>
                             </tbody>
                             <tbody>
                                 <td class="success">Estado: </td>
-                                <td>Rio de janeiro</td>
+                                <td><?= $_SESSION['alEstado']?></td>
                             </tbody>
                         </table>
                     </div>
