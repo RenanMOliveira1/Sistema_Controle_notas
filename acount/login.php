@@ -29,6 +29,8 @@
 				$_SESSION['alSexo'] = $aluno['sexo'];
 				$_SESSION['alEmail'] = $aluno['email'];
 				$_SESSION['alSenha'] = $aluno['senha'];
+				$_SESSION['Logado'] = true;
+				$_SESSION['autentificacao'] = $autentificacao;
 				
 				$query = "SELECT `Cep`, `tipoLogradouro`, `numero`, `logradouro`, `complemento`, `bairro`, `cidade`, `estado`
 			 			  FROM `endereco` 
