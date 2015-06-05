@@ -179,6 +179,19 @@ body > section {
 
 #div-top-bar {background-color: #072843;}
 
+.usuario-logado {
+	margin: 5px 0px 5px 0px;
+}
+
+.usuario-logado a {
+	color: #ffffff;
+}
+
+.usuario-logado a:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
 #div-navbar-header, 
 #div-admin-top-bar,
 #footer {

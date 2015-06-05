@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Jun-2015 às 17:44
+-- Generation Time: 03-Jun-2015 às 06:58
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `administracao` (
   `idAdm` int(11) NOT NULL AUTO_INCREMENT,
-  `nomeFuncionario` varchar(100) NOT NULL,
+  `nome` varchar(100) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `cargo` char(3) NOT NULL,
   PRIMARY KEY (`idAdm`)
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `administracao` (
 
 CREATE TABLE IF NOT EXISTS `aluno` (
   `matricula` int(11) NOT NULL AUTO_INCREMENT,
-  `nomeAluno` varchar(100) NOT NULL,
+  `nome` varchar(100) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `dataNascimento` varchar(10) NOT NULL,
   `sexo` varchar(9) NOT NULL,
@@ -50,14 +50,7 @@ CREATE TABLE IF NOT EXISTS `aluno` (
   `senha` varchar(12) NOT NULL,
   `acesso` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`matricula`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Extraindo dados da tabela `aluno`
---
-
-INSERT INTO `aluno` (`matricula`, `nomeAluno`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`, `acesso`) VALUES
-(1, 'teste', '123', '123', 'masculino', 'teste@teste.com', '123', 0);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -152,18 +145,15 @@ CREATE TABLE IF NOT EXISTS `laboratorio` (
 CREATE TABLE IF NOT EXISTS `modulo` (
   `idModulo` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(60) NOT NULL,
-  `desc` text NOT NULL,
   PRIMARY KEY (`idModulo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `modulo`
 --
 
-INSERT INTO `modulo` (`idModulo`, `nome`, `desc`) VALUES
-(1, 'html', 'Matéria sobre a disciplina HTML'),
-(2, 'Java', 'Matéria sobre a disciplina java'),
-(3, 'Algebra', 'Matéria sobre a disciplina álgebra linear');
+INSERT INTO `modulo` (`idModulo`, `nome`) VALUES
+(1, 'html');
 
 -- --------------------------------------------------------
 
@@ -180,15 +170,6 @@ CREATE TABLE IF NOT EXISTS `modulo_professor` (
   KEY `idProfessor_2` (`idProfessor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `modulo_professor`
---
-
-INSERT INTO `modulo_professor` (`idModulo`, `idProfessor`) VALUES
-(1, 1),
-(2, 1),
-(3, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -197,19 +178,10 @@ INSERT INTO `modulo_professor` (`idModulo`, `idProfessor`) VALUES
 
 CREATE TABLE IF NOT EXISTS `professor` (
   `idProfessor` int(11) NOT NULL AUTO_INCREMENT,
-  `nomeProfessor` varchar(100) NOT NULL,
+  `nome` varchar(100) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   PRIMARY KEY (`idProfessor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Extraindo dados da tabela `professor`
---
-
-INSERT INTO `professor` (`idProfessor`, `nomeProfessor`, `cpf`) VALUES
-(1, 'teste', ''),
-(2, 'prof2', ''),
-(3, 'blablabla', '');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -266,16 +238,7 @@ CREATE TABLE IF NOT EXISTS `turma` (
   PRIMARY KEY (`idTurma`),
   KEY `idModulo` (`idModulo`),
   KEY `idLaboratorio` (`idLaboratorio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Extraindo dados da tabela `turma`
---
-
-INSERT INTO `turma` (`idTurma`, `turno`, `nomeTurma`, `idModulo`, `idLaboratorio`) VALUES
-(1, 'tarde', 'turmar HTML', 1, NULL),
-(2, 'tarde', 'turma JAVA', 2, NULL),
-(3, 'tarde', 'turma Algebra', 3, NULL);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -293,15 +256,6 @@ CREATE TABLE IF NOT EXISTS `turma_aluno` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `turma_aluno`
---
-
-INSERT INTO `turma_aluno` (`alunoMatricula`, `turmaID`) VALUES
-(1, 1),
-(1, 2),
-(1, 3);
-
---
 -- Constraints for dumped tables
 --
 
@@ -309,8 +263,8 @@ INSERT INTO `turma_aluno` (`alunoMatricula`, `turmaID`) VALUES
 -- Limitadores para a tabela `aluno_programa`
 --
 ALTER TABLE `aluno_programa`
-  ADD CONSTRAINT `aluno_programa_ibfk_1` FOREIGN KEY (`alunoMatricula`) REFERENCES `aluno` (`matricula`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `aluno_programa_ibfk_2` FOREIGN KEY (`idPrograma`) REFERENCES `programa` (`idPrograma`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `aluno_programa_ibfk_2` FOREIGN KEY (`idPrograma`) REFERENCES `programa` (`idPrograma`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `aluno_programa_ibfk_1` FOREIGN KEY (`alunoMatricula`) REFERENCES `aluno` (`matricula`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `endereco`
@@ -349,8 +303,8 @@ ALTER TABLE `telefone`
 -- Limitadores para a tabela `turma`
 --
 ALTER TABLE `turma`
-  ADD CONSTRAINT `turma_ibfk_1` FOREIGN KEY (`idModulo`) REFERENCES `modulo` (`idModulo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `turma_ibfk_2` FOREIGN KEY (`idLaboratorio`) REFERENCES `laboratorio` (`idLaboratorio`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `turma_ibfk_2` FOREIGN KEY (`idLaboratorio`) REFERENCES `laboratorio` (`idLaboratorio`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `turma_ibfk_1` FOREIGN KEY (`idModulo`) REFERENCES `modulo` (`idModulo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `turma_aluno`
