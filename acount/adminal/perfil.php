@@ -111,6 +111,44 @@
 	</section> <!-- main -->
 =======
             <div class="panel panel-default">
+<<<<<<< HEAD
+                <div class="panel-heading">Dados Pessoais</div>
+                    <div class="table-responsive panel-body">
+                        <table class="table table-striped">
+                            <tbody>
+                                <td class="success">Email de Acesso: </td>
+                                <td><?= $_SESSION['alEmail']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Nome: </td>
+                                <td><?= $_SESSION['alNome']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Nascimento</td>
+                                <td><?= $_SESSION['alDataNascimento']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">CPF</td>
+                                <td><?= $_SESSION['alCpf']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Sexo</td>
+                                <td><?= $_SESSION['alSexo']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Telefone</td>
+                                <td><?= $_SESSION['alTelefone']?></td>
+                            </tbody>
+                            <tbody>
+                                <td class="success">Celular</td>
+                                <td><?= $_SESSION['alCelular']?></td>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+            </div>
+        </div>
+=======
                 <div class="panel-heading">Dados Pessoais</div> <!-- panel-heading -->
                 <div class="table-responsive panel-body">
                     <table class="table table-striped">
@@ -146,6 +184,7 @@
                 </div> <!-- table-responsive panel-body -->
             </div> <!-- panel panel-default -->
         </div> <!-- col-md-6 -->
+>>>>>>> 82e6f2e30062fa9ce944557e2e9f45c35f3cc83c
         
         <div class="col-md-6">
             <div class="panel panel-default">

@@ -78,6 +78,7 @@
                                     <span>Email Atual: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" class="form-control" name="alt-email-atual" 
                                     placeholder="Digite o seu Atual Email" size="60" id="alt-email-atual" 
+                                    value="<?= $_SESSION['alEmail']?>";
                                     title="Entre com o seu email atual para acesso" />
                                 </label>
                             </div> <!-- div-alt-email-atual -->
@@ -109,7 +110,7 @@
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-nome" name="alt-nome" size="70" class="form-control"
-                                    maxlength="150" title="Entre com o Novo Nome" 
+                                    maxlength="150" title="Entre com o Novo Nome" value="<?= $_SESSION['alNome']?>";
                                     placeholder="Entre com o Novo Nome" autofocus />
                                 </label>
                             </div> <!-- div-alt-nome -->   
@@ -117,14 +118,14 @@
                                 <label>
                                     <span>Nascimento: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-data-nascimento" name="alt-data-nascimento" class="form-control" maxlenght="10" size="30"
-                                    title="Entre com a Nova Data de Nascimento 00/00/0000" 
+                                    title="Entre com a Nova Data de Nascimento 00/00/0000" value="<?= $_SESSION['alDataNascimento']?>";
                                     placeholder="Digite a Nova Data 00/00/0000" />
                                 </label>
                             </div> <!-- div-alt-nascimento -->
                             <div class="form-campos" id="div-alt-cpf">
                                 <label>
                                     <span>CPF: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="alt-cpf" name="alt-cpf" class="form-control" maxlenght="11" size="20"
+                                    <input type="text" id="alt-cpf" name="alt-cpf" class="form-control" maxlenght="11" size="20" value="<?= $_SESSION['alCpf']?>";
                                     title="Entre com o Novo seu CPF" placeholder="Digite o Novo seu CPF" />
                                 </label>
                             </div> <!-- div-alt-nascimento -->
@@ -140,20 +141,20 @@
                             <div class="form-campos" id="div-alt-telefone-fixo">
                                 <label>
                                     <span>Telefone: </span>
-                                    <input type="text" id="alt-telefone-fixo" name="alt-telefone-fixo" title="Digite o seu Novo Telefone Fixo" maxlenght="65" class="form-control" placeholder="Digite o seu Novo Telefone Fixo" size="35" />
+                                    <input type="text" id="alt-telefone-fixo" name="alt-telefone-fixo" title="Digite o seu Novo Telefone Fixo" maxlenght="65" class="form-control" value="<?= $_SESSION['alTelefone']?>"; placeholder="Digite o seu Novo Telefone Fixo" size="35" />
                                 </label>
                             </div> <!-- div-alt-telefone-fixo -->
                             <div class="form-campos" id="div-alt-telefone-celular">
                                 <label>
                                     <span>Celular: </span>
                                     <input type="text" class="form-control" id="alt-telefone-celular" name="alt-telefone-celular"
-                                    maxlenght="65" placeholder="Digite o seu Novo Celular" title="Digite o seu Novo Celular" size="35" />
+                                    maxlenght="65" value="<?= $_SESSION['alCelular']?>"; placeholder="Digite o seu Novo Celular" title="Digite o seu Novo Celular" size="35" />
                                 </label>
                             </div> <!-- div-telefone-celular -->
                             <div class="form-campos" id="div-alt-cep">
                                 <label>
                                     <span>CEP: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="alt-cep" name="alt-cep"
+                                    <input type="text" id="alt-cep" name="alt-cep" value="<?= $_SESSION['alCep']?>";
                                     title="Entre com o Novo CEP" class="form-control" placeholder="Digite o seu Novo CEP" />
                                 </label>
                             </div> <!-- div-alt-cep -->
@@ -180,14 +181,14 @@
                             <div class="form-campos" id="div-alt-numero">
                                 <label>
                                     <span>Numero: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="alt-numero" name="alt-numero" placeholder="Numero"
+                                    <input type="text" id="alt-numero" name="alt-numero" placeholder="Numero" value="<?= $_SESSION['alNumero']?>";
                                     title="Entre com o Novo Numero da Casa" class="form-control" size="7" />
                                 </label>
                             </div> <!-- div-alt-numero -->
                             <div class="form-campos" id="div-alt-logradouro">
                                 <label>
                                     <span>Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="alt-logradouro" name="alt-logradouro"
+                                    <input type="text" id="alt-logradouro" name="alt-logradouro" value="<?= $_SESSION['alLogradouro']?>";
                                     title="Digite o seu Novo Logadouro" class="form-control" 
                                     size="80" placeholder="Digite o seu Novo Logadouro" />
                                 </label>
@@ -196,14 +197,14 @@
                                 <label>
                                     <span>Complemento: </span>
                                     <input type="text" name="alt-complemento" id="alt-complemento" size="80"
-                                    title="Se houver algum complemento, digite aqui" 
+                                    title="Se houver algum complemento, digite aqui"  value="<?= $_SESSION['alComplemento']?>";
                                     class="form-control" placeholder="Digite o Algum Complemento, se Tiver"/>
                                 </label>
                             </div> <!-- div-alt-complemento -->
                             <div class="form-campos" id="div-alt-bairro">
                                 <label>
                                     <span>Bairro: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="alt-bairro" id="alt-bairro"
+                                    <input type="text" name="alt-bairro" id="alt-bairro" value="<?= $_SESSION['alBairro']?>";
                                     title="Entre com o seu Novo bairro" class="form-control" 
                                     placeholder="Digite o seu Novo Bairro" size="35" />
                                 </label>
@@ -211,7 +212,7 @@
                             <div class="form-campos" id="div-alt-cidade">
                                 <label>
                                     <span>Cidade: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="alt-cidade" id="alt-cidade"
+                                    <input type="text" name="alt-cidade" id="alt-cidade" value="<?= $_SESSION['alCidade']?>";
                                     title="Entre com a Nova cidade" class="form-control" 
                                     placeholder="Digite a sua Nova Cidade" size="35" />
                                 </label>
@@ -220,34 +221,143 @@
                                 <label>
                                 <span>Estado: <span class="asteristicos-obrigatorio">*</span></span>
                                     <select name="alt-estado" class="form-control" id="alt-estado">
-                                        <option value="AC">Acre</option>
-                                        <option value="RJ">Rio de Janeiro</option>
-                                        <option value="SP">São Paulo</option>
-                                        <option value="AL">Alagoas</option>
-                                        <option value="AP">Amapá</option>
-                                        <option value="AM">Amazonas</option>
-                                        <option value="BA">Bahia</option>
-                                        <option value="CE">Ceará</option>
-                                        <option value="DF">Distrito Federal</option>
-                                        <option value="ES">Espírito Santo</option>
-                                        <option value="GO">Goiás</option>
-                                        <option value="MA">Maranhão</option>
-                                        <option value="MT">Mato Grosso</option>
-                                        <option value="MS">Mato Grosso do Sul</option>
-                                        <option value="MG">Minas Gerais</option>
-                                        <option value="PA">Pará</option>
-                                        <option value="PB">Paraíba</option>
-                                        <option value="PR">Paraná</option>
-                                        <option value="PE">Pernambuco</option>
-                                        <option value="PI">Piauí</option>
-                                        <option value="RN">Rio Grande do Nore</option>
-                                        <option value="RS">Rio Grande do Sul</option>
-                                        <option value="RO">Rondônia</option>
-                                        <option value="RR">Roraima</option>
-                                        <option value="SC">Santa Catarina</option>
-                                        <option value="SE">Sergipe</option>
-                                        <option value="TO">Tocantins</option>
-                                        <option value="SC">Santa Catarina</option>
+                                    <?
+										if($_SESSION['alEstado'] == "AC"){
+											echo "<option value='AC' selected='selected'>Acre</option>";
+										}else{
+											echo "<option value='AC'>Acre</option>";
+										}
+										if($_SESSION['alEstado'] == "RJ"){
+											echo "<option value='RJ' selected='selected'>Rio de Janeiro</option>";
+										}else{
+											echo "<option value='RJ'>Rio de Janeiro</option>";
+										}
+										if($_SESSION['alEstado'] == "SP"){
+											echo "<option value='SP' selected='selected'>São Paulo</option>";
+										}else{
+											echo "<option value='SP'>São Paulo</option>";
+										}
+										if($_SESSION['alEstado'] == "AL"){
+											echo "<option value='AL' selected='selected'>Alagoas</option>";
+										}else{
+											echo "<option value='AL'>Alagoas</option>";
+										}
+										if($_SESSION['alEstado'] == "AP"){
+											echo "<option value='AP' selected='selected'>Amapá</option>";
+										}else{
+											echo "<option value='AP'>Amapá</option>";
+										}
+										if($_SESSION['alEstado'] == "AM"){
+											echo "<option value='AM' selected='selected'>Amazonas</option>";
+										}else{
+											echo "<option value='AM'>Amazonas</option>";
+										}
+										if($_SESSION['alEstado'] == "BA"){
+											echo "<option value='BA' selected='selected'>Bahia</option>";
+										}else{
+											echo "<option value='BA'>Bahia</option>";
+										}
+										if($_SESSION['alEstado'] == "CE"){
+											echo "<option value='CE' selected='selected'>Ceará</option>";
+										}else{
+											echo "<option value='CE'>Ceará</option>";;
+										}
+										if($_SESSION['alEstado'] == "DF"){
+											echo "<option value='DF' selected='selected'>Distrito Federal</option>";
+										}else{
+											echo "<option value='DF'>Distrito Federal</option>";
+										}
+										if($_SESSION['alEstado'] == "ES"){
+											echo "<option value='ES' selected='selected'>Espírito Santo</option>";
+										}else{
+											echo "<option value='ES'>Espírito Santo</option>";
+										}
+										if($_SESSION['alEstado'] == "GO"){
+											echo "<option value='GO' selected='selected'>Goiás</option>";
+										}else{
+											echo "<option value='GO'>Goiás</option>";
+										}
+										if($_SESSION['alEstado'] == "MA"){
+											echo "<option value='MA' selected='selected'>Maranhão</option>";
+										}else{
+											echo "<option value='MA'>Maranhão</option>";;
+										}
+										if($_SESSION['alEstado'] == "MT"){
+											echo "<option value='MT' selected='selected'>Mato Grosso</option>";
+										}else{
+											echo "<option value='MT'>Mato Grosso</option>";
+										}		
+										if($_SESSION['alEstado'] == "MS"){
+											echo "<option value='MS' selected='selected'>Mato Grosso do Sul</option>";
+										}else{
+											echo "<option value='MS'>Mato Grosso do Sul</option>";
+										}
+										if($_SESSION['alEstado'] == "MG"){
+											echo "<option value='MG' selected='selected'>Minas Gerais</option>";
+										}else{
+											echo "<option value='MG'>Minas Gerais</option>";
+										}
+										if($_SESSION['alEstado'] == "PA"){
+											echo "<option value='PA' selected='selected'>Pará</option>";
+										}else{
+											echo "<option value='PA'>Pará</option>";
+										}
+										if($_SESSION['alEstado'] == "PB"){
+											echo "<option value='PB' selected='selected'>Paraíba</option>";
+										}else{
+											echo "<option value='PB'>Paraíba</option>";
+										}
+										if($_SESSION['alEstado'] == "PR"){
+											echo "<option value='PR' selected='selected'>Paraná</option>";
+										}else{
+											echo "<option value='PR'>Paraná</option>";
+										}
+										if($_SESSION['alEstado'] == "PE"){
+											echo "<option value='PE' selected='selected'>Pernambuco</option>";
+										}else{
+											echo "<option value='PE'>Pernambuco</option>";
+										}
+										if($_SESSION['alEstado'] == "PI"){
+											echo "<option value='PI' selected='selected'>Piauí</option>";
+										}else{
+											echo "<option value='PI'>Piauí</option>";
+										}
+										if($_SESSION['alEstado'] == "RN"){
+											echo "<option value='RN' selected='selected'>Rio Grande do Norte</option>";
+										}else{
+											echo "<option value='RN'>Rio Grande do Norte</option>";
+										}
+										if($_SESSION['alEstado'] == "RS"){
+											echo "<option value='RS' selected='selected'>Rio Grande do Sul</option>";
+										}else{
+											echo "<option value='RS'>Rio Grande do Sul</option>";
+										}
+										if($_SESSION['alEstado'] == "RO"){
+											echo "<option value='RO' selected='selected'>Rondônia</option>";
+										}else{
+											echo "<option value='RO'>Rondônia</option>";
+										}
+										if($_SESSION['alEstado'] == "RR"){
+											echo "<option value='RR' selected='selected'>Roraima</option>";
+										}else{
+											echo "<option value='RR'>Roraima</option>";
+										}
+										if($_SESSION['alEstado'] == "SC"){
+											echo "<option value='SC' selected='selected'>Santa Catarina</option>";
+										}else{
+											echo "<option value='SC'>Santa Catarina</option>";
+										}
+										if($_SESSION['alEstado'] == "SE"){
+											echo "<option value='SE' selected='selected'>Sergipe</option>";
+										}else{
+											echo "<option value='SE'>Sergipe</option>";
+										}
+										if($_SESSION['alEstado'] == "TO"){
+											echo "<option value='TO' selected='selected'>Tocantins</option>";
+										}else{
+											echo "<option value='TO'>Tocantins</option>";
+										}
+									?>
                                     </select>
                                 </label>
                             </div> <!-- div-alt-estado -->
