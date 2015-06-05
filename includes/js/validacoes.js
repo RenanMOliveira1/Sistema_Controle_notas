@@ -380,7 +380,7 @@ function ValidarAlterarSenha() {
 	}
 		
 	if ($("#usuario").val() == "") { 
-		msg += "Campo Email é Obrigatorio<br/>";
+		msg += "Campo Usuario é Obrigatorio<br/>";
 		$("#div-login-usuario").addClass(" has-error");	
 	}
 	
@@ -452,7 +452,7 @@ function ValidarAlterarEmail() {
 function ValidarPrograma() {
 	
 	if ($("#nome-curso").val() == "") {
-		$("#dados-invalidos").html("Campo Nome é Obrigatório.");
+		$("#dados-invalidos").html("Campo Nome é Obrigatório.<br/>");
 		$("#div-nome-curso").addClass(" has-error");	
 		return false;
 	}
@@ -460,23 +460,80 @@ function ValidarPrograma() {
 	return true;
 }
 
+function ValidarCadastrarProf() {
+	var msg = "";
+	
+	if ($("#admin-prof-nome").val() == "") {
+		msg += "Campo Nome é Obrigatório.</br>";
+		$("#div-admin-prof-nome").addClass(" has-error");	
+	}
+	
+	var cpf = $("#admin-prof-cpf").val();
+	if (cpf == "") { 
+		msg += "Campo CPF é Obrigatorio<br/>";
+		$("#div-admin-prof-cpf").addClass(" has-error");
+	} else if (!ValidarCPF(cpf)) {
+		msg += "CPF inválido.<br/>";
+		$("#div-admin-prof-cpf").addClass(" has-error");
+	}
+	
+	if (msg != "") {
+		$("#dados-invalidos").html(msg);
+		return false;}
+	
+	return true;
+}
+
+function ValidarCadTurma() {
+	
+	if ($("#turma-nome").val() == "") {
+		$("#dados-invalidos").html("Campo Nome é Obrigatório."); 
+		$("#div-turma-nome").addClass(" has-error");	
+		return false;
+	}
+	return true;
+}
+
+function ValidarAdminConfig() {
+	var msg = "";
+	
+	antigaSenha = $("#adm-alterar-senha-antiga").val();
+	novaSenha = $("#adm-alterar-senha-nova").val();
+	confirmarSenha = $("#adm-alterar-senha-Confirmar").val();
+	if (antigaSenha == "") { 
+		msg += "Campo Senha Atual é Obrigatorio<br/>";
+		$("#div-adm-alterar-senha-antiga").addClass(" has-error");	
+	} 
+	if (novaSenha == "") { 
+		msg += "Campo Senha Antiga é Obrigatorio<br/>";
+		$("#div-adm-alterar-senha-nova").addClass(" has-error");	
+	} 
+	if (confirmarSenha == "") { 
+		msg += "Campo Confirmar Senha é Obrigatorio<br/>";
+		$("#div-adm-alterar-senha-Confirmar").addClass(" has-error");	
+	} 
+	if (novaSenha != confirmarSenha) {
+		msg += "Campo Nova Senha e Confirmar Senha Devem ser Iguais<br/>";
+		$("#div-adm-alterar-senha-nova").addClass(" has-error");
+		$("#div-adm-alterar-senha-Confirmar").addClass(" has-error");
+	}
+	
+	if (msg != "") {
+		$("#dados-invalidos").html(msg);
+		return false;}
+	
+	return true;
+}
+
 function botoesEnviar(idBotao, idFormulario, funcaoDeValidar) {
 	$(document).ready(function(){
 		$(idBotao).click(function() {
 			if (funcaoDeValidar) {
-				alert("entreou");
 				$(idFormulario).submit();
 			}
 		});
 	});
 }
-
-$(document).ready(function(){
-	$("#btn-laboratorio-enviar").click(function() {
-			alert("entreou");
-			$("#form-cadastrar-laboratorio").submit();
-	});
-});
 
 jQuery(function($) {'use strict',
 
