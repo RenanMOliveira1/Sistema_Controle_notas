@@ -5,7 +5,7 @@
 	define('TITULO','Disciplinas');
 		
 	//Conecção ao Banco de Dados
-	$conexao = @mysql_connect("localhost", "root", "");
+	$conexao = @mysql_connect("localhost", "root", "14789632");
 	if (!$conexao) {
 		exit("Site Temporariamente fora do ar");}
 	
