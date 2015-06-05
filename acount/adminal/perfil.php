@@ -30,7 +30,6 @@
 			<div class="col-lg-12">
 				<h1 class="page-header"><?=TITULO?></h1>
 			</div>
-<<<<<<< HEAD
 	  </div><!-- row -->
 		
         <div class="col-md-6">
@@ -67,44 +66,6 @@
                                 <td><?= $_SESSION['alCelular']?></td>
                             </tbody>
                         </table>
-=======
-		</div><!-- row -->
-
-        <div class="col-md-6">
-        <div class="panel panel-default">
-                <div class="panel-heading">Dados Pessoais</div> <!-- panel-heading -->
-                <div class="table-responsive panel-body">
-                    <table class="table table-striped">
-                        <tbody>
-                            <td class="success">Email de Acesso: </td>
-                            <td><?= $_SESSION['alEmail']?></td>
-                        </tbody>
-                        <tbody>
-                            <td class="success">Nome: </td>
-                            <td><?= $_SESSION['alNome']?></td>
-                        </tbody>
-                        <tbody>
-                            <td class="success">Nascimento</td>
-                            <td><?= $_SESSION['alDataNascimento']?></td>
-                        </tbody>
-                        <tbody>
-                            <td class="success">CPF</td>
-                            <td><?= $_SESSION['alCpf']?></td>
-                        </tbody>
-                        <tbody>
-                            <td class="success">Sexo</td>
-                            <td><?= $_SESSION['alSexo']?></td>
-                        </tbody>
-                        <tbody>
-                            <td class="success">Telefone</td>
-                            <td><?= $_SESSION['alTelefone']?></td>
-                        </tbody>
-                        <tbody>
-                            <td class="success">Celular</td>
-                            <td><?= $_SESSION['alCelular']?></td>
-                        </tbody>
-                    </table>
->>>>>>> 0551fe9db6b4b97d791ca1b4bf11bd7fe03215da
                 </div> <!-- table-responsive panel-body -->
             </div> <!-- panel panel-default -->
         </div> <!-- col-md-6 -->

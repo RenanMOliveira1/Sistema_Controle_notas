@@ -3,7 +3,8 @@
 	$msgSenha .= @$_GET['msgSenha'];
 	$msgEmail = "";
 	$msgEmail .= @$_GET['msgEmail'];
-	
+	$msgDados = "";
+	$msgDados .= @$_GET['msgDados'];
 
 	session_start();
 	define('TITULO','Configurações');
@@ -150,8 +151,19 @@
                                 <label>
                                     <span>Sexo: <span class="asteristicos-obrigatorio">*</span></span>
                                     <select id="alt-sexo" class="form-control" name="alt-sexo" title="Escolha o seu Novo Sexo" >
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Feminino">Feminino</option>
+                                    	<?
+											if($_SESSION['alSexo'] == "Masculino"){
+												echo "<option value='Masculino' selected='selected'>Masculino</option>";
+											}else{
+												echo "<option value='Masculino'>Masculino</option>";
+											}
+											if($_SESSION['alSexo'] == "Feminino"){
+												echo "<option value='Feminino' selected='selected'>Feminino</option>";
+											}else{
+												echo "<option value='Feminino'>Feminino</option>";
+											}
+											
+										?>
                                     </select>
                                 </label>
                             </div> <!-- div-nascimento -->
@@ -179,19 +191,73 @@
                                 <label>
                                     <span>Tipo de Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
                                     <select name="alt-tipo-logradouro" class="form-control" id="alt-tipo-logradouro"/>
-                                        <option value="casa">Casa</option>
-                                        <option value="condominio">Condomínio</option>
-                                        <option value="AV">Avenida</option>
-                                        <option value="praca">Praça</option>
-                                        <option value="beco">Beco</option>
-                                        <option value="rodovia">Rodovía</option>
-                                        <option value="aeroporto">Aeroporto</option>
-                                        <option value="vila">Vila</option>
-                                        <option value="chacara">Chácara</option>
-                                        <option value="sitio">Sitío</option>
-                                        <option value="morro">Morro</option>
-                                        <option value="favela">Favela</option>
-                                        <option value="loteamento">Loteamento</option>
+                                    	<?
+											if($_SESSION['alTipoLogradouro'] == "casa"){
+												echo "<option value='casa' selected='selected'>Casa</option>";
+											}else{
+												echo "<option value='casa'>Casa</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "condominio"){
+												echo "<option value='condominio' selected='selected'>Condomínio</option>";
+											}else{
+												echo "<option value='condominio'>Condomínio</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "AV"){
+												echo "<option value='AV' selected='selected'>Avenida</option>";
+											}else{
+												echo "<option value='AV'>Avenida</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "praca"){
+												echo "<option value='praca' selected='selected'>Praça</option>";
+											}else{
+												echo "<option value='praca'>Praça</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "beco"){
+												echo "<option value='beco' selected='selected'>Beco</option>";
+											}else{
+												echo "<option value='beco'>Beco</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "rodovia"){
+												echo "<option value='rodovia' selected='selected'>Rodovía</option>";
+											}else{
+												echo "<option value='rodovia'>Rodovía</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "aeroporto"){
+												echo "<option value='aeroporto' selected='selected'>Aeroporto</option>";
+											}else{
+												echo "<option value='aeroporto'>Aeroporto</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "vila"){
+												echo "<option value='vila' selected='selected'>Vila</option>";
+											}else{
+												echo "<option value='vila'>Vila</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "chacara"){
+												echo "<option value='chacara' selected='selected'>Chácara</option>";
+											}else{
+												echo "<option value='chacara'>Chácara</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "sitio"){
+												echo "<option value='sitio' selected='selected'>Sitío</option>";
+											}else{
+												echo "<option value='sitio'>Sitío</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "morro"){
+												echo "<option value='morro' selected='selected'>Morro</option>";
+											}else{
+												echo "<option value='morro'>Morro</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "favela"){
+												echo "<option value='favela' selected='selected'>Favela</option>";
+											}else{
+												echo "<option value='favela'>Favela</option>";
+											}
+											if($_SESSION['alTipoLogradouro'] == "loteamento"){
+												echo "<option value='loteamento' selected='selected'>Loteamento</option>";
+											}else{
+												echo "<option value='loteamento'>Loteamento</option>";
+											}
+										?>
                                     </select>
                                  </label>
                             </div> <!-- div-alt-tipo-logradouro  -->
@@ -379,7 +445,12 @@
                                 </label>
                             </div> <!-- div-alt-estado -->
                             
-                            <div id="dados-invalidos-alt-cad"></div> <!-- dados-invalidos-alt-cad -->
+                            <div id="dados-invalidos-alt-cad">
+                            	<?	if($msgDados != ""){
+                                        echo $msgDados;
+                                    }
+                                ?>
+                            </div> <!-- dados-invalidos-alt-cad -->
                             
                         <div id="div-btn-enviar">
                             <input type="button" id="btn-enviar-alt-cadastro" class="btn btn-primary" value="Alterar Dados" onClick="botoesEnviar('#btn-enviar-alt-cadastro', '#formulario-alterar-cadastro', ValidarAlterarCadastro());" />
