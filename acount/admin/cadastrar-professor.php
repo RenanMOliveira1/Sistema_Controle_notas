@@ -38,7 +38,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados do Professor</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" action="/cadastrar_prof_exe.php" method="post">
+						<form class="form-horizontal" id="form-cadastrar-prof" action="/acount/admin/cadastrar_prof_exe.php" method="post">
                             <div class="form-group" id="div-admin-prof-nome" >
                                 <label class="col-md-3 control-label">
                                     <span>Nome</span>
@@ -58,10 +58,12 @@
                                     placeholder="Digite o CPF do Professor" title="Digite o CPF do Professor" >
                                 </div> <!-- col-md-3 control-label -->
                             </div> <!-- div-admin-prof-cpf -->
-
+							
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-cad-prof-enviar">
-                                    <input type="button" id="btn-cad-prof-enviar" value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#','#',());"/>
+                                    <input type="button" id="btn-cad-prof-enviar" value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-cad-prof-enviar','#form-cadastrar-prof',ValidarCadastrarProf());"/>
                                 </div> <!-- col-md-12 widget-right -->
                             </div> <!-- form-group -->
 						</form>

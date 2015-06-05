@@ -38,7 +38,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados da Turma</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-turma" action="/cadastrar_turma_exe.php" method="post">
+						<form class="form-horizontal" id="form-cadastrar-turma" action="/acount/admin/cadastrar_turma_exe.php" method="post">
                             <div class="form-group" id="div-turma-nome" >
                                 <label class="col-md-3 control-label">
                                 	<span>Nome</span>
@@ -90,10 +90,12 @@
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-turma-laboratorio -->
-
+							
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-turma-enviar">
-                                    <input type="button" id="btn-turma-enviar" value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#','#',());"/>
+                                    <input type="button" id="btn-turma-enviar" value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-turma-enviar','#form-cadastrar-turma',ValidarCadTurma());"/>
                                 </div> <!-- div-btn-turma-enviar -->
                             </div> <!-- form-group -->
 						</form>

@@ -38,7 +38,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"> Dados do Módulo</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" action="/criar_modulo_exe.php" method="post">
+						<form class="form-horizontal" id="form-criar-modulo" action="/criar_modulo_exe.php" method="post">
                             <div class="form-group" id="div-admin-nome-mod" >
                                 <label class="col-md-3 control-label">
                                     <span>Nome do Módulo</span>
@@ -49,9 +49,11 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-admin-nome-mod -->
                             
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-mod-enviar" >
-                                    <input type="button" id="btn-mod-enviar" value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#','#',());"/>
+                                    <input type="button" id="btn-mod-enviar" value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-mod-enviar','#form-criar-modulo',ValidarCriarModulo());"/>
                                 </div> <!-- div-btn-mod-enviar -->
                             </div> <!-- form-group -->
 						</form>

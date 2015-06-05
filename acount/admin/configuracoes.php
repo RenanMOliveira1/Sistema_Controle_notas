@@ -37,41 +37,43 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form class="form-horizontal" id="form-alterar-senha" method="post" action="aterar_senha_exec.php">
-                        	<div class="form-group" id="div-alterar-senha-antiga">
+                    	<form class="form-horizontal" id="form-adm-alterar-senha" method="post" action="aterar_senha_exec.php">
+                        	<div class="form-group" id="div-adm-alterar-senha-antiga">
                             	<label class="col-md-3 control-label">
                                 	<span>Senha Atual: </span>
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="password" id="alterar-senha-antiga" class="form-control" 
-                                    name="alterar-senha-antiga" placeholder="Digite sua Senha atual"
+                                    <input type="password" id="adm-alterar-senha-antiga" class="form-control" 
+                                    name="adm-alterar-senha-antiga" placeholder="Digite sua Senha atual"
                                     title="Digite sua Senha atual" size="40" />
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-senha-antiga -->
-                            <div class="form-group" id="div-alterar-senha-nova">
+                            <div class="form-group" id="div-adm-alterar-senha-nova">
                             	<label class="col-md-3 control-label">
                                 	<span>Nova Senha: </span>
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="password" id="alterar-senha-nova" class="form-control"
-                                     name="alterar-senha-nova" placeholder="Digite a sua Nova senha"
+                                    <input type="password" id="adm-alterar-senha-nova" class="form-control"
+                                     name="adm-alterar-senha-nova" placeholder="Digite a sua Nova senha"
                                      title="Digite a sua Nova senha" size="40" />
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-senha-nova -->
-                            <div class="form-group" id="div-alterar-senha-Confirmar">
+                            <div class="form-group" id="div-adm-alterar-senha-Confirmar">
                             	<label class="col-md-3 control-label">
                                 	<span>Confirmar Senha: </span>
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="password" id="alterar-senha-Confirmar" class="form-control" 
-                                    name="alterar-senha-Confirmar" placeholder="Confirme a sua nova Senha" 
+                                    <input type="password" id="adm-alterar-senha-Confirmar" class="form-control" 
+                                    name="adm-alterar-senha-Confirmar" placeholder="Confirme a sua nova Senha" 
                                     title="Confirme a sua nova Senha" size="40" />
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-senha-Confirmar -->
                             
+                            <div id="dados-invalidos"></div>
+                            
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-alterar-enviar">
-                            		<input type="button" id="btn-alterar-enviar" class="btn btn-default btn-md pull-right" value="Alterar Senha"  onClick="botoesEnviar('#','#',());"/>
+                            		<input type="button" id="btn-adm-alterar-enviar" class="btn btn-default btn-md pull-right" value="Alterar Senha"  onClick="botoesEnviar('#btn-adm-alterar-enviar','#form-adm-alterar-senha',ValidarAdminConfig());"/>
                             	</div> <!-- div-alterar-senha-Confirmar -->
                             </div> <!-- form-group -->
                         </form>

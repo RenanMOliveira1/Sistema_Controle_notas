@@ -68,7 +68,7 @@
                             </div> <!-- col-md-9 -->
                             
                             <div class="col-md-12 widget-right" id="div-btn-vinc-al-enviar">
-                                <input type="button" id="btn-vinc-al-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#','#',());"/>
+                                <input type="button" id="btn-vinc-al-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-al-enviar','#form-vincular-alun',true);"/>
                             </div> <!-- div-btn-vinc-al-enviar -->
                         </form>
 					</div> <!-- panel-body -->

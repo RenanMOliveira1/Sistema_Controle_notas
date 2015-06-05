@@ -34,7 +34,7 @@
                     <li><a href="/acount/admin/cadastrar-turma.php"><span class="glyphicon glyphicon-share-alt"></span> Turma</a></li>
 				</ul>
 			</li>
-			<li id="navAdminCad" class="parent ">
+			<li id="navAdminVinc" class="parent ">
 				<a href="#">
 					<span class="glyphicon glyphicon-list"></span> Vincular <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
 				</a>
