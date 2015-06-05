@@ -5,7 +5,7 @@
 	define('TITULO','Disciplinas');
 		
 	//Conecção ao Banco de Dados
-	$conexao = @mysql_connect("localhost", "root", "14789632");
+	$conexao = @mysql_connect("localhost", "root", "");
 	if (!$conexao) {
 		exit("Site Temporariamente fora do ar");}
 	
@@ -20,10 +20,6 @@
               JOIN `professor` ON professor.`idProfessor` = modulo_professor.`idProfessor`
 			  WHERE
 			  aluno.`matricula` = '{$_SESSION['alMatricula']}'";
-			 /* SELECT `matricula`, `nome`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`, `acesso`
-			  FROM `$autentificacao` 
-			  WHERE `email` = '$usuario'
-			  AND `senha` = '$senha'";*/
 	
 	$resultadoPesquisa = @mysql_query($query, $conexao);
 	$msg = "";

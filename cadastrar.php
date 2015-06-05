@@ -26,7 +26,7 @@
                                         <label>
                                             <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
                                             <input type="text" id="nome" name="nome" size="70" class="form-control"
-                                            maxlength="150" title="Entre com o Seu Nome" 
+                                            maxlength="150" title="Entre com o Seu Nome"
                                             placeholder="Digite o seu Nome Completo" autofocus />
                                     	</label>
                                     </div> <!-- div-nome -->

@@ -1,6 +1,13 @@
 <?
+	$msgSenha = "";
+	$msgSenha .= @$_GET['msgSenha'];
+	$msgEmail = "";
+	$msgEmail .= @$_GET['msgEmail'];
+	
+
 	session_start();
 	define('TITULO','Configurações');
+	
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +44,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="form-alterar-senha" method="post" action="aterar_senha_exec.php">
+                    	<form id="form-alterar-senha" method="post" action="aterar_aluno.php?acao=senha">
                         	<div class="form-group" id="div-alterar-senha-antiga">
                             	<label>
                                 	<span>Senha Atual: <span class="asteristicos-obrigatorio">*</span></span>
@@ -57,7 +64,12 @@
                                 </label>
                             </div> <!-- div-alterar-senha-Confirmar -->
                             
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos">
+								<?	if($msgSenha != ""){
+                                        echo $msgSenha;
+                                    }
+                                ?>
+							</div> <!-- dados-invalidos -->
                             
                             <div class="form-group" id="div-alterar-senha-Confirmar">
                             	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha" onClick="botoesEnviar('#btn-alterar-enviar','#form-alterar-senha',ValidarAlterarSenha());"/>
@@ -72,7 +84,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Email (Login)</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="form-alterar-senha" method="post" action="aterar_senha_exec.php">
+                    	<form id="form-alterar-email" method="post" action="aterar_aluno.php?acao=email">
                         	<div class="form-campos" id="div-alt-email-atual">
                                 <label>
                                     <span>Email Atual: <span class="asteristicos-obrigatorio">*</span></span>
@@ -91,10 +103,15 @@
                                 </label>
                             </div> <!-- div-alt-email-novo -->
                             
-                            <div id="dados-invalidos-email"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos-email">								
+								<?	if($msgEmail != ""){
+                                		echo $msgEmail;
+                                    }
+                                ?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="form-group" id="div-alterar-senha-Confirmar">
-                            	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha" onClick="botoesEnviar('#btn-alterar-enviar','#form-alterar-senha',ValidarAlterarEmail());"/>
+                            	<input type="button" id="btn-alterar-enviar-email" class="btn btn-primary" value="Alterar Email" onClick="botoesEnviar('#btn-alterar-enviar-email','#form-alterar-email',ValidarAlterarEmail());"/>
                             </div> <!-- div-alterar-senha-Confirmar -->
                         </form>
                     </div> <!-- panel-body -->
@@ -105,7 +122,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Dados de Cadastro</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="formulario-alterar-cadastro" action="/alterar_cadastro_exe.php" method="post">
+                    	<form id="formulario-alterar-cadastro" action="aterar_aluno.php?acao=dados" method="post">
                             <div class="form-campos" id="div-alt-nome">
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
