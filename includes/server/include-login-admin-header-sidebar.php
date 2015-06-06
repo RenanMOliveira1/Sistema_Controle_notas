@@ -1,10 +1,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="adminLogo" href="index.html"><img src="/images/logo.png" alt="Logo do SGA" title="Logo do SGA" width="150" hegth="30" ></a>
+				<a class="adminLogo" href="/"><img src="/images/logo.png" alt="Logo do SGA" title="Logo do SGA" width="150" hegth="30" ></a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="/acount/admin/" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?= $_SESSION['admNome']?> <span class="caret"></span></a>
+						<a href="/acount/admin/#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?= $_SESSION['admNome']?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/acount/admin/configuracoes.php"><span class="glyphicon glyphicon-cog"></span> Configurações</a></li>
 							<li><a href="/acount/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

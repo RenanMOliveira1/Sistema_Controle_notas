@@ -1,3 +1,18 @@
+<?
+	session_start();
+	if(!$_SESSION['logado']){
+		$msg = "Sessão expirada.";
+		header("Location: /acount/?msg=$msg");
+	}
+	switch($_SESSION['autenticacao']){
+		case "administracao":
+			header("Location: /acount/admin/");
+		break;
+		case "aluno":
+			header("Location: /acount/adminal/");
+		break;
+	}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

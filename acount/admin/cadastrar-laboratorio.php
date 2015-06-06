@@ -1,6 +1,19 @@
 <?
 	session_start();
+	if(!$_SESSION['logado']){
+		$msg = "Sessão expirada.";
+		header("Location: /acount/?msg=$msg");
+	}
+	switch($_SESSION['autenticacao']){
+		case "professor":
+			header("Location: /acount/adminprof/");
+		break;
+		case "aluno":
+			header("Location: /acount/adminal/");
+		break;
+	}
 	define("TITULO", "Cadastrar Laboratório");
+
 ?>
 
 <!DOCTYPE html>
