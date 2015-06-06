@@ -19,12 +19,12 @@
                     <div class="widget">
                         <h3>Serviços</h3>
                         <ul>
-                            <li><a title="FAQ - Tire suas duvidas" href="#">FAQ</a></li>
-                            <li><a title="Nucleo de Carreiras do Site" href="#">Nucleo de Carreiras</a></li>
-                            <li><a title="Notícias recentes" href="#">Noticias</a></li>
-                            <li><a title="Detalhes sobre o Vestibular" href="#">Vestibular</a></li>
-                            <li><a title="Editais do Vestibular" href="#">Editais</a></li>
-                            <li><a title="Detalhes sobre os Concursos" href="#">Concursos</a></li>
+                            <li><a title="FAQ - Tire suas duvidas" href="/servicos/faq.php">FAQ</a></li>
+                            <li><a title="Nucleo de Carreiras do Site" href="/servicos/carreiras.php">Nucleo de Carreiras</a></li>
+                            <li><a title="Notícias recentes" href="/servicos/noticias.php">Noticias</a></li>
+                            <li><a title="Detalhes sobre o Vestibular" href="/servicos/vestibular.php">Vestibular</a></li>
+                            <li><a title="Editais do Vestibular" href="/servicos/editais.php">Editais</a></li>
+                            <li><a title="Detalhes sobre os Concursos" href="/servicos/concursos.php">Concursos</a></li>
                         </ul>
                     </div> <!-- widget --> 
                 </div><!-- col-md-3 -->
