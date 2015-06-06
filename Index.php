@@ -105,7 +105,7 @@
                         <img class="img-responsive" src="images/index-cursos/item1.png" alt="Banco de Dados">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">MIT em Gestão de Banco de Dados</a> </h3>
+                                <h3><a href="/cursos/posgraduacao6.php">MIT em Gestão de Banco de Dados</a> </h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="/cursos/posgraduacao6.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
@@ -118,7 +118,7 @@
                         <img class="img-responsive" src="images/index-cursos/item2.png" alt="Marketing Digital">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">Marketing Digital</a></h3>
+                                <h3><a href="/cursos/curso2.php">Marketing Digital</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="/cursos/curso2.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
@@ -131,7 +131,7 @@
                         <img class="img-responsive" src="images/index-cursos/item3.png" alt="MIT em Big Data">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">MIT em Big Data</a></h3>
+                                <h3><a href="/cursos/posgraduacao2.php">MIT em Big Data</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="/cursos/posgraduacao2.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
@@ -144,7 +144,7 @@
                         <img class="img-responsive" src="images/index-cursos/item4.png" alt="MIT em Engenharia de Software .NET">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">MIT em Engenharia de Software .NET</a></h3>
+                                <h3><a href="/cursos/posgraduacao8.php">MIT em Engenharia de Software .NET</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="/cursos/posgraduacao8.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
@@ -157,7 +157,7 @@
                         <img class="img-responsive" src="images/index-cursos/item5.png" alt="MIT em Arquitetura de Software">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">MIT em Arquitetura de Software</a></h3>
+                                <h3><a href="/cursos/posgraduacao1.php">MIT em Arquitetura de Software</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="/cursos/posgraduacao1.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
@@ -170,7 +170,7 @@
                         <img class="img-responsive" src="images/index-cursos/item6.png" alt="DBA Oracle">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">DBA Oracle</a></h3>
+                                <h3><a href="/cursos/curso7.php">DBA Oracle</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="/cursos/curso7.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
@@ -183,7 +183,7 @@
                         <img class="img-responsive" src="images/index-cursos/item7.png" alt="WebDesigner">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">WebDesigner</a></h3>
+                                <h3><a href="/cursos/curso1.php">WebDesigner</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="/cursos/curso1.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
@@ -196,7 +196,7 @@
                         <img class="img-responsive" src="images/index-cursos/item8.png" alt="Desenvolvedor Android">
                         <div class="overlay">
                             <div class="painel-cursos-descricao">
-                                <h3><a href="#">Desenvolvedor Android</a></h3>
+                                <h3><a href="/cursos/curso5.php">Desenvolvedor Android</a></h3>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
                                 <a class="preview" href="/cursos/curso5.php" rel="prettyPhoto"><i class="fa fa-eye"></i> Saiba Mais</a>
                             </div> <!-- painel-cursos-descricao -->
