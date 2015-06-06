@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Jun-2015 às 19:44
+-- Generation Time: 06-Jun-2015 às 20:44
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -29,10 +29,19 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `administracao` (
   `idAdm` int(11) NOT NULL AUTO_INCREMENT,
   `nomeFuncionario` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(12) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `cargo` char(3) NOT NULL,
   PRIMARY KEY (`idAdm`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `administracao`
+--
+
+INSERT INTO `administracao` (`idAdm`, `nomeFuncionario`, `email`, `senha`, `cpf`, `cargo`) VALUES
+(1, 'Administrador', 'admin@admin.com', 'admin', '', 'adm');
 
 -- --------------------------------------------------------
 
@@ -268,6 +277,8 @@ INSERT INTO `modulo_professor` (`idModulo`, `idProfessor`) VALUES
 CREATE TABLE IF NOT EXISTS `professor` (
   `idProfessor` int(11) NOT NULL AUTO_INCREMENT,
   `nomeProfessor` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(12) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   PRIMARY KEY (`idProfessor`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
@@ -276,9 +287,9 @@ CREATE TABLE IF NOT EXISTS `professor` (
 -- Extraindo dados da tabela `professor`
 --
 
-INSERT INTO `professor` (`idProfessor`, `nomeProfessor`, `cpf`) VALUES
-(1, 'Professor1', ''),
-(2, 'Professor2', '');
+INSERT INTO `professor` (`idProfessor`, `nomeProfessor`, `email`, `senha`, `cpf`) VALUES
+(1, 'Professor1', '', '', ''),
+(2, 'Professor2', '', '', '');
 
 -- --------------------------------------------------------
 
