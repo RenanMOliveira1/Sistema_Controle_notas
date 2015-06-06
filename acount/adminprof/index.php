@@ -12,6 +12,46 @@
 			header("Location: /acount/adminal/");
 		break;
 	}
+	
+	$trTemp = "";
+	
+		//Conecção ao Banco de Dados
+	$conexao = @mysql_connect("localhost", "root", "");
+	if (!$conexao) {
+		exit("Site Temporariamente fora do ar");}
+	
+	mysql_select_db("infnetgrid", $conexao);
+	
+	$query = "SELECT modulo.`nome`, modulo.`descr`, programa.`nomeCurso`, turma.`nomeTurma`
+			  FROM `turma`
+			  JOIN `modulo` ON modulo.`idModulo` = turma.`idModulo`
+              JOIN `modulo_professor` ON modulo_professor.`idModulo` = turma.`idModulo`
+              JOIN `professor` ON professor.`idProfessor` = modulo_professor.`idProfessor`
+              JOIN `programa` ON programa.`idPrograma` = turma.`idPrograma`
+			  WHERE
+			  turma.`idProfessor` = '{$_SESSION['profId']}'
+			  ORDER BY modulo.`nome`";
+	
+	$resultadoPesquisa = @mysql_query($query, $conexao);
+	$msg = "";
+	$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+	if ($numeroPesquisa >= 1){
+		$contador = 0;
+		while($modulos = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+			$trTemp.= "<div class='col-md-6'>
+				<div class='panel panel-info'>
+					<div class='panel-heading dark-overlay'>{$modulos['nome']}</div>
+					<div class='panel-body'>
+						<p>{$modulos['descr']}</p>
+                        <p><strong>Turma</strong>: {$modulos['nomeTurma']}</p>
+                        <p><strong>Programa</strong>: {$modulos['nomeCurso']}</p>
+					</div>
+				</div>
+			</div><!--/.col-->";
+		}
+	} else {
+		$trTemp.="Não está alocado em nenhuma turma";
+	}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,7 +71,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
 				<li>Módulos que Ministro</li>
 			</ol>
 		</div><!--/.row-->
@@ -42,49 +82,7 @@
 			</div>
 		</div><!--/.row-->
 		
-		 <div class="col-md-6">
-				<div class="panel panel-info">
-					<div class="panel-heading dark-overlay">Módulo #1</div>
-					<div class="panel-body">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-                        <p><strong>Turma</strong>: NomeDaTurma</p>
-                        <p><strong>Programa</strong>: NomeDoPrograma</p>
-					</div>
-				</div>
-			</div><!--/.col-->
-			
-			<div class="col-md-6">
-				<div class="panel panel-info">
-					<div class="panel-heading dark-overlay">Módulo #2</div>
-					<div class="panel-body">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-                        <p><strong>Turma</strong>: NomeDaTurma</p>
-                        <p><strong>Programa</strong>: NomeDoPrograma</p>
-					</div>
-				</div>
-			</div><!--/.col-->
-			
-			<div class="col-md-6">
-				<div class="panel panel-info">
-					<div class="panel-heading dark-overlay">Módulo #3</div>
-					<div class="panel-body">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-                        <p><strong>Turma</strong>: NomeDaTurma</p>
-                        <p><strong>Programa</strong>: NomeDoPrograma</p>
-					</div>
-				</div>
-			</div><!--/.col-->
-			
-			<div class="col-md-6">
-				<div class="panel panel-info">
-					<div class="panel-heading dark-overlay">Módulo #4</div>
-					<div class="panel-body">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-                        <p><strong>Turma</strong>: NomeDaTurma</p>
-                        <p><strong>Programa</strong>: NomeDoPrograma</p>
-					</div>
-				</div>
-			</div><!--/.col-->
+		 <?= $trTemp?>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 

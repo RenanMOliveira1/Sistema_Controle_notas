@@ -30,6 +30,12 @@
                                                               - <a href='/acount/logout.php'>Sair</a>
 														  </div>";
 												break;
+												case 'professor':
+													echo "<div class='usuario-logado'>
+                                                             <a href='/acount/adminal/'>" . $_SESSION['profNome'] . "</a>
+                                                              - <a href='/acount/logout.php'>Sair</a>
+														  </div>";
+												break;
 												case 'administracao':
 													echo "<div class='usuario-logado'>
                                                              <a href='/acount/admin/'>" . $_SESSION['admNome'] . "</a>
