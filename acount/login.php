@@ -4,23 +4,22 @@
 	$senha = @$_POST['login-senha'];
 	$autenticacao = @$_POST['autenticacao'];
 	
-	//Conecção ao Banco de Dados
-	$conexao = mysql_connect("localhost", "root", "");
-	if (!$conexao) {
-		exit("Site Temporariamente fora do ar");}
-	
-	mysql_select_db("infnetgrid", $conexao);
-	
-	$query = "SELECT `matricula`, `nomeAluno`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`, `acesso`
-			  FROM `$autenticacao` 
-			  WHERE `email` = '$usuario'
-			  AND `senha` = '$senha'";
-	
-	$resultadoPesquisa = mysql_query($query, $conexao);
-	$msg = "";
-	if (mysql_num_rows($resultadoPesquisa) == 1) {
-		switch ($autenticacao) {
-			case 'aluno':
+	switch ($autenticacao) {
+		case 'aluno':
+			$conexao = mysql_connect("localhost", "root", "");
+			if (!$conexao) {
+				exit("Site Temporariamente fora do ar");}
+			
+			mysql_select_db("infnetgrid", $conexao);
+			
+			$query = "SELECT `matricula`, `nomeAluno`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`, `acesso`
+					  FROM `$autenticacao` 
+					  WHERE `email` = '$usuario'
+					  AND `senha` = '$senha'";
+			
+			$resultadoPesquisa = mysql_query($query, $conexao);
+			$msg = "";
+			if (mysql_num_rows($resultadoPesquisa) == 1) {
 				$aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
 				if($aluno['acesso'] == 1){
 					$_SESSION['alMatricula'] = $aluno['matricula'];
@@ -63,20 +62,48 @@
 				}else{
 					$msg = "Aguardando liberação de acesso";
 					header("Location: /acount/?msg=$msg");
-				}
-			break;
-			case 'professor':
-				header("Location: /acount/adminprof/");
-			break;
-			case 'administracao':
+				}			
+			}else {
+				$dadosInvalidos = " has-error";
+				$msg = "Usuario ou Senha Invalidos";
+				header("Location: /acount/?dadosInvalidos=$dadosInvalidos&msg=$msg");
+			}
+			mysql_close($conexao);
+		break;
+		case 'professor':
+			header("Location: /acount/adminprof/");
+		break;
+		case 'administracao':
+			$conexao = mysql_connect("localhost", "root", "");
+			if (!$conexao) {
+				exit("Site Temporariamente fora do ar");}
+			
+			mysql_select_db("infnetgrid", $conexao);
+			
+			$query = "SELECT `idAdm`, `nomeFuncionario`, `email`, `senha`, `cpf`, `cargo`
+					  FROM `$autenticacao` 
+					  WHERE `email` = '$usuario'
+					  AND `senha` = '$senha'";
+			
+			$resultadoPesquisa = mysql_query($query, $conexao);
+			$msg = "";
+			if (mysql_num_rows($resultadoPesquisa) == 1) {
+				$adm = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+				$_SESSION['admId'] = $adm['idAdm'];
+				$_SESSION['admNome'] = $adm['nomeFuncionario'];	
+				$_SESSION['admEmail'] = $adm['email'];	
+				$_SESSION['admSenha'] = $adm['senha'];
+				$_SESSION['admCpf'] = $adm['cpf'];	
+				$_SESSION['admCargo'] = $adm['cargo'];	
+				$_SESSION['logado'] = true;
+				$_SESSION['autenticacao'] = $autenticacao;
 				header("Location: /acount/admin/");
-			break;
-		}
-	}else {
-		$dadosInvalidos = " has-error";
-		$msg = "Usuario ou Senha Invalidos";
-		header("Location: /acount/?dadosInvalidos=$dadosInvalidos&msg=$msg");
-	}
-	
-	mysql_close($conexao);
+			}else {
+				$dadosInvalidos = " has-error";
+				$msg = "Usuario ou Senha Invalidos";
+				header("Location: /acount/?dadosInvalidos=$dadosInvalidos&msg=$msg");
+			}
+			mysql_close($conexao);
+		break;
+	}	
 ?>

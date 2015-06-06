@@ -28,8 +28,14 @@
                                                     echo "<div class='usuario-logado'>
                                                              <a href='/acount/adminal/'>" . $_SESSION['alNome'] . "</a>
                                                               - <a href='/acount/logout.php'>Sair</a>
-														  </div>
-                                                    ";
+														  </div>";
+												break;
+												case 'administracao':
+													echo "<div class='usuario-logado'>
+                                                             <a href='/acount/admin/'>" . $_SESSION['admNome'] . "</a>
+                                                              - <a href='/acount/logout.php'>Sair</a>
+														  </div>";
+												break;
                                             }
                                         }
                                       ?>

@@ -4,6 +4,14 @@
 		$msg = "Sessão expirada.";
 		header("Location: /acount/?msg=$msg");
 	}
+	switch($_SESSION['autenticacao']){
+		case "professor":
+			header("Location: /acount/adminprof/");
+		break;
+		case "administracao":
+			header("Location: /acount/admin/");
+		break;
+	}
 	define('TITULO','Notas');
 		$trTemp="";		
 	//Conecção ao Banco de Dados
