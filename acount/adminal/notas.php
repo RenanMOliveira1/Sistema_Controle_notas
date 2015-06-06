@@ -14,39 +14,68 @@
 	mysql_select_db("infnetgrid", $conexao);
 	
 	$query = "SELECT modulo.`nome`, aluno_avaliacao.`nota`, modulo.`idModulo`, avaliacao.`tipoAvaliacao`
-			  FROM `aluno_avaliacao` 
+			  FROM `aluno_avaliacao`
 			  JOIN avaliacao ON avaliacao.`idAvaliacao` = aluno_avaliacao.`idAvaliacao`
-			  JOIN modulo ON modulo.`idModulo` = avaliacao.`idModulo`
+              JOIN turma ON turma.`idTurma` = avaliacao.`idTurma`
+			  JOIN modulo ON modulo.`idModulo` = turma.`idModulo`
 			  JOIN aluno ON aluno.`matricula` = aluno_avaliacao.`alunoMatricula`
-			  WHERE aluno.`matricula` = '{$_SESSION['alMatricula']}'
+			  WHERE aluno.`matricula` ='{$_SESSION['alMatricula']}'
 			  ORDER BY modulo.`nome`, avaliacao.`tipoAvaliacao`";
 	
 	$resultadoPesquisa = @mysql_query($query, $conexao);
 	$msg = "";
 	$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 	if ($numeroPesquisa >= 1){
+		$modulo;
 		$contador = 0;
 		$contaModulo = 0;
 		$contaNotas = 0;
+		$somaNotas = 0;
 		while($avaliacao[$contador] = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
 			if($contador == 0){
 				$modulo[$contaModulo]['nome'] = $avaliacao[$contador]['nome'];
 				$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
+				$somaNotas+= $modulo[$contaModulo][$contaNotas];
 				$contaNotas++;
 			}
 			else{
 				if($avaliacao[($contador-1)]['idModulo'] == $avaliacao[$contador]['idModulo']){
 					$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
+					$somaNotas+= $modulo[$contaModulo][$contaNotas];
 					$contaNotas++;
 				}
-				else{
+				else{					
 					$contaModulo++;
 					$contaNotas = 0;
+					$somaNotas = 0;
 					$modulo[$contaModulo]['nome'] = $avaliacao[$contador]['nome'];
 					$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
+					$somaNotas+= $modulo[$contaModulo][$contaNotas];
 					$contaNotas++;					
 				}
-			}							
+			}
+			$modulo[$contaModulo]['media'] = ($somaNotas / $contaNotas);	
+			if($contaNotas < 2){
+				$modulo[$contaModulo]['status'] = "Em avaliação";
+			}
+			else{
+				if($contaNotas < 3){
+					if($modulo[$contaModulo]['media'] >= 6){
+						$modulo[$contaModulo]['status'] = "Aprovado";
+					}
+					else{
+						$modulo[$contaModulo]['status'] = "Em Prova Final";
+					}					
+				}
+				else{
+					if($modulo[$contaModulo]['media'] >= 5){
+						$modulo[$contaModulo]['status'] = "Aprovado na PF";
+					}
+					else{
+						$modulo[$contaModulo]['status'] = "Reprovado";
+					}
+				}
+			}
 			$contador++;	
 		}
 		$contador = $contaModulo;
@@ -58,8 +87,8 @@
 						 <td>{$modulo[$contaModulo][$contaNotas]}</td>
 						 <td>{$modulo[$contaModulo][($contaNotas+1)]}</td>
 						 <td>{$modulo[$contaModulo][($contaNotas+2)]}</td>
-						 <td>7</td>
-						 <td>Aprovado</td>
+						 <td>{$modulo[$contaModulo]['media']}</td>
+						 <td>{$modulo[$contaModulo]['status']}</td>
 					  </tbody>";								
 			$contaModulo++;
 		}
