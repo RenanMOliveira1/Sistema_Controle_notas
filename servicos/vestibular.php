@@ -5,7 +5,7 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-    <title>SGA | Sobre a Instituição</title>
+    <title>SGA | Vestibular</title>
     
     <!-- include com os scripts e CSS do SGA -->
     <? include("../includes/server/include-css-js-favicon.php"); ?> 
@@ -17,7 +17,7 @@
     <section id="section-sobre-sga" >
         <div class="container">
         	<div class="center wow fadeInDown">
-            	<h2>Sobre o SGA: Sistema de Gerência Acadêmico</h2>
+            	<h2>Vestibular</h2>
             </div> <!-- center wow fadeInDown -->
             <div class="wow fadeInDown">
 					<div class="col-sm-12">

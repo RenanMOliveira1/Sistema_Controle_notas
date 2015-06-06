@@ -5,7 +5,7 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-    <title>SGA | Sobre a Instituição</title>
+    <title>SGA | FAQ</title>
     
     <!-- include com os scripts e CSS do SGA -->
     <? include("../includes/server/include-css-js-favicon.php"); ?> 

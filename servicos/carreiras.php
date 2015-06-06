@@ -5,7 +5,7 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-    <title>SGA | Sobre a Instituição</title>
+    <title>SGA | Núcleo de Carreiras</title>
     
     <!-- include com os scripts e CSS do SGA -->
     <? include("../includes/server/include-css-js-favicon.php"); ?> 
@@ -26,7 +26,7 @@
                         	<legend>Conheça o Núcleo de Carreiras</legend>
                             <div id="divCarreiras" title="Clique aqui para saber mais sobre a Instituição">
                            		<ul id="div-sobre" class="nav navbar-nav">
-                            		<li><a href="/sobre.php"><label><img src="/imagens/logo-login.png">Conheça mais sobre a Instituição</label></a><br /></li>
+                            		<li><a href="/sobre.php"><label>Conheça mais sobre a Instituição</label></a><br /></li>
                                 </ul>
                             </div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat ultrices, laoreet dui nec, consectetur tellus. In consequat pretium mi id pretium. Phasellus malesuada lectus lacus, in congue metus aliquet sit amet. Aenean et nulla ut massa tincidunt elementum ac at mi. Sed in pretium lectus, ac hendrerit tortor. In hac habitasse platea dictumst. Cras feugiat mattis ante, id aliquam eros varius consectetur. Duis eget finibus erat, vitae viverra elit.
