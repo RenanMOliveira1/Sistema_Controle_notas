@@ -2,7 +2,7 @@
 	session_start();
 	$usuario = @$_POST['usuario'];
 	$senha = @$_POST['login-senha'];
-	$autentificacao = @$_POST['autentificacao'];
+	$autenticacao = @$_POST['autenticacao'];
 	
 	//Conecção ao Banco de Dados
 	$conexao = mysql_connect("localhost", "root", "");
@@ -12,14 +12,14 @@
 	mysql_select_db("infnetgrid", $conexao);
 	
 	$query = "SELECT `matricula`, `nomeAluno`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`, `acesso`
-			  FROM `$autentificacao` 
+			  FROM `$autenticacao` 
 			  WHERE `email` = '$usuario'
 			  AND `senha` = '$senha'";
 	
 	$resultadoPesquisa = mysql_query($query, $conexao);
 	$msg = "";
 	if (mysql_num_rows($resultadoPesquisa) == 1) {
-		switch ($autentificacao) {
+		switch ($autenticacao) {
 			case 'aluno':
 				$aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
 				if($aluno['acesso'] == 1){
@@ -31,7 +31,7 @@
 					$_SESSION['alEmail'] = $aluno['email'];
 					$_SESSION['alSenha'] = $aluno['senha'];
 					$_SESSION['logado'] = true;
-					$_SESSION['autentificacao'] = $autentificacao;
+					$_SESSION['autenticacao'] = $autenticacao;
 					
 					$query = "SELECT `Cep`, `tipoLogradouro`, `numero`, `logradouro`, `complemento`, `bairro`, `cidade`, `estado`
 							  FROM `endereco` 

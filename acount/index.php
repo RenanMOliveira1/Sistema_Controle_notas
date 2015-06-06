@@ -44,10 +44,10 @@
                                         name="login-senha" placeholder="Entre com a Senha" title="Entre com a Senha" />
                                     </label>
                                 </div> <!-- div-login-senha -->
-                                <div id="div-autentificacao">
+                                <div id="div-autenticacao">
                                 	<label>
-                                    	<span id="titulo-aut">Autentificação: </span>
-                                    	<select class="form-control" id="autentificacao" name="autentificacao">
+                                    	<span id="titulo-aut">Autenticação: </span>
+                                    	<select class="form-control" id="autenticacao" name="autenticacao">
                                         	<option value="aluno">Aluno</option>
                                             <option value="professor">Professor</option>
                                             <option value="administracao">Administração</option>
