@@ -13,36 +13,61 @@
 	
 	mysql_select_db("infnetgrid", $conexao);
 	
-	$query = "SELECT modulo.`nome`, avaliacao.`nota`
+	$query = "SELECT modulo.`nome`, aluno_avaliacao.`nota`, modulo.`idModulo`, avaliacao.`tipoAvaliacao`
 			  FROM `aluno_avaliacao` 
 			  JOIN avaliacao ON avaliacao.`idAvaliacao` = aluno_avaliacao.`idAvaliacao`
 			  JOIN modulo ON modulo.`idModulo` = avaliacao.`idModulo`
 			  JOIN aluno ON aluno.`matricula` = aluno_avaliacao.`alunoMatricula`
-			  WHERE aluno.`matricula` = '{$_SESSION['alMatricula']}'";
+			  WHERE aluno.`matricula` = '{$_SESSION['alMatricula']}'
+			  ORDER BY modulo.`nome`, avaliacao.`tipoAvaliacao`";
 	
 	$resultadoPesquisa = @mysql_query($query, $conexao);
 	$msg = "";
 	$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 	if ($numeroPesquisa >= 1){
 		$contador = 0;
-		while($avaliacao = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-			$trTemp.="<tbody>
-						 <td>{$avaliacao['nome']}</td>
-						 <td>{$avaliacao['nota']}</td>
-						 <td>8</td>
-						 <td>--</td>
+		$contaModulo = 0;
+		$contaNotas = 0;
+		while($avaliacao[$contador] = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+			if($contador == 0){
+				$modulo[$contaModulo]['nome'] = $avaliacao[$contador]['nome'];
+				$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
+				$contaNotas++;
+			}
+			else{
+				if($avaliacao[($contador-1)]['idModulo'] == $avaliacao[$contador]['idModulo']){
+					$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
+					$contaNotas++;
+				}
+				else{
+					$contaModulo++;
+					$contaNotas = 0;
+					$modulo[$contaModulo]['nome'] = $avaliacao[$contador]['nome'];
+					$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
+					$contaNotas++;					
+				}
+			}							
+			$contador++;	
+		}
+		$contador = $contaModulo;
+		$contaModulo = 0;
+		$contaNotas = 0;
+		while($contaModulo <= $contador){
+					@$trTemp.="<tbody>
+						 <td>{$modulo[$contaModulo]['nome']}</td>
+						 <td>{$modulo[$contaModulo][$contaNotas]}</td>
+						 <td>{$modulo[$contaModulo][($contaNotas+1)]}</td>
+						 <td>{$modulo[$contaModulo][($contaNotas+2)]}</td>
 						 <td>7</td>
 						 <td>Aprovado</td>
-					  </tbody>
-					  ";
-									
-									
+					  </tbody>";								
+			$contaModulo++;
 		}
 	} else {
 		$trTemp.="<div class=\"col-md-6\">
 				  		<div class=\"panel panel-info\">
 						<tbody>
-						 <td>Aluno não está cursando nenhum módulo</td>							
+						 <td>Aluno não fez nenhuma avaliação</td>							
 						</div>
 				  </div><!--/.col-->";
 	}
