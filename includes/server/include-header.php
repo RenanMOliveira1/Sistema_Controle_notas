@@ -23,7 +23,7 @@
                                                   <button type=\"button\" title=\"Clique aqui e se cadastre\" onclick=\"location.href='/cadastrar.php'\" class=\"btn btn-default\">Cadastrar</button>
 												  </div> <!-- nav-botao -->";
                                         } else {
-                                            switch ($_SESSION['autentificacao']) {
+                                            switch ($_SESSION['autenticacao']) {
                                                 case 'aluno':
                                                     echo "<div class='usuario-logado'>
                                                              <a href='/acount/adminal/'>" . $_SESSION['alNome'] . "</a>
