@@ -22,10 +22,11 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li id="navCriarProgama" class=""><a href="/acount/admin/index.php"><span class="glyphicon glyphicon-dashboard"></span> Criar Programa</a></li>
+        	<li id="navCriarProgama" class=""><a href="/acount/admin/index.php"><span class="glyphicon glyphicon-home"></span> Página Incial</a></li>
+			<li id="navCriarProgama" class=""><a href="/acount/admin/criar-programa.php"><span class="glyphicon glyphicon-file"></span> Criar Programa</a></li>
             <li id="navAdminCad" class="parent ">
-				<a href="#">
-					<span class="glyphicon glyphicon-list"></span> Cadastrar <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
+				<a href="#sub-item-1" data-toggle="collapse">
+					<span class="glyphicon glyphicon-list"></span> Cadastrar <span class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
 				</a>
 				<ul class="children collapse" id="sub-item-1">
 					<li><a href="/acount/admin/cadastrar-professor.php"><span class="glyphicon glyphicon-share-alt"></span> Professores</a></li>
@@ -35,8 +36,8 @@
 				</ul>
 			</li>
 			<li id="navAdminVinc" class="parent ">
-				<a href="#">
-					<span class="glyphicon glyphicon-list"></span> Vincular <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
+				<a data-toggle="collapse" href="#sub-item-2">
+					<span class="glyphicon glyphicon-list"></span> Vincular <span class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
 				</a>
 				<ul class="children collapse" id="sub-item-2">
 					<li><a class="" href="/acount/admin/vincular-alunos.php"><span class="glyphicon glyphicon-share-alt"></span> Alunos</a></li>

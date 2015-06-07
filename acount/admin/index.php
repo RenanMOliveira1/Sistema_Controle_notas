@@ -14,7 +14,7 @@
 			header("Location: /acount/adminal/");
 		break;
 	}
-	define("TITULO","Criar Programa");
+	define("TITULO","Admin: Página Incial");
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
+				<li><a href="/acount/admin/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
 				<li><?=TITULO?></li>
 			</ol>
 		</div> <!-- row -->
@@ -47,62 +47,31 @@
 		</div> <!-- row -->
 		
         <div class="row">
-			<div class="col-md-8">
+			<div class="col-lg-12">
+				<div class="alert bg-primary" role="alert">
+					<span class="glyphicon glyphicon-info-sign"></span> Bem-Vindo à Administração do SGA - Sistema de Gestão de Notas <a href="#" class="pull-right"></a>
+				</div>
+            </div>
+        </div>
+        
+        <div class="row">
+			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading"> Dados do Programa</div>
+					<div class="panel-heading"> Sobre a Página de Administração</div>
 					<div class="panel-body">
-						<form id="form-criar-programa" class="form-horizontal" action="/acount/admin/criar_programa.php" method="post">
-                            <div class="form-group" id="div-programa-tipo" >
-                                <label class="col-md-3 control-label">
-                                    <span>Tipo</span>
-                                </label>
-                                <div class="col-md-9">
-                                <select id="programa-tipo" name="programa-tipo" class="form-control" 
-                                title="Escolha o Tipo" >
-                                    <option value="graduacao">Graduação</option>
-                                    <option value="pos">Pós-Graduação</option>
-                                    <option value="intensivo">Intensivo</option>
-                                </select>
-                                </div> <!-- col-md-9 -->
-                            </div> <!-- programa-tipo -->
-
-                            <div class="form-group" id="div-nome-curso" >
-                                <label class="col-md-3 control-label">
-                                    <span>Nome do Curso</span>
-                                </label>
-                                <div class="col-md-9">
-                                    <input id="nome-curso" name="nome-curso" type="text" class="form-control"
-                                    placeholder="Digite o Nome do Curso" title="Entre com o Nome do Curso" />
-                                </div> <!-- col-md-9 -->
-                            </div> <!-- nome-curso -->
-                            
-                            <div class="form-group" id="div-sigla-curso" >
-                                <label class="col-md-3 control-label">
-                                    <span>Sigla do Curso</span>
-                                </label>
-                                <div class="col-md-9">
-                                    <input id="sigla-curso" name="sigla-curso" type="text" class="form-control"
-                                    placeholder="Digite a Sigla do Curso" title="Entre com a Sigla do Curso" />
-                                </div> <!-- col-md-9 -->
-                            </div> <!-- sigla-curso -->
-                            
-                            <div id="dados-invalidos">
-                            	<? if($msgExiste != " "){
-										echo "$msgExiste";
-									}									
-								?>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="col-md-12 widget-right">
-                                    <input type="button" id="btn-programa-enviar" value="Enviar" 
-                                    class="btn btn-default btn-md pull-right" onClick="botoesEnviar('#btn-programa-enviar','#form-criar-programa', ValidarPrograma());"/>
-                                </div> <!-- col-md-12 widget-right -->
-                            </div> <!-- form-group -->
-						</form>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed nulla id massa egestas scelerisque. Donec interdum augue eu augue facilisis, ut imperdiet metus euismod. Nam nec arcu ligula. Maecenas vulputate interdum eros, non iaculis sem dignissim et. Suspendisse suscipit magna ac erat sollicitudin pretium. Ut facilisis non quam eget venenatis. Maecenas non lacus erat. Etiam ut velit posuere, blandit massa et, ultrices ligula. Vivamus vel lectus a magna vulputate molestie.</p>
 					</div> <!-- panel-body -->
                 </div> <!-- panel panel-default -->
-           </div> <!-- col-md-8 -->
+           </div> <!-- col-md-12 -->
+           <div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"> Observação sobre Permissões na Administração</div>
+					<div class="panel-body">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed nulla id massa egestas scelerisque. Donec interdum augue eu augue facilisis, ut imperdiet metus euismod. Nam nec arcu ligula. Maecenas vulputate interdum eros, non iaculis sem dignissim et. Suspendisse suscipit magna ac erat sollicitudin pretium. Ut facilisis non quam eget venenatis. Maecenas non lacus erat. Etiam ut velit posuere, blandit massa et, ultrices ligula. Vivamus vel lectus a magna vulputate molestie.<br/>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed nulla id massa egestas scelerisque. Donec interdum augue eu augue facilisis, ut imperdiet metus euismod. Nam nec arcu ligula. Maecenas vulputate interdum eros, non iaculis sem dignissim et. Suspendisse suscipit magna ac erat sollicitudin pretium. Ut facilisis non quam eget venenatis. Maecenas non lacus erat. Etiam ut velit posuere, blandit massa et, ultrices ligula. Vivamus vel lectus a magna vulputate molestie.</p>
+					</div> <!-- panel-body -->
+                </div> <!-- panel panel-default -->
+           </div> <!-- col-md-12 -->
         </div> <!-- row -->
         
 	</div> <!-- main -->
