@@ -22,6 +22,16 @@
                       <div class="col-sm-8">
                             <div class="basic-login">
                                 <form id="formulario-cadastro" action="cadastro.php" method="post">
+                                    <div class="form-campos" id="div-programa">
+                                        <label>
+                                            <span>Escolha o Programa: <span class="asteristicos-obrigatorio">*</span></span>
+                                            <select id="programa" class="form-control" name="programa" title="Escolha o Programa que Deseja Cursar" >
+                                                <option value="graduacao">Graduação</option>
+                                                <option value="pos-graduacao">Pós-Graduação</option>
+                                                <option value="intensivo">Intensivo</option>
+                                            </select>
+                                        </label>
+                                    </div> <!-- div-nascimento -->
                                     <div class="form-campos" id="div-nome">
                                         <label>
                                             <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>

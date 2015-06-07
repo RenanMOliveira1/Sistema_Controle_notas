@@ -46,8 +46,8 @@
                         <p><strong>Turma</strong>: {$modulos['nomeTurma']}</p>
                         <p><strong>Programa</strong>: {$modulos['nomeCurso']}</p>
 					</div>
-				</div>
-			</div><!--/.col-->";
+					</div>
+				</div>";
 		}
 	} else {
 		$trTemp.="Não está alocado em nenhuma turma";
@@ -83,8 +83,7 @@
 		</div><!--/.row-->
 		
 		 <?= $trTemp?>
-		</div><!--/.row-->
-	</div>	<!--/.main-->
+	 </div>	<!--/.main-->
 
 	<? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </body>
