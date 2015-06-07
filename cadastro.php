@@ -35,14 +35,7 @@
 	}else{
 		$query1 = "INSERT INTO `aluno`(`nomeAluno`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`)
 		 		  VALUES ('$nome', '$cpf', '$dataNascimento','$sexo','$email','$senha');";
-				  
-				  /*SET @alunoMat = LAST_INSERT_ID();
-				  
-				  INSERT INTO `endereco`(`Cep`, `tipoLogradouro`, `numero`, `logradouro`, `complemento`, `bairro`, `cidade`, `estado`, `alunoMatricula`) 
-				  VALUES ('$cep','$tipoLogradouro',$numero,'$logradouro','$complemento','$bairro','$cidade','$estado', @alunoMat);
-				  
-				  INSERT INTO `telefone` (`telefone`, `celular`, `alunoMatricula`)
-				  VALUES ('$telefone', '$celular', @alunoMat);";*/
+
 		$queryPesquisa = "SELECT `matricula`
 				  FROM `aluno` 
 			      WHERE `email` = '$email'";

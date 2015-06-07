@@ -1,4 +1,6 @@
 <?
+	$msg = "";
+	$msg .= @$_GET['msg'];
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -57,7 +59,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados do Professor</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-prof" action="/acount/admin/cadastrar_prof_exe.php" method="post">
+						<form class="form-horizontal" id="form-cadastrar-prof" action="/acount/admin/cadastrar_prof.php" method="post">
                             <div class="form-group" id="div-admin-prof-nome" >
                                 <label class="col-md-3 control-label">
                                     <span>Nome</span>
@@ -77,8 +79,41 @@
                                     placeholder="Digite o CPF do Professor" title="Digite o CPF do Professor" >
                                 </div> <!-- col-md-3 control-label -->
                             </div> <!-- div-admin-prof-cpf -->
+                            <div class="form-group" id="div-admin-prof-email" >
+                                <label class="col-md-3 control-label">
+                                    <span>Email</span>
+                                </label>
+                                <div class="col-md-9">
+                                	<input id="admin-prof-email" name="admin-prof-email" type="text" class="form-control"
+                                	 title="Digite o Email do Professor" placeholder="Digite o Email do Professor" >
+                                </div> <!-- col-md-3 control-label -->
+                            </div> <!-- div-admin-prof-email -->
+                            <div class="form-group" id="div-admin-prof-senha" >
+                                <label class="col-md-3 control-label">
+                                    <span>Senha</span>
+                                </label>
+                                <div class="col-md-9">
+                                	<input id="admin-prof-senha" name="admin-prof-senha" type="password" class="form-control"
+                                	 title="Digite a Senha do Professor" placeholder="Digite a Senha do Professor" >
+                                </div> <!-- col-md-3 control-label -->
+                            </div> <!-- div-admin-prof-senha -->
+                            <div class="form-group" id="div-admin-prof-senha-confirma" >
+                                <label class="col-md-3 control-label">
+                                    <span>Confirmar Senha</span>
+                                </label>
+                                <div class="col-md-9">
+                                	<input id="admin-prof-senha-confirma" name="admin-prof-senha-confirma" type="password" class="form-control"
+                                	 title="Digite novamente a Senha do Professor" placeholder="Digite novamente a Senha do Professor" >
+                                </div> <!-- col-md-3 control-label -->
+                            </div> <!-- div-admin-prof-senha-confirma -->
 							
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos">
+                            	<?
+									if($msg != ""){
+										echo "$msg";
+									}
+								?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-cad-prof-enviar">
