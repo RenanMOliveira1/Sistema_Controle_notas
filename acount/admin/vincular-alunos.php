@@ -82,7 +82,8 @@
 											if ($numeroPesquisa >= 1){
 												$contador = 0;
 												while($aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-													echo "<option value='{$aluno['matricula']}'>{$aluno['nomeAluno']}</option>";
+													$alunoFormatado = utf8_encode($aluno['nomeAluno']);
+													echo "<option value='{$aluno['matricula']}'>$alunoFormatado</option>";
 												}
 											}else{
 												$trTemp.="Não há alunos matriculados";
@@ -114,7 +115,8 @@
 											if ($numeroPesquisa >= 1){
 												$contador = 0;
 												while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-													echo "<option value='{$turma['idTurma']}'>{$turma['nomeTurma']}</option>";
+													$turmaFormatada = utf8_encode($turma['nomeTurma']);
+													echo "<option value='{$turma['idTurma']}'>$turmaFormatada</option>";
 												}
 											}else{
 												$trTemp.="Não há turmas criadas";

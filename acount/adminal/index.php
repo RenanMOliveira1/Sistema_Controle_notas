@@ -41,7 +41,7 @@
 	if ($numeroPesquisa >= 1){
 		$contador = 0;
 		while($modulos = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-			$trTemp.="<div class=\"col-md-6\">
+			$trTemp .= "<div class=\"col-md-6\">
 						<div class=\"panel panel-info\">
 							<div class=\"panel-heading dark-overlay\"> {$modulos['nome']}</div>
 							<div class=\"panel-body\">
@@ -52,6 +52,7 @@
 						</div>
 					  </div><!--/.col-->";
 		}
+		$trTemp = utf8_encode($trTemp);
 	} else {
 		$trTemp.="Aluno não está cursando nenhum módulo";
 	}
@@ -91,7 +92,7 @@
 		</div> <!-- row -->
 		
         <!-- Exibe as Disciplinas -->
-        <?= $trTemp ?>	
+        <?= utf8_encode($trTemp) ?>	
 		
 	</section> <!-- main -->
 </body>

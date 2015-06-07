@@ -212,12 +212,7 @@
                             </div> <!-- basic-login -->
                         </div> <!-- col-sm-8 -->
                         
-                        <div class="col-sm-4 social-login">
-                            <p>Registra-se usando o Facebook ou Twitter</p>
-                            <div class="social-login-buttons">
-                                <a href="#" title="Faça o seu cadastro usando o Facebook" class="btn-facebook-login">Cadastrar-se com o Facebook</a>
-                                <a href="#" title="Faça o seu cadastro usando o Twitter" title="" class="btn-twitter-login">Cadastrar-se com o Twitter</a>
-                            </div> <!-- social-login-buttons -->
+                        <div class="col-sm-4">
                             <div id="div-logo-cadastrar">
                             	<img src="images/logo-footer.png" width="375" height="340" title="Logo do SGA" alt="Logo do SGA" heigth="320" />
                             </div> <!-- div-logo-cadastrar -->

@@ -55,27 +55,27 @@
                             </tbody>
                             <tbody>
                           <td class="success">Nome: </td>
-                                <td><?= $_SESSION['alNome']?></td>
+                                <td><?= utf8_encode($_SESSION['alNome'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Nascimento</td>
-                                <td><?= $_SESSION['alDataNascimento']?></td>
+                                <td><?= utf8_encode($_SESSION['alDataNascimento'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">CPF</td>
-                                <td><?= $_SESSION['alCpf']?></td>
+                                <td><?= utf8_encode($_SESSION['alCpf'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Sexo</td>
-                                <td><?= $_SESSION['alSexo']?></td>
+                                <td><?= utf8_encode($_SESSION['alSexo'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Telefone</td>
-                                <td><?= $_SESSION['alTelefone']?></td>
+                                <td><?= utf8_encode($_SESSION['alTelefone'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Celular</td>
-                                <td><?= $_SESSION['alCelular']?></td>
+                                <td><?= utf8_encode($_SESSION['alCelular'])?></td>
                             </tbody>
                         </table>
                 </div> <!-- table-responsive panel-body -->
@@ -90,31 +90,31 @@
                             
                             <tbody>
                           <td class="success">CEP: </td>
-                                <td><?= $_SESSION['alCep']?></td>
+                                <td><?= utf8_encode($_SESSION['alCep']) ?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Tipo de Logradouro: </td>
-                                <td><?= $_SESSION['alTipoLogradouro']?></td>
+                                <td><?= utf8_encode($_SESSION['alTipoLogradouro']) ?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Logradouro: </td>
-                                <td><?= $_SESSION['alLogradouro']." - ". $_SESSION['alNumero']?></td>
+                                <td><?= utf8_encode($_SESSION['alLogradouro'])." - ". utf8_encode($_SESSION['alNumero'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Complemento: </td>
-                                <td><?= $_SESSION['alComplemento']?></td>
+                                <td><?= utf8_encode($_SESSION['alComplemento'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Bairro: </td>
-                                <td><?= $_SESSION['alBairro']?></td>
+                                <td><?= utf8_encode($_SESSION['alBairro'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Cidade: </td>
-                                <td><?= $_SESSION['alCidade']?></td>
+                                <td><?= utf8_encode($_SESSION['alCidade'])?></td>
                             </tbody>
                             <tbody>
                           <td class="success">Estado: </td>
-                                <td><?= $_SESSION['alEstado']?></td>
+                                <td><?= utf8_encode($_SESSION['alEstado'])?></td>
                             </tbody>
                         </table>
                 </div> <!-- table-responsive panel-body -->

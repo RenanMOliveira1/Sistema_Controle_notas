@@ -7,6 +7,7 @@
 	$msgDados .= @$_GET['msgDados'];
 
 	session_start();
+	define("TITULO", "Configurações");
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
 		header("Location: /acount/?msg=$msg");
@@ -27,7 +28,7 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-	<title>SGA | Painel de Controle do Aluno: Notas</title>
+	<title><?=TITULO?> | Painel de Controle do Professor - SGA</title>
 
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
@@ -39,13 +40,13 @@
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li>Configurações</li>
+				<li><?=TITULO?></li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Configurações</h1>
+				<h1 class="page-header"><?=TITULO?></h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -96,7 +97,7 @@
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-prof-nome" name="alt-prof-nome" size="70" class="form-control"
-                                    maxlength="150" title="Entre com o novo Nome" value="<?= $_SESSION['profNome']?>"
+                                    maxlength="150" title="Entre com o novo Nome" value="<?= utf8_encode($_SESSION['profNome'])?>"
                                     placeholder="Digite o seu Nome Completo" autofocus />
                                 </label>
                             </div> <!-- div-nome -->

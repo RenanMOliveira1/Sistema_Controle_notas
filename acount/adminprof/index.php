@@ -12,7 +12,7 @@
 			header("Location: /acount/adminal/");
 		break;
 	}
-	
+	define("TITULO", "Módulos que Ministro");
 	$trTemp = "";
 	
 		//Conecção ao Banco de Dados
@@ -60,7 +60,7 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-	<title>SGA | Painel de Controle do Aluno</title>
+	<title><?=TITULO?> | Painel de Controle do Professor - SGA</title>
 
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
@@ -72,18 +72,18 @@
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li>Módulos que Ministro</li>
+				<li><?=TITULO?></li>
 			</ol>
-		</div><!--/.row-->
+		</div><!-- row -->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Módulos que Ministro</h1>
+				<h1 class="page-header"><?=TITULO?></h1>
 			</div>
-		</div><!--/.row-->
+		</div><!-- row -->
 		
-		 <?= $trTemp?>
-	 </div>	<!--/.main-->
+		 <?= utf8_encode($trTemp)?>
+	 </div> <!-- main -->
 
 	<? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </body>

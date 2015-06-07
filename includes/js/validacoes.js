@@ -1,5 +1,5 @@
-// JavaScript Document
 
+//Hover no Sidebar
 function SidebarActive(opcaoSidebar) {
 	switch (opcaoSidebar) {
 		case 'disciplinas':
@@ -39,9 +39,16 @@ function SidebarActive(opcaoSidebar) {
 		case "configuracao-admin":
 			$("#navAdminConfig").addClass("active");
 			break;
+		case "liberar-acesso":
+			$("#navLiberarAcesso").addClass("active");
+			break;
+		case "admin-index":
+			$("#navAdminIndex").addClass("active");
+			break;
 	}
 }
 
+//Hover no Menu da Index
 function NavActive(opcaoMenu) {
 
 	switch (opcaoMenu) {

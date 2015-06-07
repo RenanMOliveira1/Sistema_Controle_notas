@@ -97,7 +97,7 @@
 										echo "$msgExiste";
 									}									
 								?>
-                            </div>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">
                                 <div class="col-md-12 widget-right">

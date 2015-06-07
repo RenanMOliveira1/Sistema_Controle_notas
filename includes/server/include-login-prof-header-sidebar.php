@@ -3,7 +3,7 @@
 			<div class="navbar-header">
 				<a class="adminLogo" href="/"><img src="/images/logo.png" alt="Logo do SGA" title="Logo do SGA" width="150" hegth="30" /></a>
 				<ul class="user-menu">
-					<li><a href="/acount/adminprof/configuracoes.php"><span class="glyphicon glyphicon-user"></span> <?= $_SESSION['profNome']?></span></a></li>
+					<li><a href="/acount/adminprof/configuracoes.php"><span class="glyphicon glyphicon-user"></span> <?= utf8_encode($_SESSION['profNome'])?></span></a></li>
 						<li><a id="log-out-prof" href="/acount/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 				</ul>
 			</div>

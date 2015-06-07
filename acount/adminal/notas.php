@@ -63,6 +63,7 @@
 				}
 			}
 			$modulo[$contaModulo]['media'] = ($somaNotas / $contaNotas);	
+			$mediaFormatada = number_format( $modulo[$contaModulo]['media'], 2 );
 			if($contaNotas < 2){
 				$modulo[$contaModulo]['status'] = "Em avaliação";
 			}
@@ -95,7 +96,7 @@
 						 <td>{$modulo[$contaModulo][$contaNotas]}</td>
 						 <td>{$modulo[$contaModulo][($contaNotas+1)]}</td>
 						 <td>{$modulo[$contaModulo][($contaNotas+2)]}</td>
-						 <td>{$modulo[$contaModulo]['media']}</td>
+						 <td>{$mediaFormatada}</td>
 						 <td>{$modulo[$contaModulo]['status']}</td>
 					  </tbody>";								
 			$contaModulo++;

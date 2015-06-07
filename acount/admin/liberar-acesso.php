@@ -77,7 +77,7 @@
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
-<body onLoad="SidebarActive('criar-programa');">
+<body onLoad="SidebarActive('liberar-acesso');">
 	<? include("../../includes/server/include-login-admin-header-sidebar.php"); ?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
@@ -115,7 +115,7 @@
                                     <th data-field="av2">Opções</th>
                                 </tr>
                             </thead>
-                            <?= $trTemp ?>
+                            <?= utf8_encode($trTemp) ?>
                         </table>
                     </div> <!-- table-responsive panel-body -->
                 </div> <!-- panel panel-default -->

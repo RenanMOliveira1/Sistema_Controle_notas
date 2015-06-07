@@ -4,7 +4,7 @@
 				<a class="adminLogo" href="/"><img src="/images/logo.png" alt="Logo do SGA" title="Logo do SGA" width="150" hegth="30" ></a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="/acount/admin/#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?= $_SESSION['admNome']?> <span class="caret"></span></a>
+						<a href="/acount/admin/#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?= utf8_encode($_SESSION['admNome'])?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/acount/admin/configuracoes.php"><span class="glyphicon glyphicon-cog"></span> Configurações</a></li>
 							<li><a href="/acount/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
@@ -22,7 +22,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-        	<li id="navCriarProgama" class=""><a href="/acount/admin/index.php"><span class="glyphicon glyphicon-home"></span> Página Incial</a></li>
+        	<li id="navAdminIndex" class=""><a href="/acount/admin/index.php"><span class="glyphicon glyphicon-home"></span> Página Incial</a></li>
 			<li id="navCriarProgama" class=""><a href="/acount/admin/criar-programa.php"><span class="glyphicon glyphicon-file"></span> Criar Programa</a></li>
             <li id="navAdminCad" class="parent ">
 				<a href="#sub-item-1" data-toggle="collapse">
@@ -44,7 +44,7 @@
 					<li><a class="" href="/acount/admin/vincular-professor.php"><span class="glyphicon glyphicon-random"></span> Professores</a></li>
 				</ul>
 			</li>
-            <li id="navAdminConfig" class=""><a href="/acount/admin/liberar-acesso.php"><span class="glyphicon glyphicon-saved"></span> Liberar Acesso de Aluno</a></li>
+            <li id="navLiberarAcesso" class=""><a href="/acount/admin/liberar-acesso.php"><span class="glyphicon glyphicon-saved"></span> Liberar Acesso de Aluno</a></li>
 			<li id="navAdminConfig" class=""><a href="/acount/admin/configuracoes.php"><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
 			<li role="presentation" class="divider"></li>
 			<li><a href="/index.php"><span class="glyphicon glyphicon-home"></span> Página Inicial</a></li>

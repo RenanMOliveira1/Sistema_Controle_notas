@@ -25,11 +25,11 @@
   	<meta name="keywords" content="faculdade, administracao, programa" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
 	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
+    
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
-     
 </head>
 
-<body onLoad="SidebarActive('criar-programa');">
+<body onLoad="SidebarActive('admin-index');">
 	<? include("../../includes/server/include-login-admin-header-sidebar.php"); ?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			

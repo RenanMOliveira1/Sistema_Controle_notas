@@ -76,10 +76,8 @@
                     </div> <!-- col-sm-5 -->
                     
                     <div class="col-sm-7 social-login">
-                        <p>Faça login com o Facebook ou Twitter</p>
                         <div class="social-login-buttons">
-                            <a href="#" title="Faça login usando o Facebook" class="btn-facebook-login">Login com o Facebook</a>
-                            <a href="#" title="Faça login usando o Twitter" class="btn-twitter-login">Login com o Twitter</a>
+                            <img src="../images/logo.png" width="400" height="200"/>
                         </div> <!-- social-login-buttons -->
                         <div class="not-member">
                             <p>Ainda não é membro? <a href="/cadastrar.php" title="Clique aqui para se registrar" >Clique aqui para registrar</a></p>
