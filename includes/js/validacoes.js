@@ -456,7 +456,11 @@ function ValidarPrograma() {
 		$("#div-nome-curso").addClass(" has-error");	
 		return false;
 	}
-		
+	if($("#sigla-curso").val() == ""){
+		$("#dados-invalidos").html("Campo Sigla é Obrigatório.<br/>");
+		$("#div-sigla-curso").addClass(" has-error");	
+		return false;
+	}
 	return true;
 }
 

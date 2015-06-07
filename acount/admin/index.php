@@ -1,5 +1,7 @@
 <?
 	session_start();
+	$msgExiste = "";
+	$msgExiste = @$_GET['msg'];
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
 		header("Location: /acount/?msg=$msg");
@@ -58,7 +60,7 @@
                                 <select id="programa-tipo" name="programa-tipo" class="form-control" 
                                 title="Escolha o Tipo" >
                                     <option value="graduacao">Graduação</option>
-                                    <option value="pos-graduacao">Pós-Graduação</option>
+                                    <option value="pos">Pós-Graduação</option>
                                     <option value="intensivo">Intensivo</option>
                                 </select>
                                 </div> <!-- col-md-9 -->
@@ -74,7 +76,22 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- nome-curso -->
                             
-                            <div id="dados-invalidos"></div>
+                            <div class="form-group" id="div-sigla-curso" >
+                                <label class="col-md-3 control-label">
+                                    <span>Sigla do Curso</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <input id="sigla-curso" name="sigla-curso" type="text" class="form-control"
+                                    placeholder="Digite a Sigla do Curso" title="Entre com a Sigla do Curso" />
+                                </div> <!-- col-md-9 -->
+                            </div> <!-- sigla-curso -->
+                            
+                            <div id="dados-invalidos">
+                            	<? if($msgExiste != " "){
+										echo "$msgExiste";
+									}									
+								?>
+                            </div>
                             
                             <div class="form-group">
                                 <div class="col-md-12 widget-right">

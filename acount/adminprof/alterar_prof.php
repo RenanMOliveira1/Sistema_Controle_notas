@@ -114,8 +114,8 @@
 				}
 			}else{
 				header("Location: /acount/adminprof/configuracoes.php?msgDados=Dados modificados com sucesso");
-				$_SESSION['profId'] = $nome;
-				$_SESSION['profIdCpf'] = $cpf;		
+				$_SESSION['profNome'] = $nome;
+				$_SESSION['profCpf'] = $cpf;		
 			}
 			mysql_close($conexao);	
 		break;

@@ -1,4 +1,11 @@
 <?
+	$msgSenha = "";
+	$msgSenha .= @$_GET['msgSenha'];
+	$msgEmail = "";
+	$msgEmail .= @$_GET['msgEmail'];
+	$msgDados = "";
+	$msgDados .= @$_GET['msgDados'];
+	
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -49,7 +56,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form class="form-horizontal" id="form-adm-alterar-senha" method="post" action="aterar_senha_exec.php">
+                    	<form class="form-horizontal" id="form-adm-alterar-senha" method="post" action="alterar_admin.php?acao=senha">
                         	<div class="form-group" id="div-adm-alterar-senha-antiga">
                             	<label class="col-md-3 control-label">
                                 	<span>Senha Atual: </span>
@@ -81,8 +88,12 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-senha-Confirmar -->
                             
-                            <div id="dados-invalidos"></div>
-                            
+                            <div id="dados-invalidos">
+								<?	if($msgSenha != ""){
+                                        echo $msgSenha;
+                                    }
+                                ?>
+                            </div>                            
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-alterar-enviar">
                             		<input type="button" id="btn-adm-alterar-enviar" class="btn btn-default btn-md pull-right" value="Alterar Senha"  onClick="botoesEnviar('#btn-adm-alterar-enviar','#form-adm-alterar-senha',ValidarAdminConfig());"/>
