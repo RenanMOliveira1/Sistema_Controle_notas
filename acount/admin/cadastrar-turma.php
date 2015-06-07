@@ -109,7 +109,7 @@
 													echo "<option value='{$programa['idPrograma']}'>{$programa['nomeCurso']}</option>";
 												}
 											}else{
-												$trTemp.="Não está alocado em nenhuma turma";
+												$trTemp.="Não há programas criados";
 											}
 										?>
                                     </select>
@@ -146,7 +146,7 @@
 													echo "<option value='{$modulo['idModulo']}'>{$modulo['nome']}</option>";
 												}
 											}else{
-												$trTemp.="Não está alocado em nenhuma turma";
+												$trTemp.="Não há módulos criados";
 											}
 										?>
                                     </select>

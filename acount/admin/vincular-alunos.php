@@ -1,4 +1,6 @@
 <?
+	$msg = "";
+	$msg .= @$_GET['msg'];
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -56,7 +58,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"> Dados da Vinculação</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" action="vincular_alun_exe.php" method="post" id="form-vincular-alun">
+						<form class="form-horizontal" action="vincular_aluno.php" method="post" id="form-vincular-alun">
                             <div class="form-group" id="div-vincular-aluno-nomeAl" >
                                 <label class="col-md-3 control-label">
                                     <span>Selecione o Aluno</span>
@@ -64,10 +66,28 @@
                                 <div class="col-md-9">
                                     <select id="vincular-aluno-nomeAl" name="vincular-aluno-nomeAl" 
                                     class="form-control" title="Escolha o Aluno" >
-                                        <option value="Aluno#1">Aluno #1</option>
-                                        <option value="Aluno#2">Aluno #2</option>
-                                        <option value="Aluno#3">Aluno #3</option>
-                                        <option value="Aluno#4">Aluno #4</option>
+                                    	<?
+													//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `matricula`, `nomeAluno`
+													  FROM `aluno`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													echo "<option value='{$aluno['matricula']}'>{$aluno['nomeAluno']}</option>";
+												}
+											}else{
+												$trTemp.="Não há alunos matriculados";
+											}
+										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-laboratorio-andar -->
@@ -78,13 +98,39 @@
                                 <div class="col-md-9">
                                     <select id="vincular-aluno-turma" name="vincular-aluno-turma" 
                                     class="form-control" title="Escolha a Turma" >
-                                        <option value="Turma#1">Turma #1</option>
-                                        <option value="Turma#2">Turma #2</option>
-                                        <option value="Turma#3">Turma #3</option>
-                                        <option value="Turma#4">Turma #4</option>
+                                    	<?
+													//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idTurma`, `nomeTurma`, `idPrograma`
+													  FROM `turma`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													echo "<option value='{$turma['idTurma']}'>{$turma['nomeTurma']}</option>";
+												}
+											}else{
+												$trTemp.="Não há turmas criadas";
+											}
+										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- col-md-9 -->
+                            
+                            <div id="dados-invalidos">
+                            	<?
+									if($msg != ""){
+										echo "$msg";
+									}
+								?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="col-md-12 widget-right" id="div-btn-vinc-al-enviar">
                                 <input type="button" id="btn-vinc-al-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-al-enviar','#form-vincular-alun',true);"/>
