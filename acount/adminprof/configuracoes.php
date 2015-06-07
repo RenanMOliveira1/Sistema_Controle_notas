@@ -1,4 +1,11 @@
 <?
+	$msgSenha = "";
+	$msgSenha .= @$_GET['msgSenha'];
+	$msgEmail = "";
+	$msgEmail .= @$_GET['msgEmail'];
+	$msgDados = "";
+	$msgDados .= @$_GET['msgDados'];
+
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -47,7 +54,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div>
 					<div class="panel-body">
-                    	<form id="form-alterar-senha" method="post" action="aterar_senha_exec.php">
+                    	<form id="form-alterar-senha" method="post" action="alterar_prof?acao=senha.php">
                         	<div class="form-group" id="div-alterar-senha-antiga">
                             	<label>
                                 	<span>Senha Atual: </span>
@@ -66,9 +73,14 @@
                                     <input type="password" id="alterar-senha-Confirmar" class="form-control" name="alterar-senha-Confirmar" title="Confirme a sua nova Senha" placeholder="Confirme a sua nova Senha" size="30"/>
                                 </label>
                             </div>
-                            
+                            <div id="dados-invalidos">
+								<?	if($msgSenha != ""){
+                                        echo $msgSenha;
+                                    }
+                                ?>
+                            </div> <!-- dados-invalidos --> 
                             <div class="form-group" id="div-alterar-senha-Confirmar">
-                            	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha" />
+                            	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha"/>
                             </div>
                         </form>
                     </div>
@@ -79,12 +91,12 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Dados</div>
 					<div class="panel-body">
-                    	<form id="formulario-cadastro" action="Entrar.php" method="post">
+                    	<form id="formulario-alterar-cadastro" action="alterar_prof?acao=dados.php" method="post">
                             <div class="form-campos" id="div-prof-nome">
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="prof-nome" size="70" class="form-control"
-                                    maxlength="150" title="Entre com o novo Nome" 
+                                    <input type="text" id="alt-prof-nome" name="alt-prof-nome" size="70" class="form-control"
+                                    maxlength="150" title="Entre com o novo Nome" value="<?= $_SESSION['profNome']?>"
                                     placeholder="Digite o seu Nome Completo" autofocus />
                                 </label>
                             </div> <!-- div-nome -->
@@ -92,13 +104,17 @@
                             <div class="form-campos" id="div-prof-cpf">
                                 <label>
                                     <span>CPF: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="prof-cpf" class="form-control" maxlenght="11" size="20"
+                                    <input type="text" id="alt-prof-cpf" name="alt-prof-cpf" class="form-control" maxlenght="11" size="20" value="<?= $_SESSION['profCpf']?>"
                                     title="Entre com o seu CPF" placeholder="Digite o novo CPF" />
                                 </label>
-                            </div> <!-- div-nascimento -->
+                            </div> <!-- div-cpf -->
                             
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
-                            
+                            <div id="dados-invalidos">
+                            	<?	if($msgDados != ""){
+                                        echo $msgDados;
+                                    }
+                                ?>
+                            </div> <!-- dados-invalidos -->                            
                         <div id="div-btn-prof-alterarDados">
                             <input type="button" id="btn-prof-alterarDados" class="btn btn-primary" value="Alterar Dados" />
                         </div> <!-- div-btn-enviar -->
