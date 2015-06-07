@@ -15,6 +15,12 @@
 		break;
 	}
 	define("TITULO","Criar Programa");
+	switch($_SESSION['admCargo']){
+		case "ass":
+		case "rca":
+		case "ped":
+			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
+	}
 ?>
 
 <!DOCTYPE html>

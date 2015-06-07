@@ -1,7 +1,7 @@
 <?
 	session_start();
-	$msgExiste = "";
-	$msgExiste = @$_GET['msg'];
+	$msg = "";
+	$msg = @$_GET['msg'];
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
 		header("Location: /acount/?msg=$msg");
@@ -25,8 +25,8 @@
   	<meta name="keywords" content="faculdade, administracao, programa" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
 	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
-
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
+     
 </head>
 
 <body onLoad="SidebarActive('criar-programa');">
@@ -44,8 +44,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header"><?=TITULO?></h1>
 			</div> <!-- col-lg-12 -->
-		</div> <!-- row -->
-		
+		</div> <!-- row -->        
         <div class="row">
 			<div class="col-lg-12">
 				<div class="alert bg-primary" role="alert">
@@ -76,5 +75,12 @@
         
 	</div> <!-- main -->
 </body>
+<script type="text/javascript">
+	<? 
+		if($msg != ""){
+			echo "alert('$msg');";
+	}
+	?>
+</script>
 
 </html>
