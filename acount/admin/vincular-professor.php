@@ -13,6 +13,13 @@
 		break;
 	}
 	define("TITULO","Vincular Módulo à Professor");
+	switch($_SESSION['admCargo']){
+		case "dir":
+		case "ass":
+		case "rca":
+			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
+		break;
+	}
 ?>
 
 <!DOCTYPE html>

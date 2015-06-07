@@ -13,6 +13,13 @@
 		break;
 	}
 	define("TITULO","Cadastrar Turma");
+	switch($_SESSION['admCargo']){
+		case "dir":
+		case "ass":
+		case "ped":
+			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
+		break;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +82,40 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-turma-turno -->
                             
+                            <div class="form-group" id="div-turma-programa" >
+                                <label class="col-md-3 control-label">
+                                	<span>Programa</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <select class="form-control" id="turma-programa" name="turma-programa"
+                                    title="Escolha o Programa" >
+                                    	<?
+													//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idPrograma`, `nomeCurso`, `sigla` 
+													  FROM `programa`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$msg = "";
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													echo "<option value='{$programa['idPrograma']}'>{$programa['nomeCurso']}</option>";
+												}
+											}else{
+												$trTemp.="Não está alocado em nenhuma turma";
+											}
+										?>
+                                    </select>
+                                </div> <!-- col-md-9 -->
+                            </div> <!-- div-turma-modulo -->                            
+ 
                             <div class="form-group" id="div-turma-modulo" >
                                 <label class="col-md-3 control-label">
                                 	<span>Modulo</span>
@@ -82,10 +123,32 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="turma-modulo" name="turma-modulo"
                                     title="Escolha o Módulo" >
-                                        <option value="Modulo#1">Modulo #1</option>
-                                        <option value="Modulo#2">Modulo #2</option>
-                                        <option value="Modulo#3">Modulo #3</option>
-                                        <option value="Modulo#4">Modulo #4</option>
+                                    	<?
+													//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT modulo.`idModulo`, modulo.`nome`
+													  FROM `programa_modulo`
+													  JOIN `modulo` ON modulo.`idModulo` = programa_modulo.`idModulo`
+													  JOIN `programa` ON programa.`idPrograma` = programa_modulo.`idPrograma`
+													  WHERE programa.`idPrograma` = 1";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$msg = "";
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($modulo = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													echo "<option value='{$modulo['idModulo']}'>{$modulo['nome']}</option>";
+												}
+											}else{
+												$trTemp.="Não está alocado em nenhuma turma";
+											}
+										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-turma-modulo -->
