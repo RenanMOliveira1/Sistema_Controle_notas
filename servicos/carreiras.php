@@ -24,16 +24,24 @@
 						<p>
                         <fieldset>
                         	<legend>Conheça o Núcleo de Carreiras</legend>
-                            <div id="divCarreiras" title="Clique aqui para saber mais sobre a Instituição">
-                           		<ul id="div-sobre" class="nav navbar-nav">
-                            		<li><a href="/sobre.php"><label>Conheça mais sobre a Instituição</label></a><br /></li>
-                                </ul>
+                            <div id="divNucleo">Aliquam velit mauris, tempus ac arcu quis, eleifend sodales ipsum. Nullam accumsan diam vitae vestibulum bibendum. Suspendisse sed nisi sit amet justo dignissim commodo at vitae eros. Quisque faucibus blandit nibh eget blandit. Nunc pulvinar quam rutrum sodales facilisis. Fusce tortor nulla, fermentum ut sem non, fermentum gravida risus. Proin auctor ipsum non tortor sodales ornare. Praesent imperdiet neque non ipsum iaculis lobortis. Sed sodales quis nibh a commodo. In lacinia arcu nulla, ac ornare urna iaculis vitae. Vivamus condimentum risus nisi, elementum condimentum odio volutpat fringilla.
+                             Aliquam ac nisl nibh. Integer feugiat odio at erat elementum, varius vestibulum libero consequat. Aenean porttitor lorem sed felis lacinia, in finibus elit vestibulum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.<br/><br/>
+                             </div>
+                            <p>
+                        	<legend>Estágio</legend>
+                        	<div id="divEstagio">Aliquam eu lorem volutpat, faucibus massa ut, pharetra nunc. Aenean sagittis elit ac consectetur maximus.
+ Nunc pulvinar quam rutrum sodales facilisis. Fusce tortor nulla, fermentum ut sem non, fermentum gravida risus. Proin auctor ipsum non tortor sodales ornare. Praesent imperdiet neque non ipsum iaculis lobortis. Sed sodales quis nibh a commodo. In lacinia arcu nulla, ac ornare urna iaculis vitae. Vivamus condimentum risus nisi, elementum condimentum odio volutpat fringilla.<br /><br />
+ 							</div>
+ 							<legend>Atividades Complementares</legend>
+ 							<div id="divAtividade">Aenean eget auctor risus. Ut ullamcorper aliquam diam, in rhoncus orci tincidunt ac.                      
+Nam iaculis dignissim dolor a mollis. Cras rutrum tempor libero, vitae vestibulum nulla hendrerit eu. Aliquam elit mi, tempus sed consequat nec, convallis ac elit. Vestibulum sed enim at tellus faucibus pretium vitae vel dolor. Aliquam erat volutpat. Duis scelerisque mauris id vehicula pharetra. Nulla tempus urna turpis. Nam posuere tellus purus, et egestas neque rutrum sed. <br /><br />
+							</div>
+                            <div id="divButton"><a href="/servicos/faq.php"><button type="button" class="btn btn-primary btn-lg">Perguntas Frequentes</button></a>
+                              <a href="/servicos/concursos.php"><button type="button" class="btn btn-primary btn-lg">Lista de Concursos</button></a>
+                              <a href="/servicos/editais.php"><button type="button" class="btn btn-primary btn-lg">Editais</button></a>
+                              <a href="/servicos/vestibular.php"><button type="button" class="btn btn-primary btn-lg">Saiba Mais sobre o Vestibular</button></a>
                             </div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat ultrices, laoreet dui nec, consectetur tellus. In consequat pretium mi id pretium. Phasellus malesuada lectus lacus, in congue metus aliquet sit amet. Aenean et nulla ut massa tincidunt elementum ac at mi. Sed in pretium lectus, ac hendrerit tortor. In hac habitasse platea dictumst. Cras feugiat mattis ante, id aliquam eros varius consectetur. Duis eget finibus erat, vitae viverra elit.
-
-Integer et semper quam, eu vehicula metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque condimentum facilisis finibus. In posuere velit vel pharetra dignissim. Nullam dictum felis id erat faucibus aliquam. Aenean consequat felis tellus, ut auctor nisl condimentum et. Aliquam id justo tempus, commodo nibh vel, porttitor lectus. Donec pulvinar lobortis ipsum, sed varius erat interdum sed. Praesent vestibulum libero blandit enim cursus, in rutrum eros gravida. Morbi pellentesque eros vel turpis dignissim blandit. Etiam faucibus efficitur odio ut vulputate. Sed molestie purus eget sem mollis scelerisque. Proin cursus laoreet elit, sed pellentesque velit facilisis sodales.
-
-Nullam at consectetur ligula, sed auctor dolor. Phasellus vitae lobortis libero. Nulla eget quam at justo fermentum efficitur. Vestibulum maximus elit in ante lobortis rhoncus. Praesent luctus magna ut enim consectetur aliquet. Nulla mauris ex, accumsan sit amet tempor vitae, sodales eu velit. In hac habitasse platea dictumst. 
+							</p>
 						</fieldset>
 						</p>
 					</div> <!-- col-sm-12 -->
