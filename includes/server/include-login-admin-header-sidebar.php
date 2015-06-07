@@ -29,10 +29,10 @@
 					<span class="glyphicon glyphicon-list"></span> Cadastrar <span class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a href="/acount/admin/cadastrar-professor.php"><span class="glyphicon glyphicon-share-alt"></span> Professores</a></li>
-					<li><a href="/acount/admin/criar-modulo.php"><span class="glyphicon glyphicon-share-alt"></span> Módulos</a></li>
-                    <li><a href="/acount/admin/cadastrar-laboratorio.php"><span class="glyphicon glyphicon-share-alt"></span> Laboratório</a></li>
-                    <li><a href="/acount/admin/cadastrar-turma.php"><span class="glyphicon glyphicon-share-alt"></span> Turma</a></li>
+					<li><a href="/acount/admin/cadastrar-professor.php"><span class="glyphicon glyphicon-file"></span> Professores</a></li>
+					<li><a href="/acount/admin/criar-modulo.php"><span class="glyphicon glyphicon-file"></span> Módulos</a></li>
+                    <li><a href="/acount/admin/cadastrar-laboratorio.php"><span class="glyphicon glyphicon-file"></span> Laboratório</a></li>
+                    <li><a href="/acount/admin/cadastrar-turma.php"><span class="glyphicon glyphicon-file"></span> Turma</a></li>
 				</ul>
 			</li>
 			<li id="navAdminVinc" class="parent ">
@@ -40,15 +40,16 @@
 					<span class="glyphicon glyphicon-list"></span> Vincular <span class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
 				</a>
 				<ul class="children collapse" id="sub-item-2">
-					<li><a class="" href="/acount/admin/vincular-alunos.php"><span class="glyphicon glyphicon-share-alt"></span> Alunos</a></li>
-					<li><a class="" href="/acount/admin/vincular-professor.php"><span class="glyphicon glyphicon-share-alt"></span> Professores</a></li>
+					<li><a class="" href="/acount/admin/vincular-alunos.php"><span class="glyphicon glyphicon-random"></span> Alunos</a></li>
+					<li><a class="" href="/acount/admin/vincular-professor.php"><span class="glyphicon glyphicon-random"></span> Professores</a></li>
 				</ul>
 			</li>
-			<li id="navAdminConfig" class=""><a href="/acount/admin/configuracoes.php"><span class="glyphicon glyphicon-pencil"></span> Configurações</a></li>
+            <li id="navAdminConfig" class=""><a href="/acount/admin/liberar-acesso.php"><span class="glyphicon glyphicon-saved"></span> Liberar Acesso de Aluno</a></li>
+			<li id="navAdminConfig" class=""><a href="/acount/admin/configuracoes.php"><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="/index.php"><span class="glyphicon glyphicon-user"></span> Página Inicial</a></li>
-            <li><a href="/sobre.php"><span class="glyphicon glyphicon-user"></span> Sobre</a></li>
-            <li><a href="/contato.php"><span class="glyphicon glyphicon-user"></span> Contato</a></li>
+			<li><a href="/index.php"><span class="glyphicon glyphicon-home"></span> Página Inicial</a></li>
+            <li><a href="/sobre.php"><span class="glyphicon glyphicon-credit-card"></span> Sobre</a></li>
+            <li><a href="/contato.php"><span class="glyphicon glyphicon-earphone"></span> Contato</a></li>
 		</ul>
 		
 	</div><!--/.sidebar-->

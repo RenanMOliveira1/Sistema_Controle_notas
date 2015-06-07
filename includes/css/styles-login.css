@@ -789,7 +789,7 @@ h1.page-header {
 
 .todo-list-item .glyphicon { 
 	margin-right:5px; 
-	color: #9fadbb; 
+	color: #072843; 
 }
 
 .todo-list-item .glyphicon:hover { 
@@ -821,7 +821,6 @@ h1.page-header {
 .todo-list-item {
 	list-style: none;
 	line-height: 0.9;
-	padding: 14px 15px 8px 15px;
 }
 
 .todo-list-item:hover, a.todo-list-item:focus {
@@ -907,6 +906,6 @@ h1.page-header {
 	margin-top: 20px;
 }
 
-#turma-turno, #turma-laboratorio, #turma-modulo, #turma-programa {
+#turma-turno, #turma-laboratorio, #turma-modulo {
 	width: 500px;
 }
