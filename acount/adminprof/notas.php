@@ -48,38 +48,38 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Selecionando a Turma</div> <!-- panel-heading -->
 					<div class="panel-body">
-                        <form class="form-horizontal" id="form-notas-selecionarTurma" method="post" action="\mostrar_turma.php">
+                        <form class="form-horizontal" id="form-notas-selecionarTurma" method="post" action="mostrar_turma.php">
                             <label>Selecione a Turma na qual você deseja Lançar Nota: </label>
                             <select class="form-control" id="escolher-turma" name="escolher-turma">
                                 <?
-                                        //Conecção ao Banco de Dados
-                                $conexao = @mysql_connect("localhost", "root", "");
-                                if (!$conexao) {
-                                    exit("Site Temporariamente fora do ar");}
-                                
-                                mysql_select_db("infnetgrid", $conexao);
-                                
-                                $query = "SELECT turma.`nomeTurma`, turma.`idTurma`
-                                          FROM `turma`
-                                          JOIN `modulo` ON modulo.`idModulo` = turma.`idModulo`
-                                          JOIN `modulo_professor` ON modulo_professor.`idModulo` = turma.`idModulo`
-                                          JOIN `professor` ON professor.`idProfessor` = modulo_professor.`idProfessor`
-                                          JOIN `programa` ON programa.`idPrograma` = turma.`idPrograma`
-                                          WHERE
-                                          turma.`idProfessor` = '{$_SESSION['profId']}'
-                                          ORDER BY modulo.`nome`";
-                        
-                                $resultadoPesquisa = @mysql_query($query, $conexao);
-                                $msg = "";
-                                $numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
-                                if ($numeroPesquisa >= 1){
-                                    $contador = 0;
-                                    while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-                                        echo "<option value='{$turma['idTurma']}'>{$turma['nomeTurma']}</option>";
-                                    }
-                                }else{
-                                    $trTemp.="Não está alocado em nenhuma turma";
-                                }
+									//Conecção ao Banco de Dados
+									$conexao = @mysql_connect("localhost", "root", "");
+									if (!$conexao) {
+										exit("Site Temporariamente fora do ar");}
+									
+									mysql_select_db("infnetgrid", $conexao);
+									
+									$query = "SELECT turma.`nomeTurma`, turma.`idTurma`
+											  FROM `turma`
+											  JOIN `modulo` ON modulo.`idModulo` = turma.`idModulo`
+											  JOIN `modulo_professor` ON modulo_professor.`idModulo` = turma.`idModulo`
+											  JOIN `professor` ON professor.`idProfessor` = modulo_professor.`idProfessor`
+											  JOIN `programa` ON programa.`idPrograma` = turma.`idPrograma`
+											  WHERE
+											  turma.`idProfessor` = '{$_SESSION['profId']}'
+											  ORDER BY modulo.`nome`";
+							
+									$resultadoPesquisa = @mysql_query($query, $conexao);
+									$msg = "";
+									$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+									if ($numeroPesquisa >= 1){
+										$contador = 0;
+										while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+											echo "<option value='{$turma['idTurma']}'>{$turma['nomeTurma']}</option>";
+										}
+									}else{
+										echo "<option value='0'>Não está alocado em nenhuma turma</option>";
+									}
                                 ?>
                             </select>
                             
