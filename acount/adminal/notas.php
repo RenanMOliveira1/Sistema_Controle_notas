@@ -21,85 +21,93 @@
 	
 	mysql_select_db("infnetgrid", $conexao);
 	
-	$query = "SELECT modulo.`nome`, aluno_avaliacao.`nota`, modulo.`idModulo`, avaliacao.`tipoAvaliacao`
-			  FROM `aluno_avaliacao`
-			  JOIN avaliacao ON avaliacao.`idAvaliacao` = aluno_avaliacao.`idAvaliacao`
-              JOIN turma ON turma.`idTurma` = avaliacao.`idTurma`
+	$query = "SELECT modulo.`nome`, turma_aluno.`av1`, turma_aluno.`av2`, turma_aluno.`av3`, modulo.`idModulo`
+			  FROM `turma_aluno`
+              JOIN turma ON turma.`idTurma` = turma_aluno.`turmaID`
 			  JOIN modulo ON modulo.`idModulo` = turma.`idModulo`
-			  JOIN aluno ON aluno.`matricula` = aluno_avaliacao.`alunoMatricula`
-			  WHERE aluno.`matricula` ='{$_SESSION['alMatricula']}'
-			  ORDER BY modulo.`nome`, avaliacao.`tipoAvaliacao`";
+			  JOIN aluno ON aluno.`matricula` = turma_aluno.`alunoMatricula`
+			  WHERE aluno.`matricula` = '{$_SESSION['alMatricula']}'
+			  ORDER BY modulo.`nome`";
 	
 	$resultadoPesquisa = @mysql_query($query, $conexao);
 	$msg = "";
 	$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 	if ($numeroPesquisa >= 1){
-		$modulo;
-		$contador = 0;
-		$contaModulo = 0;
-		$contaNotas = 0;
-		$somaNotas = 0;
-		while($avaliacao[$contador] = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-			if($contador == 0){
-				$modulo[$contaModulo]['nome'] = $avaliacao[$contador]['nome'];
-				$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
-				$somaNotas+= $modulo[$contaModulo][$contaNotas];
-				$contaNotas++;
+		while($nota = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+			$contNotas = 0;
+			$somaNotas = 0;
+			if($nota['av1'] < 0){
+				$nota['av1'] = "--";
+				$somaNotas += 0;
+			}else{
+				$somaNotas += $nota['av1'];
+				$contNotas++;
+			}
+			if($nota['av2'] < 0){
+				$nota['av2'] = "--";
+				$somaNotas += 0;
+			}else{
+				$somaNotas += $nota['av2'];
+				$contNotas++;
+			}			
+			if($nota['av3'] < 0){
+				$nota['av3'] = "--";
+				$somaNotas += 0;
+			}else{
+				$somaNotas += $nota['av3'];
+				$contNotas++;
+			}
+			if($contNotas > 0){	
+				$media = $somaNotas / $contNotas;
 			}
 			else{
-				if($avaliacao[($contador-1)]['idModulo'] == $avaliacao[$contador]['idModulo']){
-					$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
-					$somaNotas+= $modulo[$contaModulo][$contaNotas];
-					$contaNotas++;
-				}
-				else{					
-					$contaModulo++;
-					$contaNotas = 0;
-					$somaNotas = 0;
-					$modulo[$contaModulo]['nome'] = $avaliacao[$contador]['nome'];
-					$modulo[$contaModulo][$contaNotas] = $avaliacao[$contador]['nota'];
-					$somaNotas+= $modulo[$contaModulo][$contaNotas];
-					$contaNotas++;					
+				$media = "--";
+			}
+			if((($nota['av1'] == "--") && ($nota['av2'] > 0)) && ($nota['av3'] == "--")){
+				$status = "Em prova final";
+			}else{
+				if((($nota['av1'] == "--") && ($nota['av2'] > 0) && ($nota['av3'] > 0)) && ($media >= 5)){
+					$status = "Aprovado na PF";
+				}else{
+					if((($nota['av1'] == "--") && ($nota['av2'] > 0) && ($nota['av3'] > 0)) && ($media < 5)){
+						$status = "Reprovado";
+					}else{
+						if((($nota['av1'] > 0) && ($nota['av2'] == "--")) && ($nota['av3'] == "--")){
+							$status = "Em avaliação";
+						}else{
+							if((($nota['av1'] > 0) && ($nota['av2'] > 0)) && ($media >= 6)){
+								$status = "Aprovado";
+							}
+							else{
+								if((($nota['av1'] > 0) && ($nota['av2'] > 0) && ($nota['av3'] == "--")) && ($media < 6)){
+									$status = "Em prova final";
+								}
+								else{
+									if((($nota['av1'] > 0) && ($nota['av2'] > 0) && ($nota['av3'] > 0)) && ($media >= 5)){
+										$status = "Aprovado na PF";
+									}
+									else{
+										if((($nota['av1'] > 0) && ($nota['av2'] > 0) && ($nota['av3'] > 0)) && ($media < 5)){
+											$status = "Reprovado";
+										}
+										else{
+											$status = "--";
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
-			$modulo[$contaModulo]['media'] = ($somaNotas / $contaNotas);	
-			$mediaFormatada = number_format( $modulo[$contaModulo]['media'], 2 );
-			if($contaNotas < 2){
-				$modulo[$contaModulo]['status'] = "Em avaliação";
-			}
-			else{
-				if($contaNotas < 3){
-					if($modulo[$contaModulo]['media'] >= 6){
-						$modulo[$contaModulo]['status'] = "Aprovado";
-					}
-					else{
-						$modulo[$contaModulo]['status'] = "Em Prova Final";
-					}					
-				}
-				else{
-					if($modulo[$contaModulo]['media'] >= 5){
-						$modulo[$contaModulo]['status'] = "Aprovado na PF";
-					}
-					else{
-						$modulo[$contaModulo]['status'] = "Reprovado";
-					}
-				}
-			}
-			$contador++;	
-		}
-		$contador = $contaModulo;
-		$contaModulo = 0;
-		$contaNotas = 0;
-		while($contaModulo <= $contador){
-					@$trTemp.="<tbody>
-						 <td>{$modulo[$contaModulo]['nome']}</td>
-						 <td>{$modulo[$contaModulo][$contaNotas]}</td>
-						 <td>{$modulo[$contaModulo][($contaNotas+1)]}</td>
-						 <td>{$modulo[$contaModulo][($contaNotas+2)]}</td>
-						 <td>{$mediaFormatada}</td>
-						 <td>{$modulo[$contaModulo]['status']}</td>
-					  </tbody>";								
-			$contaModulo++;
+			@$trTemp.="<tbody>
+				 <td>{$nota['nome']}</td>
+				 <td>{$nota['av1']}</td>
+				 <td>{$nota['av2']}</td>
+				 <td>{$nota['av3']}</td>
+				 <td>{$media}</td>
+				 <td>{$status}</td>
+			  </tbody>";								
 		}
 	} else {
 		$trTemp.="<div class=\"col-md-6\">
