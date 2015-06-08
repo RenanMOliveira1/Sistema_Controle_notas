@@ -42,6 +42,7 @@
 				<ul class="children collapse" id="sub-item-2">
 					<li><a class="" href="/acount/admin/vincular-alunos.php"><span class="glyphicon glyphicon-random"></span> Alunos</a></li>
 					<li><a class="" href="/acount/admin/vincular-professor.php"><span class="glyphicon glyphicon-random"></span> Professores</a></li>
+                    <li><a class="" href="/acount/admin/vincular-modulo.php"><span class="glyphicon glyphicon-random"></span> Módulos</a></li>
 				</ul>
 			</li>
             <li id="navLiberarAcesso" class=""><a href="/acount/admin/liberar-acesso.php"><span class="glyphicon glyphicon-saved"></span> Liberar Acesso de Aluno</a></li>
