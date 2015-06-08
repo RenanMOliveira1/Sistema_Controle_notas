@@ -91,6 +91,10 @@
 			$cpf = @$_POST['alt-adm-cpf'];
 			$cargo = @$_POST['alt-adm-cargo'];
 			
+			$nome = utf8_decode($nome);
+			$cpf = utf8_decode($cpf);
+			$cargo = utf8_decode($cargo);
+			
 			//Conecção ao Banco de Dados
 			$conexao = mysql_connect("localhost", "root", "");
 			if (!$conexao) {

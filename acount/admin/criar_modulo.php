@@ -1,9 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-</head>
-<body>
 <?
 	$nome = @$_POST['admin-nome-mod'];
 	$descricao = @$_POST['admin-descricao-mod'];
@@ -67,5 +61,3 @@
 	}
 	mysql_close($conexao);
 ?>
-</body>
-</html>

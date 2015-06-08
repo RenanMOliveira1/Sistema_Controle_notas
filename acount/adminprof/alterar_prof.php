@@ -90,6 +90,8 @@
 			$nome = @$_POST['alt-prof-nome'];
 			$cpf = @$_POST['alt-prof-cpf'];
 			
+			$nome = utf8_decode($nome);
+			
 			//Conecção ao Banco de Dados
 			$conexao = mysql_connect("localhost", "root", "");
 			if (!$conexao) {

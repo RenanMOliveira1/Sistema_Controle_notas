@@ -4,6 +4,8 @@
 	$email = @$_POST['admin-prof-email'];
 	$senha = @$_POST['admin-prof-senha'];
 	
+	$nome = utf8_decode($nome);
+	
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
