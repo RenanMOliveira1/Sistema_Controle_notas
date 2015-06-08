@@ -477,3 +477,8 @@ h1.page-header {
 .fixed-table-pagination .pagination-detail {margin-top: 20px; }
 
 #turma-turno, #turma-laboratorio, #turma-modulo {width: 500px; }
+
+#div-avaliacao-data, #div-cpf {
+	float: left;
+	margin-right: 10px;
+}

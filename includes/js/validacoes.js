@@ -14,6 +14,9 @@ function SidebarActive(opcaoSidebar) {
 		case "configuracoes":
 			$("#navConfiguracoes").addClass("active");
 			break;
+		case "avaliacao-qualidade":
+			$("#navAvaliacaoQualidade").addClass("active");
+			break;
 		case "configuracoes-prof":
 			$("#navConfiguracoesProf").addClass("active");
 			break;
