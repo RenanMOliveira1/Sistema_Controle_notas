@@ -581,6 +581,15 @@ function ValidarCriarModulo() {
 	return true;
 }
 
+function ValidarVincularModulo(){
+	if ($("#vincular-mod-programa").val() == 0){
+		$("#dados-invalidos").html("Selecione um programa."); 
+		$("#div-programa").addClass(" has-error");
+		return false;
+	}
+	return true;
+}
+
 function botoesEnviar(idBotao, idFormulario, funcaoDeValidar) {
 	$(document).ready(function(){
 		$(idBotao).click(function() {

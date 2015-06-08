@@ -1,4 +1,7 @@
 <?
+	$msg = "";
+	$msg .= @$_GET['msg'];
+	
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -15,7 +18,7 @@
 	define("TITULO","Vincular Módulo à Programa");
 	switch($_SESSION['admCargo']){
 		case "dir":
-		case "ass":
+		case "ped":
 		case "rca":
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
@@ -56,7 +59,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"> Dados da Vinculação</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" action="vincular_mod_exe.php" method="post" id="form-vincular-mod">
+						<form class="form-horizontal" action="vincular_mod.php" method="post" id="form-vincular-mod">
                             <div class="form-group" id="div-vincular-mod-modulo">
                                 <label class="col-md-4 control-label">
                                 	<span>Selecione o Módulo</span>
@@ -64,10 +67,28 @@
                                 <div class="col-md-8">
                                     <select class="form-control" id="vincular-mod-modulo" 
                                     name="vincular-mod-modulo" title="Escolha o Módulo" >
-                                        <option value="Modulo#1">Modulo #1</option>
-                                        <option value="Modulo#2">Modulo #2</option>
-                                        <option value="Modulo#3">Modulo #3</option>
-                                        <option value="Modulo#4">Modulo #4</option>
+                                    	<?
+													//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idModulo`, `nome`
+													  FROM `modulo`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($modulo = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													echo "<option value='{$modulo['idModulo']}'>{$modulo['nome']}</option>";
+												}
+											}else{
+												echo "<option value ='0'>Não há programas cadastrados</option>";
+											}
+										?>
                                     </select>
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-vincular-mod-modulo -->
@@ -79,16 +100,95 @@
                                 <div class="col-md-8">
                                     <select class="form-control" id="vincular-mod-programa" 
                                     name="vincular-mod-programa" title="Escollha o Programa" >
-                                        <option value="Programa#1">Programa #1</option>
-                                        <option value="Programa#2">Programa #2</option>
-                                        <option value="Programa#3">Programa #3</option>
-                                        <option value="Programa#4">Programa #4</option>
+                                                <option value="0">Graduação:</option>
+                                                <?
+													//Conecção ao Banco de Dados
+													$conexao = @mysql_connect("localhost", "root", "");
+													if (!$conexao) {
+														exit("Site Temporariamente fora do ar");}
+													
+													mysql_select_db("infnetgrid", $conexao);
+													
+													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+															  FROM `programa` 
+															  WHERE `tipo` = 'graduacao';";
+											
+													$resultadoPesquisa = @mysql_query($query, $conexao);
+													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+													if ($numeroPesquisa >= 1){
+														$contador = 0;
+														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+														}
+													}else{
+														$trTemp.="Não há programas criados";
+													}
+												?>
+                                                <option value="0">Pós-Graduação:</option>
+                                                <?
+													//Conecção ao Banco de Dados
+													$conexao = @mysql_connect("localhost", "root", "");
+													if (!$conexao) {
+														exit("Site Temporariamente fora do ar");}
+													
+													mysql_select_db("infnetgrid", $conexao);
+													
+													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+															  FROM `programa` 
+															  WHERE `tipo` = 'pos';";
+											
+													$resultadoPesquisa = @mysql_query($query, $conexao);
+													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+													if ($numeroPesquisa >= 1){
+														$contador = 0;
+														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+														}
+													}else{
+														$trTemp.="Não há programas criados";
+													}
+											  ?>
+                                                <option value="0">Intensivo:</option>
+                                              <?
+													//Conecção ao Banco de Dados
+													$conexao = @mysql_connect("localhost", "root", "");
+													if (!$conexao) {
+														exit("Site Temporariamente fora do ar");}
+													
+													mysql_select_db("infnetgrid", $conexao);
+													
+													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+															  FROM `programa` 
+															  WHERE `tipo` = 'intensivo';";
+											
+													$resultadoPesquisa = @mysql_query($query, $conexao);
+													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+													if ($numeroPesquisa >= 1){
+														$contador = 0;
+														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+														}
+													}else{
+														$trTemp.="Não há programas criados";
+													}
+												?>
                                     </select>
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-vincular-mod-programa -->
                             
+                            <div id="dados-invalidos">
+                            	<?
+									if($msg != ""){
+										echo $msg;
+									}
+								?>
+                            </div> <!-- dados-invalidos -->
+                            
                             <div class="col-md-12 widget-right" id="div-btn-vinc-mod-enviar">
-                                <input type="button" id="btn-vinc-mod-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-mod-enviar','#form-vincular-mod',true);"/>
+                                <input type="button" id="btn-vinc-mod-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-mod-enviar','#form-vincular-mod', ValidarVincularModulo());"/>
                             </div> <!-- div-btn-vinc-mod-enviar -->
                         </form>
 					</div> <!-- panel-body -->
