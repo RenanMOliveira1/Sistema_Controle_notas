@@ -1,4 +1,6 @@
 <?
+	$msg = "";
+	$msg .= @$_GET['msg'];
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -57,7 +59,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"> Dados do Módulo</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-criar-modulo" action="/criar_modulo_exe.php" method="post">
+						<form class="form-horizontal" id="form-criar-modulo" action="/acount/admin/criar_modulo.php" method="post">
                             <div class="form-group" id="div-admin-nome-mod" >
                                 <label class="col-md-3 control-label">
                                     <span>Nome do Módulo</span>
@@ -68,7 +70,23 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-admin-nome-mod -->
                             
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div class="form-group" id="div-admin-descricao-mod" >
+                                <label class="col-md-3 control-label">
+                                    <span>Descrição do Módulo</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <input id="admin-descricao-mod" name="admin-descricao-mod" type="text" class="form-control"
+                                    placeholder="Digite a Descrição do Módulo" title="Digite a Descrição do Módulo" >
+                                </div> <!-- col-md-9 -->
+                            </div> <!-- div-admin-descricao-mod -->
+                            
+                            <div id="dados-invalidos">
+                            	<?
+									if($msg != ""){
+										echo $msg;
+									}
+								?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-mod-enviar" >

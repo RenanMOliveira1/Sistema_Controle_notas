@@ -284,6 +284,11 @@ function ValidarCadastro() {
 		msg += "E-mail inválido<br />";
 		$("#div-email").addClass(" has-error");	
 	}
+	
+	if($("#programa").val() == 0){
+		msg += "Selecione um programa<br/>";
+		$("#div-programa").add(" has-error");
+	}
 
 	if (msg != "") {
 		alert('Dados Inválidos! Verifique e Corrija');
@@ -560,12 +565,19 @@ function ValidarAdminConfig() {
 }
 
 function ValidarCriarModulo() {
+	var msg = "";
 	
 	if ($("#admin-nome-mod").val() == "") {
-		$("#dados-invalidos").html("Campo Nome é Obrigatório."); 
-		$("#div-admin-nome-mod").addClass(" has-error");	
-		return false;
+		msg += "Campo Nome é Obrigatório.<br/>"; 
+		$("#div-admin-nome-mod").addClass(" has-error");
 	}
+	if ($("#admin-descricao-mod").val() == "") {
+		msg += "Campo Descrição é Obrigatório.<br/>"; 
+		$("#div-admin-descricao-mod").addClass(" has-error");
+	}
+	if(msg != ""){
+		$("#dados-invalidos").html(msg);
+		return false;}
 	return true;
 }
 

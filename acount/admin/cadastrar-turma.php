@@ -106,6 +106,7 @@
 											if ($numeroPesquisa >= 1){
 												$contador = 0;
 												while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
 													echo "<option value='{$programa['idPrograma']}'>{$programa['nomeCurso']}</option>";
 												}
 											}else{

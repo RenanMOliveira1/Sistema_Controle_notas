@@ -15,6 +15,7 @@
 	$estado = @$_POST['estado'];
 	$email = @$_POST['email'];
 	$senha = @$_POST['senha'];
+	$programa = @$_POST['programa'];
 	
 	//Conecção ao Banco de Dados
 	$conexao = mysql_connect("localhost", "root", "");
@@ -29,10 +30,15 @@
 			  WHERE `email` = '$email'";
 	
 	$resultadoPesquisa = mysql_query($query, $conexao);
-	$msg = "";
 	if (mysql_num_rows($resultadoPesquisa) == 1) {
 		header("Location: /");
 	}else{
+		$nome = utf8_decode($nome);
+		$logradouro = utf8_decode($logradouro );
+		$complemento = utf8_decode($complemento);
+		$bairro = utf8_decode($bairro);
+		$cidade = utf8_decode($cidade);
+		
 		$query1 = "INSERT INTO `aluno`(`nomeAluno`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`)
 		 		  VALUES ('$nome', '$cpf', '$dataNascimento','$sexo','$email','$senha');";
 
@@ -53,6 +59,10 @@
 		$query3 = "INSERT INTO `telefone` (`telefone`, `celular`, `alunoMatricula`)
 				   VALUES ('$telefone', '$celular','$matricula');";
 		$resultado = mysql_query($query3, $conexao);
+		
+		$query4 ="INSERT INTO `aluno_programa`(`idPrograma`, `alunoMatricula`)
+				  VALUES ('$programa', '$matricula')";
+		$resultado = mysql_query($query4, $conexao);
 				  
 		if(mysql_affected_rows($conexao) != 1){
 			if(mysql_errno() >= 1){

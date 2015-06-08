@@ -102,6 +102,12 @@
 			$cidade = @$_POST['alt-cidade'];
 			$estado = @$_POST['alt-estado'];
 			
+			$nome = utf8_decode($nome);
+			$logradouro = utf8_decode($logradouro );
+			$complemento = utf8_decode($complemento);
+			$bairro = utf8_decode($bairro);
+			$cidade = utf8_decode($cidade);
+			
 			//Conecção ao Banco de Dados
 			$conexao = mysql_connect("localhost", "root", "");
 			if (!$conexao) {

@@ -26,9 +26,84 @@
                                         <label>
                                             <span>Escolha o Programa: <span class="asteristicos-obrigatorio">*</span></span>
                                             <select id="programa" class="form-control" name="programa" title="Escolha o Programa que Deseja Cursar" >
-                                                <option value="graduacao">Graduação</option>
-                                                <option value="pos-graduacao">Pós-Graduação</option>
-                                                <option value="intensivo">Intensivo</option>
+                                                <option value="0">Graduação:</option>
+                                                <?
+													//Conecção ao Banco de Dados
+													$conexao = @mysql_connect("localhost", "root", "");
+													if (!$conexao) {
+														exit("Site Temporariamente fora do ar");}
+													
+													mysql_select_db("infnetgrid", $conexao);
+													
+													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+															  FROM `programa` 
+															  WHERE `tipo` = 'graduacao';";
+											
+													$resultadoPesquisa = @mysql_query($query, $conexao);
+													$msg = "";
+													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+													if ($numeroPesquisa >= 1){
+														$contador = 0;
+														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+														}
+													}else{
+														$trTemp.="Não há programas criados";
+													}
+												?>
+                                                <option value="0">Pós-Graduação:</option>
+                                                <?
+													//Conecção ao Banco de Dados
+													$conexao = @mysql_connect("localhost", "root", "");
+													if (!$conexao) {
+														exit("Site Temporariamente fora do ar");}
+													
+													mysql_select_db("infnetgrid", $conexao);
+													
+													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+															  FROM `programa` 
+															  WHERE `tipo` = 'pos';";
+											
+													$resultadoPesquisa = @mysql_query($query, $conexao);
+													$msg = "";
+													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+													if ($numeroPesquisa >= 1){
+														$contador = 0;
+														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+														}
+													}else{
+														$trTemp.="Não há programas criados";
+													}
+												?>
+                                                <option value="0">Intensivo:</option>
+                                              <?
+													//Conecção ao Banco de Dados
+													$conexao = @mysql_connect("localhost", "root", "");
+													if (!$conexao) {
+														exit("Site Temporariamente fora do ar");}
+													
+													mysql_select_db("infnetgrid", $conexao);
+													
+													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+															  FROM `programa` 
+															  WHERE `tipo` = 'intensivo';";
+											
+													$resultadoPesquisa = @mysql_query($query, $conexao);
+													$msg = "";
+													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+													if ($numeroPesquisa >= 1){
+														$contador = 0;
+														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+														}
+													}else{
+														$trTemp.="Não há programas criados";
+													}
+												?>
                                             </select>
                                         </label>
                                     </div> <!-- div-nascimento -->

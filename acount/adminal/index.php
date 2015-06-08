@@ -51,8 +51,9 @@
 							</div>
 						</div>
 					  </div><!--/.col-->";
+					  
 		}
-		$trTemp = utf8_encode($trTemp);
+		$trTemp = utf8_encode($trTemp) ;
 	} else {
 		$trTemp.="Aluno não está cursando nenhum módulo";
 	}
@@ -92,7 +93,7 @@
 		</div> <!-- row -->
 		
         <!-- Exibe as Disciplinas -->
-        <?= utf8_encode($trTemp) ?>	
+        <?= $trTemp ?>	
 		
 	</section> <!-- main -->
 </body>
