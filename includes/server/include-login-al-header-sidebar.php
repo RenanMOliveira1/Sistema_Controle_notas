@@ -26,6 +26,7 @@
 			<li id="navDisciplinas" class="" class="active"><a href="/acount/adminal/index.php"><span class="glyphicon glyphicon-tasks"></span> Disciplinas</a></li>
 			<li id="navNotas" class=""><a href="/acount/adminal/notas.php"><span class="glyphicon glyphicon-th"></span> Notas</a></li>
 			<li id="navPerfil" class=""><a href="/acount/adminal/perfil.php"><span class="glyphicon glyphicon-list-alt"></span> Perfil</a></li>
+            <li id="navPerfil" class=""><a href="/acount/adminal/avaliacao-qualidade.php"><span class="glyphicon glyphicon-list-alt"></span> Avaliação de Qualidade</a></li>
 			<li id="navConfiguracoes" class=""><a href="/acount/adminal/configuracoes.php"><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
 			<li role="presentation" class="divider"></li>
 			<li><a href="/index.php"><span class="glyphicon glyphicon-home"></span> Página Inicial</a></li>

@@ -467,6 +467,7 @@
                         <div id="div-btn-enviar">
                             <input type="button" id="btn-enviar-alt-cadastro" class="btn btn-primary" value="Alterar Dados" onClick="botoesEnviar('#btn-enviar-alt-cadastro', '#formulario-alterar-cadastro', ValidarAlterarCadastro());" />
                         </div> <!-- div-btn-enviar -->
+                       </form>
                     </div> <!-- panel-body -->
                 </div> <!-- panel panel-default -->
             </div> <!-- col-lg-12 -->

@@ -4,6 +4,7 @@
 		$msg = "Sessão expirada.";
 		header("Location: /acount/?msg=$msg");
 	}
+	define("TITULO","Visualizar Turma");
 	switch($_SESSION['autenticacao']){
 		case "administracao":
 			header("Location: /acount/admin/");
@@ -20,7 +21,7 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-	<title>SGA | Painel de Controle do Aluno: Notas</title>
+	<title><?=TITULO?> | Painel de Controle do Professor - SGA</title>
 
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
@@ -31,8 +32,9 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li>Lançar Notas</li>
+				<li><a href="/acount/adminprof/"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li>Selecionar Turma</li>
+                <li><?=TITULO?></li>
 			</ol>
 		</div><!--/.row-->
 		
