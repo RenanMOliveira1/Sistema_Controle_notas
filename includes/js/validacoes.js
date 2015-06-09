@@ -2,6 +2,9 @@
 //Hover no Sidebar
 function SidebarActive(opcaoSidebar) {
 	switch (opcaoSidebar) {
+		case 'al-index':
+			$("#navAlIndex").addClass("active");
+			break;
 		case 'disciplinas':
 			$("#navDisciplinas").addClass("active");
 			break;

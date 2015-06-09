@@ -478,7 +478,7 @@ h1.page-header {
 
 #turma-turno, #turma-laboratorio, #turma-modulo {width: 500px; }
 
-#div-avaliacao-data, #div-cpf {
+#div-avaliacao-data, #div-cpf, #div-alt-nome, #div-alt-cpf, #div-alt-sexo, #div-alt-telefone-fixo, #div-alt-telefone-celular, #div-alt-tipo-logradouro, #div-alt-numero, #div-alt-bairro, #div-alt-cidade {
 	float: left;
 	margin-right: 10px;
 }

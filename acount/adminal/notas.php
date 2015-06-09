@@ -13,7 +13,9 @@
 		break;
 	}
 	define('TITULO','Notas');
-		$trTemp="";		
+	define('ENDERECO_PAG_INIC_AL','/acount/adminal/index.php');
+	
+	$trTemp="";		
 	//Conecção ao Banco de Dados
 	$conexao = @mysql_connect("localhost", "root", "");
 	if (!$conexao) {
@@ -130,25 +132,18 @@
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
 	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
 	
+    <!-- Js e CSS do Site -->
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
 <body onLoad="SidebarActive('notas');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-al-header-sidebar.php"); ?>
 		
-	<section id="section-al-notas" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><?=TITULO?></li>
-			</ol>
-		</div> <!-- row -->
-		
-        <div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?=TITULO?></h1>
-			</div> <!-- col-lg-12 -->
-		</div> <!-- row -->
+	<section id="section-al-notas" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
+        
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Resumo de notas</div> <!-- panel-heading -->

@@ -26,29 +26,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
-  	<meta name="keywords" content="faculdade, alunos, home" />
+  	<meta name="keywords" content="faculdade, alunos, configuracoes" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
 	<title><?=TITULO?> | Painel de Controle do Professor - SGA</title>
 
+    <!-- Js e CSS do Site -->
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
 <body onLoad="SidebarActive('configuracoes-prof');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-prof-header-sidebar.php"); ?>
 		
-	<section class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><?=TITULO?></li>
-			</ol>
-		</div><!--/.row-->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?=TITULO?></h1>
-			</div>
-		</div><!--/.row-->
+	<section id="section-prof-pagina-inicial" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
         <div class="row">
 			<div class="col-lg-12">
@@ -61,32 +53,32 @@
                                 	<span>Senha Atual: </span>
                                     <input type="password" id="alterar-senha-antiga" class="form-control" name="alterar-senha-antiga" title="Digite sua Senha atual" placeholder="Digite sua Senha atual" size="30"/>
                                 </label>
-                            </div>
+                            </div> <!-- div-alterar-senha-antiga -->
                             <div class="form-group" id="div-alterar-senha-nova">
                             	<label>
                                 	<span>Nova Senha: </span>
                                     <input type="password" id="alterar-senha-nova" class="form-control" name="alterar-senha-nova" title="Digite a sua Nova senha" placeholder="Digite a sua Nova senha" size="30"/>
                                 </label>
-                            </div>
-                            <div class="form-group" id="div-alterar-senha-Confirmar">
+                            </div> <!-- div-alterar-senha-nova -->
+                            <div class="form-group" id="div-alterar-senha-confirmar">
                             	<label>
                                 	<span>Confirmar Senha: </span>
                                     <input type="password" id="alterar-senha-Confirmar" class="form-control" name="alterar-senha-Confirmar" title="Confirme a sua nova Senha" placeholder="Confirme a sua nova Senha" size="30"/>
                                 </label>
-                            </div>
+                            </div> <!-- div-alterar-senha-confirmar -->
                             <div id="dados-invalidos">
 								<?	if($msgSenha != ""){
                                         echo $msgSenha;
                                     }
                                 ?>
                             </div> <!-- dados-invalidos --> 
-                            <div class="form-group" id="div-alterar-senha-Confirmar">
+                            <div class="form-group" id="div-alterar-senha-confirmar">
                             	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha"/>
-                            </div>
+                            </div> <!-- div-alterar-senha-confirmar -->
                         </form>
-                    </div>
-                </div>
-            </div>
+                    </div> <!-- panel-body -->
+                </div> <!-- panel panel-default -->
+            </div> <!-- col-lg-12 -->
             
             <div class="col-lg-12">
 				<div class="panel panel-default">
@@ -119,13 +111,12 @@
                         <div id="div-btn-prof-alterarDados">
                             <input type="button" id="btn-prof-alterarDados" class="btn btn-primary" value="Alterar Dados" />
                         </div> <!-- div-btn-enviar -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-		
-	</section>	<!--/.main-->
+                    </div> <!-- panel-body -->
+                </div> <!-- panel panel-default -->
+            </div> <!-- col-lg-12 -->
+        </div> <!-- row -->
+   
+	</section> <!-- main -->
 </body>
 
 </html>

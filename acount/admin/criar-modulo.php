@@ -29,29 +29,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
-  	<meta name="keywords" content="faculdade, alunos, modulo" />
+  	<meta name="keywords" content="faculdade, alunos, admnistração, modulo" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
+	<title><?=TITULO?> | Painel de Controle Administrativo - SGA</title>
 
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
 <body onLoad="SidebarActive('criar-modulo');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-admin-header-sidebar.php"); ?>
 		
-	<section class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><?=TITULO?></li>
-			</ol>
-		</div><!-- row -->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?=TITULO?></h1>
-			</div>
-		</div><!-- row -->
+	<section id="section-prof-pagina-inicial" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
         
         <div class="row">
@@ -66,7 +57,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input id="admin-nome-mod" name="admin-nome-mod" type="text" class="form-control"
-                                    placeholder="Digite o Nome do Módulo" title="Digite o Nome do Módulo" >
+                                    placeholder="Digite o Nome do Módulo" title="Digite o Nome do Módulo" autofocus >
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-admin-nome-mod -->
                             

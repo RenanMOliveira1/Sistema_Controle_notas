@@ -20,6 +20,7 @@
 		break;
 	}
 	define('TITULO','Configurações');
+	define('ENDERECO_PAG_INIC_AL','/acount/adminal/index.php');
 	
 ?>
 
@@ -32,25 +33,17 @@
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
 	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
 	
+    <!-- Js e CSS do Site -->
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
 <body onLoad="SidebarActive('configuracoes');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-al-header-sidebar.php"); ?>
 		
-	<section id="section-al-configuracoes" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><?=TITULO?></li>
-			</ol>
-		</div> <!-- row -->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?=TITULO?></h1>
-			</div>
-		</div> <!-- row -->
+	<section id="section-al-configuracoes" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
         <div class="row">
 			<div class="col-lg-12">
@@ -61,7 +54,7 @@
                         	<div class="form-group" id="div-alterar-senha-antiga">
                             	<label>
                                 	<span>Senha Atual: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="password" id="alterar-senha-antiga" class="form-control" name="alterar-senha-antiga" title="Digite sua Senha atual" placeholder="Digite sua Senha atual" size="30" />
+                                    <input type="password" id="alterar-senha-antiga" class="form-control" name="alterar-senha-antiga" title="Digite sua Senha atual" placeholder="Digite sua Senha atual" size="30" autofocus/>
                                 </label>
                             </div> <!-- div-alterar-senha-antiga -->
                             <div class="form-group" id="div-alterar-senha-nova">
@@ -91,8 +84,9 @@
                     </div> <!-- panel-body -->
                 </div> <!-- panel panel-default -->
             </div> <!-- col-lg-12 -->
+        </div> <!-- row -->
             
-            <div class="row">
+        <div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Email (Login)</div> <!-- panel-heading -->
@@ -130,7 +124,7 @@
                     </div> <!-- panel-body -->
                 </div> <!-- panel panel-default -->
             </div> <!-- col-lg-12 -->
-            
+         
             <div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Dados de Cadastro</div> <!-- panel-heading -->
@@ -291,7 +285,7 @@
                             <div class="form-campos" id="div-alt-complemento">
                                 <label>
                                     <span>Complemento: </span>
-                                    <input type="text" name="alt-complemento" id="alt-complemento" size="80"
+                                    <input type="text" name="alt-complemento" id="alt-complemento" size="100"
                                     title="Se houver algum complemento, digite aqui"  value="<?= utf8_encode($_SESSION['alComplemento'])?>";
                                     class="form-control" placeholder="Digite o Algum Complemento, se Tiver"/>
                                 </label>

@@ -60,7 +60,7 @@
 			$trTemp .= "<tbody>
 					<td>{$aluno['nomeAluno']}</td>
 					<td>
-						<input class='form-control' type='text' id='nota-av1-{$aluno['matricula']}' name='nota-av1-{$aluno['matricula']}' placeholder='Digite a Nota da AV1' value='{$aluno['av1']}'/>
+						<input class='form-control' type='text' id='nota-av1-{$aluno['matricula']}' name='nota-av1-{$aluno['matricula']}' placeholder='Digite a Nota da AV1' value='{$aluno['av1']}' autofocus/>
 					</td>
 					<td>
 						<input class='form-control' type='text' id='nota-av2-{$aluno['matricula']}' name='nota-av2-{$aluno['matricula']}' placeholder='Digite a Nota da AV2' value='{$aluno['av2']}' />
@@ -72,9 +72,9 @@
 						<input class='form-control' type='text' id='nota-comentario' name='nota-comentario' placeholder='Digite um Comentario'  />
 					</td>
 					<td>
-						<div class='todo-list-item pull-left action-buttons'>
+						<div id='div-botoes' class='todo-list-item pull-left action-buttons'>
 							<a href='lancar_nota.php?matricula={$aluno['matricula']}&av1={$aluno['av1']}&av2={$aluno['av2']}&av3={$aluno['av3']}' title='Lançar' class='trash'><span class='glyphicon glyphicon-ok'></span></a>
-						</div> 
+						</div>  <!-- div-botoes -->
 				    </td>
 				</tbody>";
 		}
@@ -95,20 +95,16 @@
 </head>
 
 <body onLoad="SidebarActive('lancar-notas');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-prof-header-sidebar.php"); ?>
 		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="/acount/adminprof/"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li>Selecionar Turma</li>
-                <li><?=TITULO?></li>
-			</ol>
-		</div><!--/.row-->
+	<section id="section-prof-mostrar-turma" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
 		<div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><?= $turma['nomeTurma'] ?></div>
+                <div class="panel-heading"><?= $turma['nomeTurma'] ?></div> <!-- panel-heading -->
                     <div class="table-responsive panel-body">
                         <form method="post" action="notas.php" id="form-lacar-nota" >
                             <table class="table table-hover">
@@ -129,7 +125,8 @@
                   </div> <!-- table-responsive panel-body -->
             </div> <!-- panel panel-default  -->
         </div> <!-- col-md-12 -->
-	</div> <!--/.main-->
+        
+	</section> <!-- main -->
 
 	<? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </body>

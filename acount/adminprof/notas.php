@@ -4,7 +4,9 @@
 		$msg = "Sessão expirada.";
 		header("Location: /acount/?msg=$msg");
 	}
-	define("TITULO","Selecionar Turma");
+	
+	define("TITULO","Aplicar Notas: Selecionar Turma");
+	
 	switch($_SESSION['autenticacao']){
 		case "administracao":
 			header("Location: /acount/admin/");
@@ -19,29 +21,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
-  	<meta name="keywords" content="faculdade, alunos, home" />
+  	<meta name="keywords" content="faculdade, alunos, aplicar, notas" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
 	<title><?=TITULO?> | Painel de Controle do Professor - SGA</title>
-
+	
+    <!-- Js e CSS do Site -->
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
 <body onLoad="SidebarActive('lancar-notas');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-prof-header-sidebar.php"); ?>
 		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="/acount/adminprof/"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><?=TITULO?></li>
-			</ol>
-		</div><!--/.row-->
-		
-        <div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?=TITULO?></h1>
-			</div>
-		</div><!--/.row-->
+	<section id="section-prof-notas" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
         
         <div class="row">
 			<div class="col-lg-12">
@@ -89,9 +83,10 @@
                         </form>
         			</div> <!-- panel-body -->
        			 </div> <!-- panel panel-default -->
-        	</div> <!-- col-lg-12 -->
-	</div> <!-- row -->
-
+        	 </div> <!-- col-lg-12 -->
+	     </div> <!-- row -->
+	</section> <!-- main -->
+    
 	<? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </body>
 

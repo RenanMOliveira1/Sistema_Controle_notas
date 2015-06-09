@@ -32,27 +32,18 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, home" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
+	<title><?=TITULO?> | Painel de Controle Administrativo - SGA</title>
 
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
 <body onLoad="SidebarActive('vinc-prof');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-admin-header-sidebar.php"); ?>
 		
-	<section class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><?=TITULO?></li>
-			</ol>
-		</div><!-- row -->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?=TITULO?></h1>
-			</div>
-		</div><!-- row -->
+	<section id="section-prof-pagina-inicial" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
         <div class="row">
 			<div class="col-md-8">
@@ -100,81 +91,81 @@
                                 <div class="col-md-8">
                                     <select class="form-control" id="vincular-mod-programa" 
                                     name="vincular-mod-programa" title="Escollha o Programa" >
-                                                <option value="0">Graduação:</option>
-                                                <?
-													//Conecção ao Banco de Dados
-													$conexao = @mysql_connect("localhost", "root", "");
-													if (!$conexao) {
-														exit("Site Temporariamente fora do ar");}
-													
-													mysql_select_db("infnetgrid", $conexao);
-													
-													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
-															  FROM `programa` 
-															  WHERE `tipo` = 'graduacao';";
-											
-													$resultadoPesquisa = @mysql_query($query, $conexao);
-													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
-													if ($numeroPesquisa >= 1){
-														$contador = 0;
-														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
-															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
-														}
-													}else{
-														$trTemp.="Não há programas criados";
-													}
-												?>
-                                                <option value="0">Pós-Graduação:</option>
-                                                <?
-													//Conecção ao Banco de Dados
-													$conexao = @mysql_connect("localhost", "root", "");
-													if (!$conexao) {
-														exit("Site Temporariamente fora do ar");}
-													
-													mysql_select_db("infnetgrid", $conexao);
-													
-													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
-															  FROM `programa` 
-															  WHERE `tipo` = 'pos';";
-											
-													$resultadoPesquisa = @mysql_query($query, $conexao);
-													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
-													if ($numeroPesquisa >= 1){
-														$contador = 0;
-														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
-															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
-														}
-													}else{
-														$trTemp.="Não há programas criados";
-													}
-											  ?>
-                                                <option value="0">Intensivo:</option>
-                                              <?
-													//Conecção ao Banco de Dados
-													$conexao = @mysql_connect("localhost", "root", "");
-													if (!$conexao) {
-														exit("Site Temporariamente fora do ar");}
-													
-													mysql_select_db("infnetgrid", $conexao);
-													
-													$query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
-															  FROM `programa` 
-															  WHERE `tipo` = 'intensivo';";
-											
-													$resultadoPesquisa = @mysql_query($query, $conexao);
-													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
-													if ($numeroPesquisa >= 1){
-														$contador = 0;
-														while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-															$programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
-															echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
-														}
-													}else{
-														$trTemp.="Não há programas criados";
-													}
-												?>
+                                    <option value="0">Graduação:</option>
+                                    <?
+                                        //Conecção ao Banco de Dados
+                                        $conexao = @mysql_connect("localhost", "root", "");
+                                        if (!$conexao) {
+                                            exit("Site Temporariamente fora do ar");}
+                                        
+                                        mysql_select_db("infnetgrid", $conexao);
+                                        
+                                        $query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+                                                  FROM `programa` 
+                                                  WHERE `tipo` = 'graduacao';";
+                                
+                                        $resultadoPesquisa = @mysql_query($query, $conexao);
+                                        $numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+                                        if ($numeroPesquisa >= 1){
+                                            $contador = 0;
+                                            while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+                                                $programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+                                                echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+                                            }
+                                        }else{
+                                            $trTemp.="Não há programas criados";
+                                        }
+                                    ?>
+                                    <option value="0">Pós-Graduação:</option>
+                                    <?
+                                        //Conecção ao Banco de Dados
+                                        $conexao = @mysql_connect("localhost", "root", "");
+                                        if (!$conexao) {
+                                            exit("Site Temporariamente fora do ar");}
+                                        
+                                        mysql_select_db("infnetgrid", $conexao);
+                                        
+                                        $query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+                                                  FROM `programa` 
+                                                  WHERE `tipo` = 'pos';";
+                                
+                                        $resultadoPesquisa = @mysql_query($query, $conexao);
+                                        $numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+                                        if ($numeroPesquisa >= 1){
+                                            $contador = 0;
+                                            while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+                                                $programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+                                                echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+                                            }
+                                        }else{
+                                            $trTemp.="Não há programas criados";
+                                        }
+                                  ?>
+                                    <option value="0">Intensivo:</option>
+                                  <?
+                                        //Conecção ao Banco de Dados
+                                        $conexao = @mysql_connect("localhost", "root", "");
+                                        if (!$conexao) {
+                                            exit("Site Temporariamente fora do ar");}
+                                        
+                                        mysql_select_db("infnetgrid", $conexao);
+                                        
+                                        $query = "SELECT `idPrograma`, `tipo`, `nomeCurso`, `sigla` 
+                                                  FROM `programa` 
+                                                  WHERE `tipo` = 'intensivo';";
+                                
+                                        $resultadoPesquisa = @mysql_query($query, $conexao);
+                                        $numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+                                        if ($numeroPesquisa >= 1){
+                                            $contador = 0;
+                                            while($programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+                                                $programa['nomeCurso'] = utf8_encode($programa['nomeCurso']);
+                                                echo "<option value='{$programa['idPrograma']}'>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
+                                            }
+                                        }else{
+                                            $trTemp.="Não há programas criados";
+                                        }
+                                    ?>
                                     </select>
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-vincular-mod-programa -->
@@ -195,6 +186,7 @@
                 </div> <!-- panel panel-default -->
            </div> <!-- col-md-8 -->
 	    </div> <!-- row -->
+        
 	</section> <!-- main -->
 </body>
 

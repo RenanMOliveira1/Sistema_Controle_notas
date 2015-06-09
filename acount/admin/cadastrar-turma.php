@@ -29,27 +29,18 @@
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
   	<meta name="keywords" content="faculdade, alunos, laboratorio" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
-	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
+	<title><?=TITULO?> | Painel de Controle Administrativo - SGA</title>
 
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
 <body onLoad="SidebarActive('cad-turma');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-admin-header-sidebar.php"); ?>
 		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><?=TITULO?></li>
-			</ol>
-		</div><!-- row -->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?=TITULO?></h1>
-			</div>
-		</div><!-- row -->
+	<section id="section-prof-pagina-inicial" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
         
         <div class="row">
@@ -63,7 +54,8 @@
                                 	<span>Nome</span>
                                 </label>
                                 <div class="col-md-9">
-                                	<input id="turma-nome" name="turma-nome" type="text" placeholder="Digite o Nome da Turma" title="Digite o nome da Turma" class="form-control">
+                                	<input id="turma-nome" name="turma-nome" type="text" autofocus
+                                    placeholder="Digite o Nome da Turma" title="Digite o nome da Turma" class="form-control">
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-turma-nome -->
 
@@ -90,7 +82,7 @@
                                     <select class="form-control" id="turma-programa" name="turma-programa"
                                     title="Escolha o Programa" >
                                     	<?
-													//Conecção ao Banco de Dados
+											//Conecção ao Banco de Dados
 											$conexao = @mysql_connect("localhost", "root", "");
 											if (!$conexao) {
 												exit("Site Temporariamente fora do ar");}
@@ -112,6 +104,7 @@
 											}else{
 												$trTemp.="Não há programas criados";
 											}
+											
 										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
@@ -149,6 +142,7 @@
 											}else{
 												$trTemp.="Não há módulos criados";
 											}
+											
 										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
@@ -179,7 +173,7 @@
                 </div> <!-- panel panel-default -->
             </div> <!-- col-md-8 -->
         </div> <!-- row -->
-	</div> <!-- main -->	
+	</section> <!-- main -->	
 </body>
 
 </html>

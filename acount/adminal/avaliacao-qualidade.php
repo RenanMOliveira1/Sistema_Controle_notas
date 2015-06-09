@@ -13,6 +13,7 @@
 		break;
 	}
 	define('TITULO','Avaliação de Qualidade');
+	define('ENDERECO_PAG_INIC_AL','/acount/adminal/index.php');
 	
 	setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 	date_default_timezone_set('America/Sao_Paulo');
@@ -24,29 +25,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="Tiago Henrique, Yasmin Farias, Nyelson Gomes, Renan Oliveira, Ramon Portela, Roberto Souza" /> 
-  	<meta name="keywords" content="faculdade, alunos, configuracoes" />
+  	<meta name="keywords" content="faculdade, alunos, avaliacao, qualidade" />
   	<meta name="description" content="Sistema de Gestão Acadêmica, Avaliações e Administração de Curso em uma Instituição." />
 	<title><?=TITULO?> | Painel de Controle do Aluno - SGA</title>
 	
+    <!-- Js e CSS do Site -->
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
 <body onLoad="SidebarActive('avaliacao-qualidade');">
+	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-al-header-sidebar.php"); ?>
 		
-	<section id="section-al-configuracoes" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="/index.php" title="Página Inicial da SGA" ><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><?=TITULO?></li>
-			</ol>
-		</div> <!-- row -->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header"><?=TITULO?></h1>
-			</div>
-		</div> <!-- row -->
+	<section id="section-al-avaliacao-qualidade" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    	<!-- Caminho da Página e Titulo -->			
+		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
         <div class="row">
 			<div class="col-lg-12">
@@ -55,12 +48,11 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Seus Dados</div> <!-- panel-heading -->
                             <div class="panel-body">
-                            
                                 <div class="form-group" id="div-avaliacao-data">
                                     <label>
                                         <span>Data da Avaliação: </span>
                                         <input type="text" id="avaliacao-data" name="avaliacao-data" 
-                                        size="35" class="form-control" value="<?=$dataAvaliacao?>"
+                                        size="35" class="form-control" value="<?=utf8_encode($dataAvaliacao)?>"
                                         title="Data em que você está realizando a Avaliacao" disabled />
                                     </label>
                                 </div> <!-- div-nome -->
