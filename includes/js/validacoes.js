@@ -238,23 +238,7 @@ function ValidarCadastro() {
 		msg += "Campo Numero só se Aceita Numeros<br/>";
 		$("#div-numero").addClass(" has-error");
 	}
-	
-	var senha = $("#senha").val();
-	var confirmarSenha = $("#confirmar-senha").val();
-	if (senha == "") { 
-		msg += "Campo Password é Obrigatorio<br/>";
-		$("#div-senha").addClass(" has-error");
-	}
-	if (confirmarSenha == "") { 
-		msg += "Campo Confirmar Password é Obrigatorio<br/>";
-		$("#div-confirmar-senha").addClass(" has-error");
-	}	
-	if (senha != confirmarSenha) { 
-		msg += "Password e Confirmar Password devem ser Iguais<br/>";
-		$("#div-senha").addClass(" has-error");
-		$("#div-confirmar-senha").addClass(" has-error");
-	}
-	
+		
 	var cep = $("#cep").val();
 	if (cep == "") {
 		msg += "Campo CEP é Obrigatorio<br/>";
@@ -280,15 +264,6 @@ function ValidarCadastro() {
 	} else if (!ValidarData(data)) {
 		msg += "Data Inválida<br/>";
 		$("#div-nascimento").addClass(" has-error");
-	}
-	
-	var email = $("#email").val();
-	if (email == "") {
-		msg += "Campo Email é Obrigatorio<br/>";
-		$("#div-email").addClass(" has-error");
-	} else if (!ValidarEmail(email)) {
-		msg += "E-mail inválido<br />";
-		$("#div-email").addClass(" has-error");	
 	}
 	
 	if($("#programa").val() == 0){

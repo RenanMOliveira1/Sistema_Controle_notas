@@ -16,9 +16,19 @@
 		$bairro = @$_POST['bairro'];
 		$cidade = @$_POST['cidade'];
 		$estado = @$_POST['estado'];
-		$email = @$_POST['email'];
-		$senha = @$_POST['senha'];
 		$programa = @$_POST['programa'];
+		$senha = "$aluno2015"
+		
+		$nome = ucwords(strtolower($nome));
+		
+		$nome_dividido = explode(" ", $nome);
+		$primeiro_nome = $nome_dividido[0];
+		$sobre_nome = substr($nome_dividido[1], 0, 1);
+		$tamanho_nome = count($nome_dividido);
+		$ultimo_nome = $nome_dividido[($tamanho_nome-1)];
+		
+		$email = strtolower($primeiro_nome.".".$ultimo_nome."@aluno.com");
+				
 		
 		//Conecção ao Banco de Dados
 		$conexao = mysql_connect("localhost", "root", "");
@@ -34,7 +44,50 @@
 		
 		$resultadoPesquisa = mysql_query($query, $conexao);
 		if (mysql_num_rows($resultadoPesquisa) == 1) {
-			header("Location: /cadastrar.php?msg=Aluno ja cadastrado");
+			$email = strtolower($primeiro_nome.".".$sobre_nome.$ultimo_nome."@aluno.com");
+			$nome = utf8_decode($nome);
+			$logradouro = utf8_decode($logradouro );
+			$complemento = utf8_decode($complemento);
+			$bairro = utf8_decode($bairro);
+			$cidade = utf8_decode($cidade);
+			
+			$query1 = "INSERT INTO `aluno`(`nomeAluno`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`)
+					  VALUES ('$nome', '$cpf', '$dataNascimento','$sexo','$email','$senha');";
+	
+			$queryPesquisa = "SELECT `matricula`
+					  FROM `aluno` 
+					  WHERE `email` = '$email'";
+			
+			$resultado = mysql_query($query1, $conexao);
+			
+			$resultadoPesquisa = mysql_query($queryPesquisa, $conexao);
+			$aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+			$matricula = $aluno['matricula'];		
+			
+			$query2 = "INSERT INTO `endereco`(`Cep`, `tipoLogradouro`, `numero`, `logradouro`, `complemento`, `bairro`, `cidade`, `estado`, `alunoMatricula`) 
+					   VALUES ('$cep','$tipoLogradouro',$numero,'$logradouro','$complemento','$bairro','$cidade','$estado', '$matricula');";
+			$resultado = mysql_query($query2, $conexao);		
+			  
+			$query3 = "INSERT INTO `telefone` (`telefone`, `celular`, `alunoMatricula`)
+					   VALUES ('$telefone', '$celular','$matricula');";
+			$resultado = mysql_query($query3, $conexao);
+			
+			$query4 ="INSERT INTO `aluno_programa`(`idPrograma`, `alunoMatricula`)
+					  VALUES ('$programa', '$matricula')";
+			$resultado = mysql_query($query4, $conexao);
+					  
+			if(mysql_affected_rows($conexao) != 1){
+				if(mysql_errno() >= 1){
+					$GLOBALS['msgErro']="Ocorreu um erro durante a inclusão";
+					header("Location: /cadastrar.php?erro1");
+				}
+				else{
+					$GLOBALS['msgErro']="Ocorreu um erro inesperado durante a inclusão";
+					header("Location: /cadastrar.php?erro2");
+				}
+			}else{
+				header("Location: /acount/");
+			}
 		}else{
 			$nome = utf8_decode($nome);
 			$logradouro = utf8_decode($logradouro );

@@ -256,28 +256,6 @@
                                             </select>
                                         </label>
                                     </div> <!-- div-estado -->
-                                    <div class="form-campos" id="div-email">
-                                        <label>
-                                            <span>Email: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="text" class="form-control" name="email" id="email" 
-                                            placeholder="Digite o seu Email" size="60"
-                                            title="Entre com o seu email para acesso" />
-                                        </label>
-                                    </div> <!-- div-email -->
-                                    <div class="form-campos" id="div-senha">
-                                        <label>
-                                            <span>Password: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="password" class="form-control" name="senha" 
-                                            id="senha" placeholder="Digite uma Senha"
-                                            title="Digite uma senha com no mínimo de 6 caracteres. Pelo menos uma letra minúscula, um numero e um caracter especial"  />
-                                        </label>
-                                    </div> <!-- div-senha -->
-                                    <div class="form-campos" id="div-confirmar-senha">
-                                        <label>
-                                            <span>Confirmar Password: <span class="asteristicos-obrigatorio">*</span></span>
-                                            <input type="password" class="form-control" name="confirmar-senha" id="confirmar-senha" placeholder="Confirme a sua Senha" size="25" title="Confirme a sua Senha Digitada Anteriormente"  />
-                                        </label>
-                                    </div> <!-- div-confirmar-senha -->
                                     
                                     <div id="dados-invalidos">
                                     <?
