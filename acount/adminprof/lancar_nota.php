@@ -18,7 +18,6 @@
 	if($av3 == ""){
 		$av3 = -1.00;
 	}
-	exit($av2);
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
 		header("Location: /acount/?msg=$msg");

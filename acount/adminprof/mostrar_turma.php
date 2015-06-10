@@ -1,6 +1,5 @@
 <?
 	session_start();
-	unset($_SESSION['notaTurmaId']);
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
 		header("Location: /acount/?msg=$msg");
@@ -57,30 +56,47 @@
 				$aluno['av3'] = "";
 			}
 			
-			$trTemp .= "<tbody>
-					<td>{$aluno['nomeAluno']}</td>
-					<td>
-						<input class='form-control' type='text' id='nota-av1-{$aluno['matricula']}' name='nota-av1-{$aluno['matricula']}' placeholder='Digite a Nota da AV1' value='{$aluno['av1']}' autofocus/>
-					</td>
-					<td>
-						<input class='form-control' type='text' id='nota-av2-{$aluno['matricula']}' name='nota-av2-{$aluno['matricula']}' placeholder='Digite a Nota da AV2' value='{$aluno['av2']}' />
-					</td>
-					<td>
-						<input class='form-control' type='text' id='nota-pf-{$aluno['matricula']}' name='nota-pf-{$aluno['matricula']}' placeholder='Digite a Nota da PF' value='{$aluno['av3']}' />
-					</td>
-					<td>
-						<input class='form-control' type='text' id='nota-comentario' name='nota-comentario' placeholder='Digite um Comentario'  />
-					</td>
-					<td>
-						<div id='div-botoes' class='todo-list-item pull-left action-buttons'>
-							<a href='lancar_nota.php?matricula={$aluno['matricula']}&av1={$aluno['av1']}&av2={$aluno['av2']}&av3={$aluno['av3']}' title='Lançar' class='trash'><span class='glyphicon glyphicon-ok'></span></a>
-						</div>  <!-- div-botoes -->
-				    </td>
-				</tbody>";
+			$trTemp .= "
+			<form method=\"post\" action=\"/controle/aluno.php?acao=nota&matricula=".$aluno['matricula']."\" id=\"form-lancar-nota-".$aluno['matricula']."\">
+			<input type='hidden' value='$turmaId' id='nota-turma' name='nota-turma'/>
+				<table class='table table-hover'>
+                                <thead>
+                                    <tr>
+										<th data-field='disciplina' data-align='right'>Nome do Aluno</th>
+										<th data-field='av1'>1ª Avaliação</th>
+										<th data-field='av2'>2ª Avaliação</th>
+										<th data-field='av3'>Prova Final</th>
+										<th data-field='pf'>Comentário</th>
+										<th data-field='lancar'>Confirmar</th>
+                                    </tr>
+                                </thead>
+					<tbody>
+						<td>{$aluno['nomeAluno']}</td>
+						<td>
+							<input class='form-control' type='text' id='nota-av1-{$aluno['matricula']}' name='nota-av1-{$aluno['matricula']}' placeholder='Digite a Nota da AV1' value='{$aluno['av1']}' autofocus/>
+						</td>
+						<td>
+							<input class='form-control' type='text' id='nota-av2-{$aluno['matricula']}' name='nota-av2-{$aluno['matricula']}' placeholder='Digite a Nota da AV2' value='{$aluno['av2']}' />
+						</td>
+						<td>
+							<input class='form-control' type='text' id='nota-pf-{$aluno['matricula']}' name='nota-pf-{$aluno['matricula']}' placeholder='Digite a Nota da PF' value='{$aluno['av3']}' />
+						</td>
+						<td>
+							<input class='form-control' type='text' id='nota-comentario' name='nota-comentario' placeholder='Digite um Comentario'  />
+						</td>
+						<td>
+							<div id='div-botoes' class='todo-list-item pull-left action-buttons'>
+								<a href='lancar_nota.php?matricula={$aluno['matricula']}' title='Lançar' class='trash' onClick='document.getElementById(\"form-lancar-nota-{$aluno['matricula']}\").submit();'><span class='glyphicon glyphicon-ok'></span></a>
+							</div>  <!-- div-botoes -->
+						</td>
+					</tbody>
+				</table>
+			</form>";
 		}
 	}else{
 		$trTemp .= "Turma sem alunos vinculados";
 	}
+mysql_close($conexao);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -106,23 +122,21 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><?= $turma['nomeTurma'] ?></div> <!-- panel-heading -->
                     <div class="table-responsive panel-body">
-                        <form method="post" action="notas.php" id="form-lacar-nota" >
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th data-field="disciplina" data-align="right">Nome do Aluno</th>
-                                        <th data-field="av1">1ª Avaliação</th>
-                                        <th data-field="av2">2ª Avaliação</th>
-                                        <th data-field="av3">Prova Final</th>
-                                        <th data-field="pf">Comentário</th>
-                                        <th data-field="lancar">Confirmar</th>
-                                    </tr>
-                                </thead>
-                               <?= $trTemp ?>
-                            </table>
-                        <input type="submit" class="btn btn-primary" id="btn-nota-lancar" value="Voltar" />
-                        </form>
-                  </div> <!-- table-responsive panel-body -->
+                       <!--<table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th data-field="disciplina" data-align="right">Nome do Aluno</th>
+                                    <th data-field="av1">1ª Avaliação</th>
+                                    <th data-field="av2">2ª Avaliação</th>
+                                    <th data-field="av3">Prova Final</th>
+                                    <th data-field="pf">Comentário</th>
+                                    <th data-field="lancar">Confirmar</th>
+                                </tr>
+                            </thead>
+                        </table>-->
+                        <?= $trTemp?>
+                   		<a href="/acount/adminprof/notas.php"><input type="submit" class="btn btn-primary" id="btn-nota-lancar" value="Voltar" /></a>
+            	</div> <!-- table-responsive panel-body -->
             </div> <!-- panel panel-default  -->
         </div> <!-- col-md-12 -->
         
