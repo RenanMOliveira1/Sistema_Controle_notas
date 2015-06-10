@@ -17,18 +17,18 @@
 		$cidade = @$_POST['cidade'];
 		$estado = @$_POST['estado'];
 		$programa = @$_POST['programa'];
-		$senha = "$aluno2015"
+		$senha = "!aluno2015";
 		
 		$nome = ucwords(strtolower($nome));
+		$nome_email = preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $nome ) );
 		
-		$nome_dividido = explode(" ", $nome);
+		$nome_dividido = explode(" ", $nome_email);
 		$primeiro_nome = $nome_dividido[0];
 		$sobre_nome = substr($nome_dividido[1], 0, 1);
 		$tamanho_nome = count($nome_dividido);
 		$ultimo_nome = $nome_dividido[($tamanho_nome-1)];
 		
-		$email = strtolower($primeiro_nome.".".$ultimo_nome."@aluno.com");
-				
+		$email = strtolower($primeiro_nome.".".$ultimo_nome."@aluno.com");				
 		
 		//Conecção ao Banco de Dados
 		$conexao = mysql_connect("localhost", "root", "");
@@ -78,15 +78,16 @@
 					  
 			if(mysql_affected_rows($conexao) != 1){
 				if(mysql_errno() >= 1){
-					$GLOBALS['msgErro']="Ocorreu um erro durante a inclusão";
-					header("Location: /cadastrar.php?erro1");
+					mysql_close($conexao);
+					header("Location: /cadastrar.php?msg=Ocorreu um erro durante o cadastro");
 				}
 				else{
-					$GLOBALS['msgErro']="Ocorreu um erro inesperado durante a inclusão";
-					header("Location: /cadastrar.php?erro2");
+					mysql_close($conexao);
+					header("Location: /cadastrar.php?msg=Ocorreu um erro inexperado durante o cadastro");
 				}
 			}else{
-				header("Location: /acount/");
+				mysql_close($conexao);
+				header("Location: /acount/?cadastro=Cadastro realizado com sucesso.");
 			}
 		}else{
 			$nome = utf8_decode($nome);
@@ -122,18 +123,18 @@
 					  
 			if(mysql_affected_rows($conexao) != 1){
 				if(mysql_errno() >= 1){
-					$GLOBALS['msgErro']="Ocorreu um erro durante a inclusão";
-					header("Location: /cadastrar.php?erro1");
+					mysql_close($conexao);
+					header("Location: /cadastrar.php?msg=Ocorreu um erro durante o cadastro");
 				}
 				else{
-					$GLOBALS['msgErro']="Ocorreu um erro inesperado durante a inclusão";
-					header("Location: /cadastrar.php?erro2");
+					mysql_close($conexao);
+					header("Location: /cadastrar.php?msg=Ocorreu um erro inexperado durante o cadastro");
 				}
 			}else{
-				header("Location: /acount/");
+				mysql_close($conexao);
+				header("Location: /acount/?cadastro=Cadastro realizado com sucesso.");
 			}
 		}
-		mysql_close($conexao);
 	}
 	
 	function alterar($tipo){

@@ -1,4 +1,6 @@
 <?
+	$cadastro = "";
+	$cadastro .= @$_GET['cadastro'];
 	$dadosInvalidos = @$_GET['dadosInvalidos'];
 	$msg = @$_GET['msg'];
 ?>
@@ -68,7 +70,18 @@
                                     	<input type="button" id="btn-logar" class="btn btn-primary" value="Entrar" onClick="botoesEnviar('#btn-logar', '#formulario-login', ValidarLogin());" />
                                     </div> <!-- div-login-btn-logar -->
                                     
-                                    <div id="dados-invalidos"><?=$msg?></div> <!-- dados-invalidos -->
+                                    <div id="dados-invalidos">
+										<?
+										if($msg != ""){
+											echo "$msg";
+										}
+										if($cadastro != ""){
+											echo "<script type=\"text/javascript\">
+													alert('Cadastro realizado com sucesso');
+												  </script>";
+										}
+										?>
+                                    </div> <!-- dados-invalidos -->
 									<div class="clearfix"></div>
                                 </div> <!-- div-login-opcoes -->
                             </form>
