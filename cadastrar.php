@@ -12,6 +12,10 @@
 </head>
 
 <body>
+	<? 
+		$msg = "";
+	 	$msg .= @$_GET['msg'];
+	 ?>
     <!-- include com o header, botões sociais, Procurar, logo e Menu -->
     <? include("includes/server/include-header.php"); ?> 
         
@@ -21,7 +25,7 @@
                     <div class="row">
                       <div class="col-sm-8">
                             <div class="basic-login">
-                                <form id="formulario-cadastro" action="cadastro.php" method="post">
+                                <form id="formulario-cadastro" action="/controle/aluno.php?acao=cadastro" method="post">
                                     <div class="form-campos" id="div-programa">
                                         <label>
                                             <span>Escolha o Programa: <span class="asteristicos-obrigatorio">*</span></span>
@@ -40,7 +44,6 @@
 															  WHERE `tipo` = 'graduacao';";
 											
 													$resultadoPesquisa = @mysql_query($query, $conexao);
-													$msg = "";
 													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 													if ($numeroPesquisa >= 1){
 														$contador = 0;
@@ -66,7 +69,6 @@
 															  WHERE `tipo` = 'pos';";
 											
 													$resultadoPesquisa = @mysql_query($query, $conexao);
-													$msg = "";
 													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 													if ($numeroPesquisa >= 1){
 														$contador = 0;
@@ -92,7 +94,6 @@
 															  WHERE `tipo` = 'intensivo';";
 											
 													$resultadoPesquisa = @mysql_query($query, $conexao);
-													$msg = "";
 													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 													if ($numeroPesquisa >= 1){
 														$contador = 0;
@@ -278,7 +279,13 @@
                                         </label>
                                     </div> <!-- div-confirmar-senha -->
                                     
-                                    <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                                    <div id="dados-invalidos">
+                                    <?
+										if($msg != ""){
+											echo $msg;
+										}
+									?>
+                                    </div> <!-- dados-invalidos -->
                                     
                                 <div id="div-btn-enviar">
                                     <input type="button" id="btn-enviar-cadastro" class="btn btn-primary" value="Enviar" onClick="botoesEnviar('#btn-enviar-cadastro', '#formulario-cadastro', ValidarCadastro());" />

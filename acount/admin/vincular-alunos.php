@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"> Dados da Vinculação</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" action="/vincular_aluno.php" method="post" id="form-vincular-alun">
+						<form class="form-horizontal" action="/controle/aluno.php?acao=vinculacao" method="post" id="form-vincular-alun">
                             <div class="form-group" id="div-vincular-aluno-nomeAl" >
                                 <label class="col-md-3 control-label">
                                     <span>Selecione o Aluno</span>

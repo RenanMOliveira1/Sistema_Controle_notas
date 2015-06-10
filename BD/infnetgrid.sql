@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Jun-2015 às 06:18
+-- Generation Time: 09-Jun-2015 às 19:24
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -242,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `modulo` (
   `nome` varchar(60) NOT NULL,
   `descr` text NOT NULL,
   PRIMARY KEY (`idModulo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `modulo`
@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `programa` (
   `nomeCurso` varchar(50) NOT NULL,
   `sigla` varchar(10) NOT NULL,
   PRIMARY KEY (`idPrograma`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `programa`
@@ -403,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `turma` (
   KEY `idLaboratorio` (`idLaboratorio`),
   KEY `idPrograma` (`idPrograma`),
   KEY `idProfessor` (`idProfessor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `turma`
@@ -440,7 +440,7 @@ CREATE TABLE IF NOT EXISTS `turma_aluno` (
 
 INSERT INTO `turma_aluno` (`alunoMatricula`, `turmaID`, `av1`, `av2`, `av3`) VALUES
 (1, 1, '-1.00', '-1.00', '-1.00'),
-(14, 1, '-1.00', '-1.00', '-1.00'),
+(14, 1, '5.00', '-1.00', '-1.00'),
 (14, 2, '7.00', '-1.00', '-1.00'),
 (14, 3, '5.00', '5.00', '-1.00'),
 (14, 4, '4.00', '3.00', '2.00'),

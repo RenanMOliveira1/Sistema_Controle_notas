@@ -50,7 +50,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="form-alterar-senha" method="post" action="alterar_aluno.php?acao=senha">
+                    	<form id="form-alterar-senha" method="post" action="/controle/aluno.php?acao=alteracao&tipo=senha">
                         	<div class="form-group" id="div-alterar-senha-antiga">
                             	<label>
                                 	<span>Senha Atual: <span class="asteristicos-obrigatorio">*</span></span>
@@ -91,7 +91,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Email (Login)</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="form-alterar-email" method="post" action="alterar_aluno.php?acao=email">
+                    	<form id="form-alterar-email" method="post" action="/controle/aluno.php?acao=alteracao&tipo=email">
                         	<div class="form-campos" id="div-alt-email-atual">
                                 <label>
                                     <span>Email Atual: <span class="asteristicos-obrigatorio">*</span></span>
@@ -129,7 +129,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Dados de Cadastro</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="formulario-alterar-cadastro" action="alterar_aluno.php?acao=dados" method="post">
+                    	<form id="formulario-alterar-cadastro" action="/controle/aluno.php?acao=alteracao&tipo=dados" method="post">
                             <div class="form-campos" id="div-alt-nome">
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>

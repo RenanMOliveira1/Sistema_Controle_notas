@@ -45,7 +45,7 @@
 						 <td>
 							<div class='todo-list-item pull-left action-buttons'>
 								<a href='#' title='Excluir/Recusar Liberação' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
-								<a href='liberar.php?matricula={$aluno['matricula']}' title='Aceitar' class='trash'><span class='glyphicon glyphicon-ok'></span></a>
+								<a href='/controle/aluno.php?acao=liberacao&matricula={$aluno['matricula']}' title='Aceitar' class='trash'><span class='glyphicon glyphicon-ok'></span></a>
 							</div> <!-- todo-list-item pull-left -->
 						 </td>
 					  </tbody>";								
