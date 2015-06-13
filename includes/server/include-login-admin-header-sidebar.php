@@ -30,7 +30,8 @@
 				</a>
 				<ul class="children collapse" id="sub-item-1">
 					<li><a href="/acount/admin/cadastrar-turma.php" title="Cadastrar Turma"><span class="glyphicon glyphicon-file"></span> Turma</a></li>
-                    <li><a href="/acount/admin/cadastrar-laboratorio.php" title="Cadastrar Laboratórios"><span class="glyphicon glyphicon-file"></span> Laboratório</a></li> 
+                    <li><a href="/acount/admin/cadastrar-laboratorio.php" title="Cadastrar Laboratórios"><span class="glyphicon glyphicon-file"></span> Laboratório</a></li>
+                    <li><a href="/acount/admin/cadastrar-habilidade.php" title="Cadastrar Habilidades referentes ao Professor"><span class="glyphicon glyphicon-file"></span> Habilidades</a></li> 
                     <li><a href="/acount/admin/cadastrar-professor.php" title="Cadastrar Professor"><span class="glyphicon glyphicon-file"></span> Professores</a></li>
 					<li><a href="/acount/admin/criar-modulo.php" title="Cadastrar Módulos"><span class="glyphicon glyphicon-file"></span> Módulos</a></li>  
 				</ul>
@@ -41,11 +42,20 @@
 				</a>
 				<ul class="children collapse" id="sub-item-2">
 					<li><a class="" href="/acount/admin/vincular-alunos.php" title="Vincular Alunos à Turma" ><span class="glyphicon glyphicon-random"></span> Alunos</a></li>
+                    <li><a class="" href="/acount/admin/vincular-habilidades.php" title="Vincular Habilidades à Professores" ><span class="glyphicon glyphicon-random"></span> Habilidades</a></li>
 					<li><a class="" href="/acount/admin/vincular-professor.php" title="Vincular Professores à Módulos" ><span class="glyphicon glyphicon-random"></span> Professores</a></li>
                     <li><a class="" href="/acount/admin/vincular-modulo.php" title="Vincular Módulos à Programa" ><span class="glyphicon glyphicon-random"></span> Módulos</a></li>
 				</ul>
 			</li>
-            <li id="navLiberarAcesso" class=""><a href="/acount/admin/liberar-acesso.php" title="Liberar Acesso de Aluno à SGA" ><span class="glyphicon glyphicon-saved"></span> Liberar Acessos</a></li>
+            <li id="navLiberacoes" class="parent ">
+				<a data-toggle="collapse" href="#sub-item-3">
+					<span class="glyphicon glyphicon-list"></span> Liberar <span class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
+				</a>
+				<ul class="children collapse" id="sub-item-3">
+					<li><a class="" href="/acount/admin/liberar-acesso.php" title="Liberar Acesso de Aluno à SGA" ><span class="glyphicon glyphicon-saved"></span> Alunos</a></li>
+                    <li><a class="" href="/acount/admin/liberar-avaliacao.php" title="Vincular Habilidades à Professores" ><span class="glyphicon glyphicon-saved"></span> Avaliação Institucional</a></li>
+				</ul>
+			</li>
 			<li id="navAdminConfig" class=""><a href="/acount/admin/configuracoes.php" title="Configurações do Usuário" ><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
 			<li role="presentation" class="divider"></li>
 			<li><a href="/index.php" title="Página Inicial do Site SGA" ><span class="glyphicon glyphicon-home"></span> Página Inicial</a></li>

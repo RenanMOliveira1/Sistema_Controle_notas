@@ -34,11 +34,13 @@ function SidebarActive(opcaoSidebar) {
 			break;
 		case "cad-laboratorio":
 		case "cad-prof":
+		case "cad-habil":
 		case "criar-modulo":
 		case "cad-turma":
 			$("#navAdminCad").addClass("active");
 			break;
 		case "vinc-prof":
+		case "vinc-habil":
 		case "vinc-aluno":
 			$("#navAdminVinc").addClass("active");
 			break;
@@ -46,7 +48,7 @@ function SidebarActive(opcaoSidebar) {
 			$("#navAdminConfig").addClass("active");
 			break;
 		case "liberar-acesso":
-			$("#navLiberarAcesso").addClass("active");
+			$("#navLiberacoes").addClass("active");
 			break;
 		case "admin-index":
 			$("#navAdminIndex").addClass("active");
@@ -562,15 +564,40 @@ function ValidarCriarModulo() {
 	return true;
 }
 
+//Validar Página Vincular Módulo à Programa
 function ValidarVincularModulo(){
+	
 	if ($("#vincular-mod-programa").val() == 0){
 		$("#dados-invalidos").html("Selecione um programa."); 
-		$("#div-programa").addClass(" has-error");
+		$("#div-vincular-mod-programa").addClass(" has-error");
 		return false;
 	}
 	return true;
 }
 
+//Validar Página Cadastrar Habilidades
+function ValidarCadHabilidade() {
+	
+	if ($("#habilidade-nome").val() == ""){
+		$("#dados-invalidos").html("Campo Nome é Obrigatório."); 
+		$("#div-habilidade-nome").addClass(" has-error");
+		return false;
+	}
+	return true;
+}
+
+//Validar Página Vincular Habilidades à Professor
+function ValidarVincHabil() {
+	
+	if ($("vincular-habilidade-habil").children(":selected").length == 0) {
+		$("#dados-invalidos").html("Selecione ao menos uma Habilidade."); 
+		$("#div-vincular-habilidade-habil").addClass(" has-error");
+		return false;
+	}
+	return true;
+}
+
+//Função para Leitura de todos os Botões do Site
 function botoesEnviar(idBotao, idFormulario, funcaoDeValidar) {
 	$(document).ready(function(){
 		$(idBotao).click(function() {
