@@ -86,7 +86,7 @@
 						</td>
 						<td>
 							<div id='div-botoes' class='todo-list-item pull-left action-buttons'>
-								<a href='lancar_nota.php?matricula={$aluno['matricula']}' title='Lançar' class='trash' onClick='document.getElementById(\"form-lancar-nota-{$aluno['matricula']}\").submit();'><span class='glyphicon glyphicon-ok'></span></a>
+								<a href='#' title='Lançar' class='trash' onClick='document.getElementById(\"form-lancar-nota-{$aluno['matricula']}\").submit();'><span class='glyphicon glyphicon-ok'></span></a>
 							</div>  <!-- div-botoes -->
 						</td>
 					</tbody>

@@ -366,7 +366,7 @@
 		$query = "SELECT `alunoMatricula`, `turmaID`
 				  FROM `turma_aluno` 
 				  WHERE `alunoMatricula` = '$matricula' 
-				  AND `turmaID` = '$turmaId";
+				  AND `turmaID` = '$turmaId'";
 		
 		$resultadoPesquisa = mysql_query($query, $conexao);
 		if (mysql_num_rows($resultadoPesquisa) == 1) {

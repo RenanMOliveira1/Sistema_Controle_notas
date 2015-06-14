@@ -1,6 +1,8 @@
-<?
+<?	
 	$msg = "";
 	$msg .= @$_GET['msg'];
+	$alunoMatricula = @$_GET['matricula'];
+	$alunoPrograma = @$_GET['idPrograma'];
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -57,6 +59,7 @@
                                 <div class="col-md-9">
                                     <select id="vincular-aluno-nomeAl" name="vincular-aluno-nomeAl" 
                                     class="form-control" title="Escolha o Aluno" >
+                                    	<option value='0' onClick="window.location='/acount/admin/vincular-alunos.php?idPrograma=0'">Selecione um aluno: </option>
                                     	<?
 													//Conecção ao Banco de Dados
 											$conexao = @mysql_connect("localhost", "root", "");
@@ -65,19 +68,26 @@
 											
 											mysql_select_db("infnetgrid", $conexao);
 											
-											$query = "SELECT `matricula`, `nomeAluno`
-													  FROM `aluno`";
+											$query = "SELECT aluno.`matricula`, aluno.`nomeAluno`, programa.`idPrograma`
+													  FROM `aluno_programa`
+													  JOIN `aluno` ON aluno.`matricula` = aluno_programa.`alunoMatricula`
+													  JOIN `programa` ON programa.`idPrograma` = aluno_programa.`idPrograma`
+													  ORDER BY aluno.`nomeAluno`, aluno.`matricula`";
 									
 											$resultadoPesquisa = @mysql_query($query, $conexao);
 											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 											if ($numeroPesquisa >= 1){
 												$contador = 0;
 												while($aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$selecionado = "";
+													if(($alunoMatricula == $aluno['matricula']) && ($alunoPrograma == $aluno['idPrograma'])){
+														$selecionado .= "selected='selected'";	
+													}
 													$alunoFormatado = utf8_encode($aluno['nomeAluno']);
-													echo "<option value='{$aluno['matricula']}'>$alunoFormatado</option>";
+													echo "<option value='{$aluno['matricula']}' onClick=\"window.location='/acount/admin/vincular-alunos.php?idPrograma={$aluno['idPrograma']}&matricula={$aluno['matricula']}'\" $selecionado>$alunoFormatado</option>";
 												}
 											}else{
-												$trTemp.="Não há alunos matriculados";
+												echo "<option value='0'>Não há alunos matriculados</option>";
 											}
 										?>
                                     </select>
@@ -99,18 +109,23 @@
 											mysql_select_db("infnetgrid", $conexao);
 											
 											$query = "SELECT `idTurma`, `nomeTurma`, `idPrograma`
-													  FROM `turma`";
+													  FROM `turma`
+													  WHERE `idPrograma` = '$alunoPrograma'";
 									
 											$resultadoPesquisa = @mysql_query($query, $conexao);
 											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 											if ($numeroPesquisa >= 1){
-												$contador = 0;
 												while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
 													$turmaFormatada = utf8_encode($turma['nomeTurma']);
 													echo "<option value='{$turma['idTurma']}'>$turmaFormatada</option>";
 												}
 											}else{
-												$trTemp.="Não há turmas criadas";
+												if($alunoPrograma == 0 || $alunoPrograma == ""){
+													echo "<option value='0'>Selecione um aluno</option>";
+												}
+												else{
+													echo "<option value='0'>Não há turmas criadas para esse programa</option>";
+												}												
 											}
 										?>
                                     </select>

@@ -475,33 +475,9 @@ function ValidarCadastrarProf() {
 		msg += "CPF inválido.<br/>";
 		$("#div-admin-prof-cpf").addClass(" has-error");
 	}
-	
-	var email = $("#admin-prof-email").val();
-	if(email == ""){
-		msg+= "Campo email é Obrigatorio <br/>";
-		$("#div-admin-prof-email").addClass(" has-error");
-	} else if(!ValidarEmail(email)){
-		msg += "Email inválido.<br/>";
-		$("div-admin-prof-email").addClass(" has-error");
-	}
-	
-	var senha = $("#admin-prof-senha").val();
-	if(senha == ""){
-		msg += "Campo Senha é Obrigatório.</br>";
-		$("#div-admin-prof-senha").addClass(" has-error");
-	}
-	
-	var senhaConfirma = $("#admin-prof-senha-confirma").val();
-	if(senhaConfirma == ""){
-		msg += "Campo Confirma Senha é Obrigatório.</br>";
-		$("#div-admin-prof-senha-confirma").addClass(" has-error");
-	}else if(senhaConfirma != senha){
-			msg += "Senha e Confirma Senha devem ser iguais";
-			$("#div-admin-prof-senha-confirma").addClass(" has-error");
-	}
 	if (msg != "") {
-		$("#dados-invalidos").html(msg);
-		return false;}
+	$("#dados-invalidos").html(msg);
+	return false;}
 	
 	return true;
 }

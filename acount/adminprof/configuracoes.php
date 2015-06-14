@@ -47,7 +47,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div>
 					<div class="panel-body">
-                    	<form id="form-alterar-senha" method="post" action="alterar_prof?acao=senha.php">
+                    	<form id="form-alterar-senha" method="post" action="/controle/professor.php?acao=alteracao&tipo=senha">
                         	<div class="form-group" id="div-alterar-senha-antiga">
                             	<label>
                                 	<span>Senha Atual: </span>
@@ -84,7 +84,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Dados</div>
 					<div class="panel-body">
-                    	<form id="formulario-alterar-cadastro" action="alterar_prof?acao=dados.php" method="post">
+                    	<form id="formulario-alterar-cadastro" action="/controle/professor.php?acao=alteracao&tipo=dados" method="post">
                             <div class="form-campos" id="div-prof-nome">
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
