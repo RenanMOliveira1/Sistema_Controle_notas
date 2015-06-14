@@ -46,7 +46,7 @@
 		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
         <div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-9">
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div> <!-- panel-heading -->
 					<div class="panel-body">
@@ -83,11 +83,11 @@
                         </form>
                     </div> <!-- panel-body -->
                 </div> <!-- panel panel-default -->
-            </div> <!-- col-lg-12 -->
+            </div> <!-- col-lg-9 -->
         </div> <!-- row -->
             
         <div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-9">
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Email (Login)</div> <!-- panel-heading -->
 					<div class="panel-body">
@@ -123,7 +123,7 @@
                         </form>
                     </div> <!-- panel-body -->
                 </div> <!-- panel panel-default -->
-            </div> <!-- col-lg-12 -->
+            </div> <!-- col-lg-9 -->
          
             <div class="col-lg-12">
 				<div class="panel panel-default">

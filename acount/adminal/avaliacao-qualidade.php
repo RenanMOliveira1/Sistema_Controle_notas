@@ -44,9 +44,9 @@
         <div class="row">
 			<div class="col-lg-12">
                 <form id="formulario-avaliacao" action="avaliacao_exe.php" method="post">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 col-md-offset-2">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Seus Dados</div> <!-- panel-heading -->
+                            <div class="panel-heading text-center">Seus Dados</div> <!-- panel-heading -->
                             <div class="panel-body">
                                 <div class="form-group" id="div-avaliacao-data">
                                     <label>
