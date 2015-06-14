@@ -14,6 +14,8 @@
 		break;
 	}
 	
+	$msg = "";
+	$msg = @$_GET['msg'];
 	$turmaId = @$_POST['escolher-turma'];
 	$trTemp = "";
 	
@@ -122,18 +124,7 @@ mysql_close($conexao);
             <div class="panel panel-default">
                 <div class="panel-heading"><?= $turma['nomeTurma'] ?></div> <!-- panel-heading -->
                     <div class="table-responsive panel-body">
-                       <!--<table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th data-field="disciplina" data-align="right">Nome do Aluno</th>
-                                    <th data-field="av1">1ª Avaliação</th>
-                                    <th data-field="av2">2ª Avaliação</th>
-                                    <th data-field="av3">Prova Final</th>
-                                    <th data-field="pf">Comentário</th>
-                                    <th data-field="lancar">Confirmar</th>
-                                </tr>
-                            </thead>
-                        </table>-->
+                       <div id="dados-validos" style="padding-right: 30px;"><?=$msg?></div> <!-- dados-validos -->
                         <?= $trTemp?>
                    		<a href="/acount/adminprof/notas.php"><input type="submit" class="btn btn-primary" id="btn-nota-lancar" value="Voltar" /></a>
             	</div> <!-- table-responsive panel-body -->

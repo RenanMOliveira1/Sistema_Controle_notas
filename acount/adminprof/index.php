@@ -49,6 +49,7 @@
 					</div>
 				</div>";
 		}
+		$trTemp = utf8_encode($trTemp);
 	} else {
 		$trTemp.="Não está alocado em nenhuma turma";
 	}
@@ -74,7 +75,7 @@
     	<!-- Caminho da Página e Titulo -->			
 		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
 		
-		 <?= utf8_encode($trTemp)?>
+		 <?= $trTemp ?>
 	 </section> <!-- main -->
 
 	<? include("../../includes/server/include-login-css-js-favicon.php"); ?>

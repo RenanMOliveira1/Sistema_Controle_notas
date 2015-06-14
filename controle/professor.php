@@ -97,8 +97,8 @@
 				
 		switch($tipo){
 			case "senha":
-				$senhaAntiga = @$_POST['alterar-senha-antiga'];
-				$senhaNova = @$_POST['alterar-senha-nova'];
+				$senhaAntiga = @$_POST['prof-alt-senha-antiga'];
+				$senhaNova = @$_POST['prof-alt-senha-nova'];
 				
 				if($_SESSION['profSenha'] == $senhaAntiga){
 					//Conecção ao Banco de Dados
@@ -116,18 +116,18 @@
 					$msgSenha = "";
 					if(mysql_affected_rows($conexao) != 1){
 						if(mysql_errno() >= 1){
-							header("Location: /acount/adminprof/configuracoes.php?msgSenha=Ocorreu um erro durante a alteração");
+							header("Location: /acount/adminprof/configuracoes.php?tp=senha&rsl=err&msgSenha=Ocorreu um erro durante a alteração");
 						}
 						else{
-							header("Location: /acount/adminprof/configuracoes.php?msgSenha=Ocorreu um erro inesperado durante a alteração");
+							header("Location: /acount/adminprof/configuracoes.php?tp=senha&rsl=err&msgSenha=Ocorreu um erro inesperado durante a alteração");
 						}
 					}else{
-						header("Location: /acount/adminprof/configuracoes.php?msgSenha=senha modificada com sucesso");
+						header("Location: /acount/adminprof/configuracoes.php?tp=senha&rsl=sucess&msgSenha=senha modificada com sucesso");
 						$_SESSION['profSenha'] = $senhaNova;
 					}
 					mysql_close($conexao);				
 				}else{
-					header("Location: /acount/adminprof/configuracoes.php?msgSenha=Senha atual não confere.");
+					header("Location: /acount/adminprof/configuracoes.php?tp=senha&rsl=err&msgSenha=Senha atual não confere.");
 				}
 			break;
 			
@@ -154,13 +154,13 @@
 				$msgDados = "";
 				if(mysql_affected_rows($conexao) < 0){
 					if(mysql_errno() >= 1){
-						header("Location: /acount/adminprof/configuracoes.php?msgDados=Ocorreu um erro durante a alteração");
+						header("Location: /acount/adminprof/configuracoes.php?tp=dados&rsl=err&msgDados=Ocorreu um erro durante a alteração");
 					}
 					else{
-						header("Location: /acount/adminprof/configuracoes.php?msgDados=Ocorreu um erro inesperado durante a alteração");
+						header("Location: /acount/adminprof/configuracoes.php?tp=dados&rsl=err&msgDados=Ocorreu um erro inesperado durante a alteração");
 					}
 				}else{
-					header("Location: /acount/adminprof/configuracoes.php?msgDados=Dados modificados com sucesso");
+					header("Location: /acount/adminprof/configuracoes.php?tp=dados&rsl=sucess&msgDados=Dados modificados com sucesso");
 					$_SESSION['profNome'] = $nome;
 					$_SESSION['profCpf'] = $cpf;		
 				}
