@@ -61,6 +61,7 @@
 			}
 			if($contNotas > 0){	
 				$media = $somaNotas / $contNotas;
+				$media = number_format($media, 2);
 			}
 			else{
 				$media = "--";

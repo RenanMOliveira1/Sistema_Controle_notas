@@ -1,9 +1,10 @@
 <?
-	$msgSenha = "";
+	$tipo = $rsl = $msgSenha = $msgEmail = $msgDados = "";
+	$tipo = @$_GET['tp'];
+	$rsl .= @$_GET['rsl'];
+
 	$msgSenha .= @$_GET['msgSenha'];
-	$msgEmail = "";
 	$msgEmail .= @$_GET['msgEmail'];
-	$msgDados = "";
 	$msgDados .= @$_GET['msgDados'];
 
 	session_start();
@@ -22,6 +23,36 @@
 	define('TITULO','Configurações');
 	define('ENDERECO_PAG_INIC_AL','/acount/adminal/index.php');
 	
+	$msgResultado = $campos = $camposEmail = $msgEmailResultado = $msgDadosResultado = $camposDados = "";
+	switch ($tipo) {
+		case "senha":
+			if ($rsl == "err")  {
+				$msgResultado .= "<div id='dados-invalidos'>{$msgSenha}</div> <!-- dados-invalidos -->";
+				$campos = " has-error";
+			} elseif ($rsl == "sucess") {
+				$msgResultado .= "<div id='dados-validos'>{$msgSenha}</div> <!-- dados-invalidos -->";
+				$campos .= " has-success";
+			}
+			break;
+		case "email":
+			if ($rsl == "err")  {
+				$msgEmailResultado .= "<div id='dados-invalidos-email'>{$msgEmail}</div> <!-- dados-invalidos-email -->";
+				$camposEmail = " has-error";
+			} elseif ($rsl == "sucess") {
+				$msgEmailResultado .= "<div id='dados-validos-email'>{$msgEmail}</div> <!-- dados-validos-email -->";
+				$camposEmail .= " has-success";
+			}
+			break;
+		case "dados":
+			if ($rsl == "err")  {
+				$msgDadosResultado .= "<div id='dados-invalidos-alt-cad'>{$msgDados}</div> <!-- dados-invalidos-alt-cad -->";
+				$camposDados .= " has-error";
+			} elseif ($rsl == "sucess") {
+				$msgDadosResultado .= "<div id='dados-validos-alt-cad'>{$msgDados}</div> <!-- dados-validos-alt-cad -->";
+				$camposDados .= " has-success";
+			}
+			break;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -51,32 +82,28 @@
 					<div class="panel-heading">Alterar Senha</div> <!-- panel-heading -->
 					<div class="panel-body">
                     	<form id="form-alterar-senha" method="post" action="/controle/aluno.php?acao=alteracao&tipo=senha">
-                        	<div class="form-group" id="div-alterar-senha-antiga">
+                        	<div class="form-group<?=$campos?>" id="div-alterar-senha-antiga">
                             	<label>
                                 	<span>Senha Atual: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="password" id="alterar-senha-antiga" class="form-control" name="alterar-senha-antiga" title="Digite sua Senha atual" placeholder="Digite sua Senha atual" size="30" autofocus/>
                                 </label>
                             </div> <!-- div-alterar-senha-antiga -->
-                            <div class="form-group" id="div-alterar-senha-nova">
+                            <div class="form-group<?=$campos?>" id="div-alterar-senha-nova">
                             	<label>
                                 	<span>Nova Senha: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="password" id="alterar-senha-nova" class="form-control" name="alterar-senha-nova" title="Digite a sua Nova Senha" placeholder="Digite a sua Nova Senha" size="30" />
                                 </label>
                             </div> <!-- div-alterar-senha-nova -->
-                            <div class="form-group" id="div-alterar-senha-confirmar">
+                            <div class="form-group<?=$campos?>" id="div-alterar-senha-confirmar">
                             	<label>
                                 	<span>Confirmar Senha: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="password" id="alterar-senha-confirmar" class="form-control" name="alterar-senha-confirmar" title="Confirme a sua nova Senha" placeholder="Confirme a sua nova Senha" size="30" />
                                 </label>
                             </div> <!-- div-alterar-senha-Confirmar -->
                             
-                            <div id="dados-invalidos">
-								<?	if($msgSenha != ""){
-                                        echo $msgSenha;
-                                    }
-                                ?>
-							</div> <!-- dados-invalidos -->
-                            
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+							<?=$msgResultado?>
+
                             <div class="form-group" id="div-alterar-senha-Confirmar">
                             	<input type="button" id="btn-alterar-enviar" class="btn btn-primary" value="Alterar Senha" onClick="botoesEnviar('#btn-alterar-enviar','#form-alterar-senha',ValidarAlterarSenha());"/>
                             </div> <!-- div-alterar-senha-Confirmar -->
@@ -92,7 +119,7 @@
 					<div class="panel-heading">Alterar Email (Login)</div> <!-- panel-heading -->
 					<div class="panel-body">
                     	<form id="form-alterar-email" method="post" action="/controle/aluno.php?acao=alteracao&tipo=email">
-                        	<div class="form-campos" id="div-alt-email-atual">
+                        	<div class="form-campos<?=$camposEmail?>" id="div-alt-email-atual">
                                 <label>
                                     <span>Email Atual: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" class="form-control" name="alt-email-atual" 
@@ -101,7 +128,7 @@
                                     title="Entre com o seu email atual para acesso" />
                                 </label>
                             </div> <!-- div-alt-email-atual -->
-                            <div class="form-campos" id="div-alt-email-novo">
+                            <div class="form-campos<?=$camposEmail?>" id="div-alt-email-novo">
                                 <label>
                                     <span>Novo Email: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" class="form-control" name="alt-email-novo" 
@@ -110,12 +137,8 @@
                                 </label>
                             </div> <!-- div-alt-email-novo -->
                             
-                            <div id="dados-invalidos-email">								
-								<?	if($msgEmail != ""){
-                                		echo $msgEmail;
-                                    }
-                                ?>
-                            </div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos-email"></div> <!-- dados-invalidos -->
+                            <?=$msgEmailResultado?>
                             
                             <div class="form-group" id="div-alterar-senha-Confirmar">
                             	<input type="button" id="btn-alterar-enviar-email" class="btn btn-primary" value="Alterar Email" onClick="botoesEnviar('#btn-alterar-enviar-email','#form-alterar-email',ValidarAlterarEmail());"/>
@@ -130,7 +153,7 @@
 					<div class="panel-heading">Alterar Dados de Cadastro</div> <!-- panel-heading -->
 					<div class="panel-body">
                     	<form id="formulario-alterar-cadastro" action="/controle/aluno.php?acao=alteracao&tipo=dados" method="post">
-                            <div class="form-campos" id="div-alt-nome">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-nome">
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-nome" name="alt-nome" size="70" class="form-control"
@@ -138,7 +161,7 @@
                                     placeholder="Entre com o Novo Nome" autofocus />
                                 </label>
                             </div> <!-- div-alt-nome -->   
-                            <div class="form-campos" id="div-alt-nascimento">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-nascimento">
                                 <label>
                                     <span>Nascimento: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-data-nascimento" name="alt-data-nascimento" class="form-control" maxlenght="10" size="30"
@@ -146,14 +169,14 @@
                                     placeholder="Digite a Nova Data 00/00/0000" />
                                 </label>
                             </div> <!-- div-alt-nascimento -->
-                            <div class="form-campos" id="div-alt-cpf">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-cpf">
                                 <label>
                                     <span>CPF: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-cpf" name="alt-cpf" class="form-control" maxlenght="11" size="20" value="<?= utf8_encode($_SESSION['alCpf'])?>";
                                     title="Entre com o Novo seu CPF" placeholder="Digite o Novo seu CPF" />
                                 </label>
                             </div> <!-- div-alt-nascimento -->
-                            <div class="form-campos" id="div-alt-sexo">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-sexo">
                                 <label>
                                     <span>Sexo: <span class="asteristicos-obrigatorio">*</span></span>
                                     <select id="alt-sexo" class="form-control" name="alt-sexo" title="Escolha o seu Novo Sexo" >
@@ -173,7 +196,7 @@
                                     </select>
                                 </label>
                             </div> <!-- div-nascimento -->
-                            <div class="form-campos" id="div-alt-telefone-fixo">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-telefone-fixo">
                                 <label>
                                     <span>Telefone: </span>
                                     <input type="text" id="alt-telefone-fixo" name="alt-telefone-fixo" title="Digite o seu Novo Telefone Fixo" maxlenght="65" class="form-control" value="<?= $_SESSION['alTelefone']?>"; placeholder="Digite o seu Novo Telefone Fixo" size="35" />
@@ -186,14 +209,14 @@
                                     maxlenght="65" value="<?= $_SESSION['alCelular']?>"; placeholder="Digite o seu Novo Celular" title="Digite o seu Novo Celular" size="35" />
                                 </label>
                             </div> <!-- div-telefone-celular -->
-                            <div class="form-campos" id="div-alt-cep">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-cep">
                                 <label>
                                     <span>CEP: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-cep" name="alt-cep" value="<?= $_SESSION['alCep']?>";
                                     title="Entre com o Novo CEP" class="form-control" placeholder="Digite o seu Novo CEP" />
                                 </label>
                             </div> <!-- div-alt-cep -->
-                            <div class="form-campos" id="div-alt-tipo-logradouro">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-tipo-logradouro">
                                 <label>
                                     <span>Tipo de Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
                                     <select name="alt-tipo-logradouro" class="form-control" id="alt-tipo-logradouro"/>
@@ -267,14 +290,14 @@
                                     </select>
                                  </label>
                             </div> <!-- div-alt-tipo-logradouro  -->
-                            <div class="form-campos" id="div-alt-numero">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-numero">
                                 <label>
                                     <span>Numero: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-numero" name="alt-numero" placeholder="Numero" value="<?= $_SESSION['alNumero']?>";
                                     title="Entre com o Novo Numero da Casa" class="form-control" size="7" />
                                 </label>
                             </div> <!-- div-alt-numero -->
-                            <div class="form-campos" id="div-alt-logradouro">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-logradouro">
                                 <label>
                                     <span>Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-logradouro" name="alt-logradouro" value="<?= utf8_encode($_SESSION['alLogradouro'])?>";
@@ -282,7 +305,7 @@
                                     size="80" placeholder="Digite o seu Novo Logadouro" />
                                 </label>
                             </div> <!-- div-alt-logradouro -->
-                            <div class="form-campos" id="div-alt-complemento">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-complemento">
                                 <label>
                                     <span>Complemento: </span>
                                     <input type="text" name="alt-complemento" id="alt-complemento" size="100"
@@ -290,7 +313,7 @@
                                     class="form-control" placeholder="Digite o Algum Complemento, se Tiver"/>
                                 </label>
                             </div> <!-- div-alt-complemento -->
-                            <div class="form-campos" id="div-alt-bairro">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-bairro">
                                 <label>
                                     <span>Bairro: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" name="alt-bairro" id="alt-bairro" value="<?= utf8_encode($_SESSION['alBairro'])?>";
@@ -298,7 +321,7 @@
                                     placeholder="Digite o seu Novo Bairro" size="35" />
                                 </label>
                             </div> <!-- div-alt-bairro -->
-                            <div class="form-campos" id="div-alt-cidade">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-cidade">
                                 <label>
                                     <span>Cidade: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" name="alt-cidade" id="alt-cidade" value="<?= utf8_encode($_SESSION['alCidade'])?>";
@@ -306,7 +329,7 @@
                                     placeholder="Digite a sua Nova Cidade" size="35" />
                                 </label>
                             </div> <!-- div-alt-cidade -->
-                            <div class="form-campos" id="div-alt-estado">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-estado">
                                 <label>
                                 <span>Estado: <span class="asteristicos-obrigatorio">*</span></span>
                                     <select name="alt-estado" class="form-control" id="alt-estado">
@@ -451,13 +474,8 @@
                                 </label>
                             </div> <!-- div-alt-estado -->
                             
-                            <div id="dados-invalidos-alt-cad">
-                            	<?	if($msgDados != ""){
-                                        echo $msgDados;
-                                    }
-                                ?>
-                            </div> <!-- dados-invalidos-alt-cad -->
-                            
+                            <div id="dados-invalidos-alt-cad"></div> <!-- dados-invalidos-alt-cad -->
+                            <?=$msgDadosResultado?>
                         <div id="div-btn-enviar">
                             <input type="button" id="btn-enviar-alt-cadastro" class="btn btn-primary" value="Alterar Dados" onClick="botoesEnviar('#btn-enviar-alt-cadastro', '#formulario-alterar-cadastro', ValidarAlterarCadastro());" />
                         </div> <!-- div-btn-enviar -->

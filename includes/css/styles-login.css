@@ -46,6 +46,10 @@ h3, h4 {font-weight: 300; }
 	color: red;
 	margin-bottom: 5px;}
 
+#dados-validos, #dados-validos-email, #dados-validos-alt-cad {
+	color: #3C763D;
+	margin-bottom: 5px;}
+
 .asteristicos-obrigatorio {color: red; }
 
 .no-padding {padding: 0; margin: 0; }
