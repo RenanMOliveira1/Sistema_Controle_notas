@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados da Turma</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-turma" action="/acount/admin/cadastrar_turma_exe.php" method="post">
+						<form class="form-horizontal" id="form-cadastrar-turma" action="/controle/admin.php?opcao=turma&acao=cria" method="post">
                             <div class="form-group" id="div-turma-nome" >
                                 <label class="col-md-3 control-label">
                                 	<span>Nome</span>
@@ -67,10 +67,10 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="turma-turno" name="turma-turno"
                                     title="Escolha o Turno de Aula" >
-                                        <option value="manha">Manhã</option>
-                                        <option value="tarde">Tarde</option>
-                                        <option value="noite">Noite</option>
-                                        <option value="sabado">Sabádo</option>
+                                        <option value="Manhã">Manhã</option>
+                                        <option value="Tarde">Tarde</option>
+                                        <option value="Noite">Noite</option>
+                                        <option value="Sábado">Sábado</option>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-turma-turno -->
@@ -193,7 +193,6 @@
 													$msg = "";
 													$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 													if ($numeroPesquisa >= 1){
-														$contador = 0;
 														while($modulo = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
 															echo "<option value='{$modulo['idModulo']}'>{$modulo['nome']}</option>";
 														}
@@ -230,7 +229,7 @@
 											if ($numeroPesquisa >= 1){
 												$contador = 0;
 												while($laboratorio = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-													echo "<option value='{$laboratorio['idLaboratorio']}'>{$laboratorio['numeroLab']}</option>";
+													echo "<option value='{$laboratorio['idLaboratorio']}'>Laboratório: {$laboratorio['numeroLab']}</option>";
 												}
 											}
 										?>

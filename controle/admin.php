@@ -1,21 +1,17 @@
 <?
-	$acao = @$_GET['acao'];
+	$opcao = @$_GET['opcao'];
 	
-	function cadastrar(){
-		$nome = @$_POST['admin-prof-nome'];
-		$cpf = @$_POST['admin-prof-cpf'];		
-		$senha = "!prof2015";
+	function cadastrarTurma(){
+		$turno = @$_POST['turma-turno'];
+		$idPrograma = @$_POST['turma-programa'];
+		$idModulo = @$_POST['turma-modulo'];
+		$idLab = @$_POST['turma-laboratorio'];	
 		
-		$nome = ucwords(strtolower($nome));
-		$nome_email = preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $nome ) );
+		$turno = utf8_decode($turno);
 		
-		$nome_dividido = explode(" ", $nome_email);
-		$primeiro_nome = $nome_dividido[0];
-		$sobre_nome = substr($nome_dividido[1], 0, 1);
-		$tamanho_nome = count($nome_dividido);
-		$ultimo_nome = $nome_dividido[($tamanho_nome-1)];
-		
-		$email = strtolower($primeiro_nome.".".$ultimo_nome."@prof.com");
+		if($idLab == 0){
+			$idLab = "NULL";
+		}
 				
 		session_start();
 		if(!$_SESSION['logado']){
@@ -30,57 +26,88 @@
 				header("Location: /acount/adminal/");
 			break;
 		}
-		define("TITULO","Cadastrar Professores");
-			switch($_SESSION['admCargo']){
+		
+		define("TITULO","Cadastrar Turma");
+		switch($_SESSION['admCargo']){
 			case "dir":
-			case "rca":
 			case "ass":
+			case "ped":
 				header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 			break;
 		}
-		
-		$conexao = mysql_connect("localhost", "root", "");
+				
+		$conexao = @mysql_connect("localhost", "root", "");
 		if (!$conexao) {
 			exit("Site Temporariamente fora do ar");
 		}
 		
 		mysql_select_db("infnetgrid", $conexao);
 		
-		$query = "SELECT `cpf` 
-				  FROM `professor` 
-				  WHERE `cpf` = '$cpf'";
+		$query = "SELECT programa.`sigla`, modulo.`nome`, `nomeTurma`, modulo.`idModulo`, programa.`idPrograma`
+				  FROM `turma`
+				  JOIN programa ON programa.`idPrograma` = turma.`idPrograma`
+				  JOIN modulo ON modulo.`idModulo`= turma.`idModulo`
+				  WHERE modulo.`idModulo` = '$idModulo'
+				  AND programa.`idPrograma` = '$idPrograma'";
 		
 		$resultadoPesquisa = mysql_query($query, $conexao);
-		$msg = "";
-		if (mysql_num_rows($resultadoPesquisa) == 1) {
-			header("Location: /acount/admin/cadastrar-professor.php?msg=Professor já cadastrado");
-		}else{
-			$query = "SELECT `idProfessor`, `nomeProfessor`, `email`, `senha`, `cpf` 
-					  FROM `professor` 
-					  WHERE `email` = '$email'";
 		
+		$qtdTurmas = mysql_num_rows($resultadoPesquisa);
+		
+		if($qtdTurmas > 0){		
+			$qtdTurmas++;
+			
+			$turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+			
+			$turma['nome'] = strtoupper($turma['nome']);
+			
+			$nomeTurma = "{$turma['sigla']} ".$qtdTurmas." - {$turma['nome']}";
+			
+		}
+		else{
+			$qtdTurmas++;
+			
+			$query = "SELECT `sigla`
+					  FROM `programa`
+					  WHERE `idPrograma` = '$idPrograma'";
+					 
 			$resultadoPesquisa = mysql_query($query, $conexao);
-			if (mysql_num_rows($resultadoPesquisa) == 1){
-				$email = strtolower($primeiro_nome.".".$sobre_nome.$ultimo_nome."@prof.com");
+			
+			$programa = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+			
+			$query = "SELECT `nome`
+					  FROM `modulo`
+					  WHERE `idModulo` = '$idModulo'";
+					 
+			$resultadoPesquisa = mysql_query($query, $conexao);
+			
+			$modulo = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+			$modulo['nome'] = strtoupper($modulo['nome']);
+			
+			$nomeTurma = "{$programa['sigla']} ".$qtdTurmas." - {$modulo['nome']}";
+		}
+		
+		$query = "INSERT INTO `turma`(`turno`, `nomeTurma`, `idModulo`, `idLaboratorio`, `idPrograma`) 
+				  VALUES ('$turno', '$nomeTurma', '$idModulo', $idLab, '$idPrograma')";
+				  
+		$resultado = mysql_query($query, $conexao);
+		if(mysql_affected_rows($conexao) != 1){
+			if(mysql_errno() >= 1){
+				mysql_close($conexao);
+				header("Location: /acount/admin/cadastrar-turma.php?msg=Ocorreu um erro durante o cadastro");
 			}
-			$query = "INSERT INTO `professor`(`nomeProfessor`, `email`, `senha`, `cpf`)
-					  VALUES ('$nome', '$email', '$senha', '$cpf');";
-			$resultado = mysql_query($query, $conexao);
-			if(mysql_affected_rows($conexao) != 1){
-				if(mysql_errno() >= 1){
-					header("Location: /acount/admin/cadastrar-professor.php?msg=Ocorreu um erro durante a inclusão");
-				}
-				else{
-					header("Location: /acount/admin/cadastrar-professor.php?msg=Ocorreu um erro inesperado durante a inclusão");
-				}
-			}else{
-				header("Location: /acount/admin/cadastrar-professor.php?msg=Cadastro concluído com sucesso");
-			}
+			else{
+				mysql_close($conexao);
+				header("Location: /acount/admin/cadastrar-turma.php?msg=Ocorreu um erro inexperado durante o cadastro");
+			}			
+		}else{
+			mysql_close($conexao);
+			header("Location: /acount/admin/cadastrar-turma.php?cadastro=Cadastro realizado com sucesso.");
 		}
 		mysql_close($conexao);
 	}
 	
-	function alterar($tipo){
+	/*function alterar($tipo){
 		session_start();
 		if(!$_SESSION['logado']){
 			$msg = "Sessão expirada.";
@@ -208,21 +235,31 @@
 		}
 		mysql_close($conexao);
 		
-	}		
+	}	*/
 	
-	switch($acao){
-		case "cadastro":
-			cadastrar();
+	switch($opcao){
+		case "turma":
+			$acao = @$_GET['acao'];
+			switch($acao){
+				case "cria":
+					cadastrarTurma();
+				break;
+				case "altera":
+					alteraTurma();
+				break;
+				default:
+					header("Location: /acount/admin/");
+			}
 		break;
-		case "alteracao":
+		/*case "alteracao":
 			$tipo = @$_GET['tipo'];
 			alterar($tipo);
 		break;
 		case "vinculacao":
 			vincular();
-		break;
+		break;*/
 		default:
-			header("Location:/");
+			header("Location: /acount/admin/");
 		break;
 	}
 ?>
