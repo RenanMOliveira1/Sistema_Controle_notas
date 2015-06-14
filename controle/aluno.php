@@ -174,18 +174,18 @@
 					$msgSenha = "";
 					if(mysql_affected_rows($conexao) != 1){
 						if(mysql_errno() >= 1){
-							header("Location: /acount/adminal/configuracoes.php?rsl=err&msgSenha=Ocorreu um erro durante a alteração");
+							header("Location: /acount/adminal/configuracoes.php?msgSenha=Ocorreu um erro durante a alteração");
 						}
 						else{
-							header("Location: /acount/adminal/configuracoes.php?rsl=err&msgSenha=Ocorreu um erro inesperado durante a alteração");
+							header("Location: /acount/adminal/configuracoes.php?msgSenha=Ocorreu um erro inesperado durante a alteração");
 						}
 					}else{
-						header("Location: /acount/adminal/configuracoes.php?rsl=sucess&msgSenha=senha modificada com sucesso");
+						header("Location: /acount/adminal/configuracoes.php?msgSenha=senha modificada com sucesso");
 						$_SESSION['alSenha'] = $senhaNova;
 					}
 					mysql_close($conexao);				
 				}else{
-					header("Location: /acount/adminal/configuracoes.php?rsl=err&msgSenha=Senha atual não confere.");
+					header("Location: /acount/adminal/configuracoes.php?msgSenha=Senha atual não confere.");
 				}
 			break;	
 			
