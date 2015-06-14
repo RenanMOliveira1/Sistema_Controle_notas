@@ -101,7 +101,7 @@
                                     <select id="vincular-aluno-turma" name="vincular-aluno-turma" 
                                     class="form-control" title="Escolha a Turma" >
                                     	<?
-													//Conecção ao Banco de Dados
+											//Conecção ao Banco de Dados
 											$conexao = @mysql_connect("localhost", "root", "");
 											if (!$conexao) {
 												exit("Site Temporariamente fora do ar");}
@@ -141,7 +141,7 @@
                             </div> <!-- dados-invalidos -->
                             
                             <div class="col-md-12 widget-right" id="div-btn-vinc-al-enviar">
-                                <input type="button" id="btn-vinc-al-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-al-enviar','#form-vincular-alun',true);"/>
+                                <input type="button" id="btn-vinc-al-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-al-enviar','#form-vincular-alun',ValidarVincAlunos());"/>
                             </div> <!-- div-btn-vinc-al-enviar -->
                         </form>
 					</div> <!-- panel-body -->

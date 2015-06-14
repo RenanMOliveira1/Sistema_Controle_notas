@@ -34,6 +34,7 @@
                     <li><a href="/acount/admin/cadastrar-habilidade.php" title="Cadastrar Habilidades referentes ao Professor"><span class="glyphicon glyphicon-file"></span> Habilidades</a></li> 
                     <li><a href="/acount/admin/cadastrar-professor.php" title="Cadastrar Professor"><span class="glyphicon glyphicon-file"></span> Professores</a></li>
 					<li><a href="/acount/admin/criar-modulo.php" title="Cadastrar Módulos"><span class="glyphicon glyphicon-file"></span> Módulos</a></li>  
+                    <li><a href="/acount/admin/cadastrar-funcionario.php" title="Cadastrar Funcionários da Administração"><span class="glyphicon glyphicon-file"></span> Funcionário</a></li> 
 				</ul>
 			</li>
 			<li id="navAdminVinc" class="parent ">
@@ -56,6 +57,7 @@
                     <li><a class="" href="/acount/admin/liberar-avaliacao.php" title="Vincular Habilidades à Professores" ><span class="glyphicon glyphicon-saved"></span> Avaliação Institucional</a></li>
 				</ul>
 			</li>
+            <li id="navAltTurma" class=""><a href="/acount/admin/alterar-turma.php" title="Alterar dados de Uma Turma" ><span class="glyphicon glyphicon-pencil"></span> Alterar Turma</a></li>
 			<li id="navAdminConfig" class=""><a href="/acount/admin/configuracoes.php" title="Configurações do Usuário" ><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
 			<li role="presentation" class="divider"></li>
 			<li><a href="/index.php" title="Página Inicial do Site SGA" ><span class="glyphicon glyphicon-home"></span> Página Inicial</a></li>

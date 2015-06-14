@@ -42,7 +42,7 @@ h3, h4 {font-weight: 300; }
 .bg-primary .glyphicon-remove { color: #5f6468;}
 .bg-primary .glyphicon-remove:hover { color: #ef4040;}
 
-#dados-invalidos, #dados-invalidos-email, #dados-invalidos-alt-cad { 
+#dados-invalidos, #dados-invalidos-email, #dados-invalidos-alt-cad, #dados-invalidos-prof { 
 	color: red;
 	margin-bottom: 5px;}
 

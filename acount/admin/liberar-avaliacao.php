@@ -94,8 +94,10 @@
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-liberar-avaliacao-turma -->
                             
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            
                             <div class="col-md-12 widget-right" id="div-btn-liberar-avaliacao">
-                                <input type="button" id="btn-liberar-avaliacao" value="Liberar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-liberar-avaliacao','#form-liberar-avaliacao',true);"/>
+                                <input type="button" id="btn-liberar-avaliacao" value="Liberar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-liberar-avaliacao','#form-liberar-avaliacao',ValidarLiberarAval());"/>
                             </div> <!-- div-btn-liberar-avaliacao -->
                         </form>
 					</div> <!-- panel-body -->

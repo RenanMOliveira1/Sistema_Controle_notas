@@ -94,7 +94,7 @@
                             </div>  <!-- dados-invalidos -->                           
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-alterar-enviar">
-                            		<input type="button" id="btn-adm-alterar-enviar" class="btn btn-default btn-md pull-right" value="Alterar Senha"  onClick="botoesEnviar('#btn-adm-alterar-enviar','#form-adm-alterar-senha',ValidarAdminConfig());"/>
+                            		<input type="button" id="btn-adm-alterar-enviar" class="btn btn-default btn-md pull-right" value="Alterar Senha" onClick="botoesEnviar('#btn-adm-alterar-enviar','#form-adm-alterar-senha',ValidarAdminConfig());"/>
                             	</div> <!-- div-alterar-senha-Confirmar -->
                             </div> <!-- form-group -->
                         </form>

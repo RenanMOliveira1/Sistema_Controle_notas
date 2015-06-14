@@ -78,8 +78,10 @@
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-vincular-prof-modulo -->
                             
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            
                             <div class="col-md-12 widget-right" id="div-btn-vinc-prof-enviar">
-                                <input type="button" id="btn-vinc-prof-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-prof-enviar','#form-vincular-prof',true);"/>
+                                <input type="button" id="btn-vinc-prof-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-prof-enviar','#form-vincular-prof',ValidarVincProf());"/>
                             </div> <!-- div-btn-vinc-prof-enviar -->
                         </form>
 					</div> <!-- panel-body -->

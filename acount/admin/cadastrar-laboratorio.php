@@ -48,6 +48,16 @@
 					<div class="panel-heading">Dados do Laboratório</div> <!-- panel-heading -->
 					<div class="panel-body">
 						<form class="form-horizontal" id="form-cadastrar-laboratorio" action="/acount/admin/cadastrar_laboratio_exe.php" method="post" >
+                            <div class="form-group" id="div-laboratorio-numero" >
+                                <label class="col-md-3 control-label">
+                                	<span>Número do Laboratório</span>
+                                </label>
+                                <div class="col-md-9">
+                                	<input id="laboratorio-numero" name="laboratorio-numero" type="text" autofocus
+                                    placeholder="Digite o Número do Laboratório" title="Digite o Número do Laboratório" class="form-control">
+                                </div> <!-- col-md-9 -->
+                            </div> <!-- div-laboratorio-numero -->
+                            
                             <div class="form-group" id="div-laboratorio-andar" >
                                 <label class="col-md-3 control-label">
                                     <span>Andar</span>
@@ -75,11 +85,13 @@
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-laboratorio-lugares -->
-
+							
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-laboratorio-enviar">
                                     <input type="button" id="btn-laboratorio-enviar" 
-                                    value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-laboratorio-enviar','#form-cadastrar-laboratorio',true);"/>
+                                    value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-laboratorio-enviar','#form-cadastrar-laboratorio',ValidarCadLaboratorio());"/>
                                 </div> <!-- div-laboratorio-enviar -->
                             </div> <!-- form-group -->
 						</form>
