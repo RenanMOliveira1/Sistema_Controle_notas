@@ -13,29 +13,6 @@
 			$idLab = "NULL";
 		}
 				
-		session_start();
-		if(!$_SESSION['logado']){
-			$msg = "Sessão expirada.";
-			header("Location: /acount/?msg=$msg");
-		}
-		switch($_SESSION['autenticacao']){
-			case "professor":
-				header("Location: /acount/adminprof/");
-			break;
-			case "aluno":
-				header("Location: /acount/adminal/");
-			break;
-		}
-		
-		define("TITULO","Cadastrar Turma");
-		switch($_SESSION['admCargo']){
-			case "dir":
-			case "ass":
-			case "ped":
-				header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
-			break;
-		}
-				
 		$conexao = @mysql_connect("localhost", "root", "");
 		if (!$conexao) {
 			exit("Site Temporariamente fora do ar");
@@ -93,18 +70,17 @@
 		$resultado = mysql_query($query, $conexao);
 		if(mysql_affected_rows($conexao) != 1){
 			if(mysql_errno() >= 1){
+				$GLOBALS['msg'] = "Ocorreu um erro durante o cadastro";				
 				mysql_close($conexao);
-				header("Location: /acount/admin/cadastrar-turma.php?msg=Ocorreu um erro durante o cadastro");
 			}
 			else{
+				$GLOBALS['msg'] = "Ocorreu um erro inexperado durante o cadastro";
 				mysql_close($conexao);
-				header("Location: /acount/admin/cadastrar-turma.php?msg=Ocorreu um erro inexperado durante o cadastro");
 			}			
 		}else{
+			$GLOBALS['msg'] = "Cadastro realizado com sucesso, nome da turma é: ".$nomeTurma;
 			mysql_close($conexao);
-			header("Location: /acount/admin/cadastrar-turma.php?cadastro=Cadastro realizado com sucesso.");
 		}
-		mysql_close($conexao);
 	}
 	
 	function cadastrarLab(){
@@ -147,6 +123,98 @@
 				mysql_close($conexao);
 			}
 		}
+	}
+	
+	function cadastrarHab(){
+		$nomeHab = @$_POST['habilidade-nome'];
+		$nomeHab = utf8_decode($nomeHab);
+		
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "SELECT `nomeHab`
+				  FROM `hablidade`
+				  WHERE `nomeHab` = '$nomeHab'";
+		
+		$resultadoPesquisa = mysql_query($query, $conexao);
+		
+		if(mysql_num_rows($resultadoPesquisa) == 1){			
+			$GLOBALS['msg'] = "Habilidade já cadastrada";
+			mysql_close($conexao);
+		}
+		else{
+			$query = "INSERT INTO `hablidade`(`nomeHab`) 
+					  VALUES ('$nomeHab')";
+					  
+			$resultado = mysql_query($query, $conexao);
+			if(mysql_affected_rows($conexao) != 1){
+				if(mysql_errno() >= 1){
+					$GLOBALS['msg'] = "Ocorreu um erro durante o cadastro";
+					mysql_close($conexao);
+				}
+				else{
+					$GLOBALS['msg'] = "Ocorreu um erro inexperado durante o cadastro";
+					mysql_close($conexao);
+				}			
+			}else{
+				$GLOBALS['msg'] = "Cadastro realizado com sucesso.";
+				mysql_close($conexao);
+			}
+		}	
+	}
+	
+	function vincularHab(){
+		$idProfessor = @$_POST['vincular-habilidade-prof'];
+		$idHabilidades = @$_POST['vincular-habilidade-habil'];
+		
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		for($cont = 0; $cont < count($idHabilidades); $cont++){
+			$query = "SELECT hablidade.`nomeHab`
+					  FROM `habilidade_professor`
+					  JOIN hablidade ON hablidade.`idHabilidade` = habilidade_professor.`idHabilidade`
+					  WHERE habilidade_professor.`idHabilidade` = '$idHabilidades[$cont]'
+                      AND `idProfessor`= '$idProfessor'";
+			
+			$resultadoPesquisa = mysql_query($query, $conexao);		
+			
+			if(mysql_num_rows($resultadoPesquisa) == 1){
+				$query = "SELECT `nomeHab`
+						  FROM `hablidade`
+						  WHERE `idHabilidade` = '$idHabilidades[$cont]'";
+				
+				$resultadoPesquisa = mysql_query($query, $conexao);		
+				
+				$habilidade = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);	
+				$GLOBALS['msg'] = "Habilidade: {$habilidade['nomeHab']} já vinculada a este professor<br>";
+			}
+			else{
+				$query = "INSERT INTO `habilidade_professor`(`idHabilidade`, `idProfessor`)
+						  VALUES ('$idHabilidades[$cont]', '$idProfessor')";
+						  
+				$resultado = mysql_query($query, $conexao);
+				if(mysql_affected_rows($conexao) != 1){
+					if(mysql_errno() >= 1){
+						$GLOBALS['msg'] = "Ocorreu um erro durante a vincuação da habilidade";
+					}
+					else{
+						$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a vinculação habilidade";
+					}			
+				}else{
+					$GLOBALS['msg'] = "Cadastro realizado com sucesso.";
+					
+				}
+			}				
+		}	
+		mysql_close($conexao);
 	}
 	
 	/*function alterar($tipo){
@@ -299,9 +367,25 @@
 				case "cadastra":
 					cadastrarLab();
 				break;
+				default:
+					header("Location: /acount/admin/");
+			}
+		break;
+		case "habilidade":
+			$acao = @$_GET['acao'];
+			switch($acao){
+				case "cadastra":
+					cadastrarHab();
+				break;
+				case "vincula":
+					vincularHab();
+				break;
+				default:
+					header("Location: /acount/admin/");
 			}
 		break;
 		case "":
+			//para abrir a página
 		break;
 		default:
 			header("Location: /acount/admin/");

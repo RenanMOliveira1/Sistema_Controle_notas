@@ -21,6 +21,8 @@
 		break;
 	}
 	$idPrograma = @$_GET['idPrograma'];
+	include("../../controle/admin.php");
+	
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +43,7 @@
 		
 	<section id="section-prof-pagina-inicial" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     	<!-- Caminho da Página e Titulo -->			
-		<? include("../../includes/server/include-login-caminho-titulo.php"); ?>
+		<? include("../../includes/server/include-login-caminho-titulo.php");?>
 		
         
         <div class="row">
@@ -49,7 +51,11 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados da Turma</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-turma" action="/controle/admin.php?opcao=turma&acao=cria" method="post">
+                    <?
+					
+					?>
+						<form class="form-horizontal" id="form-cadastrar-turma" action="/acount/admin/cadastrar-turma.php?opcao=turma&acao=cria" method="post">
+
                             <div class="form-group" id="div-turma-turno" >
                                 <label class="col-md-3 control-label">
                                 	<span>Turno</span>
@@ -64,7 +70,6 @@
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-turma-turno -->
-                            
                             <div class="form-group" id="div-turma-programa" >
                                 <label class="col-md-3 control-label">
                                 	<span>Programa</span>
@@ -72,7 +77,7 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="turma-programa" name="turma-programa"
                                     title="Escolha o Programa" >
-                                    <option value="0">Graduação:</option>
+                                    <option value="0" onClick="window.location='/acount/admin/cadastrar-turma.php'">Graduação:</option>
                                     <?
                                         //Conecção ao Banco de Dados
                                         $conexao = @mysql_connect("localhost", "root", "");
@@ -97,8 +102,9 @@
                                                 echo "<option value='{$programa['idPrograma']}' onClick=\"window.location='/acount/admin/cadastrar-turma.php?idPrograma={$programa['idPrograma']}'\" $selecionado>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
                                             }
                                         }
+										mysql_close($conexao);
                                     ?>
-                                    <option value="0">Pós-Graduação:</option>
+                                    <option value="0" onClick="window.location='/acount/admin/cadastrar-turma.php'">Pós-Graduação:</option>
                                     <?
                                         //Conecção ao Banco de Dados
                                         $conexao = @mysql_connect("localhost", "root", "");
@@ -123,8 +129,9 @@
                                                 echo "<option value='{$programa['idPrograma']}' onClick=\"window.location='/acount/admin/cadastrar-turma.php?idPrograma={$programa['idPrograma']}'\" $selecionado>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
                                             }
                                         }
+										mysql_close($conexao);
                                   ?>
-                                    <option value="0">Intensivo:</option>
+                                    <option value="0" onClick="window.location='/acount/admin/cadastrar-turma.php'">Intensivo:</option>
                                   <?
                                         //Conecção ao Banco de Dados
                                         $conexao = @mysql_connect("localhost", "root", "");
@@ -149,8 +156,9 @@
                                                 echo "<option value='{$programa['idPrograma']}' onClick=\"window.location='/acount/admin/cadastrar-turma.php?idPrograma={$programa['idPrograma']}'\" $selecionado>&nbsp;&nbsp;&nbsp;&nbsp;{$programa['nomeCurso']}</option>";
                                             }
                                         }
-                                    ?>
-                                    </select>                                   
+										mysql_close($conexao);
+									?>
+                                    </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-turma-modulo -->                            
  
@@ -190,12 +198,12 @@
 												}else{
 													echo "<option value='0'> Selecione um programa </option>";
 												}
-											}											
+											}	
+											mysql_close($conexao);										
 										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-turma-modulo -->
-                            
                             <div class="form-group" id="div-turma-laboratorio" >
                                 <label class="col-md-3 control-label">Laboratório</label>
                                 <div class="col-md-9">
@@ -214,7 +222,6 @@
 													  FROM `laboratorio`";
 									
 											$resultadoPesquisa = @mysql_query($query, $conexao);
-											$msg = "";
 											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 											if ($numeroPesquisa >= 1){
 												$contador = 0;
@@ -222,13 +229,14 @@
 													echo "<option value='{$laboratorio['idLaboratorio']}'>Laboratório: {$laboratorio['numeroLab']}</option>";
 												}
 											}
+											mysql_close($conexao);
 										?>
-                                    </select>
+                                    </select>                          
                                 </div> <!-- col-md-9 -->
-                            </div> <!-- div-turma-laboratorio -->
-							
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
-                            
+                            </div> <!-- div-turma-laboratorio -->							
+                            <div id="dados-invalidos">
+                            	<?= @$GLOBALS['msg']?>
+                            </div> <!-- dados-invalidos -->                            
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-turma-enviar">
                                     <input type="button" id="btn-turma-enviar" value="Enviar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-turma-enviar','#form-cadastrar-turma',ValidarCadTurma());"/>

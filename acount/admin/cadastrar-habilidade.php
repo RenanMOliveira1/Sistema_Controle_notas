@@ -20,6 +20,7 @@
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
+	include("../../controle/admin.php");
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados das Habilidades</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-habilidade" action="/acount/admin/cadastrar_habilidade_exe.php" method="post">
+						<form class="form-horizontal" id="form-cadastrar-habilidade" action="/acount/admin/cadastrar-habilidade.php?opcao=habilidade&acao=cadastra" method="post">
                             <div class="form-group" id="div-habilidade-nome" >
                                 <label class="col-md-3 control-label">
                                 	<span>Nome da Habilidade: </span>
@@ -59,7 +60,9 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-habilidade-nome -->
 
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos">
+                            	<?= @$GLOBALS['msg']?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-habilidade-enviar">

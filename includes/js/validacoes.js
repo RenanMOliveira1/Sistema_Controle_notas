@@ -546,19 +546,20 @@ function ValidarCadLaboratorio() {
 function ValidarCadTurma() {
 	var msg = "";
 	
-	if ($("turma-modulo").children(":selected").length == 0) {
+	if ($("#turma-modulo").val() == 0) {
 		msg += "Selecione um Módulo.<br/>"; 
 		$("#div-turma-modulo").addClass(" has-error");
 	}
 	
-	if ($("turma-programa").children(":selected").length == 0) {
+	if ($("#turma-programa").val() == 0) {
 		msg += "Selecione um Programa.<br/>"; 
 		$("#div-turma-programa").addClass(" has-error");
 	}
 	
 	if (msg != "") {
 		$("#dados-invalidos").html(msg);
-		return false;}
+		return false;
+	}
 	
 	return true;
 }
@@ -635,8 +636,8 @@ function ValidarCadHabilidade() {
 
 //Validar Página Vincular Habilidades à Professor
 function ValidarVincHabil() {
-	
-	if ($("vincular-habilidade-habil").children(":selected").length == 0) {
+	var contador = $("#vincular-habilidade-habil").children(":selected").length;
+	if (contador <= 0) {
 		$("#dados-invalidos").html("Selecione ao menos uma Habilidade."); 
 		$("#div-vincular-habilidade-habil").addClass(" has-error");
 		return false;

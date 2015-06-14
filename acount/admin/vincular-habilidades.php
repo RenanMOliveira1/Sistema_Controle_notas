@@ -20,6 +20,7 @@
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
+	include("../../controle/admin.php");
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"> Dados da Vinculação</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" action="vincular_habilidade_exe.php" method="post" id="form-vincular-habilidade">
+						<form class="form-horizontal" action="/acount/admin/vincular-habilidades.php?opcao=habilidade&acao=vincula" method="post" id="form-vincular-habilidade">
                             <div class="form-group" id="div-vincular-habilidade-prof">
                                 <label class="col-md-4 control-label">
                                 	<span>Selecione o Professor</span>
@@ -55,10 +56,31 @@
                                 <div class="col-md-8">
                                     <select class="form-control" id="vincular-habilidade-prof" 
                                     name="vincular-habilidade-prof" title="Escolha o Professor" >
-                                        <option value="Professor#1">Professor #1</option>
-                                        <option value="Professor#2">Professor #2</option>
-                                        <option value="Professor#3">Professor #3</option>
-                                        <option value="Professor#4">Professor #4</option>
+                                        <?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idProfessor`, `nomeProfessor`
+													  FROM `professor`
+													  ORDER BY `nomeProfessor`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($professor = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													echo "<option value='{$professor['idProfessor']}'>{$professor['nomeProfessor']}</option>";
+												}
+											}
+											else{
+												echo "<option value='0'>Não há professores cadastrados</option>";
+											}
+											mysql_close($conexao);
+										?>
                                     </select>
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-vincular-habilidade-prof -->
@@ -69,16 +91,40 @@
                                 </label>
                                 <div class="col-md-8">
                                     <select multiple class="form-control" id="vincular-habilidade-habil" 
-                                    name="vincular-habilidade-habil" title="Escollha as Habilidades do Professor" >
-                                        <option value="Habilidade#1">Habilidade #1</option>
-                                        <option value="Habilidade#2">Habilidade #2</option>
-                                        <option value="Habilidade#3">Habilidade #3</option>
-                                        <option value="Habilidade#4">Habilidade #4</option>
+                                    name="vincular-habilidade-habil[]" title="Escollha as Habilidades do Professor" >
+                                        <?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idHabilidade`, `nomeHab` 
+													  FROM `hablidade`
+													  ORDER BY `nomeHab`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($habilidade = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$habilidade['nomeHab'] = utf8_encode($habilidade['nomeHab']);
+													echo "<option value='{$habilidade['idHabilidade']}'>{$habilidade['nomeHab']}</option>";
+												}
+											}
+											else{
+												echo "<option value='0'>Não há professores cadastrados</option>";
+											}
+											mysql_close($conexao);
+										?>
                                     </select>
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-vincular-habilidade-habil -->
                             
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos">
+                            	<?= @$GLOBALS['msg']; ?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="col-md-12 widget-right" id="div-btn-vinc-habil-enviar">
                                 <input type="button" id="btn-vinc-habil-enviar" value="Vincular" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-vinc-habil-enviar','#form-vincular-habilidade',ValidarVincHabil());"/>
