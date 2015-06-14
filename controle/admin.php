@@ -107,6 +107,48 @@
 		mysql_close($conexao);
 	}
 	
+	function cadastrarLab(){
+		$numeroLab = @$_POST['laboratorio-numero'];
+		$andares = @$_POST['laboratorio-andar'];
+		$lugares = @$_POST['laboratorio-lugares'];
+		
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "SELECT `numeroLab` 
+				  FROM `laboratorio`
+				  WHERE `numeroLab` = '$numeroLab'";
+		
+		$resultadoPesquisa = mysql_query($query, $conexao);
+		
+		if(mysql_num_rows($resultadoPesquisa) == 1){		
+			$GLOBALS['msg'] = "laboratório já cadastrado";
+		}
+		else{
+			$query = "INSERT INTO `laboratorio`(`numeroLab`, `lugares`, `andar`) 
+					  VALUES ('$numeroLab', '$lugares', '$andares')";
+					  
+			$resultado = mysql_query($query, $conexao);
+			if(mysql_affected_rows($conexao) != 1){
+				if(mysql_errno() >= 1){
+					$GLOBALS['msg'] = "Ocorreu um erro durante o cadastro";
+					mysql_close($conexao);
+				}
+				else{
+					$GLOBALS['msg'] = "Ocorreu um erro inexperado durante o cadastro";
+					mysql_close($conexao);
+				}			
+			}else{
+				$GLOBALS['msg'] = "Cadastro realizado com sucesso.";
+				mysql_close($conexao);
+			}
+		}
+	}
+	
 	/*function alterar($tipo){
 		session_start();
 		if(!$_SESSION['logado']){
@@ -251,13 +293,16 @@
 					header("Location: /acount/admin/");
 			}
 		break;
-		/*case "alteracao":
-			$tipo = @$_GET['tipo'];
-			alterar($tipo);
+		case "laboratorio":
+			$acao = @$_GET['acao'];
+			switch($acao){
+				case "cadastra":
+					cadastrarLab();
+				break;
+			}
 		break;
-		case "vinculacao":
-			vincular();
-		break;*/
+		case "":
+		break;
 		default:
 			header("Location: /acount/admin/");
 		break;

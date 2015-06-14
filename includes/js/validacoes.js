@@ -546,16 +546,6 @@ function ValidarCadLaboratorio() {
 function ValidarCadTurma() {
 	var msg = "";
 	
-	if ($("#turma-nome").val() == "") {
-		msg += "Campo Nome é Obrigatório.<br/>"; 
-		$("#div-turma-nome").addClass(" has-error");	
-	}
-	
-	if ($("turma-laboratorio").children(":selected").length == 0) {
-		msg += "Selecione um Laboratório.<br/>"; 
-		$("#div-turma-laboratorio").addClass(" has-error");
-	}
-	
 	if ($("turma-modulo").children(":selected").length == 0) {
 		msg += "Selecione um Módulo.<br/>"; 
 		$("#div-turma-modulo").addClass(" has-error");

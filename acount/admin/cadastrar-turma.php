@@ -50,16 +50,6 @@
 					<div class="panel-heading">Dados da Turma</div> <!-- panel-heading -->
 					<div class="panel-body">
 						<form class="form-horizontal" id="form-cadastrar-turma" action="/controle/admin.php?opcao=turma&acao=cria" method="post">
-                            <div class="form-group" id="div-turma-nome" >
-                                <label class="col-md-3 control-label">
-                                	<span>Nome</span>
-                                </label>
-                                <div class="col-md-9">
-                                	<input id="turma-nome" name="turma-nome" type="text" autofocus
-                                    placeholder="Digite o Nome da Turma" title="Digite o nome da Turma" class="form-control">
-                                </div> <!-- col-md-9 -->
-                            </div> <!-- div-turma-nome -->
-
                             <div class="form-group" id="div-turma-turno" >
                                 <label class="col-md-3 control-label">
                                 	<span>Turno</span>

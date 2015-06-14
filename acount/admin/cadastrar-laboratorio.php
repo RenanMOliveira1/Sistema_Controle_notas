@@ -20,6 +20,7 @@
 		case "ped":
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 	}
+	include("../../controle/admin.php");
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados do Laboratório</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-laboratorio" action="/acount/admin/cadastrar_laboratio_exe.php" method="post" >
+						<form class="form-horizontal" id="form-cadastrar-laboratorio" action="/acount/admin/cadastrar-laboratorio.php?opcao=laboratorio&acao=cadastra" method="post" >
                             <div class="form-group" id="div-laboratorio-numero" >
                                 <label class="col-md-3 control-label">
                                 	<span>Número do Laboratório</span>
@@ -86,7 +87,9 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-laboratorio-lugares -->
 							
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos">
+                            	<?= @$GLOBALS['msg']?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-laboratorio-enviar">
