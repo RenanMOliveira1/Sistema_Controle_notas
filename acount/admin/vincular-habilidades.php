@@ -87,7 +87,7 @@
                             
                             <div class="form-group" id="div-vincular-habilidade-habil">
                                 <label class="col-md-4 control-label">
-                                	<span>Selecione o Módulo</span>
+                                	<span>Selecione a Habilidade</span>
                                 </label>
                                 <div class="col-md-8">
                                     <select multiple class="form-control" id="vincular-habilidade-habil" 
@@ -114,7 +114,7 @@
 												}
 											}
 											else{
-												echo "<option value='0'>Não há professores cadastrados</option>";
+												echo "<option value='0'>Não há Habilidades cadastradas</option>";
 											}
 											mysql_close($conexao);
 										?>

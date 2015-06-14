@@ -71,6 +71,43 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-admin-descricao-mod -->
                             
+                            <div class="form-group" id="div-admin-habil-mod">
+                                <label class="col-md-3 control-label">
+                                	<span>Habilidades</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <select multiple class="form-control" id="admin-habil-mod" 
+                                    name="admin-habil-mod[]" title="Escollha as Habilidades para Esse Módulo" >
+                                        <?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idHabilidade`, `nomeHab` 
+													  FROM `hablidade`
+													  ORDER BY `nomeHab`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($habilidade = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$habilidade['nomeHab'] = utf8_encode($habilidade['nomeHab']);
+													echo "<option value='{$habilidade['idHabilidade']}'>{$habilidade['nomeHab']}</option>";
+												}
+											}
+											else{
+												echo "<option value='0'>Não há Habilidades cadastradas</option>";
+											}
+											mysql_close($conexao);
+										?>
+                                    </select>
+                                </div> <!-- col-md-8 -->
+                            </div> <!-- div-admin-habil-mod -->
+                            
                             <div id="dados-invalidos">
                             	<?
 									if($msg != ""){

@@ -337,6 +337,7 @@ function ValidarContato() {
 	return true;	
 }
 
+//Validar Página Recuperar Senha
 function ValidarRecuperarSenha() {
 	
 	var email = $("#restaurar-senha-email").val();
@@ -353,6 +354,7 @@ function ValidarRecuperarSenha() {
 	return true;
 }
 
+//Validar Página Configurações do Aluno: Senha
 function ValidarAlterarSenha() {
 	var msg = "";
 	
@@ -390,6 +392,7 @@ function ValidarAlterarSenha() {
 	
 }
 
+//Validar Página Configurações do Aluno: Dados
 function ValidarAlterarCadastro() {
 	var msg = "";
 	
@@ -429,6 +432,7 @@ function ValidarAlterarCadastro() {
 	return true;
 }
 
+//Validar Página Configurações do Professor: Email
 function ValidarAlterarEmail() {
 	var msg = "";
 	
@@ -495,6 +499,7 @@ function ValidarConfProfSenha() {
 	return true;
 }
 
+//Validar Página Criar Programa
 function ValidarPrograma() {
 	
 	if ($("#nome-curso").val() == "") {
@@ -510,6 +515,7 @@ function ValidarPrograma() {
 	return true;
 }
 
+//Validar Página Cadastrar Professor
 function ValidarCadastrarProf() {
 	var msg = "";
 	
@@ -533,6 +539,7 @@ function ValidarCadastrarProf() {
 	return true;
 }
 
+//Validar Página Cadastrar Laboratório
 function ValidarCadLaboratorio() {
 		
 	if ($("#laboratorio-numero").val() == 0){
@@ -543,6 +550,7 @@ function ValidarCadLaboratorio() {
 	return true;
 }
 
+//Validar Página Cadastrar Turma
 function ValidarCadTurma() {
 	var msg = "";
 	
@@ -564,6 +572,7 @@ function ValidarCadTurma() {
 	return true;
 }
 
+//Validar Página Configuração da Administração
 function ValidarAdminConfig() {
 	var msg = "";
 	
@@ -595,6 +604,7 @@ function ValidarAdminConfig() {
 	return true;
 }
 
+//Validar Página Criar Módulo
 function ValidarCriarModulo() {
 	var msg = "";
 	
@@ -606,9 +616,16 @@ function ValidarCriarModulo() {
 		msg += "Campo Descrição é Obrigatório.<br/>"; 
 		$("#div-admin-descricao-mod").addClass(" has-error");
 	}
+	
+	if ($("#admin-habil-mod").val() == 0){
+		msg += "Selecione ao menos uma Habilidade.<br/>"; 
+		$("#div-admin-habil-mod").addClass(" has-error");
+	}
+	
 	if(msg != ""){
 		$("#dados-invalidos").html(msg);
 		return false;}
+		
 	return true;
 }
 
@@ -666,6 +683,7 @@ function ValidarVincAlunos() {
 	return true;
 }
 
+//Validar Página Vincular Professor a Módulo
 function ValidarVincProf() {
 	var msg = "";
 	
@@ -686,6 +704,7 @@ function ValidarVincProf() {
 	return true;
 }
 
+//Validar Página Liberar Avaliação Institucional
 function ValidarLiberarAval() {
 	
 	if ($("liberar-avaliacao-turma").children(":selected").length == 0) {
@@ -718,6 +737,7 @@ function ValidarAltTurma() {
 	return true;
 }
 
+//Validar Página Cadastrar Funcionário
 function ValidarCadastrarFunc() {
 	var msg = "";
 	
