@@ -25,15 +25,15 @@
 	
 	mysql_select_db("infnetgrid", $conexao);
 	
-	$query = "SELECT modulo.`nome`, modulo.`descr`, professor.`nomeProfessor`
+	$query = "SELECT modulo.`nome`, modulo.`descr`, professor.`nomeProfessor`, turma.`nomeTurma`
 			  FROM `turma_aluno`
 			  JOIN `aluno` ON aluno.`matricula` = turma_aluno.`alunoMatricula`
 			  JOIN `turma` ON turma.`idTurma` = turma_aluno.`turmaID`
 			  JOIN `modulo` ON modulo.`idModulo` = turma.`idModulo`
-              JOIN `modulo_professor` ON modulo_professor.`idModulo` = turma.`idModulo`
-              JOIN `professor` ON professor.`idProfessor` = modulo_professor.`idProfessor`
+              JOIN `professor` ON professor.`idProfessor` = turma.`idProfessor`
 			  WHERE
 			  aluno.`matricula` = '{$_SESSION['alMatricula']}'
+              GROUP BY turma.`nomeTurma`
 			  ORDER BY modulo.`nome`";
 	
 	$resultadoPesquisa = @mysql_query($query, $conexao);
@@ -47,6 +47,7 @@
 							<div class=\"panel-heading dark-overlay\"> {$modulos['nome']}</div>
 							<div class=\"panel-body\">
 								<p>{$modulos['descr']}</p>
+								<p><strong>Turma</strong>: {$modulos['nomeTurma']}</p>
                         		<p><strong>Professor</strong>:{$modulos['nomeProfessor']}</p>
 							</div>
 						</div>
