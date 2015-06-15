@@ -204,37 +204,7 @@
 										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
-                            </div> <!-- div-turma-modulo -->
-                            <div class="form-group" id="div-turma-laboratorio" >
-                                <label class="col-md-3 control-label">Laboratório</label>
-                                <div class="col-md-9">
-                                    <select class="form-control" id="turma-laboratorio" name="turma-laboratorio"
-                                    title="Escolha o Laboratório">
-                                        <option value="0">Não alocar laboratório</option>
-                                        <?
-											//Conecção ao Banco de Dados
-											$conexao = @mysql_connect("localhost", "root", "");
-											if (!$conexao) {
-												exit("Site Temporariamente fora do ar");}
-											
-											mysql_select_db("infnetgrid", $conexao);
-											
-											$query = "SELECT `idLaboratorio`, `numeroLab`
-													  FROM `laboratorio`";
-									
-											$resultadoPesquisa = @mysql_query($query, $conexao);
-											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
-											if ($numeroPesquisa >= 1){
-												$contador = 0;
-												while($laboratorio = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-													echo "<option value='{$laboratorio['idLaboratorio']}'>Laboratório: {$laboratorio['numeroLab']}</option>";
-												}
-											}
-											mysql_close($conexao);
-										?>
-                                    </select>                          
-                                </div> <!-- col-md-9 -->
-                            </div> <!-- div-turma-laboratorio -->							
+                            </div> <!-- div-turma-modulo -->						
                             <div id="dados-invalidos">
                             	<?= @$GLOBALS['msg']?>
                             </div> <!-- dados-invalidos -->                            

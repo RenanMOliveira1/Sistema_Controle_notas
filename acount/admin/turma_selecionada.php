@@ -15,8 +15,7 @@
 	define("TITULO","Alterar Turma - Visualisar Turma");
 	switch($_SESSION['admCargo']){
 		case "dir":
-		case "ass":
-		case "ped":
+		case "rca":
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
@@ -141,7 +140,7 @@
                                 <label class="col-md-3 control-label">Laboratório</label>
                                 <div class="col-md-9">
                                     <select class="form-control" id="alterar-turma-laboratorio" name="alterar-turma-laboratorio"
-                                    title="Escolha o novo Laboratório">
+                                    title="Escolha o novo Laboratório" <?= (($_SESSION['admCargo'] != "adm") && $_SESSION['admCargo'] != "ass") ? "readonly='readonly'" : ""?>>
                                         <option value="0">Não alocar laboratório</option>
                                         <?
 											//Conecção ao Banco de Dados
@@ -151,8 +150,15 @@
 											
 											mysql_select_db("infnetgrid", $conexao);
 											
-											$query = "SELECT `idLaboratorio`, `numeroLab`
-													  FROM `laboratorio`";
+											$query = "SELECT `turmaID` FROM `turma_aluno` 
+													  WHERE turmaID = '$idTurma'";
+													  
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$qtdAluno = mysql_num_rows($resultadoPesquisa);
+											
+											$query = "SELECT `idLaboratorio`, `numeroLab`, `lugares`
+													  FROM `laboratorio`
+													  WHERE `lugares` >= '$qtdAluno'";
 									
 											$resultadoPesquisa = @mysql_query($query, $conexao);
 											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
