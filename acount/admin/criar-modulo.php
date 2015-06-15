@@ -22,6 +22,7 @@
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
+	include("../../controle/admin.php");
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +51,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"> Dados do Módulo</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-criar-modulo" action="/acount/admin/criar_modulo.php" method="post">
+						<form class="form-horizontal" id="form-criar-modulo" action="/acount/admin/criar-modulo.php?opcao=modulo&acao=cadastra" method="post">
                             <div class="form-group" id="div-admin-nome-mod" >
                                 <label class="col-md-3 control-label">
                                     <span>Nome do Módulo</span>
@@ -109,11 +110,7 @@
                             </div> <!-- div-admin-habil-mod -->
                             
                             <div id="dados-invalidos">
-                            	<?
-									if($msg != ""){
-										echo $msg;
-									}
-								?>
+                            	<?= @$GLOBALS['msg'] ?>
                             </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">

@@ -1,6 +1,4 @@
 <?
-	$msg = "";
-	$msg .= @$_GET['msg'];
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -16,12 +14,13 @@
 	}
 	define("TITULO","Cadastrar Funcionário da Administração");
 		switch($_SESSION['admCargo']){
-		case "dir":
+		case "ped":
 		case "rca":
 		case "ass":
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
+	include("../../controle/admin.php");
 ?>
 
 <!DOCTYPE html>
@@ -50,17 +49,18 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados do Funcionário</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-func" action="/controle/cadastrar_funcionario_exe.php" method="post">
+						<form class="form-horizontal" id="form-cadastrar-func" action="/acount/admin/cadastrar-funcionario.php?opcao=funcionario&acao=cadastra" method="post">
                         	<div class="form-group" id="div-cadastrar-func-cargo" >
                                 <label class="col-md-3 control-label">
-                                	<span>Turno</span>
+                                	<span>Cargo</span>
                                 </label>
                                 <div class="col-md-9">
                                     <select class="form-control" id="cadastrar-func-cargo" name="cadastrar-func-cargo"
                                     title="Escolha o Cargo" >
-                                        <option value="rcs">RCA</option>
+                                        <option value="rca">RCA</option>
                                         <option value="ass">Assistente da Administração</option>
                                         <option value="dir">Direção</option>
+                                        <option value="ped">Assistente pedagógico</option>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-cadastrar-func-cargo -->
@@ -86,11 +86,7 @@
                             </div> <!-- div-cadastrar-func-cpf -->
 							
                             <div id="dados-invalidos">
-                            	<?
-									if($msg != ""){
-										echo "$msg";
-									}
-								?>
+                            	<?= @$GLOBALS['msg']?>
                             </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">

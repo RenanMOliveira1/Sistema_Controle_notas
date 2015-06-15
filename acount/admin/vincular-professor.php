@@ -55,10 +55,31 @@
                                 <div class="col-md-8">
                                     <select class="form-control" id="vincular-prof-prof" 
                                     name="vincular-prof-prof" title="Escolha o Professor" >
-                                        <option value="Professor#1">Professor #1</option>
-                                        <option value="Professor#2">Professor #2</option>
-                                        <option value="Professor#3">Professor #3</option>
-                                        <option value="Professor#4">Professor #4</option>
+                                        <?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idProfessor`, `nomeProfessor` 
+													  FROM `professor`
+													  ORDER BY `nomeProfessor`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												while($professor = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$professor['nomeProfessor'] = utf8_encode($professor['nomeProfessor']);
+													echo "<option value='{$professor['idProfessor']}'>{$professor['nomeProfessor']}</option>";
+												}
+											}
+											else{
+												echo "<option value='0'>Não há professores cadastrados</option>";
+											}
+											mysql_close($conexao);
+                                        ?>
                                     </select>
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-vincular-prof-prof -->
@@ -70,10 +91,31 @@
                                 <div class="col-md-8">
                                     <select class="form-control" id="vincular-prof-modulo" 
                                     name="vincular-prof-modulo" title="Escollha o Módulo" >
-                                        <option value="Modulo#1">Módulo #1</option>
-                                        <option value="Modulo#2">Módulo #2</option>
-                                        <option value="Modulo#3">Módulo #3</option>
-                                        <option value="Modulo#4">Módulo #4</option>
+                                        <?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idProfessor`, `nomeProfessor` 
+													  FROM `professor`
+													  ORDER BY `nomeProfessor`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												while($professor = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$professor['nomeProfessor'] = utf8_encode($professor['nomeProfessor']);
+													echo "<option value='{$professor['idProfessor']}'>{$professor['nomeProfessor']}</option>";
+												}
+											}
+											else{
+												echo "<option value='0'>Não há professores cadastrados</option>";
+											}
+											mysql_close($conexao);
+                                        ?>
                                     </select>
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-vincular-prof-modulo -->

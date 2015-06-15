@@ -22,6 +22,7 @@
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
+	include("../../controle/professor.php.");
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +51,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Dados do Professor</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-cadastrar-prof" action="/controle/professor.php?acao=cadastro" method="post">
+						<form class="form-horizontal" id="form-cadastrar-prof" action="/acount/admin/cadastrar-professor.php?acao=cadastro" method="post">
                             <div class="form-group" id="div-admin-prof-nome" >
                                 <label class="col-md-3 control-label">
                                     <span>Nome</span>
@@ -72,11 +73,7 @@
                             </div> <!-- div-admin-prof-cpf -->
 							
                             <div id="dados-invalidos">
-                            	<?
-									if($msg != ""){
-										echo "$msg";
-									}
-								?>
+                            	<?= @$GLOBALS['msg']?>
                             </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">

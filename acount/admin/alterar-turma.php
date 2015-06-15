@@ -57,10 +57,31 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="alterar-turma-selTurma" name="alterar-turma-selTurma"
                                     title="Escolha a Turma que deseja Alterar" >
-                                        <option value="Turma#1">Turma #1</option>
-                                        <option value="Turma#2">Turma #2</option>
-                                        <option value="Turma#3">Turma #3</option>
-                                        <option value="Turma#4">Turma #4</option>
+                                        <?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idTurma`, `nomeTurma` 
+													  FROM `turma`
+													  ORDER BY `nomeTurma`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$turma['nomeTurma'] = utf8_encode($turma['nomeTurma']);
+													echo "<option value='{$turma['idTurma']}'>{$turma['nomeTurma']}</option>";
+												}
+											}
+											else{
+												echo "<option value='0'>Não há turmas cadastradas</option>";
+											}
+											mysql_close($conexao);
+                                        ?>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-turma-selTurma -->

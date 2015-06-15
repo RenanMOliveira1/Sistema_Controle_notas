@@ -617,8 +617,9 @@ function ValidarCriarModulo() {
 		$("#div-admin-descricao-mod").addClass(" has-error");
 	}
 	
-	if ($("#admin-habil-mod").val() == 0){
-		msg += "Selecione ao menos uma Habilidade.<br/>"; 
+	var contador = $("#admin-habil-mod").children(":selected").length;
+	if (contador <= 0) {
+		msg += "Selecione ao menos uma Habilidade."; 
 		$("#div-admin-habil-mod").addClass(" has-error");
 	}
 	
@@ -718,7 +719,7 @@ function ValidarLiberarAval() {
 //Validar Página Selecionar Turma a ser Alterada
 function ValidarSelTurma() {
 	
-	if ($("alterar-turma-selTurma").children(":selected").length == 0) {
+	if ($("#alterar-turma-selTurma").val() <= 0) {
 		$("#dados-invalidos").html("Selecione uma Turma."); 
 		$("#div-alterar-turma-selTurma").addClass(" has-error");
 		return false;

@@ -168,6 +168,7 @@
 	}
 	
 	function vincularHab(){
+		$GLOBALS['msg'] = "";
 		$idProfessor = @$_POST['vincular-habilidade-prof'];
 		$idHabilidades = @$_POST['vincular-habilidade-habil'];
 		
@@ -177,43 +178,165 @@
 		}
 		
 		mysql_select_db("infnetgrid", $conexao);
-		for($cont = 0; $cont < count($idHabilidades); $cont++){
+		for($cont = 0; $cont < count($idHabilidades); $cont++){	
 			$query = "SELECT hablidade.`nomeHab`
 					  FROM `habilidade_professor`
 					  JOIN hablidade ON hablidade.`idHabilidade` = habilidade_professor.`idHabilidade`
 					  WHERE habilidade_professor.`idHabilidade` = '$idHabilidades[$cont]'
                       AND `idProfessor`= '$idProfessor'";
 			
-			$resultadoPesquisa = mysql_query($query, $conexao);		
+			$resultadoPesquisa = mysql_query($query, $conexao);
 			
 			if(mysql_num_rows($resultadoPesquisa) == 1){
+				$habilidade[$cont] = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+				$habilidade[$cont]['nomeHab'] = utf8_encode($habilidade[$cont]['nomeHab']);				
+				$GLOBALS['msg'] .= "Habilidade: {$habilidade[$cont]['nomeHab']} já vinculada a este professor<br>";
+			}			
+			else{
 				$query = "SELECT `nomeHab`
 						  FROM `hablidade`
 						  WHERE `idHabilidade` = '$idHabilidades[$cont]'";
+						  
+				$resultado = mysql_query($query, $conexao);
+				$habilidade = mysql_fetch_array($resultado, MYSQL_ASSOC);
+				$habilidade['nomeHab'] = utf8_encode($habilidade['nomeHab']);
 				
-				$resultadoPesquisa = mysql_query($query, $conexao);		
-				
-				$habilidade = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);	
-				$GLOBALS['msg'] = "Habilidade: {$habilidade['nomeHab']} já vinculada a este professor<br>";
-			}
-			else{
 				$query = "INSERT INTO `habilidade_professor`(`idHabilidade`, `idProfessor`)
 						  VALUES ('$idHabilidades[$cont]', '$idProfessor')";
 						  
 				$resultado = mysql_query($query, $conexao);
+															
 				if(mysql_affected_rows($conexao) != 1){
 					if(mysql_errno() >= 1){
-						$GLOBALS['msg'] = "Ocorreu um erro durante a vincuação da habilidade";
+						
+						$GLOBALS['msg'] .= "Ocorreu um erro durante a vincuação da habilidade {$habilidade[$cont]['nomeHab']}<br>";
 					}
 					else{
-						$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a vinculação habilidade";
+						$GLOBALS['msg'] .= "Ocorreu um erro inexperado durante a vinculação habilidade {$habilidade[$cont]['nomeHab']}<br>";
 					}			
 				}else{
-					$GLOBALS['msg'] = "Cadastro realizado com sucesso.";
-					
+					$GLOBALS['msg'] .= "Habilidade: {$habilidade['nomeHab']} vinculada com sucesso.<br>";
 				}
-			}				
+			}			
 		}	
+		mysql_close($conexao);
+	}
+	
+	function cadastrarModulo(){
+		$nome = @$_POST['admin-nome-mod'];
+		$descricao = @$_POST['admin-descricao-mod'];
+		$habilidades = @$_POST['admin-habil-mod'];
+		
+		//Conecção ao Banco de Dados
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "SELECT `idModulo`, `nome`, `descr` FROM `modulo` 
+				  WHERE `nome` = '$nome'";
+		
+		$resultadoPesquisa = mysql_query($query, $conexao);
+		if (mysql_num_rows($resultadoPesquisa) == 1) {
+			$GLOBALS['msg'] = "Módulo já cadastrado";
+		}else{
+			$nome = utf8_decode($nome);
+			$descricao = utf8_decode($descricao);
+			
+			$query = "INSERT INTO `modulo`(`nome`, `descr`) 
+					  VALUES ('$nome', '$descricao')";
+			
+			$resultado = mysql_query($query, $conexao);
+			
+			$query = "SELECT `idModulo` 
+					  FROM `modulo`
+				 	  WHERE `nome` = '$nome'";
+			$resultadoPesquisa = mysql_query($query, $conexao);
+			$modulo = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+			
+			for($cont = 0; $cont < count($habilidades); $cont++){
+				
+				$query = "INSERT INTO `habilidade_modulo`(`idHabilidade`, `idModulo`) 
+					  	  VALUES('$habilidades[$cont]', '{$modulo['idModulo']}')";
+			
+				$resultado = mysql_query($query, $conexao);
+			}
+						  
+			if(mysql_affected_rows($conexao) != 1){
+				if(mysql_errno() >= 1){
+					$GLOBALS['msg'] = "Ocorreu um erro durante a inclusão";
+				}
+				else{
+					$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a inclusão";
+				}
+			}else{
+				$GLOBALS['msg'] = "Módulo cadastrado com sucesso";
+			}
+		}
+		mysql_close($conexao);
+	}
+	
+	function vincularProfModulo(){
+		
+	}
+	
+	function cadastrarFuncionario(){
+		$cargo = @$_POST['cadastrar-func-cargo'];
+		$nome = @$_POST['cadastrar-func-nome'];
+		$cpf = @$_POST['cadastrar-func-cpf'];		
+		$senha = "!admin2015";
+		
+		$nome = ucwords(strtolower($nome));
+		$nome_email = preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $nome ) );
+		
+		$nome_dividido = @explode(" ", $nome_email);
+		$primeiro_nome = @$nome_dividido[0];
+		$sobre_nome = @substr($nome_dividido[1], 0, 1);
+		$tamanho_nome = @count($nome_dividido);
+		$ultimo_nome = @$nome_dividido[($tamanho_nome-1)];
+		
+		$email = strtolower($primeiro_nome.".".$ultimo_nome."@admin.com");
+		
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "SELECT `cpf` 
+				  FROM `administracao` 
+				  WHERE `cpf` = '$cpf'";
+		
+		$resultadoPesquisa = mysql_query($query, $conexao);
+		$msg = "";
+		if (mysql_num_rows($resultadoPesquisa) == 1) {
+			$GLOBALS['msg'] = "Funcionário já cadastrado";
+		}else{
+			$query = "SELECT `idAdm`, `nomeFuncionario`, `email`, `senha`, `cpf`, `cargo`
+					  FROM `administracao` 
+					  WHERE `email` = '$email'";
+		
+			$resultadoPesquisa = mysql_query($query, $conexao);
+			if (mysql_num_rows($resultadoPesquisa) == 1){
+				$email = strtolower($primeiro_nome.".".$sobre_nome.$ultimo_nome."@admin.com");
+			}
+			$query = "INSERT INTO `administracao`(`nomeFuncionario`, `email`, `senha`, `cpf`, `cargo`)
+					  VALUES ('$nome', '$email', '$senha', '$cpf', '$cargo');";
+			$resultado = mysql_query($query, $conexao);
+			if(mysql_affected_rows($conexao) != 1){
+				if(mysql_errno() >= 1){
+					$GLOBALS['msg'] = "Ocorreu um erro durante a inclusão";
+				}
+				else{
+					$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a inclusão";
+				}
+			}else{
+				$GLOBALS['msg'] = "Cadastro concluído com sucesso";
+			}
+		}
 		mysql_close($conexao);
 	}
 	
@@ -379,6 +502,28 @@
 				break;
 				case "vincula":
 					vincularHab();
+				break;
+				default:
+					header("Location: /acount/admin/");
+			}
+		break;
+		case "modulo":
+			$acao = @$_GET['acao'];
+			switch($acao){
+				case "cadastra":
+					cadastrarModulo();
+				break;
+				case "vincula":
+					vincularProfModulo();
+				break;
+				default:
+					header("Location: /acount/admin/");
+			}
+		case "funcionario":
+			$acao = @$_GET['acao'];
+			switch($acao){
+				case "cadastra":
+					cadastrarFuncionario();
 				break;
 				default:
 					header("Location: /acount/admin/");

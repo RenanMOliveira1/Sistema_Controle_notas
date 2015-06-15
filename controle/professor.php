@@ -16,30 +16,8 @@
 		$ultimo_nome = $nome_dividido[($tamanho_nome-1)];
 		
 		$email = strtolower($primeiro_nome.".".$ultimo_nome."@prof.com");
-				
-		session_start();
-		if(!$_SESSION['logado']){
-			$msg = "Sessão expirada.";
-			header("Location: /acount/?msg=$msg");
-		}
-		switch($_SESSION['autenticacao']){
-			case "professor":
-				header("Location: /acount/adminprof/");
-			break;
-			case "aluno":
-				header("Location: /acount/adminal/");
-			break;
-		}
-		define("TITULO","Cadastrar Professores");
-			switch($_SESSION['admCargo']){
-			case "dir":
-			case "rca":
-			case "ass":
-				header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
-			break;
-		}
 		
-		$conexao = mysql_connect("localhost", "root", "");
+		$conexao = @mysql_connect("localhost", "root", "");
 		if (!$conexao) {
 			exit("Site Temporariamente fora do ar");
 		}
@@ -51,9 +29,8 @@
 				  WHERE `cpf` = '$cpf'";
 		
 		$resultadoPesquisa = mysql_query($query, $conexao);
-		$msg = "";
 		if (mysql_num_rows($resultadoPesquisa) == 1) {
-			header("Location: /acount/admin/cadastrar-professor.php?msg=Professor já cadastrado");
+			$GLOBALS['msg'] = "Professor já cadastrado";
 		}else{
 			$query = "SELECT `idProfessor`, `nomeProfessor`, `email`, `senha`, `cpf` 
 					  FROM `professor` 
@@ -68,13 +45,13 @@
 			$resultado = mysql_query($query, $conexao);
 			if(mysql_affected_rows($conexao) != 1){
 				if(mysql_errno() >= 1){
-					header("Location: /acount/admin/cadastrar-professor.php?msg=Ocorreu um erro durante a inclusão");
+					$GLOBALS['msg'] = "Ocorreu um erro durante a inclusão";
 				}
 				else{
-					header("Location: /acount/admin/cadastrar-professor.php?msg=Ocorreu um erro inesperado durante a inclusão");
+					$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a inclusão";
 				}
 			}else{
-				header("Location: /acount/admin/cadastrar-professor.php?msg=Cadastro concluído com sucesso");
+				$GLOBALS['msg'] = "Cadastro concluído com sucesso";
 			}
 		}
 		mysql_close($conexao);
