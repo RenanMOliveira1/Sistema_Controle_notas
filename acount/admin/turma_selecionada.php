@@ -102,6 +102,7 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="alterar-turma-prof" name="alterar-turma-prof"
                                     title="Escolha o Novo Professor" <?= (($_SESSION['admCargo'] != "adm") && $_SESSION['admCargo'] != "ped") ? "readonly='readonly'" : ""?>>
+                                    <option value="0">Selecione um professor</option>
                                    <?
 											//Conecção ao Banco de Dados
 											$conexao = @mysql_connect("localhost", "root", "");
@@ -122,6 +123,7 @@
 											if ($numeroPesquisa >= 1){
 												$contador = 0;
 												while($professor = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$professor['nomeProfessor'] = utf8_encode($professor['nomeProfessor']);
 													$selecionado = "";
 													if($professor['idProfessor'] == $turma['idProfessor']){
 														$selecionado .= "selected='selected'";

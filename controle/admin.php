@@ -98,6 +98,9 @@
 		if($idLab == 0){
 			$idLab = "NULL";
 		}
+		if($idProf == 0){
+			$idProf = "NULL";
+		}
 				
 		$conexao = @mysql_connect("localhost", "root", "");
 		if (!$conexao) {
@@ -107,7 +110,7 @@
 		mysql_select_db("infnetgrid", $conexao);
 		
 		$query = "UPDATE `turma` 
-				  SET `turno` = '$turno', `nomeTurma` = '$nome', `idLaboratorio` = $idLab, `idProfessor` = '$idProf'
+				  SET `turno` = '$turno', `nomeTurma` = '$nome', `idLaboratorio` = $idLab, `idProfessor` = $idProf
 				  WHERE `idTurma` = '$idTurma'";
 				  
 		$resultado = mysql_query($query, $conexao);

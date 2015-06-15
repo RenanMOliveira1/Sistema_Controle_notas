@@ -12,7 +12,7 @@
 			header("Location: /acount/adminal/");
 		break;
 	}
-	define("TITULO", "Módulos que Ministro");
+	define("TITULO", "Turmas que Ministro");
 	$trTemp = "";
 	
 		//Conecção ao Banco de Dados
@@ -30,6 +30,7 @@
               JOIN `programa` ON programa.`idPrograma` = turma.`idPrograma`
 			  WHERE
 			  turma.`idProfessor` = '{$_SESSION['profId']}'
+			  GROUP BY turma.`nomeTurma`
 			  ORDER BY modulo.`nome`";
 	
 	$resultadoPesquisa = @mysql_query($query, $conexao);

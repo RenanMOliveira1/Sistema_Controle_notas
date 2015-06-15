@@ -708,12 +708,12 @@ function ValidarVincAlunos() {
 function ValidarVincProf() {
 	var msg = "";
 	
-	if ($("vincular-prof-prof").children(":selected").length == 0) {
+	if ($("#vincular-prof-prof").val() == 0) {
 		msg += "Selecione o Professor.<br/>"; 
 		$("#div-vincular-prof-prof").addClass(" has-error");
 	}
 	
-	if ($("vincular-prof-modulo").children(":selected").length == 0) {
+	if ($("#vincular-prof-modulo").val() == 0) {
 		msg += "Selecione o Módulo.<br/>"; 
 		$("#div-vincular-prof-modulo").addClass(" has-error");
 	}
@@ -728,7 +728,7 @@ function ValidarVincProf() {
 //Validar Página Liberar Avaliação Institucional
 function ValidarLiberarAval() {
 	
-	if ($("liberar-avaliacao-turma").children(":selected").length == 0) {
+	if ($("#liberar-avaliacao-turma").val() == 0) {
 		$("#dados-invalidos").html("Selecione uma Turma."); 
 		$("#div-liberar-avaliacao-turma").addClass(" has-error");
 		return false;

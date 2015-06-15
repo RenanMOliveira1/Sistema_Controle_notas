@@ -3,19 +3,19 @@
 		switch ($_SESSION['autenticacao']) {
 			case 'aluno':
 				echo "<div class='usuario-logado'>
-						 <a href='/acount/adminal/'>" . $_SESSION['alNome'] . "</a>
+						 <a href='/acount/adminal/'>" . utf8_encode($_SESSION['alNome']) . "</a>
 						  - <a href='/acount/logout.php'>Sair</a>
 					  </div>";
 			break;
 			case 'professor':
 				echo "<div class='usuario-logado'>
-						 <a href='/acount/adminal/'>" . $_SESSION['profNome'] . "</a>
+						 <a href='/acount/adminal/'>" .  utf8_encode($_SESSION['profNome']) . "</a>
 						  - <a href='/acount/logout.php'>Sair</a>
 					  </div>";
 			break;
 			case 'administracao':
 				echo "<div class='usuario-logado'>
-						 <a href='/acount/admin/'>" . $_SESSION['admNome'] . "</a>
+						 <a href='/acount/admin/'>" .  utf8_encode($_SESSION['admNome']) . "</a>
 						  - <a href='/acount/logout.php'>Sair</a>
 					  </div>";
 			break;
