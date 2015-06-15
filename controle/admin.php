@@ -134,6 +134,38 @@
 		}		
 	}
 	
+	function excluirTurma(){
+		$idTurma = @$_GET['idTurma'];
+
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "DELETE FROM `turma` 
+				  WHERE `idTurma` = '$idTurma'";
+				  
+		$resultado = mysql_query($query, $conexao);
+		if(mysql_affected_rows($conexao) != 1){
+			if(mysql_errno() >= 1){
+				$GLOBALS['msg'] = "Ocorreu um erro durante a exclusão";
+				header("Location: /acount/admin/excluir-turma.php");
+				mysql_close($conexao);
+			}
+			else{
+				$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a exclusão";
+				header("Location: /acount/admin/excluir-turma.php");
+				mysql_close($conexao);
+			}			
+		}else{
+			$GLOBALS['msg'] = "Turma excluída com sucesso";
+			header("Location: /acount/admin/excluir-turma.php");
+			mysql_close($conexao);
+		}	
+	}
+	
 	function cadastrarLab(){
 		$numeroLab = @$_POST['laboratorio-numero'];
 		$andares = @$_POST['laboratorio-andar'];
@@ -174,6 +206,50 @@
 				mysql_close($conexao);
 			}
 		}
+	}
+	
+	function excluirLab(){
+		$idLab = @$_GET['idLab'];
+
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "SELECT `idLaboratorio` 
+			      FROM `turma`
+				  WHERE `idLaboratorio` = '$idLab'";
+				  
+		$resultadoPesquisa = mysql_query($query, $conexao);
+		
+		if(mysql_num_rows($resultadoPesquisa) >= 1){
+			$GLOBALS['msg'] = "Laboratório não pode ser excluído pois está sendo usado";
+			header("Location: /acount/admin/excluir-laboratorio.php");
+		}
+		else{
+			$query = "DELETE FROM `laboratorio`
+					  WHERE `idLaboratorio` = '$idLab'";
+					  
+			$resultado = mysql_query($query, $conexao);
+			if(mysql_affected_rows($conexao) != 1){
+				if(mysql_errno() >= 1){
+					$GLOBALS['msg'] = "Ocorreu um erro durante a exclusão";
+					header("Location: /acount/admin/excluir-laboratorio.php");
+					mysql_close($conexao);
+				}
+				else{
+					$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a exclusão";
+					header("Location: /acount/admin/excluir-laboratorio.php");
+					mysql_close($conexao);
+				}			
+			}else{
+				$GLOBALS['msg'] = "Laboratorio excluído com sucesso";
+				header("Location: /acount/admin/excluir-laboratorio.php");
+				mysql_close($conexao);
+			}
+		}	
 	}
 	
 	function cadastrarHab(){
@@ -328,6 +404,38 @@
 			}
 		}
 		mysql_close($conexao);
+	}
+	
+	function excluirModulo(){
+		$idModulo = @$_GET['idModulo'];
+
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "DELETE FROM `modulo` 
+				  WHERE `idModulo` = '$idModulo'";
+				  
+		$resultado = mysql_query($query, $conexao);
+		if(mysql_affected_rows($conexao) != 1){
+			if(mysql_errno() >= 1){
+				$GLOBALS['msg'] = "Ocorreu um erro durante a exclusão";
+				header("Location: /acount/admin/excluir-modulo.php");
+				mysql_close($conexao);
+			}
+			else{
+				$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a exclusão";
+				header("Location: /acount/admin/excluir-modulo.php");
+				mysql_close($conexao);
+			}			
+		}else{
+			$GLOBALS['msg'] = "Módulo excluído com sucesso";
+			header("Location: /acount/admin/excluir-modulo.php");
+			mysql_close($conexao);
+		}	
 	}
 	
 	function vincularProfModulo(){
@@ -574,6 +682,9 @@
 				case "altera":
 					alterarTurma();
 				break;
+				case "exclui":
+					excluirTurma();
+				break;
 				default:
 					header("Location: /acount/admin/");
 			}
@@ -583,6 +694,12 @@
 			switch($acao){
 				case "cadastra":
 					cadastrarLab();
+				break;
+				case "altera":
+					
+				break;
+				case "exclui":
+					excluirLab();
 				break;
 				default:
 					header("Location: /acount/admin/");
@@ -609,6 +726,9 @@
 				break;
 				case "vincula":
 					vincularProfModulo();
+				break;
+				case "exclui":
+					excluirModulo();
 				break;
 				default:
 					header("Location: /acount/admin/");
