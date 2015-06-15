@@ -729,12 +729,6 @@ function ValidarSelTurma() {
 
 //Validar Página Alterar Turma
 function ValidarAltTurma() {
-	
-	if ($("alterar-turma-laboratorio").children(":selected").length == 0) {
-		$("#dados-invalidos").html("Selecione um Laboratório."); 
-		$("#div-alterar-turma-laboratorio").addClass(" has-error");
-		return false;
-	}
 	return true;
 }
 

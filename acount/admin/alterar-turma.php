@@ -20,7 +20,7 @@
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
-
+	include("../../controle/admin.php");
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Turma </div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-alt-sel-turma" action="/acount/admin/cadastrar_alt-sel_exe.php" method="post"> 
+						<form class="form-horizontal" id="form-alt-sel-turma" action="/acount/admin/turma_selecionada.php" method="post"> 
                             <div class="form-group" id="div-alterar-turma-selTurma" >
                                 <label class="col-md-3 control-label">
                                 	<span>Turma</span>
@@ -86,7 +86,9 @@
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-turma-selTurma -->
 							
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos">
+                            <?= @$GLOBALS['msg'] ?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-alt-sel-turma">

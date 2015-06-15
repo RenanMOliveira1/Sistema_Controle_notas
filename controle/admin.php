@@ -83,6 +83,49 @@
 		}
 	}
 	
+	function alterarTurma(){
+		$idTurma = @$_POST['alterar-turma-id'];
+		$nome = @$_POST['alterar-turma-nome'];
+		$turno = @$_POST['alterar-turma-turno'];
+		$idProf = @$_POST['alterar-turma-prof'];
+		$idLab = @$_POST['alterar-turma-laboratorio'];
+		
+		$turno = utf8_decode($turno);
+
+		if($idLab == 0){
+			$idLab = "NULL";
+		}
+				
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "UPDATE `turma` 
+				  SET `turno` = '$turno', `nomeTurma` = '$nome', `idLaboratorio` = $idLab, `idProfessor` = '$idProf'
+				  WHERE `idTurma` = '$idTurma'";
+				  
+		$resultado = mysql_query($query, $conexao);
+		if(mysql_affected_rows($conexao) != 1){
+			if(mysql_errno() >= 1){
+				$GLOBALS['msg'] = "Ocorreu um erro durante a alteração";
+				header("Location: /acount/admin/alterar-turma.php");
+				mysql_close($conexao);
+			}
+			else{
+				$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a alteração";
+				header("Location: /acount/admin/alterar-turma.php");
+				mysql_close($conexao);
+			}			
+		}else{
+			$GLOBALS['msg'] = "Turma: '$nome', alterada com sucesso";
+			header("Location: /acount/admin/alterar-turma.php");
+			mysql_close($conexao);
+		}		
+	}
+	
 	function cadastrarLab(){
 		$numeroLab = @$_POST['laboratorio-numero'];
 		$andares = @$_POST['laboratorio-andar'];
@@ -478,7 +521,7 @@
 					cadastrarTurma();
 				break;
 				case "altera":
-					alteraTurma();
+					alterarTurma();
 				break;
 				default:
 					header("Location: /acount/admin/");

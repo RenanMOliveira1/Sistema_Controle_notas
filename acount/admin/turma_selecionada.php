@@ -20,7 +20,8 @@
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
-
+	$idTurma = @$_POST['alterar-turma-selTurma'];
+	include("../../controle/admin.php");
 ?>
 
 <!DOCTYPE html>
@@ -47,16 +48,35 @@
         <div class="row">
 			<div class="col-md-8">
 				<div class="panel panel-default">
-					<div class="panel-heading">Turma Selecionada </div> <!-- panel-heading -->
+                   <?
+						$conexao = @mysql_connect("localhost", "root", "");
+						if (!$conexao) {
+							exit("Site Temporariamente fora do ar");}
+						
+						mysql_select_db("infnetgrid", $conexao);
+						
+						$query = "SELECT `idTurma`, `turno`, `nomeTurma`, `idModulo`, `idLaboratorio`, `idProfessor` 
+								  FROM `turma`
+								  WHERE `idTurma` = '$idTurma'";
+				
+						$resultadoPesquisa = @mysql_query($query, $conexao);
+						
+						$turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+						
+						$turma['turno'] = utf8_encode($turma['turno']);
+					?>
+					<div class="panel-heading"><?= $turma['nomeTurma']?></div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-alterar-turma" action="/acount/admin/cadastrar_alterar_exe.php" method="post">
+						<form class="form-horizontal" id="form-alterar-turma" action="/acount/admin/turma_selecionada.php?opcao=turma&acao=altera" method="post">
+                        	<input type="hidden" id="alterar-turma-id" name="alterar-turma-id" value="<?= $idTurma?>" />
                             <div class="form-group" id="div-alterar-turma-nome" >
                                 <label class="col-md-3 control-label">
                                 	<span>Nome</span>
                                 </label>
                                 <div class="col-md-9">
                                 	<input id="alterar-turma-nome" name="alterar-turma-nome" type="text" autofocus
-                                    placeholder="Digite o novo Nome da Turma" title="Digite o novo Nome da Turma" class="form-control">
+                                    placeholder="Digite o novo Nome da Turma" title="Digite o novo Nome da Turma" class="form-control"
+                                    value="<?= $turma['nomeTurma']?>" readonly="readonly"/>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-turma-nome -->
 
@@ -67,10 +87,10 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="alterar-turma-turno" name="alterar-turma-turno"
                                     title="Escolha o Novo Turno de Aula" >
-                                        <option value="manha">Manhã</option>
-                                        <option value="tarde">Tarde</option>
-                                        <option value="noite">Noite</option>
-                                        <option value="sabado">Sabádo</option>
+                                        <option value="Manhã"  <?= ("Manhã" == $turma['turno']) ? "selected='selected'" : "" ?>>Manhã</option>
+                                        <option value="Tarde"  <?= ("Tarde" == $turma['turno']) ? "selected='selected'" : "" ?>>Tarde</option>
+                                        <option value="Noite"  <?= ("Noite" == $turma['turno']) ? "selected='selected'" : "" ?>>Noite</option>
+                                        <option value="Sábado" <?= ("Sábado" == $turma['turno']) ? "selected='selected'" : "" ?>>Sábado</option>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-turma-turno -->
@@ -81,11 +101,35 @@
                                 </label>
                                 <div class="col-md-9">
                                     <select class="form-control" id="alterar-turma-prof" name="alterar-turma-prof"
-                                    title="Escolha o Novo Professor" >
-                                    <option value="Professor#1">Professor #1</option>
-                                    <option value="Professor#1">Professor #2</option>
-                                    <option value="Professor#1">Professor #3</option>
-                                    <option value="Professor#1">Professor #4</option>
+                                    title="Escolha o Novo Professor" <?= (($_SESSION['admCargo'] != "adm") && $_SESSION['admCargo'] != "ped") ? "readonly='readonly'" : ""?>>
+                                   <?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT professor.`idProfessor`, professor.`nomeProfessor`
+													  FROM `modulo_professor`
+													  JOIN turma on turma.`idTurma` = {$turma['idTurma']}
+													  JOIN professor ON professor.`idProfessor` = modulo_professor.`idProfessor`
+													  WHERE modulo_professor.`idModulo` = {$turma['idModulo']}
+													  ORDER BY professor.`nomeProfessor`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												$contador = 0;
+												while($professor = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$selecionado = "";
+													if($professor['idProfessor'] == $turma['idProfessor']){
+														$selecionado .= "selected='selected'";
+													}
+													echo "<option value='{$professor['idProfessor']}' $selecionado>{$professor['nomeProfessor']}</option>";
+												}
+											}
+										?> 
                                     </select>                                   
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-alterar-turma-prof -->                            
@@ -108,12 +152,14 @@
 													  FROM `laboratorio`";
 									
 											$resultadoPesquisa = @mysql_query($query, $conexao);
-											$msg = "";
 											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 											if ($numeroPesquisa >= 1){
-												$contador = 0;
 												while($laboratorio = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-													echo "<option value='{$laboratorio['idLaboratorio']}'>{$laboratorio['numeroLab']}</option>";
+													$selecionado = "";
+													if($laboratorio['idLaboratorio'] == $turma['idLaboratorio']){
+														$selecionado .= "selected='selected'";
+													}
+													echo "<option value='{$laboratorio['idLaboratorio']}' $selecionado>{$laboratorio['numeroLab']}</option>";
 												}
 											}
 										?>
