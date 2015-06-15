@@ -166,6 +166,39 @@
 		}	
 	}
 	
+	function liberarAvaliacao(){
+		$idTurma = @$_POST['liberar-avaliacao-turma'];
+
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
+		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "UPDATE `turma`
+				  SET `liberado` = 1
+				  WHERE `idTurma` = '$idTurma'";
+				  
+		$resultado = mysql_query($query, $conexao);
+		if(mysql_affected_rows($conexao) != 1){
+			if(mysql_errno() >= 1){
+				$GLOBALS['msg'] = "Ocorreu um erro durante a liberação";
+				header("Location: /acount/admin/liberar-avaliacao.php");
+				mysql_close($conexao);
+			}
+			else{
+				$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a liberação";
+				header("Location: /acount/admin/liberar-avaliacao.php");
+				mysql_close($conexao);
+			}			
+		}else{
+			$GLOBALS['msg'] = "Acesso liberado com sucesso";
+			header("Location: /acount/admin/liberar-avaliacao.php");
+			mysql_close($conexao);
+		}
+	}
+	
 	function cadastrarLab(){
 		$numeroLab = @$_POST['laboratorio-numero'];
 		$andares = @$_POST['laboratorio-andar'];
@@ -684,6 +717,9 @@
 				break;
 				case "exclui":
 					excluirTurma();
+				break;
+				case "libera":
+					liberarAvaliacao();
 				break;
 				default:
 					header("Location: /acount/admin/");

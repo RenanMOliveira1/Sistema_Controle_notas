@@ -59,10 +59,7 @@
 		$trTemp.="Aluno não está cursando nenhum módulo";
 	}
 	
-	mysql_close($conexao);
-	
-
-	
+	mysql_close($conexao);	
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -22,6 +22,45 @@
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 	}
 	
+	$trTemp = "";
+	
+	//Conecção ao Banco de Dados
+	$conexao = @mysql_connect("localhost", "root", "");
+	if (!$conexao) {
+		exit("Site Temporariamente fora do ar");}
+	
+	mysql_select_db("infnetgrid", $conexao);
+	
+	$query = "SELECT `idTurma`, `nomeTurma`, programa.`nomeCurso`, `liberado`
+			  FROM `turma` 
+			  JOIN programa ON programa.`idPrograma` = turma.`idPrograma`
+			  ORDER BY programa.`nomeCurso`, `nomeTurma`";
+	
+	$resultadoPesquisa = @mysql_query($query, $conexao);
+	$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+	if ($numeroPesquisa >= 1){
+		while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+			if($turma['liberado'] < 1){
+				$turma['liberado'] = "Bloqueado";
+			}
+			else{
+				$turma['liberado'] = "Liberado";
+			}
+			$trTemp .= "<tr>
+							<td>{$turma['nomeCurso']}</td>
+							<td>{$turma['nomeTurma']}</td>
+							<td>{$turma['liberado']}</td>
+						</tr>";
+					  
+		}
+		$trTemp = utf8_encode($trTemp) ;
+	} else {
+		$trTemp.="Não há turmas cadastradas";
+	}
+	
+	mysql_close($conexao);	
+	
+	include("../../controle/admin.php");
 ?>
 
 <!DOCTYPE html>
@@ -57,16 +96,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Programa #1</td>
-                                        <td>Turma #1</td>
-                                        <td>Liberado</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Programa #2</td>
-                                        <td>Turma #2</td>
-                                        <td>Bloqueado</td>
-                                    </tr>
+                                    <?= $trTemp ?>
                                 </tbody>
                             </table>
                     </div> <!-- table-responsive panel-body -->
@@ -78,7 +108,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"> Liberar Avaliações</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" action="liberar_avaliacao_exe.php" method="post" id="form-liberar-avaliacao">
+						<form class="form-horizontal" action="liberar-avaliacao.php?opcao=turma&acao=libera" method="post" id="form-liberar-avaliacao">
                             <div class="form-group" id="div-liberar-avaliacao-turma">
                                 <label class="col-md-4 control-label">
                                 	<span>Selecione a Turma</span>
@@ -86,15 +116,36 @@
                                 <div class="col-md-8">
                                     <select class="form-control" id="liberar-avaliacao-turma" 
                                     name="liberar-avaliacao-turma" title="Escolha a Turma" >
-                                        <option value="Turma#1">Turma #1</option>
-                                        <option value="Turma#2">Turma #2</option>
-                                        <option value="Turma#3">Turma #3</option>
-                                        <option value="Turma#4">Turma #4</option>
+                                    	<?	//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idTurma`, `nomeTurma`, `liberado`
+													  FROM `turma` 
+													  WHERE `liberado` = '0'
+													  ORDER BY `nomeTurma`";
+											
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													echo "<option value='{$turma['idTurma']}'>{$turma['nomeTurma']}</option>";											 												}
+											} else {
+												echo "<option> Não há turmas com acesso bloqueado</option>";
+											}
+											
+											mysql_close($conexao);	
+										?>
                                     </select>
                                 </div> <!-- col-md-8 -->
                             </div> <!-- div-liberar-avaliacao-turma -->
                             
-                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos">
+                            	<?= @$GLOBALS['msg']?>
+                            </div> <!-- dados-invalidos -->
                             
                             <div class="col-md-12 widget-right" id="div-btn-liberar-avaliacao">
                                 <input type="button" id="btn-liberar-avaliacao" value="Liberar" class="btn btn-default btn-md pull-right"  onClick="botoesEnviar('#btn-liberar-avaliacao','#form-liberar-avaliacao',ValidarLiberarAval());"/>
