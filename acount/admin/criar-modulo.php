@@ -110,7 +110,7 @@
                             </div> <!-- div-admin-habil-mod -->
                             
                             <div id="dados-invalidos">
-                            	<?= @$GLOBALS['msg'] ?>
+                            	<?= @$GLOBALS['msgMod'] ?>
                             </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">

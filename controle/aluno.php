@@ -31,7 +31,7 @@
 		$email = strtolower($primeiro_nome.".".$ultimo_nome."@aluno.com");				
 		
 		//Conecção ao Banco de Dados
-		$conexao = mysql_connect("localhost", "root", "");
+		$conexao = @mysql_connect("localhost", "root", "");
 		if (!$conexao) {
 			exit("Site Temporariamente fora do ar");
 		}
@@ -79,16 +79,16 @@
 					  
 			if(mysql_affected_rows($conexao) != 1){
 				if(mysql_errno() >= 1){
-					mysql_close($conexao);
-					header("Location: /cadastrar.php?msg=Ocorreu um erro durante o cadastro");
+					$GLOBALS['msg'] = "Ocorreu um erro durante o cadastro";
+					$GLOBALS['rsl'] = "err";
 				}
 				else{
-					mysql_close($conexao);
-					header("Location: /cadastrar.php?msg=Ocorreu um erro inexperado durante o cadastro");
+					$GLOBALS['msg'] = "Ocorreu um erro inexperado durante o cadastro";
+					$GLOBALS['rsl'] = "err";
 				}
 			}else{
-				mysql_close($conexao);
-				header("Location: /acount/?cadastro=Cadastro realizado com sucesso.");
+				$GLOBALS['msg'] = "Cadastro realizado com sucesso.";
+				$GLOBALS['rsl'] = "sucess";
 			}
 		}else{
 			$nome = utf8_decode($nome);
@@ -124,18 +124,19 @@
 					  
 			if(mysql_affected_rows($conexao) != 1){
 				if(mysql_errno() >= 1){
-					mysql_close($conexao);
-					header("Location: /cadastrar.php?msg=Ocorreu um erro durante o cadastro");
+					$GLOBALS['msg'] = "Ocorreu um erro durante o cadastro";
+					$GLOBALS['rsl'] = "err";
 				}
 				else{
-					mysql_close($conexao);
-					header("Location: /cadastrar.php?msg=Ocorreu um erro inexperado durante o cadastro");
+					$GLOBALS['msg'] = "Ocorreu um erro inexperado durante o cadastro";
+					$GLOBALS['rsl'] = "err";
 				}
 			}else{
-				mysql_close($conexao);
-				header("Location: /acount/?cadastro=Cadastro realizado com sucesso.");
+				$GLOBALS['msg'] = "Cadastro realizado com sucesso.";
+				$GLOBALS['rsl'] = "sucess";
 			}
 		}
+		mysql_close($conexao);
 	}
 	
 	function alterar($tipo){		
@@ -146,7 +147,7 @@
 				
 				if($_SESSION['alSenha'] == $senhaAntiga){
 					//Conecção ao Banco de Dados
-					$conexao = mysql_connect("localhost", "root", "");
+					$conexao = @mysql_connect("localhost", "root", "");
 					if (!$conexao) {
 						exit("Site Temporariamente fora do ar");
 					}
@@ -185,7 +186,7 @@
 				
 				if($_SESSION['alEmail'] == $emailAntigo){
 					//Conecção ao Banco de Dados
-					$conexao = mysql_connect("localhost", "root", "");
+					$conexao = @mysql_connect("localhost", "root", "");
 					if (!$conexao) {
 						exit("Site Temporariamente fora do ar");
 					}
@@ -241,7 +242,7 @@
 				$cidade = utf8_decode($cidade);
 				
 				//Conecção ao Banco de Dados
-				$conexao = mysql_connect("localhost", "root", "");
+				$conexao = @mysql_connect("localhost", "root", "");
 				if (!$conexao) {
 					exit("Site Temporariamente fora do ar");
 				}

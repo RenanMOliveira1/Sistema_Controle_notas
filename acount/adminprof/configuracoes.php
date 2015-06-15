@@ -1,10 +1,6 @@
 <?
-	$tipo = $rsl = $msgSenha = $msgEmail = $msgDados = "";
-	$tipo = @$_GET['tp'];
-	$rsl .= @$_GET['rsl'];
-	
-	$msgSenha .= @$_GET['msgSenha'];
-	$msgDados .= @$_GET['msgDados'];
+	$tipo = $rsl = "";
+	$tipo = @$_GET['tipo'];
 
 	session_start();
 	define("TITULO", "Configurações");
@@ -21,23 +17,25 @@
 		break;
 	}
 	
+	include("../../controle/professor.php");
 	$msgResultado = $campos = $msgDadosResultado = $camposDados = "";
+	$rsl = @$GLOBALS['rsl'];
 	switch ($tipo) {
 		case "senha":
 			if ($rsl == "err")  {
-				$msgResultado .= "<div id='dados-invalidos'>{$msgSenha}</div> <!-- dados-invalidos -->";
+				$msgResultado .= "<div id='dados-invalidos'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos -->";
 				$campos = " has-error";
 			} elseif ($rsl == "sucess") {
-				$msgResultado .= "<div id='dados-validos'>{$msgSenha}</div> <!-- dados-invalidos -->";
+				$msgResultado .= "<div id='dados-validos'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos -->";
 				$campos .= " has-success";
 			}
 			break;
 		case "dados":
 			if ($rsl == "err")  {
-				$msgDadosResultado .= "<div id='dados-invalidos-prof'>{$msgDados}</div> <!-- dados-invalidos-prof -->";
+				$msgDadosResultado .= "<div id='dados-invalidos-prof'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos-prof -->";
 				$camposDados .= " has-error";
 			} elseif ($rsl == "sucess") {
-				$msgDadosResultado .= "<div id='dados-validos-prof'>{$msgDados}</div> <!-- dados-invalidos-prof -->";
+				$msgDadosResultado .= "<div id='dados-validos-prof'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos-prof -->";
 				$camposDados .= " has-success";
 			}
 			break;
@@ -69,7 +67,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div>
 					<div class="panel-body">
-                    	<form id="form-prof-alterar-senha" method="post" action="/controle/professor.php?acao=alteracao&tipo=senha">
+                    	<form id="form-prof-alterar-senha" method="post" action="/acount/adminprof/configuracoes.php?acao=alteracao&tipo=senha">
                         	<div class="form-group<?=$campos?>" id="div-prof-alt-senha-antiga">
                             	<label>
                                 	<span>Senha Atual: </span>
@@ -103,7 +101,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Dados</div>
 					<div class="panel-body">
-                    	<form id="formulario-alterar-prof-cadastro" action="/controle/professor.php?acao=alteracao&tipo=dados" method="post">
+                    	<form id="formulario-alterar-prof-cadastro" action="/acount/adminprof/configuracoes.php?acao=alteracao&tipo=dados" method="post">
                             <div class="form-campos<?=$camposDados?>" id="div-prof-nome">
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>

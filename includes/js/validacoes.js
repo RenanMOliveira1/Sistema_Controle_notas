@@ -205,14 +205,29 @@ else
     return false;
 }
 
+function isTipo(pVal) {  
+	var reTipo = /[A-z][ ][A-z]/;  
+	return reTipo.test(pVal);  
+}  
+
 //Validar Campos da Pagina Cadastro
 function ValidarCadastro() {
 	var msg = "";
+	
+	var nome = $("#nome").val();
+	if (nome == "") {
+		msg += "Campo Nome é Obrigatorio<br/>";
+		$("#div-nome").addClass(" has-error");
+	} else if (!isTipo(nome)) {
+		msg += "É Necessário o Nome e Sobrenome<br/>";
+		$("#div-nome").addClass(" has-error");
+	}
 	
 	if ($("#nome").val() == "") {
 		msg += "Campo Nome é Obrigatorio<br/>";
 		$("#div-nome").addClass(" has-error");
 	}
+	
 	if ($("#logradouro").val() == "") { 
 		msg += "Campo Logradouro é Obrigatorio<br/>";
 		$("#div-logradouro").addClass(" has-error");
@@ -273,7 +288,7 @@ function ValidarCadastro() {
 	
 	if($("#programa").val() == 0){
 		msg += "Selecione um programa<br/>";
-		$("#div-programa").add(" has-error");
+		$("#div-programa").addClass(" has-error");
 	}
 
 	if (msg != "") {
@@ -519,9 +534,13 @@ function ValidarPrograma() {
 function ValidarCadastrarProf() {
 	var msg = "";
 	
-	if ($("#admin-prof-nome").val() == "") {
+	var nome = $("#admin-prof-nome").val();
+	if (nome == "") {
 		msg += "Campo Nome é Obrigatório.</br>";
 		$("#div-admin-prof-nome").addClass(" has-error");	
+	} else if (!isTipo(nome)) {
+		msg += "É Necessário o Nome e Sobrenome<br/>";
+		$("#div-admin-prof-nome").addClass(" has-error");
 	}
 	
 	var cpf = $("#admin-prof-cpf").val();
@@ -532,6 +551,7 @@ function ValidarCadastrarProf() {
 		msg += "CPF inválido.<br/>";
 		$("#div-admin-prof-cpf").addClass(" has-error");
 	}
+	
 	if (msg != "") {
 	$("#dados-invalidos").html(msg);
 	return false;}

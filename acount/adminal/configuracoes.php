@@ -1,9 +1,6 @@
 <?
-	$tipo = $rsl = $msgEmail = $msgDados = "";
+	$tipo = $rsl = "";
 	$tipo = @$_GET['tipo'];
-
-	$msgEmail .= @$_GET['msgEmail'];
-	$msgDados .= @$_GET['msgDados'];
 
 	session_start();
 	if(!$_SESSION['logado']){
@@ -122,7 +119,7 @@
                         	<div class="form-campos<?=$camposEmail?>" id="div-alt-email-atual">
                                 <label>
                                     <span>Email Atual: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" class="form-control" name="alt-email-atual" 
+                                    <input type="text" class="form-control" name="alt-email-atual" readonly
                                     placeholder="Digite o seu Atual Email" size="60" id="alt-email-atual" 
                                     value="<?= utf8_encode($_SESSION['alEmail'])?>";
                                     title="Entre com o seu email atual para acesso" />

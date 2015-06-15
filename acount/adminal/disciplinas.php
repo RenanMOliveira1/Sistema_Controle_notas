@@ -48,7 +48,6 @@
 							<div class=\"panel-body\">
 								<p>{$modulos['descr']}</p>
                         		<p><strong>Professor</strong>:{$modulos['nomeProfessor']}</p>
-                        		<p><a href=\"#\">Detalhes da Disciplina</a></p>
 							</div>
 						</div>
 					  </div><!--/.col-->";

@@ -98,6 +98,12 @@ a:focus {
   outline: none;
 }
 
+#dados-validos {
+	color: #3C763D;
+	text-align: left;
+	clear: both;
+}
+
 .dropdown-menu {
   margin-top: -1px;
   min-width: 180px;

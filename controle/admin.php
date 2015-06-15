@@ -70,15 +70,18 @@
 		$resultado = mysql_query($query, $conexao);
 		if(mysql_affected_rows($conexao) != 1){
 			if(mysql_errno() >= 1){
-				$GLOBALS['msg'] = "Ocorreu um erro durante o cadastro";				
+				$GLOBALS['msg'] = "Ocorreu um erro durante o cadastro";	
+				$GLOBALS['rsl'] = "err";			
 				mysql_close($conexao);
 			}
 			else{
 				$GLOBALS['msg'] = "Ocorreu um erro inexperado durante o cadastro";
+				$GLOBALS['rsl'] = "err";
 				mysql_close($conexao);
 			}			
 		}else{
 			$GLOBALS['msg'] = "Cadastro realizado com sucesso, nome da turma é: ".$nomeTurma;
+			$GLOBALS['rsl'] = "sucess";
 			mysql_close($conexao);
 		}
 	}
@@ -283,7 +286,7 @@
 		
 		$resultadoPesquisa = mysql_query($query, $conexao);
 		if (mysql_num_rows($resultadoPesquisa) == 1) {
-			$GLOBALS['msg'] = "Módulo já cadastrado";
+			$GLOBALS['msgMod'] = "Módulo já cadastrado";
 		}else{
 			$nome = utf8_decode($nome);
 			$descricao = utf8_decode($descricao);
@@ -309,13 +312,13 @@
 						  
 			if(mysql_affected_rows($conexao) != 1){
 				if(mysql_errno() >= 1){
-					$GLOBALS['msg'] = "Ocorreu um erro durante a inclusão";
+					$GLOBALS['msgMod'] = "Ocorreu um erro durante a inclusão";
 				}
 				else{
-					$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a inclusão";
+					$GLOBALS['msgMod'] = "Ocorreu um erro inesperado durante a inclusão";
 				}
 			}else{
-				$GLOBALS['msg'] = "Módulo cadastrado com sucesso";
+				$GLOBALS['msgMod'] = "Módulo cadastrado com sucesso";
 			}
 		}
 		mysql_close($conexao);

@@ -1,6 +1,4 @@
 <?
-	$msg = "";
-	$msg .= @$_GET['msg'];
 	session_start();
 	if(!$_SESSION['logado']){
 		$msg = "Sessão expirada.";
@@ -15,14 +13,24 @@
 		break;
 	}
 	define("TITULO","Cadastrar Professores");
-		switch($_SESSION['admCargo']){
+	switch($_SESSION['admCargo']){
 		case "dir":
 		case "rca":
 		case "ass":
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
-	include("../../controle/professor.php.");
+	include("../../controle/professor.php");
+	
+	$msgResultado = $campos = $rsl = "";
+	$rsl = @$GLOBALS['resl'];
+	if ($rsl == "err")  {
+		$msgResultado .= "<div id='dados-invalidos'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos -->";
+		$campos = " has-error";
+	} elseif ($rsl == "sucess") {
+		$msgResultado .= "<div id='dados-validos'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos -->";
+		$campos .= " has-success";
+	}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +60,7 @@
 					<div class="panel-heading">Dados do Professor</div> <!-- panel-heading -->
 					<div class="panel-body">
 						<form class="form-horizontal" id="form-cadastrar-prof" action="/acount/admin/cadastrar-professor.php?acao=cadastro" method="post">
-                            <div class="form-group" id="div-admin-prof-nome" >
+                            <div class="form-group<?=$campos?>" id="div-admin-prof-nome" >
                                 <label class="col-md-3 control-label">
                                     <span>Nome</span>
                                 </label>
@@ -62,7 +70,7 @@
                                 </div> <!-- col-md-3 control-label -->
                             </div> <!-- div-admin-prof-nome -->
 
-                            <div class="form-group" id="div-admin-prof-cpf" >
+                            <div class="form-group<?=$campos?>" id="div-admin-prof-cpf" >
                                 <label class="col-md-3 control-label">
                                     <span>CPF</span>
                                 </label>
@@ -72,9 +80,8 @@
                                 </div> <!-- col-md-3 control-label -->
                             </div> <!-- div-admin-prof-cpf -->
 							
-                            <div id="dados-invalidos">
-                            	<?= @$GLOBALS['msg']?>
-                            </div> <!-- dados-invalidos -->
+                            <div id="dados-invalidos"></div> <!-- dados-invalidos -->
+                            <?=$msgResultado?>
                             
                             <div class="form-group">
                                 <div class="col-md-12 widget-right" id="div-btn-cad-prof-enviar">
