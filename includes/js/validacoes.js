@@ -687,12 +687,12 @@ function ValidarVincHabil() {
 function ValidarVincAlunos() {
 	var msg = "";
 	
-	if ($("vincular-aluno-nomeAl").children(":selected").length == 0) {
+	if ($("#vincular-aluno-nomeAl").val() == 0) {
 		msg += "Selecione um Aluno.<br/>"; 
 		$("#div-vincular-aluno-nomeAl").addClass(" has-error");
 	}
 	
-	if ($("vincular-aluno-turma").children(":selected").length == 0) {
+	if ($("#vincular-aluno-turma").val() == 0) {
 		msg += "Selecione uma Turma.<br/>"; 
 		$("#div-vincular-aluno-turma").addClass(" has-error");
 	}

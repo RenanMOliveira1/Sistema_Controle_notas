@@ -71,7 +71,7 @@
 				
 				if($_SESSION['profSenha'] == $senhaAntiga){
 					//Conecção ao Banco de Dados
-					$conexao = mysql_connect("localhost", "root", "");
+					$conexao = @mysql_connect("localhost", "root", "");
 					if (!$conexao) {
 						exit("Site Temporariamente fora do ar");
 					}
@@ -111,7 +111,7 @@
 				$nome = utf8_decode($nome);
 				
 				//Conecção ao Banco de Dados
-				$conexao = mysql_connect("localhost", "root", "");
+				$conexao = @mysql_connect("localhost", "root", "");
 				if (!$conexao) {
 					exit("Site Temporariamente fora do ar");
 				}
@@ -137,7 +137,7 @@
 				}else{
 					$GLOBALS['msg'] = "Dados modificados com sucesso";
 					$GLOBALS['rsl'] = "sucess";
-					$_SESSION['profNome'] = $nome;
+					$_SESSION['profNome'] = ($nome);
 					$_SESSION['profCpf'] = $cpf;		
 				}
 				mysql_close($conexao);	

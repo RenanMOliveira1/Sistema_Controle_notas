@@ -121,7 +121,7 @@
                                     <span>Email Atual: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" class="form-control" name="alt-email-atual" readonly
                                     placeholder="Digite o seu Atual Email" size="60" id="alt-email-atual" 
-                                    value="<?= utf8_encode($_SESSION['alEmail'])?>";
+                                    value="<?= utf8_encode($_SESSION['alEmail'])?>" 
                                     title="Entre com o seu email atual para acesso" />
                                 </label>
                             </div> <!-- div-alt-email-atual -->
@@ -154,7 +154,7 @@
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-nome" name="alt-nome" size="70" class="form-control"
-                                    maxlength="150" title="Entre com o Novo Nome" value="<?= utf8_encode($_SESSION['alNome'])?>";
+                                    maxlength="150" title="Entre com o Novo Nome" value="<?= utf8_encode($_SESSION['alNome'])?>"
                                     placeholder="Entre com o Novo Nome" autofocus />
                                 </label>
                             </div> <!-- div-alt-nome -->   
@@ -162,14 +162,14 @@
                                 <label>
                                     <span>Nascimento: <span class="asteristicos-obrigatorio">*</span></span>
                                     <input type="text" id="alt-data-nascimento" name="alt-data-nascimento" class="form-control" maxlenght="10" size="30"
-                                    title="Entre com a Nova Data de Nascimento 00/00/0000" value="<?= utf8_encode($_SESSION['alDataNascimento'])?>";
+                                    title="Entre com a Nova Data de Nascimento 00/00/0000" value="<?= utf8_encode($_SESSION['alDataNascimento'])?>" 
                                     placeholder="Digite a Nova Data 00/00/0000" />
                                 </label>
                             </div> <!-- div-alt-nascimento -->
                             <div class="form-campos<?=$camposDados?>" id="div-alt-cpf">
                                 <label>
                                     <span>CPF: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="alt-cpf" name="alt-cpf" class="form-control" maxlenght="11" size="20" value="<?= utf8_encode($_SESSION['alCpf'])?>";
+                                    <input type="text" id="alt-cpf" name="alt-cpf" class="form-control" maxlenght="11" size="20" value="<?= utf8_encode($_SESSION['alCpf'])?>"
                                     title="Entre com o Novo seu CPF" placeholder="Digite o Novo seu CPF" />
                                 </label>
                             </div> <!-- div-alt-nascimento -->
@@ -196,20 +196,20 @@
                             <div class="form-campos<?=$camposDados?>" id="div-alt-telefone-fixo">
                                 <label>
                                     <span>Telefone: </span>
-                                    <input type="text" id="alt-telefone-fixo" name="alt-telefone-fixo" title="Digite o seu Novo Telefone Fixo" maxlenght="65" class="form-control" value="<?= $_SESSION['alTelefone']?>"; placeholder="Digite o seu Novo Telefone Fixo" size="35" />
+                                    <input type="text" id="alt-telefone-fixo" name="alt-telefone-fixo" title="Digite o seu Novo Telefone Fixo" maxlenght="65" class="form-control" value="<?= $_SESSION['alTelefone']?>" placeholder="Digite o seu Novo Telefone Fixo" size="35" />
                                 </label>
                             </div> <!-- div-alt-telefone-fixo -->
                             <div class="form-campos<?=$camposDados?>" id="div-alt-telefone-celular">
                                 <label>
                                     <span>Celular: </span>
                                     <input type="text" class="form-control" id="alt-telefone-celular" name="alt-telefone-celular"
-                                    maxlenght="65" value="<?= $_SESSION['alCelular']?>"; placeholder="Digite o seu Novo Celular" title="Digite o seu Novo Celular" size="35" />
+                                    maxlenght="65" value="<?= $_SESSION['alCelular']?>"  placeholder="Digite o seu Novo Celular" title="Digite o seu Novo Celular" size="35" />
                                 </label>
                             </div> <!-- div-telefone-celular -->
                             <div class="form-campos<?=$camposDados?>" id="div-alt-cep">
                                 <label>
                                     <span>CEP: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="alt-cep" name="alt-cep" value="<?= $_SESSION['alCep']?>";
+                                    <input type="text" id="alt-cep" name="alt-cep" value="<?= $_SESSION['alCep']?>" 
                                     title="Entre com o Novo CEP" class="form-control" placeholder="Digite o seu Novo CEP" />
                                 </label>
                             </div> <!-- div-alt-cep -->
@@ -290,14 +290,14 @@
                             <div class="form-campos<?=$camposDados?>" id="div-alt-numero">
                                 <label>
                                     <span>Numero: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="alt-numero" name="alt-numero" placeholder="Numero" value="<?= $_SESSION['alNumero']?>";
+                                    <input type="text" id="alt-numero" name="alt-numero" placeholder="Numero" value="<?= $_SESSION['alNumero']?>" 
                                     title="Entre com o Novo Numero da Casa" class="form-control" size="7" />
                                 </label>
                             </div> <!-- div-alt-numero -->
                             <div class="form-campos<?=$camposDados?>" id="div-alt-logradouro">
                                 <label>
                                     <span>Logradouro: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" id="alt-logradouro" name="alt-logradouro" value="<?= utf8_encode($_SESSION['alLogradouro'])?>";
+                                    <input type="text" id="alt-logradouro" name="alt-logradouro" value="<?= utf8_encode($_SESSION['alLogradouro'])?>" 
                                     title="Digite o seu Novo Logadouro" class="form-control" 
                                     size="80" placeholder="Digite o seu Novo Logadouro" />
                                 </label>
@@ -306,14 +306,14 @@
                                 <label>
                                     <span>Complemento: </span>
                                     <input type="text" name="alt-complemento" id="alt-complemento" size="100"
-                                    title="Se houver algum complemento, digite aqui"  value="<?= utf8_encode($_SESSION['alComplemento'])?>";
+                                    title="Se houver algum complemento, digite aqui"  value="<?= utf8_encode($_SESSION['alComplemento'])?>" 
                                     class="form-control" placeholder="Digite o Algum Complemento, se Tiver"/>
                                 </label>
                             </div> <!-- div-alt-complemento -->
                             <div class="form-campos<?=$camposDados?>" id="div-alt-bairro">
                                 <label>
                                     <span>Bairro: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="alt-bairro" id="alt-bairro" value="<?= utf8_encode($_SESSION['alBairro'])?>";
+                                    <input type="text" name="alt-bairro" id="alt-bairro" value="<?= utf8_encode($_SESSION['alBairro'])?>" 
                                     title="Entre com o seu Novo bairro" class="form-control" 
                                     placeholder="Digite o seu Novo Bairro" size="35" />
                                 </label>
@@ -321,7 +321,7 @@
                             <div class="form-campos<?=$camposDados?>" id="div-alt-cidade">
                                 <label>
                                     <span>Cidade: <span class="asteristicos-obrigatorio">*</span></span>
-                                    <input type="text" name="alt-cidade" id="alt-cidade" value="<?= utf8_encode($_SESSION['alCidade'])?>";
+                                    <input type="text" name="alt-cidade" id="alt-cidade" value="<?= utf8_encode($_SESSION['alCidade'])?>" 
                                     title="Entre com a Nova cidade" class="form-control" 
                                     placeholder="Digite a sua Nova Cidade" size="35" />
                                 </label>
@@ -389,7 +389,7 @@
 										if($_SESSION['alEstado'] == "MA"){
 											echo "<option value='MA' selected='selected'>Maranhão</option>";
 										}else{
-											echo "<option value='MA'>Maranhão</option>";;
+											echo "<option value='MA'>Maranhão</option>";
 										}
 										if($_SESSION['alEstado'] == "MT"){
 											echo "<option value='MT' selected='selected'>Mato Grosso</option>";

@@ -33,7 +33,6 @@
 			  ORDER BY modulo.`nome`";
 	
 	$resultadoPesquisa = @mysql_query($query, $conexao);
-	$msg = "";
 	$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 	if ($numeroPesquisa >= 1){
 		$contador = 0;
