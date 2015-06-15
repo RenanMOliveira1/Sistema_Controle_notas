@@ -272,6 +272,7 @@
 		$nome = @$_POST['admin-nome-mod'];
 		$descricao = @$_POST['admin-descricao-mod'];
 		$habilidades = @$_POST['admin-habil-mod'];
+		$nome = utf8_decode($nome);
 		
 		//Conecção ao Banco de Dados
 		$conexao = @mysql_connect("localhost", "root", "");
@@ -281,14 +282,14 @@
 		
 		mysql_select_db("infnetgrid", $conexao);
 		
-		$query = "SELECT `idModulo`, `nome`, `descr` FROM `modulo` 
+		$query = "SELECT `idModulo`, `nome`, `descr` 
+				  FROM `modulo` 
 				  WHERE `nome` = '$nome'";
 		
 		$resultadoPesquisa = mysql_query($query, $conexao);
 		if (mysql_num_rows($resultadoPesquisa) == 1) {
 			$GLOBALS['msgMod'] = "Módulo já cadastrado";
 		}else{
-			$nome = utf8_decode($nome);
 			$descricao = utf8_decode($descricao);
 			
 			$query = "INSERT INTO `modulo`(`nome`, `descr`) 
