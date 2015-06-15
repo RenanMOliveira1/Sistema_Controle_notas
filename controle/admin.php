@@ -62,6 +62,7 @@
 			$modulo['nome'] = strtoupper($modulo['nome']);
 			
 			$nomeTurma = "{$programa['sigla']} ".$qtdTurmas." - {$modulo['nome']}";
+			$nomeTurma = utf8_encode($nomeTurma);
 		}
 		
 		$query = "INSERT INTO `turma`(`turno`, `nomeTurma`, `idModulo`, `idLaboratorio`, `idPrograma`) 
@@ -80,7 +81,7 @@
 				mysql_close($conexao);
 			}			
 		}else{
-			$GLOBALS['msg'] = "Cadastro realizado com sucesso, nome da turma é: ".$nomeTurma;
+			$GLOBALS['msg'] = "Cadastro realizado com sucesso, nome da turma é: ".utf8_encode($nomeTurma);
 			$GLOBALS['rsl'] = "sucess";
 			mysql_close($conexao);
 		}
@@ -94,6 +95,7 @@
 		$idLab = @$_POST['alterar-turma-laboratorio'];
 		
 		$turno = utf8_decode($turno);
+		$nome = utf8_decode($nome);
 
 		if($idLab == 0){
 			$idLab = "NULL";
@@ -329,7 +331,49 @@
 	}
 	
 	function vincularProfModulo(){
+		$idModulo = @$_POST['vincular-prof-modulo'];
+		$idProf = @$_POST['vincular-prof-prof'];
+				
+		$conexao = @mysql_connect("localhost", "root", "");
+		if (!$conexao) {
+			exit("Site Temporariamente fora do ar");
+		}
 		
+		mysql_select_db("infnetgrid", $conexao);
+		
+		$query = "SELECT `idModulo`, `idProfessor` 
+				  FROM `modulo_professor` 
+				  WHERE `idModulo` = '$idModulo'
+				  AND `idProfessor` = '$idProf'";
+		
+		$resultadoPesquisa = mysql_query($query, $conexao);
+		
+		if(mysql_num_rows($resultadoPesquisa) == 1){		
+			$GLOBALS['msg'] = "Professor já vinculado a este módulo";			
+		}
+		else{			
+			$query = "INSERT INTO `modulo_professor`(`idModulo`, `idProfessor`) 
+					  VALUES ('$idModulo', '$idProf')";
+					  
+			$resultado = mysql_query($query, $conexao);
+			
+			if(mysql_affected_rows($conexao) != 1){
+				if(mysql_errno() >= 1){
+					$GLOBALS['msg'] = "Ocorreu um erro durante a vinculação";	
+					$GLOBALS['rsl'] = "err";			
+					mysql_close($conexao);
+				}
+				else{
+					$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a vinculação";
+					$GLOBALS['rsl'] = "err";
+					mysql_close($conexao);
+				}			
+			}else{
+				$GLOBALS['msg'] = "Professor vinculado ao módulo com sucesso";
+				$GLOBALS['rsl'] = "sucess";
+				mysql_close($conexao);
+			}
+		}
 	}
 	
 	function cadastrarFuncionario(){
@@ -569,6 +613,7 @@
 				default:
 					header("Location: /acount/admin/");
 			}
+		break;
 		case "funcionario":
 			$acao = @$_GET['acao'];
 			switch($acao){

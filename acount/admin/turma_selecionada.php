@@ -64,6 +64,7 @@
 						$turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
 						
 						$turma['turno'] = utf8_encode($turma['turno']);
+						$turma['nomeTurma'] = utf8_encode($turma['nomeTurma']);
 					?>
 					<div class="panel-heading"><?= $turma['nomeTurma']?></div> <!-- panel-heading -->
 					<div class="panel-body">
