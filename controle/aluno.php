@@ -138,21 +138,7 @@
 		}
 	}
 	
-	function alterar($tipo){
-		session_start();
-		if(!$_SESSION['logado']){
-			$msg = "Sessão expirada.";
-			header("Location: /acount/?msg=$msg");
-		}
-		switch($_SESSION['autenticacao']){
-			case "professor":
-				header("Location: /acount/adminprof/");
-			break;
-			case "administracao":
-				header("Location: /acount/admin/");
-			break;
-		}
-				
+	function alterar($tipo){		
 		switch($tipo){
 			case "senha":
 				$senhaAntiga = @$_POST['alterar-senha-antiga'];
@@ -174,18 +160,22 @@
 					$msgSenha = "";
 					if(mysql_affected_rows($conexao) != 1){
 						if(mysql_errno() >= 1){
-							header("Location: /acount/adminal/configuracoes.php?tp=senha&rsl=err&msgSenha=Ocorreu um erro durante a alteração");
+							$GLOBALS['msg'] = "Ocorreu um erro durante a alteração";
+							$GLOBALS['rsl'] = "err";
 						}
 						else{
-							header("Location: /acount/adminal/configuracoes.php?tp=senha&rsl=err&msgSenha=Ocorreu um erro inesperado durante a alteração");
+							$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a alteração";
+							$GLOBALS['rsl'] = "err";
 						}
 					}else{
-						header("Location: /acount/adminal/configuracoes.php?tp=senha&rsl=sucess&msgSenha=Senha Modificada com Sucesso");
+						$GLOBALS['msg'] = "Senha Modificada com Sucesso";
+						$GLOBALS['rsl'] = "sucess";
 						$_SESSION['alSenha'] = $senhaNova;
 					}
 					mysql_close($conexao);				
 				}else{
-					header("Location: /acount/adminal/configuracoes.php?tp=senha&rsl=err&msgSenha=Senha atual não confere.");
+					$GLOBALS['msg'] = "Senha atual não confere.";
+					$GLOBALS['rsl'] = "err";
 				}
 			break;	
 			
@@ -209,18 +199,22 @@
 					$msgEmail = "";
 					if(mysql_affected_rows($conexao) != 1){
 						if(mysql_errno() >= 1){
-							header("Location: /acount/adminal/configuracoes.php?tp=email&rsl=err&msgEmail=Ocorreu um erro durante a alteração");
+							$GLOBALS['msg'] = "Ocorreu um erro durante a alteração";
+							$GLOBALS['rsl'] = "err";
 						}
 						else{
-							header("Location: /acount/adminal/configuracoes.php?tp=email&rsl=err&msgEmail=Ocorreu um erro inesperado durante a alteração");
+							$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a alteração";
+							$GLOBALS['rsl'] = "err";
 						}
 					}else{
-						header("Location: /acount/adminal/configuracoes.php?tp=email&rsl=sucess&msgEmail=email modificado com sucesso");
+						$GLOBALS['msg'] = "Email Modificado com Sucesso";
+						$GLOBALS['rsl'] = "sucess";
 						$_SESSION['alEmail'] = $emailNovo;
 					}
 					mysql_close($conexao);				
 				}else{
-					header("Location: /acount/adminal/configuracoes.php?tp=email&rsl=err&msgEmail=Email atual não confere.");
+					$GLOBALS['msg'] = "Email atual não confere";
+					$GLOBALS['rsl'] = "err";
 				}
 			break;
 			
@@ -275,13 +269,17 @@
 				$msgDados = "";
 				if(mysql_affected_rows($conexao) < 0){
 					if(mysql_errno() >= 1){
-						header("Location: /acount/adminal/configuracoes.php?tp=dados&rsl=err&msgDados=Ocorreu um erro durante a alteração");
+						$GLOBALS['msg'] = "Ocorreu um erro durante a alteração";
+						$GLOBALS['rsl'] = "err";
 					}
 					else{
-						header("Location: /acount/adminal/configuracoes.php?tp=dados&rsl=err&msgDados=Ocorreu um erro inesperado durante a alteração");
+						$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a alteração";
+						$GLOBALS['rsl'] = "err";
 					}
 				}else{
-					header("Location: /acount/adminal/configuracoes.php?tp=dados&rsl=sucess&msgDados=Dados modificados com sucesso");
+					$GLOBALS['msg'] = "Dados modificados com sucesso";
+					$GLOBALS['rsl'] = "sucess";
+					
 					$_SESSION['alNome'] = $nome;
 					$_SESSION['alCpf'] = $cpf;
 					$_SESSION['alDataNascimento'] = $dataNascimento;
@@ -469,6 +467,8 @@
 		case "nota":
 			$matricula = @$_GET['matricula'];
 			lancarNota($matricula);
+		break;
+		case "":
 		break;
 		default:
 			header("Location:/");

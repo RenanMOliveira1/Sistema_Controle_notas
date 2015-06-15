@@ -1,9 +1,7 @@
 <?
-	$tipo = $rsl = $msgSenha = $msgEmail = $msgDados = "";
-	$tipo = @$_GET['tp'];
-	$rsl .= @$_GET['rsl'];
+	$tipo = $rsl = $msgEmail = $msgDados = "";
+	$tipo = @$_GET['tipo'];
 
-	$msgSenha .= @$_GET['msgSenha'];
 	$msgEmail .= @$_GET['msgEmail'];
 	$msgDados .= @$_GET['msgDados'];
 
@@ -21,34 +19,36 @@
 		break;
 	}
 	define('TITULO','Configurações');
-	define('ENDERECO_PAG_INIC_AL','/acount/adminal/index.php');
+	
+	include("../../controle/aluno.php");
 	
 	$msgResultado = $campos = $camposEmail = $msgEmailResultado = $msgDadosResultado = $camposDados = "";
+	$rsl = @$GLOBALS['rsl'];
 	switch ($tipo) {
 		case "senha":
 			if ($rsl == "err")  {
-				$msgResultado .= "<div id='dados-invalidos'>{$msgSenha}</div> <!-- dados-invalidos -->";
+				$msgResultado .= "<div id='dados-invalidos'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos -->";
 				$campos = " has-error";
 			} elseif ($rsl == "sucess") {
-				$msgResultado .= "<div id='dados-validos'>{$msgSenha}</div> <!-- dados-invalidos -->";
+				$msgResultado .= "<div id='dados-validos'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos -->";
 				$campos .= " has-success";
 			}
 			break;
 		case "email":
 			if ($rsl == "err")  {
-				$msgEmailResultado .= "<div id='dados-invalidos-email'>{$msgEmail}</div> <!-- dados-invalidos-email -->";
+				$msgEmailResultado .= "<div id='dados-invalidos-email'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos-email -->";
 				$camposEmail = " has-error";
 			} elseif ($rsl == "sucess") {
-				$msgEmailResultado .= "<div id='dados-validos-email'>{$msgEmail}</div> <!-- dados-validos-email -->";
+				$msgEmailResultado .= "<div id='dados-validos-email'>" . $GLOBALS['msg'] . "</div> <!-- dados-validos-email -->";
 				$camposEmail .= " has-success";
 			}
 			break;
 		case "dados":
 			if ($rsl == "err")  {
-				$msgDadosResultado .= "<div id='dados-invalidos-alt-cad'>{$msgDados}</div> <!-- dados-invalidos-alt-cad -->";
+				$msgDadosResultado .= "<div id='dados-invalidos-alt-cad'>" . $GLOBALS['msg'] . "</div> <!-- dados-invalidos-alt-cad -->";
 				$camposDados .= " has-error";
 			} elseif ($rsl == "sucess") {
-				$msgDadosResultado .= "<div id='dados-validos-alt-cad'>{$msgDados}</div> <!-- dados-validos-alt-cad -->";
+				$msgDadosResultado .= "<div id='dados-validos-alt-cad'>" . $GLOBALS['msg'] . "</div> <!-- dados-validos-alt-cad -->";
 				$camposDados .= " has-success";
 			}
 			break;
@@ -81,7 +81,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Senha</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="form-alterar-senha" method="post" action="/controle/aluno.php?acao=alteracao&tipo=senha">
+                    	<form id="form-alterar-senha" method="post" action="/acount/adminal/configuracoes.php?acao=alteracao&tipo=senha">
                         	<div class="form-group<?=$campos?>" id="div-alterar-senha-antiga">
                             	<label>
                                 	<span>Senha Atual: <span class="asteristicos-obrigatorio">*</span></span>
@@ -118,7 +118,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Email (Login)</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="form-alterar-email" method="post" action="/controle/aluno.php?acao=alteracao&tipo=email">
+                    	<form id="form-alterar-email" method="post" action="/acount/adminal/configuracoes.php?acao=alteracao&tipo=email">
                         	<div class="form-campos<?=$camposEmail?>" id="div-alt-email-atual">
                                 <label>
                                     <span>Email Atual: <span class="asteristicos-obrigatorio">*</span></span>
@@ -152,7 +152,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alterar Dados de Cadastro</div> <!-- panel-heading -->
 					<div class="panel-body">
-                    	<form id="formulario-alterar-cadastro" action="/controle/aluno.php?acao=alteracao&tipo=dados" method="post">
+                    	<form id="formulario-alterar-cadastro" action="/acount/adminal/configuracoes.php?acao=alteracao&tipo=dados" method="post">
                             <div class="form-campos<?=$camposDados?>" id="div-alt-nome">
                                 <label>
                                     <span>Nome: <span class="asteristicos-obrigatorio">*</span></span>
@@ -202,7 +202,7 @@
                                     <input type="text" id="alt-telefone-fixo" name="alt-telefone-fixo" title="Digite o seu Novo Telefone Fixo" maxlenght="65" class="form-control" value="<?= $_SESSION['alTelefone']?>"; placeholder="Digite o seu Novo Telefone Fixo" size="35" />
                                 </label>
                             </div> <!-- div-alt-telefone-fixo -->
-                            <div class="form-campos" id="div-alt-telefone-celular">
+                            <div class="form-campos<?=$camposDados?>" id="div-alt-telefone-celular">
                                 <label>
                                     <span>Celular: </span>
                                     <input type="text" class="form-control" id="alt-telefone-celular" name="alt-telefone-celular"
