@@ -77,7 +77,6 @@
 											$resultadoPesquisa = @mysql_query($query, $conexao);
 											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
 											if ($numeroPesquisa >= 1){
-												$contador = 0;
 												while($aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
 													$selecionado = "";
 													if(($alunoMatricula == $aluno['matricula']) && ($alunoPrograma == $aluno['idPrograma'])){

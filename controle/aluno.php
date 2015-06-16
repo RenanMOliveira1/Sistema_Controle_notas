@@ -463,8 +463,9 @@
 	
 	mysql_select_db("infnetgrid", $conexao);
 	
-	$query = "INSERT INTO `avaliacao`(`alunoMatricula`, `reposta1`, `reposta2`, `reposta3`, `reposta4`)
+	$query = "INSERT INTO `avaliacao`(`alunoMatricula`, `resposta1`, `resposta2`, `resposta3`, `resposta4`)
 			  VALUES('{$_SESSION['alMatricula']}', '$resp1', '$resp2', '$resp3', '$resp4')";
+			  
 			  
 	$resultado = @mysql_query($query, $conexao);
 	

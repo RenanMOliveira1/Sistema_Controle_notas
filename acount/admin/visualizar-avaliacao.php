@@ -20,6 +20,7 @@
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}
+	$idTurma = @$_GET['idTurma'];
 	include("../../controle/admin.php");
 ?>
 
@@ -57,6 +58,7 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="avaliacao-selTurma" name="avaliacao-selTurma"
                                     title="Escolha a Turma do Aluno" >
+                                    	<option value="0" onClick="window.location='/acount/admin/visualizar-avaliacao.php'">Selecione uma Turma:</option>
                                         <?
 											//Conecção ao Banco de Dados
 											$conexao = @mysql_connect("localhost", "root", "");
@@ -74,7 +76,11 @@
 											if ($numeroPesquisa >= 1){
 												while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
 													$turma['nomeTurma'] = utf8_encode($turma['nomeTurma']);
-													echo "<option value='{$turma['idTurma']}'>{$turma['nomeTurma']}</option>";
+													$selecionado = "";
+													if($idTurma == $turma['idTurma']){
+														$selecionado .= "selected='selected'";	
+													}
+													echo "<option value='{$turma['idTurma']}' onClick=\"window.location='/acount/admin/visualizar-avaliacao.php?idTurma={$turma['idTurma']}'\" $selecionado>{$turma['nomeTurma']}</option>";
 												}
 											}
 											else{
@@ -93,9 +99,32 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="avaliacao-selAluno" name="avaliacao-selAluno"
                                     title="Escolha a Turma que deseja Alterar" >
-                                    	<option value='Aluno#1'>Aluno #1</option>
-                                        <option value='Aluno#1'>Aluno #1</option>
-                                        <option value='Aluno#1'>Aluno #1</option>
+                                    	<?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT aluno.`matricula`, aluno.`nomeAluno`
+													  FROM `turma_aluno`
+													  JOIN aluno ON aluno.`matricula` = turma_aluno.`alunoMatricula`
+													  WHERE `turmaID` = '$idTurma'";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												while($aluno = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$aluno['nomeAluno'] = utf8_encode($aluno['nomeAluno']);
+													echo "<option value='{$aluno['matricula']}'>{$aluno['nomeAluno']}</option>";
+												}
+											}
+											else{
+												echo "<option value='0'>Não há alunos vinculados a esta turma</option>";
+											}
+											mysql_close($conexao);
+										?> 
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-avaliacao-selAluno -->
