@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Selecionar Módulo</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-excluir-modulo" action="/controle/admin.php?opcao=modulo&acao=exclui" method="post">
+						<form class="form-horizontal" id="form-excluir-modulo" action="/acount/admin/excluir-modulo.php?opcao=modulo&acao=exclui" method="post">
                         	<div class="form-group" id="div-excluir-lab-selModulo" >
                                 <label class="col-md-3 control-label">
                                 	<span>Módulo</span>

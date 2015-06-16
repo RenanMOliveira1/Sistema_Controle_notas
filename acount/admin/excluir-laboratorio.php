@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Selecionar Laboratório</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-excluir-lab" action="/controle/admin.php?opcao=laboratorio&acao=exclui" method="post">
+						<form class="form-horizontal" id="form-excluir-lab" action="/acount/admin/excluir-laboratorio.php?opcao=laboratorio&acao=exclui" method="post">
                         	<div class="form-group" id="div-excluir-lab-selLab" >
                                 <label class="col-md-3 control-label">
                                 	<span>Laboratório</span>

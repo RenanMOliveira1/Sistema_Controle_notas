@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Selecionar Turma</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-excluir-turma" action="/controle/admin.php?opcao=turma&acao=exclui" method="post">
+						<form class="form-horizontal" id="form-excluir-turma" action="/acount/admin/excluir-turma.php?opcao=turma&acao=exclui" method="post">
                         	<div class="form-group" id="div-excluir-lab-selTurma" >
                                 <label class="col-md-3 control-label">
                                 	<span>Turma</span>

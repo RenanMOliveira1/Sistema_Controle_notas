@@ -151,17 +151,14 @@
 		if(mysql_affected_rows($conexao) != 1){
 			if(mysql_errno() >= 1){
 				$GLOBALS['msg'] = "Ocorreu um erro durante a exclusão";
-				header("Location: /acount/admin/excluir-turma.php");
 				mysql_close($conexao);
 			}
 			else{
 				$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a exclusão";
-				header("Location: /acount/admin/excluir-turma.php");
 				mysql_close($conexao);
 			}			
 		}else{
 			$GLOBALS['msg'] = "Turma excluída com sucesso";
-			header("Location: /acount/admin/excluir-turma.php");
 			mysql_close($conexao);
 		}	
 	}
@@ -259,7 +256,6 @@
 		
 		if(mysql_num_rows($resultadoPesquisa) >= 1){
 			$GLOBALS['msg'] = "Laboratório não pode ser excluído pois está sendo usado";
-			header("Location: /acount/admin/excluir-laboratorio.php");
 		}
 		else{
 			$query = "DELETE FROM `laboratorio`
@@ -269,17 +265,14 @@
 			if(mysql_affected_rows($conexao) != 1){
 				if(mysql_errno() >= 1){
 					$GLOBALS['msg'] = "Ocorreu um erro durante a exclusão";
-					header("Location: /acount/admin/excluir-laboratorio.php");
 					mysql_close($conexao);
 				}
 				else{
 					$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a exclusão";
-					header("Location: /acount/admin/excluir-laboratorio.php");
 					mysql_close($conexao);
 				}			
 			}else{
 				$GLOBALS['msg'] = "Laboratorio excluído com sucesso";
-				header("Location: /acount/admin/excluir-laboratorio.php");
 				mysql_close($conexao);
 			}
 		}	
@@ -456,17 +449,14 @@
 		if(mysql_affected_rows($conexao) != 1){
 			if(mysql_errno() >= 1){
 				$GLOBALS['msgExclui'] = "Ocorreu um erro durante a exclusão";
-				header("Location: /acount/admin/excluir-modulo.php");
 				mysql_close($conexao);
 			}
 			else{
 				$GLOBALS['msgExclui'] = "Ocorreu um erro inexperado durante a exclusão";
-				header("Location: /acount/admin/excluir-modulo.php");
 				mysql_close($conexao);
 			}			
 		}else{
 			$GLOBALS['msgExclui'] = "Módulo excluído com sucesso";
-			header("Location: /acount/admin/excluir-modulo.php");
 			mysql_close($conexao);
 		}	
 	}
