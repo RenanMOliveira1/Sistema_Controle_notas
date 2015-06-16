@@ -16,7 +16,7 @@
 	switch($_SESSION['admCargo']){
 		case "dir":
 		case "ass":
-		case "ped":
+		case "rca":
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 		break;
 	}

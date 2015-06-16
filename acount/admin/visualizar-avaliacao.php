@@ -14,7 +14,7 @@
 	}
 	define("TITULO","Selecionar Avaliação");
 	switch($_SESSION['admCargo']){
-		case "dir":
+		case "rca":
 		case "ass":
 		case "ped":
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");

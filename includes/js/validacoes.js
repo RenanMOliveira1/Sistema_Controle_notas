@@ -783,11 +783,11 @@ function ValidarCadastrarFunc() {
 function ValidarSelAvaliacao() {
 	var msg = "";
 	
-	if ($("#avaliacao-selTurma").val() == "") {
+	if ($("#avaliacao-selTurma").val() == "0") {
 		msg += "Selecione a Turma.<br/>"; 
 		$("#div-avaliacao-selTurma").addClass(" has-error");
 	}
-	if ($("#avaliacao-selAluno").val() == "") {
+	if ($("#avaliacao-selAluno").val() == "0") {
 		msg += "Selecione o Aluno.<br/>"; 
 		$("#div-avaliacao-selAluno").addClass(" has-error");
 	}

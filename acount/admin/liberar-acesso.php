@@ -17,8 +17,8 @@
 	define("TITULO","Liberar Acesso de Aluno");
 	switch($_SESSION['admCargo']){
 		case "ass":
-		case "dir":
 		case "ped":
+		case "rca":
 			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
 	}
 		$trTemp="";		

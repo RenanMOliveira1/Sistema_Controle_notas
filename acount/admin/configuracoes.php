@@ -20,13 +20,6 @@
 		break;
 	}
 	define("TITULO","Configurações");
-		switch($_SESSION['admCargo']){
-		case "dir":
-		case "ass":
-		case "ped":
-			header("Location: /acount/admin/?msg=Você não possui permissão para acessar esta página.");
-		break;
-	}
 ?>
 
 <!DOCTYPE html>
