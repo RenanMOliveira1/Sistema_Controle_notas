@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Jun-2015 às 03:32
+-- Generation Time: 16-Jun-2015 às 07:27
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -115,13 +115,20 @@ INSERT INTO `aluno_programa` (`idPrograma`, `alunoMatricula`) VALUES
 CREATE TABLE IF NOT EXISTS `avaliacao` (
   `idAvaliacao` int(11) NOT NULL AUTO_INCREMENT,
   `alunoMatricula` int(11) NOT NULL,
-  `reposta1` int(11) NOT NULL,
-  `reposta2` int(11) NOT NULL,
-  `reposta3` int(11) NOT NULL,
-  `reposta4` int(11) NOT NULL,
+  `resposta1` int(11) NOT NULL,
+  `resposta2` int(11) NOT NULL,
+  `resposta3` int(11) NOT NULL,
+  `resposta4` int(11) NOT NULL,
   PRIMARY KEY (`idAvaliacao`),
   KEY `idModulo` (`alunoMatricula`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `avaliacao`
+--
+
+INSERT INTO `avaliacao` (`idAvaliacao`, `alunoMatricula`, `resposta1`, `resposta2`, `resposta3`, `resposta4`) VALUES
+(1, 14, 4, 4, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -510,6 +517,14 @@ CREATE TABLE IF NOT EXISTS `turma_avaliacao` (
   PRIMARY KEY (`idTurma`,`idAvaliacao`),
   KEY `idAvaliacao` (`idAvaliacao`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `turma_avaliacao`
+--
+
+INSERT INTO `turma_avaliacao` (`idTurma`, `idAvaliacao`, `respProf1`, `respProf2`, `respProf3`, `respProf4`, `respProf5`, `respProf6`, `respProf7`, `respProf8`) VALUES
+(2, 1, 4, 4, 3, 4, 3, 2, 4, 3),
+(4, 1, 1, 3, 2, 5, 4, 4, 3, 4);
 
 --
 -- Constraints for dumped tables
