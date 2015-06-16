@@ -12,8 +12,109 @@
 			header("Location: /acount/adminal/");
 		break;
 	}
-	define("TITULO", "Visualizar Avaliação da Turma#1");
+	
+	$idTurma = @$_POST['prof-avaliacao-selTurma'];
+	$trTemp = "";
+	
+	//Conecção ao Banco de Dados
+	$conexao = @mysql_connect("localhost", "root", "");
+	if (!$conexao) {
+		exit("Site Temporariamente fora do ar");}
+	
+	mysql_select_db("infnetgrid", $conexao);
+	
+	$query = "SELECT `nomeTurma` 
+			  FROM `turma`
+			  WHERE `idTurma` = '$idTurma'";
+
+	$resultadoPesquisa = @mysql_query($query, $conexao);
+	$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+	$turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+	$turma['nomeTurma'] = utf8_encode($turma['nomeTurma']);
+	
+	$query = "SELECT `alunoMatricula` 
+			  FROM `turma_aluno`
+			  WHERE `turmaID` = '$idTurma'";
+	
+	$resultadoPesquisa = @mysql_query($query, $conexao);
+	$qtdAlunos = mysql_num_rows($resultadoPesquisa);
+	if($qtdAlunos >= 1){
+		$query = "SELECT `respProf1`, `respProf2`, `respProf3`, `respProf4`, `respProf5`, `respProf6`, `respProf7`, `respProf8` 
+				  FROM `turma_avaliacao` 
+				  WHERE `idTurma` = '$idTurma'";
+				  
+		$resultadoPesquisa = @mysql_query($query, $conexao);
+		
+		$somaResp1 = 0;
+		$somaResp2 = 0;
+		$somaResp3 = 0;
+		$somaResp4 = 0;
+		$somaResp5 = 0;
+		$somaResp6 = 0;
+		$somaResp7 = 0;
+		$somaResp8 = 0;
+		
+		while($avaliacao = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+			$somaResp1 += $avaliacao['respProf1'];
+			$somaResp2 += $avaliacao['respProf2'];
+			$somaResp3 += $avaliacao['respProf3'];
+			$somaResp4 += $avaliacao['respProf4'];
+			$somaResp5 += $avaliacao['respProf5'];
+			$somaResp6 += $avaliacao['respProf6'];
+			$somaResp7 += $avaliacao['respProf7'];
+			$somaResp8 += $avaliacao['respProf8'];
+		}
+		$mediaResp1 = $somaResp1/$qtdAlunos;
+		$mediaResp2 = $somaResp2/$qtdAlunos;
+		$mediaResp3 = $somaResp3/$qtdAlunos;
+		$mediaResp4 = $somaResp4/$qtdAlunos;
+		$mediaResp5 = $somaResp5/$qtdAlunos;
+		$mediaResp6 = $somaResp6/$qtdAlunos;
+		$mediaResp7 = $somaResp7/$qtdAlunos;
+		$mediaResp8 = $somaResp8/$qtdAlunos;
+		
+		$trTemp .= "<tr>
+						<td>O professor domina o conteúdo e está atualizado</td>
+						<td>$mediaResp1</td>
+					</tr>
+					<tr>
+						<td>O professor tem bom relacionamento com os alunos e é aberto ao diálogo</td>
+						<td>$mediaResp2</td>
+					</tr>
+					<tr>
+						<td>O professor é pontual em suas funções</td>
+						<td>$mediaResp3</td>
+					</tr>
+					<tr>
+						<td>O professor é disponível para o esclarecimento de dúvidas</td>
+						<td>$mediaResp4</td>
+					</tr>
+					<tr>
+						<td>Eu Gostaria de Ter Aula Novamente com esse Professor</td>
+						<td>$mediaResp5</td>
+					</tr>
+					<tr>
+						<td>O plano da disciplina apresentado contém os itens essenciais (objetivos, conteúdos, sistema de avaliação, atividades a serem realizadas)</td>
+						<td>$mediaResp6</td>
+					</tr>
+					<tr>
+						<td>Os recursos didáticos utilizados na disciplina são de boa qualidade</td>
+						<td>$mediaResp7</td>
+					</tr>
+					<tr>
+						<td> A bibliografia para estudo do conteúdo é disponível na biblioteca</td>
+						<td>$mediaResp8</td>
+					</tr>";
+	}
+	else{
+		
+	}
+	
+	mysql_close($conexao);	
+	
+	define("TITULO", "Visualizar Avaliação da Turma ".$turma['nomeTurma']);
 	include("../../controle/professor.php");
+	
 ?>
 
 <!DOCTYPE html>
@@ -40,22 +141,17 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Avaliação#1</div> <!-- panel-heading -->
+                    <div class="panel-heading">Avaliação da turma <?= $turma['nomeTurma']?></div> <!-- panel-heading -->
                         <div class="table-responsive panel-body">
                             <table class='table table-hover'>
                                 <thead>
                                     <tr>
                                         <th data-field='matricula'>Perguntas</th>
-                                        <th data-field='disciplina' data-align='right'>Respostas</th>
+                                        <th data-field='disciplina' data-align='right'>Média</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <td>Pergunta #1</td>
-                                    <td>Resposta #1</td>
-                                </tbody>
-                                <tbody>
-                                    <td>Pergunta #2</td>
-                                    <td>Resposta #2</td>
+                                    <?= $trTemp ?>
                                 </tbody>
                             </table>
                         <a href="/acount/adminprof/avaliacao-institucional.php"><input type="submit" class="btn btn-primary" id="btn-nota-lancar" value="Voltar" /></a>

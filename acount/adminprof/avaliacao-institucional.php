@@ -61,6 +61,7 @@
 											
 											$query = "SELECT `idTurma`, `nomeTurma` 
 													  FROM `turma`
+													  WHERE `idProfessor` = '{$_SESSION['profId']}'
 													  ORDER BY `nomeTurma`";
 									
 											$resultadoPesquisa = @mysql_query($query, $conexao);
@@ -81,7 +82,7 @@
                             </div> <!-- div-prof-avaliacao-selTurma -->
 							
                             <div id="dados-invalidos">
-                            <?= @$GLOBALS['msg'] ?>
+                            	<?= @$GLOBALS['msg'] ?>
                             </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">
