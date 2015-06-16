@@ -135,8 +135,8 @@
 	}
 	
 	function excluirTurma(){
-		$idTurma = @$_GET['idTurma'];
-
+		$idTurma = @$_POST['excluir-lab-selTurma'];
+		
 		$conexao = @mysql_connect("localhost", "root", "");
 		if (!$conexao) {
 			exit("Site Temporariamente fora do ar");
@@ -242,7 +242,7 @@
 	}
 	
 	function excluirLab(){
-		$idLab = @$_GET['idLab'];
+		$idLab = @$_POST['excluir-lab-selLab'];
 
 		$conexao = @mysql_connect("localhost", "root", "");
 		if (!$conexao) {
@@ -440,7 +440,7 @@
 	}
 	
 	function excluirModulo(){
-		$idModulo = @$_GET['idModulo'];
+		$idModulo = @$_POST['excluir-lab-selModulo'];
 
 		$conexao = @mysql_connect("localhost", "root", "");
 		if (!$conexao) {
@@ -455,17 +455,17 @@
 		$resultado = mysql_query($query, $conexao);
 		if(mysql_affected_rows($conexao) != 1){
 			if(mysql_errno() >= 1){
-				$GLOBALS['msg'] = "Ocorreu um erro durante a exclusão";
+				$GLOBALS['msgExclui'] = "Ocorreu um erro durante a exclusão";
 				header("Location: /acount/admin/excluir-modulo.php");
 				mysql_close($conexao);
 			}
 			else{
-				$GLOBALS['msg'] = "Ocorreu um erro inexperado durante a exclusão";
+				$GLOBALS['msgExclui'] = "Ocorreu um erro inexperado durante a exclusão";
 				header("Location: /acount/admin/excluir-modulo.php");
 				mysql_close($conexao);
 			}			
 		}else{
-			$GLOBALS['msg'] = "Módulo excluído com sucesso";
+			$GLOBALS['msgExclui'] = "Módulo excluído com sucesso";
 			header("Location: /acount/admin/excluir-modulo.php");
 			mysql_close($conexao);
 		}	

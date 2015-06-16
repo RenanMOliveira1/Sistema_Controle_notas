@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Selecionar Módulo</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-excluir-modulo" action="/acount/admin/excluir_modulo.php" method="post">
+						<form class="form-horizontal" id="form-excluir-modulo" action="/controle/admin.php?opcao=modulo&acao=exclui" method="post">
                         	<div class="form-group" id="div-excluir-lab-selModulo" >
                                 <label class="col-md-3 control-label">
                                 	<span>Módulo</span>
@@ -57,16 +57,35 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="excluir-lab-selModulo" name="excluir-lab-selModulo"
                                     title="Escolha o Módulo" >
-                                        <option value="Modulo#1">Módulo #1</option>
-                                        <option value="Modulo#2">Módulo #2</option>
-                                        <option value="Modulo#3">Módulo #3</option>
-                                        <option value="Modulo#4">Módulo #4</option>
+                                       <?	
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idModulo`, modulo.`nome` 
+											  FROM `modulo`
+											  ORDER BY modulo.`nome`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$msg = "";
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												while($modulo = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$modulo['nome'] = utf8_encode($modulo['nome']);
+													echo "<option value='{$modulo['idModulo']}'>{$modulo['nome']}</option>";
+												}
+											}	
+											mysql_close($conexao);										
+										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-excluir-lab-selModulo -->
                             
                             <div id="dados-invalidos">
-                            	<?= @$GLOBALS['msg']?>
+                            	<?= @$GLOBALS['msgExclui']?>
                             </div> <!-- dados-invalidos -->
                             
                             <div class="form-group">

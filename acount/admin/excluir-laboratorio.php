@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Selecionar Laboratório</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-excluir-lab" action="/acount/admin/excluir_laboratorio.php" method="post">
+						<form class="form-horizontal" id="form-excluir-lab" action="/controle/admin.php?opcao=laboratorio&acao=exclui" method="post">
                         	<div class="form-group" id="div-excluir-lab-selLab" >
                                 <label class="col-md-3 control-label">
                                 	<span>Laboratório</span>
@@ -57,10 +57,27 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="excluir-lab-selLab" name="excluir-lab-selLab"
                                     title="Escolha o Laboratório" >
-                                        <option value="Laboratorio#1">Laboratorio #1</option>
-                                        <option value="Laboratorio#2">Laboratorio #2</option>
-                                        <option value="Laboratorio#3">Laboratorio #3</option>
-                                        <option value="Laboratorio#4">Laboratorio #4</option>
+                                        <?	
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idLaboratorio`, `numeroLab` 
+											  FROM `laboratorio`
+											  ORDER BY `numeroLab`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												while($laboratorio = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													echo "<option value='{$laboratorio['idLaboratorio']}'>{$laboratorio['numeroLab']}</option>";
+												}
+											}	
+											mysql_close($conexao);										
+										?>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-excluir-lab-selLab -->

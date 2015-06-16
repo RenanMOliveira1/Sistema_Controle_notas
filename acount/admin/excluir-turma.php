@@ -49,7 +49,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Selecionar Turma</div> <!-- panel-heading -->
 					<div class="panel-body">
-						<form class="form-horizontal" id="form-excluir-turma" action="/acount/admin/excluir_turma.php" method="post">
+						<form class="form-horizontal" id="form-excluir-turma" action="/controle/admin.php?opcao=turma&acao=exclui" method="post">
                         	<div class="form-group" id="div-excluir-lab-selTurma" >
                                 <label class="col-md-3 control-label">
                                 	<span>Turma</span>
@@ -57,10 +57,31 @@
                                 <div class="col-md-9">
                                     <select class="form-control" id="excluir-lab-selTurma" name="excluir-lab-selTurma"
                                     title="Escolha a Turma" >
-                                        <option value="Turma#1">Turma #1</option>
-                                        <option value="Turma#2">Turma #2</option>
-                                        <option value="Turma#3">Turma #3</option>
-                                        <option value="Turma#4">Turma #4</option>
+                                        <?
+											//Conecção ao Banco de Dados
+											$conexao = @mysql_connect("localhost", "root", "");
+											if (!$conexao) {
+												exit("Site Temporariamente fora do ar");}
+											
+											mysql_select_db("infnetgrid", $conexao);
+											
+											$query = "SELECT `idTurma`, `nomeTurma` 
+													  FROM `turma`
+													  ORDER BY `nomeTurma`";
+									
+											$resultadoPesquisa = @mysql_query($query, $conexao);
+											$numeroPesquisa = @mysql_num_rows($resultadoPesquisa);
+											if ($numeroPesquisa >= 1){
+												while($turma = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$turma['nomeTurma'] = utf8_encode($turma['nomeTurma']);
+													echo "<option value='{$turma['idTurma']}'>{$turma['nomeTurma']}</option>";
+												}
+											}
+											else{
+												echo "<option value='0'>Não há turmas cadastradas</option>";
+											}
+											mysql_close($conexao);
+                                        ?>
                                     </select>
                                 </div> <!-- col-md-9 -->
                             </div> <!-- div-excluir-lab-selTurma -->
