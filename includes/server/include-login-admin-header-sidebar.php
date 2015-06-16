@@ -57,6 +57,7 @@
                     <li><a class="" href="/acount/admin/liberar-avaliacao.php" title="Vincular Habilidades à Professores" ><span class="glyphicon glyphicon-saved"></span> Avaliação Institucional</a></li>
 				</ul>
 			</li>
+            <li id="navAltTurma" class=""><a href="/acount/admin/visualizar-avaliacao.php" title="Visualizar Avaliação Institucional dos Alunos" ><span class="glyphicon glyphicon-zoom-in"></span> Visualizar Avaliações</a></li>
             <li id="navAltTurma" class=""><a href="/acount/admin/alterar-turma.php" title="Alterar dados de Uma Turma" ><span class="glyphicon glyphicon-pencil"></span> Alterar Turma</a></li>
 			<li id="navAdminConfig" class=""><a href="/acount/admin/configuracoes.php" title="Configurações do Usuário" ><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
 			<li role="presentation" class="divider"></li>

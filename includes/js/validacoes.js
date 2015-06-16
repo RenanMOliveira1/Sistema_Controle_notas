@@ -770,6 +770,23 @@ function ValidarCadastrarFunc() {
 	return true;	
 }
 
+function ValidarSelAvaliacao() {
+	var msg = "";
+	
+	if ($("#avaliacao-selTurma").val() == "") {
+		msg += "Selecione a Turma.<br/>"; 
+		$("#div-avaliacao-selTurma").addClass(" has-error");
+	}
+	if ($("#avaliacao-selAluno").val() == "") {
+		msg += "Selecione o Aluno.<br/>"; 
+		$("#div-avaliacao-selAluno").addClass(" has-error");
+	}
+	if(msg != ""){
+		$("#dados-invalidos").html(msg);
+		return false;}
+	return true;	
+}
+
 //Função para Leitura de todos os Botões do Site
 function botoesEnviar(idBotao, idFormulario, funcaoDeValidar) {
 	$(document).ready(function(){
