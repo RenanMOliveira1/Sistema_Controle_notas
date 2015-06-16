@@ -450,6 +450,61 @@
 		mysql_close($conexao);
 	}
 	
+	function avaliar($qtdTurmas){
+		$resp1 = @$_POST['desemp-infra-pergunta1'];
+		$resp2 = @$_POST['desemp-infra-pergunta2'];
+		$resp3 = @$_POST['desemp-infra-pergunta3'];
+		$resp4 = @$_POST['desemp-infra-pergunta4'];
+		
+	//Conecção ao Banco de Dados
+	$conexao = @mysql_connect("localhost", "root", "");
+	if (!$conexao) {
+		exit("Site Temporariamente fora do ar");}
+	
+	mysql_select_db("infnetgrid", $conexao);
+	
+	$query = "INSERT INTO `avaliacao`(`alunoMatricula`, `reposta1`, `reposta2`, `reposta3`, `reposta4`)
+			  VALUES('{$_SESSION['alMatricula']}', '$resp1', '$resp2', '$resp3', '$resp4')";
+			  
+	$resultado = @mysql_query($query, $conexao);
+	
+	$query = "SELECT MAX(`idAvaliacao`) AS idAvaliacao FROM `avaliacao`";
+	
+	$resultadoPesquisa = @mysql_query($query, $conexao);
+	
+	$idAvaliacao = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC);
+	$idAv = $idAvaliacao['idAvaliacao'];
+		
+		for($contador = 0; $contador < $qtdTurmas; $contador++){
+			$idTurma = $GLOBALS[$contador];
+			$profResp1 = @$_POST['desemp-'.$idTurma.'-pergunta1'];
+			$profResp2 = @$_POST['desemp-'.$idTurma.'-pergunta2'];
+			$profResp3 = @$_POST['desemp-'.$idTurma.'-pergunta3'];
+			$profResp4 = @$_POST['desemp-'.$idTurma.'-pergunta4'];
+			$profResp5 = @$_POST['desemp-'.$idTurma.'-pergunta5'];
+			$profResp6 = @$_POST['desemp-'.$idTurma.'-pergunta6'];
+			$profResp7 = @$_POST['desemp-'.$idTurma.'-pergunta7'];
+			$profResp8 = @$_POST['desemp-'.$idTurma.'-pergunta8'];
+			
+			$query = "INSERT INTO `turma_avaliacao`(`idTurma`, `idAvaliacao`, `respProf1`, `respProf2`, `respProf3`, `respProf4`, `respProf5`, `respProf6`, `respProf7`, `respProf8`) 
+					  VALUES('$idTurma', '$idAv', '$profResp1', '$profResp2', '$profResp3', '$profResp4', '$profResp5', '$profResp6', '$profResp7', '$profResp8')";
+			
+			$resultado = @mysql_query($query, $conexao);
+		}
+		if(mysql_affected_rows($conexao) != 1){
+			if(mysql_errno() >= 1){
+				$GLOBALS['msg'] = "Ocorreu um erro durante a avaliação";
+			}
+			else{
+				$GLOBALS['msg'] = "Ocorreu um erro inesperado durante a avaliação";
+			}			
+		}else{
+			$GLOBALS['msg'] = "Avaliação feita com sucesso";
+		}
+		mysql_close($conexao);	
+	}
+
+	
 	switch($acao){
 		case "cadastro":
 			cadastrar();
@@ -468,6 +523,10 @@
 		case "nota":
 			$matricula = @$_GET['matricula'];
 			lancarNota($matricula);
+		break;
+		case "avaliacao":
+			$qtdTurmas = @$_GET['qtdTurmas'];
+			avaliar($qtdTurmas);
 		break;
 		case "":
 		break;

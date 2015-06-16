@@ -15,6 +15,8 @@
 	}
 
 	define('TITULO','Página Inicial');
+	$msg = "";
+	$msg .= @$_GET['msg'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -66,5 +68,12 @@
         </div> <!-- row -->	
 		
 	</section> <!-- main -->
+    <?
+		if($msg != ""){
+			echo "<script type=\"text/javascript\">
+					  alert('$msg');
+				  </script>";
+		}
+	?>
 </body>
 </html>
