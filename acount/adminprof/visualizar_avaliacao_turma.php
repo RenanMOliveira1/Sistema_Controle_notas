@@ -38,76 +38,81 @@
 	
 	$resultadoPesquisa = @mysql_query($query, $conexao);
 	$qtdAlunos = mysql_num_rows($resultadoPesquisa);
+	
 	if($qtdAlunos >= 1){
 		$query = "SELECT `respProf1`, `respProf2`, `respProf3`, `respProf4`, `respProf5`, `respProf6`, `respProf7`, `respProf8` 
 				  FROM `turma_avaliacao` 
 				  WHERE `idTurma` = '$idTurma'";
 				  
 		$resultadoPesquisa = @mysql_query($query, $conexao);
-		
-		$somaResp1 = 0;
-		$somaResp2 = 0;
-		$somaResp3 = 0;
-		$somaResp4 = 0;
-		$somaResp5 = 0;
-		$somaResp6 = 0;
-		$somaResp7 = 0;
-		$somaResp8 = 0;
-		
-		while($avaliacao = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
-			$somaResp1 += $avaliacao['respProf1'];
-			$somaResp2 += $avaliacao['respProf2'];
-			$somaResp3 += $avaliacao['respProf3'];
-			$somaResp4 += $avaliacao['respProf4'];
-			$somaResp5 += $avaliacao['respProf5'];
-			$somaResp6 += $avaliacao['respProf6'];
-			$somaResp7 += $avaliacao['respProf7'];
-			$somaResp8 += $avaliacao['respProf8'];
+		if(mysql_num_rows($resultadoPesquisa) >= 1){
+			$somaResp1 = 0;
+			$somaResp2 = 0;
+			$somaResp3 = 0;
+			$somaResp4 = 0;
+			$somaResp5 = 0;
+			$somaResp6 = 0;
+			$somaResp7 = 0;
+			$somaResp8 = 0;
+			
+			while($avaliacao = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+				$somaResp1 += $avaliacao['respProf1'];
+				$somaResp2 += $avaliacao['respProf2'];
+				$somaResp3 += $avaliacao['respProf3'];
+				$somaResp4 += $avaliacao['respProf4'];
+				$somaResp5 += $avaliacao['respProf5'];
+				$somaResp6 += $avaliacao['respProf6'];
+				$somaResp7 += $avaliacao['respProf7'];
+				$somaResp8 += $avaliacao['respProf8'];
+			}
+			$mediaResp1 = $somaResp1/$qtdAlunos;
+			$mediaResp2 = $somaResp2/$qtdAlunos;
+			$mediaResp3 = $somaResp3/$qtdAlunos;
+			$mediaResp4 = $somaResp4/$qtdAlunos;
+			$mediaResp5 = $somaResp5/$qtdAlunos;
+			$mediaResp6 = $somaResp6/$qtdAlunos;
+			$mediaResp7 = $somaResp7/$qtdAlunos;
+			$mediaResp8 = $somaResp8/$qtdAlunos;
+			
+			$trTemp .= "<tr>
+							<td>O professor domina o conteúdo e está atualizado</td>
+							<td>$mediaResp1</td>
+						</tr>
+						<tr>
+							<td>O professor tem bom relacionamento com os alunos e é aberto ao diálogo</td>
+							<td>$mediaResp2</td>
+						</tr>
+						<tr>
+							<td>O professor é pontual em suas funções</td>
+							<td>$mediaResp3</td>
+						</tr>
+						<tr>
+							<td>O professor é disponível para o esclarecimento de dúvidas</td>
+							<td>$mediaResp4</td>
+						</tr>
+						<tr>
+							<td>Eu Gostaria de Ter Aula Novamente com esse Professor</td>
+							<td>$mediaResp5</td>
+						</tr>
+						<tr>
+							<td>O plano da disciplina apresentado contém os itens essenciais (objetivos, conteúdos, sistema de avaliação, atividades a serem realizadas)</td>
+							<td>$mediaResp6</td>
+						</tr>
+						<tr>
+							<td>Os recursos didáticos utilizados na disciplina são de boa qualidade</td>
+							<td>$mediaResp7</td>
+						</tr>
+						<tr>
+							<td> A bibliografia para estudo do conteúdo é disponível na biblioteca</td>
+							<td>$mediaResp8</td>
+						</tr>";
 		}
-		$mediaResp1 = $somaResp1/$qtdAlunos;
-		$mediaResp2 = $somaResp2/$qtdAlunos;
-		$mediaResp3 = $somaResp3/$qtdAlunos;
-		$mediaResp4 = $somaResp4/$qtdAlunos;
-		$mediaResp5 = $somaResp5/$qtdAlunos;
-		$mediaResp6 = $somaResp6/$qtdAlunos;
-		$mediaResp7 = $somaResp7/$qtdAlunos;
-		$mediaResp8 = $somaResp8/$qtdAlunos;
-		
-		$trTemp .= "<tr>
-						<td>O professor domina o conteúdo e está atualizado</td>
-						<td>$mediaResp1</td>
-					</tr>
-					<tr>
-						<td>O professor tem bom relacionamento com os alunos e é aberto ao diálogo</td>
-						<td>$mediaResp2</td>
-					</tr>
-					<tr>
-						<td>O professor é pontual em suas funções</td>
-						<td>$mediaResp3</td>
-					</tr>
-					<tr>
-						<td>O professor é disponível para o esclarecimento de dúvidas</td>
-						<td>$mediaResp4</td>
-					</tr>
-					<tr>
-						<td>Eu Gostaria de Ter Aula Novamente com esse Professor</td>
-						<td>$mediaResp5</td>
-					</tr>
-					<tr>
-						<td>O plano da disciplina apresentado contém os itens essenciais (objetivos, conteúdos, sistema de avaliação, atividades a serem realizadas)</td>
-						<td>$mediaResp6</td>
-					</tr>
-					<tr>
-						<td>Os recursos didáticos utilizados na disciplina são de boa qualidade</td>
-						<td>$mediaResp7</td>
-					</tr>
-					<tr>
-						<td> A bibliografia para estudo do conteúdo é disponível na biblioteca</td>
-						<td>$mediaResp8</td>
-					</tr>";
+		else{
+			$trTemp .= "<tr><td colspan='2'>Nenhum aluno fez a avaliação</tr></td>";
+		}
 	}
 	else{
-		
+		$trTemp .= "<tr><td colspan='2'>Turma não possui alunos</tr></td>";
 	}
 	
 	mysql_close($conexao);	
