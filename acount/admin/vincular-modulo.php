@@ -74,6 +74,7 @@
 											if ($numeroPesquisa >= 1){
 												$contador = 0;
 												while($modulo = mysql_fetch_array($resultadoPesquisa, MYSQL_ASSOC)){
+													$modulo['nome'] = utf8_encode($modulo['nome']);
 													echo "<option value='{$modulo['idModulo']}'>{$modulo['nome']}</option>";
 												}
 											}else{

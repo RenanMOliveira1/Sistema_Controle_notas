@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Jun-2015 às 07:27
+-- Generation Time: 16-Jun-2015 às 16:14
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `administracao` (
   `cpf` varchar(14) NOT NULL,
   `cargo` char(3) NOT NULL,
   PRIMARY KEY (`idAdm`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `administracao`
@@ -43,7 +43,9 @@ CREATE TABLE IF NOT EXISTS `administracao` (
 INSERT INTO `administracao` (`idAdm`, `nomeFuncionario`, `email`, `senha`, `cpf`, `cargo`) VALUES
 (1, 'Administrador', 'admin@admin.com', 'admin', '', 'adm'),
 (2, 'Assistente RCA', 'rca@admin.com', '123', '12345678910', 'rca'),
-(4, 'Ramon Portela', 'ramon.portela@admin.com', '!admin2015', '12183829702', 'rca');
+(3, 'assistente pedagógico', 'ped@admin.com', '123', '', 'ped'),
+(4, 'assistente da direção', 'ass@admin.com', '123', '', 'ass'),
+(5, 'diretor', 'dir@admin.com', '123', '', 'dir');
 
 -- --------------------------------------------------------
 
@@ -61,24 +63,16 @@ CREATE TABLE IF NOT EXISTS `aluno` (
   `senha` varchar(12) NOT NULL,
   `acesso` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`matricula`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `aluno`
 --
 
 INSERT INTO `aluno` (`matricula`, `nomeAluno`, `cpf`, `dataNascimento`, `sexo`, `email`, `senha`, `acesso`) VALUES
-(1, 'teste', '123', '123', 'masculino', 'teste@teste.com', '123', 1),
-(12, 'fdafdas', '12183829702', '16/07/1996', 'Masculino', 'teste@cadastro.com', '123', 1),
-(13, 'fdafdas', '12183829702', '16/07/1996', 'Masculino', 'aluno@teste.com', '123', 0),
-(14, 'Ramon Portela', '12183829702', '16/07/1996', 'Masculino', 'ramon@aluno.com', '123', 1),
-(16, 'teste123', '12183829702', '16/07/1996', 'Masculino', 'value@teste.com', '123', 0),
-(17, 'Teste Programa', '12183829702', '16/07/1996', 'Masculino', 'programa@aluno.com', '123', 0),
-(19, 'andré', '12183829702', '16/07/1996', 'Masculino', 'andre@aluno.com', '123', 0),
-(20, 'fdafdas', '12183829702', '16/07/1996', 'Masculino', 'fdafdas@aluno.com', '123', 0),
-(31, 'Átila Luna', '12183829702', '16/07/1996', 'Masculino', 'atila.luna@aluno.com', '!aluno2015', 1),
-(33, 'Ramon Portela Santos', '12183829702', '16/07/1996', 'Masculino', 'ramon.santos@aluno.com', '!aluno2015', 0),
-(36, 'Ramon Portela Santos', '12183829702', '16/07/1996', 'Masculino', 'ramon.psantos@aluno.com', '!aluno2015', 0);
+(1, 'Ramon Portela', '12183829702', '16/07/1996', 'Masculino', 'ramon@aluno.com', '123', 1),
+(2, 'Ramon Portela Santos', '12183829702', '16/07/1996', 'Masculino', 'ramon.santos@aluno.com', '!aluno2015', 0),
+(3, 'Ramon Portela Santos', '12183829702', '16/07/1996', 'Masculino', 'ramon.psantos@aluno.com', '!aluno2015', 0);
 
 -- --------------------------------------------------------
 
@@ -98,13 +92,9 @@ CREATE TABLE IF NOT EXISTS `aluno_programa` (
 --
 
 INSERT INTO `aluno_programa` (`idPrograma`, `alunoMatricula`) VALUES
-(1, 17),
-(1, 19),
-(1, 20),
-(1, 31),
-(1, 33),
-(2, 36),
-(3, 36);
+(1, 2),
+(2, 3),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -128,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `avaliacao` (
 --
 
 INSERT INTO `avaliacao` (`idAvaliacao`, `alunoMatricula`, `resposta1`, `resposta2`, `resposta3`, `resposta4`) VALUES
-(1, 14, 4, 4, 3, 2);
+(1, 1, 4, 4, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -155,16 +145,9 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 --
 
 INSERT INTO `endereco` (`Cep`, `tipoLogradouro`, `numero`, `logradouro`, `complemento`, `bairro`, `cidade`, `estado`, `alunoMatricula`) VALUES
-('21211790', 'casa', 42, 'Rua Padre Manuel Viegas', 'o lepo lepo', 'bairrinho', 'cidadela', 'AC', 12),
-('21211790', 'casa', 42, 'hahahaha', 'o lepo lepo', 'bairrinho', 'cidadela', 'RJ', 13),
-('21211790', 'condominio', 97, 'rua bla bla bla', 'apartamento 202', 'qualquer bairro', 'qualquer cidade', 'RJ', 14),
-('21211790', 'chacara', 7, 'belo monte', '', 'bela vista', 'fdsfdasfs', 'GO', 16),
-('21211790', 'vila', 7, 'hahahaha', '', 'Vila', 'Vila', 'SP', 17),
-('21211790', 'casa', 42, 'hahahaha', 'o lepo lepo', 'bairrinho', 'cidadela', 'PA', 19),
-('21211790', 'beco', 42, 'belo monte', 'apt 202', 'bela vista', 'Vila', 'RJ', 20),
-('21211790', 'casa', 7, 'hahahaha', '', 'bairrinho', 'Vila', 'AC', 31),
-('21211790', 'casa', 97, 'belo monte', 'apt 202', 'bairrinho', 'Vila', 'AC', 33),
-('21211790', 'casa', 7, 'belo monte', '', 'bela vista', 'cidadela', 'AC', 36);
+('21211790', 'condominio', 97, 'rua bla bla bla', 'apartamento 202', 'qualquer bairro', 'qualquer cidade', 'RJ', 1),
+('21211790', 'casa', 97, 'belo monte', 'apt 202', 'bairrinho', 'Vila', 'AC', 2),
+('21211790', 'casa', 7, 'belo monte', '', 'bela vista', 'cidadela', 'AC', 3);
 
 -- --------------------------------------------------------
 
@@ -185,12 +168,9 @@ CREATE TABLE IF NOT EXISTS `habilidade_modulo` (
 --
 
 INSERT INTO `habilidade_modulo` (`idHabilidade`, `idModulo`) VALUES
-(1, 14),
-(2, 14),
-(4, 14),
-(1, 19),
-(2, 19),
-(4, 19);
+(1, 7),
+(2, 7),
+(3, 7);
 
 -- --------------------------------------------------------
 
@@ -214,10 +194,10 @@ INSERT INTO `habilidade_professor` (`idHabilidade`, `idProfessor`) VALUES
 (1, 2),
 (1, 4),
 (2, 4),
-(4, 4),
+(3, 4),
 (1, 5),
 (2, 5),
-(4, 5);
+(3, 5);
 
 -- --------------------------------------------------------
 
@@ -229,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `hablidade` (
   `idHabilidade` int(11) NOT NULL AUTO_INCREMENT,
   `nomeHab` varchar(30) NOT NULL,
   PRIMARY KEY (`idHabilidade`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `hablidade`
@@ -238,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `hablidade` (
 INSERT INTO `hablidade` (`idHabilidade`, `nomeHab`) VALUES
 (1, 'cálculo'),
 (2, 'java'),
-(4, 'php');
+(3, 'php');
 
 -- --------------------------------------------------------
 
@@ -252,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio` (
   `lugares` int(11) NOT NULL,
   `andar` int(11) NOT NULL,
   PRIMARY KEY (`idLaboratorio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `laboratorio`
@@ -260,8 +240,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio` (
 
 INSERT INTO `laboratorio` (`idLaboratorio`, `numeroLab`, `lugares`, `andar`) VALUES
 (1, 213, 20, 2),
-(6, 101, 1, 1),
-(7, 102, 30, 1);
+(2, 101, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -274,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `modulo` (
   `nome` varchar(60) NOT NULL,
   `descr` text NOT NULL,
   PRIMARY KEY (`idModulo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Extraindo dados da tabela `modulo`
@@ -287,8 +266,7 @@ INSERT INTO `modulo` (`idModulo`, `nome`, `descr`) VALUES
 (4, 'banco de dados', 'matéria sobre banco de dados'),
 (5, 'sistemas operacionais', 'matéria sobre sistemas operacionais'),
 (6, 'Java II', 'Matéria sobre java mais avançada'),
-(14, 'Cálculo II', 'fdsafsdadfsa'),
-(19, 'teste', 'fda');
+(7, 'Cálculo II', 'fdsafsdadfsa');
 
 -- --------------------------------------------------------
 
@@ -318,7 +296,7 @@ INSERT INTO `modulo_professor` (`idModulo`, `idProfessor`) VALUES
 (4, 4),
 (5, 4),
 (3, 5),
-(14, 5);
+(7, 5);
 
 -- --------------------------------------------------------
 
@@ -397,7 +375,8 @@ INSERT INTO `programa_modulo` (`idPrograma`, `idModulo`) VALUES
 (2, 4),
 (1, 5),
 (2, 5),
-(3, 6);
+(3, 6),
+(3, 7);
 
 -- --------------------------------------------------------
 
@@ -418,15 +397,9 @@ CREATE TABLE IF NOT EXISTS `telefone` (
 --
 
 INSERT INTO `telefone` (`telefone`, `celular`, `alunoMatricula`) VALUES
-('5', '3', 13),
-('55551234', '912345555', 14),
-('12341234', '912341234', 16),
-('', '', 17),
-('', '', 19),
-('12341234', '912341234', 20),
-('12341234', '912341234', 31),
-('12341234', '', 33),
-('', '', 36);
+('55551234', '912345555', 1),
+('12341234', '', 2),
+('', '', 3);
 
 -- --------------------------------------------------------
 
@@ -448,20 +421,19 @@ CREATE TABLE IF NOT EXISTS `turma` (
   KEY `idLaboratorio` (`idLaboratorio`),
   KEY `idPrograma` (`idPrograma`),
   KEY `idProfessor` (`idProfessor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `turma`
 --
 
 INSERT INTO `turma` (`idTurma`, `turno`, `nomeTurma`, `idModulo`, `idLaboratorio`, `idPrograma`, `idProfessor`, `liberado`) VALUES
-(1, 'Noite', 'GEC 1 - HTML', 1, 6, 1, 4, 0),
+(1, 'Noite', 'GEC 1 - HTML', 1, 2, 1, 4, 0),
 (2, 'Tarde', 'GEC 1 - BANCO DE DADOS', 4, 1, 1, 4, 1),
-(3, 'Tarde', 'GEC 1 - ALGEBRA', 3, NULL, 1, NULL, 1),
-(4, 'Manhã', 'GEC 1 - JAVA', 2, 6, 1, 4, 1),
+(3, 'Tarde', 'GEC 1 - ALGEBRA', 3, 1, 1, NULL, 1),
+(4, 'Manhã', 'GEC 1 - JAVA', 2, 2, 1, 4, 1),
 (5, 'Manhã', 'GEC 1 - SISTEMAS OPERACIONAIS', 5, 1, 1, 4, 0),
-(16, 'Manhã', 'MBD 1 - ALGEBRA', 3, 1, 3, 5, 0),
-(17, 'Manhã', 'MBD 2 - ALGEBRA', 3, NULL, 3, NULL, 0);
+(6, 'Manhã', 'MBD 1 - ALGEBRA', 3, 1, 3, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -486,16 +458,11 @@ CREATE TABLE IF NOT EXISTS `turma_aluno` (
 --
 
 INSERT INTO `turma_aluno` (`alunoMatricula`, `turmaID`, `av1`, `av2`, `av3`) VALUES
-(1, 1, '10.00', '8.00', '5.00'),
+(1, 1, '10.00', '8.00', '7.00'),
+(1, 2, '-1.00', '-1.00', '-1.00'),
 (1, 3, '-1.00', '-1.00', '-1.00'),
-(1, 5, '-1.00', '-1.00', '-1.00'),
-(14, 1, '10.00', '8.00', '7.00'),
-(14, 2, '-1.00', '-1.00', '-1.00'),
-(14, 3, '-1.00', '-1.00', '-1.00'),
-(14, 4, '4.00', '3.00', '2.00'),
-(14, 5, '-1.00', '5.00', '3.00'),
-(17, 1, '-1.00', '-1.00', '-1.00'),
-(31, 1, '-1.00', '-1.00', '-1.00');
+(1, 4, '4.00', '3.00', '2.00'),
+(1, 5, '-1.00', '5.00', '3.00');
 
 -- --------------------------------------------------------
 
@@ -541,7 +508,7 @@ ALTER TABLE `aluno_programa`
 -- Limitadores para a tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
-  ADD CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`alunoMatricula`) REFERENCES `aluno` (`matricula`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`alunoMatricula`) REFERENCES `aluno` (`matricula`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `endereco`
@@ -596,7 +563,7 @@ ALTER TABLE `turma`
 -- Limitadores para a tabela `turma_aluno`
 --
 ALTER TABLE `turma_aluno`
-  ADD CONSTRAINT `turma_aluno_ibfk_1` FOREIGN KEY (`alunoMatricula`) REFERENCES `aluno` (`matricula`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `turma_aluno_ibfk_1` FOREIGN KEY (`alunoMatricula`) REFERENCES `aluno` (`matricula`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `turma_aluno_ibfk_2` FOREIGN KEY (`turmaID`) REFERENCES `turma` (`idTurma`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
