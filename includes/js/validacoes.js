@@ -23,6 +23,9 @@ function SidebarActive(opcaoSidebar) {
 		case "configuracoes-prof":
 			$("#navConfiguracoesProf").addClass("active");
 			break;
+		case "avaliacao-prof":
+			$("#navAvaliacaoProf").addClass("active");
+			break;
 		case "lancar-notas":
 			$("#navLancarNotas").addClass("active");
 			break;
@@ -56,6 +59,13 @@ function SidebarActive(opcaoSidebar) {
 			break;
 		case "alt-turma":
 			$("#navAltTurma").addClass("active");
+			break;
+		case "excluir-mod":
+		case "excluir-turma":
+		case "excluir-lab":
+			$("#navExcluir").addClass("active");
+			break;
+		
 	}
 }
 
@@ -785,6 +795,26 @@ function ValidarSelAvaliacao() {
 		$("#dados-invalidos").html(msg);
 		return false;}
 	return true;	
+}
+
+function ValidarExcluirTurma() {
+	
+	if ($("#excluir-lab-selTurma").val() <= 0) {
+		$("#dados-invalidos").html("Selecione uma Turma."); 
+		$("#div-excluir-lab-selTurma").addClass(" has-error");
+		return false;
+	}
+	return true;
+}
+
+function ValidarProfSelTurma() {
+	
+	if ($("#prof-avaliacao-selTurma").val() <= 0) {
+		$("#dados-invalidos").html("Selecione uma Turma."); 
+		$("#div-prof-avaliacao-selTurma").addClass(" has-error");
+		return false;
+	}
+	return true;
 }
 
 //Função para Leitura de todos os Botões do Site

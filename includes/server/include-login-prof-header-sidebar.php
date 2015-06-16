@@ -19,6 +19,7 @@
 		<ul class="nav menu">
 			<li id="navModulosProf" class=""><a href="/acount/adminprof/index.php" title="Visualizar Módulo" ><span class="glyphicon glyphicon-tasks"></span> Módulos</a></li>
 			<li id="navLancarNotas" class=""><a href="/acount/adminprof/notas.php" title="Aplicar Nota aos Alunos" ><span class="glyphicon glyphicon-th"></span> Aplicar Notas</a></li>
+            <li id="navAvaliacaoProf" class=""><a href="/acount/adminprof/avaliacao-institucional.php" title="Visualizar Avaliações Institucionais" ><span class="glyphicon glyphicon-th"></span> Avaliação Institucional</a></li>
 			<li id="navConfiguracoesProf" class=""><a href="/acount/adminprof/configuracoes.php" title="Configurações do Usuário" ><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
 			<li role="presentation" class="divider"></li>
 			<li><a href="/" title="Página Inicial do Site SGA" ><span class="glyphicon glyphicon-home"></span> Página Inicial</a></li>

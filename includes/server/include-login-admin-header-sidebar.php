@@ -57,6 +57,16 @@
                     <li><a class="" href="/acount/admin/liberar-avaliacao.php" title="Vincular Habilidades à Professores" ><span class="glyphicon glyphicon-saved"></span> Avaliação Institucional</a></li>
 				</ul>
 			</li>
+            <li id="navExcluir" class="parent ">
+				<a data-toggle="collapse" href="#sub-item-4">
+					<span class="glyphicon glyphicon-list"></span> Excluir <span class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
+				</a>
+				<ul class="children collapse" id="sub-item-4">
+					<li><a class="" href="/acount/admin/excluir-laboratorio.php" title="Excluir Laboratório" ><span class="glyphicon glyphicon-remove"></span> Laboratório</a></li>
+                    <li><a class="" href="/acount/admin/excluir-turma.php" title="Excluir Turma" ><span class="glyphicon glyphicon-remove"></span> Turma</a></li>
+                    <li><a class="" href="/acount/admin/excluir-modulo.php" title="Excluir Módulo" ><span class="glyphicon glyphicon-remove"></span> Módulo</a></li>
+				</ul>
+			</li>
             <li id="navAltTurma" class=""><a href="/acount/admin/visualizar-avaliacao.php" title="Visualizar Avaliação Institucional dos Alunos" ><span class="glyphicon glyphicon-zoom-in"></span> Visualizar Avaliações</a></li>
             <li id="navAltTurma" class=""><a href="/acount/admin/alterar-turma.php" title="Alterar dados de Uma Turma" ><span class="glyphicon glyphicon-pencil"></span> Alterar Turma</a></li>
 			<li id="navAdminConfig" class=""><a href="/acount/admin/configuracoes.php" title="Configurações do Usuário" ><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
