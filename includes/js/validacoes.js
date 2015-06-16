@@ -57,6 +57,9 @@ function SidebarActive(opcaoSidebar) {
 		case "admin-index":
 			$("#navAdminIndex").addClass("active");
 			break;
+		case "visu-aval":
+			$("#navVisualizarAval").addClass("active");
+			break;	
 		case "alt-turma":
 			$("#navAltTurma").addClass("active");
 			break;

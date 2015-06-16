@@ -67,7 +67,7 @@
                     <li><a class="" href="/acount/admin/excluir-modulo.php" title="Excluir Módulo" ><span class="glyphicon glyphicon-remove"></span> Módulo</a></li>
 				</ul>
 			</li>
-            <li id="navAltTurma" class=""><a href="/acount/admin/visualizar-avaliacao.php" title="Visualizar Avaliação Institucional dos Alunos" ><span class="glyphicon glyphicon-zoom-in"></span> Visualizar Avaliações</a></li>
+            <li id="navVisualizarAval" class=""><a href="/acount/admin/visualizar-avaliacao.php" title="Visualizar Avaliação Institucional dos Alunos" ><span class="glyphicon glyphicon-zoom-in"></span> Visualizar Avaliações</a></li>
             <li id="navAltTurma" class=""><a href="/acount/admin/alterar-turma.php" title="Alterar dados de Uma Turma" ><span class="glyphicon glyphicon-pencil"></span> Alterar Turma</a></li>
 			<li id="navAdminConfig" class=""><a href="/acount/admin/configuracoes.php" title="Configurações do Usuário" ><span class="glyphicon glyphicon-wrench"></span> Configurações</a></li>
 			<li role="presentation" class="divider"></li>

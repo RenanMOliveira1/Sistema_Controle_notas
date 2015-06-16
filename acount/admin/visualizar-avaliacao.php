@@ -36,7 +36,7 @@
     <? include("../../includes/server/include-login-css-js-favicon.php"); ?>
 </head>
 
-<body onLoad="SidebarActive('alt-turma');">
+<body onLoad="SidebarActive('visu-aval');">
 	<!-- Header com Logo e Submenu a Direita e a Sidebar a Esquerda -->
 	<? include("../../includes/server/include-login-admin-header-sidebar.php"); ?>
 		
